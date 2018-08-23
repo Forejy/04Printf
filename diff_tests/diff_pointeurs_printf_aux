@@ -1,0 +1,43 @@
+	TEST D'AFFICHAGE DES POINTEURS
+BLANK p : |0xffffcbac|
+BLANK p : |0xffffcbac|
+ %0p : |0xffffcbac|
+ %020p : |0x0000000000ffffcbac|
+  %p : |0xffffcbac|
+ %20p : |          0xffffcbac|
+ %2p : |0xffffcbac|
+  %p : |0xffffcbac|
+ |% 20p| : |          0xffffcbac|
+ |% p| : |0xffffcbac|
+ |%2p|  : |0xffffcbac|
+  |%p|  : |0xffffcbac|
+ |%+ 20p| : |          0xffffcbac|
+ |%2p|  : |0xffffcbac|
+  |%p|  : |0xffffcbac|
+ |% +20p| : |          0xffffcbac|
+ |%2p|  : |0xffffcbac|
+  |%p|  : 0xffffcbac
+ |% +.20p| : |0x000000000000ffffcbac|
+ |%0+.20p| : |0x000000000000ffffcbac|
+ |%+.20p| : |0x000000000000ffffcbac|
+ |%+ .20p| : |0x000000000000ffffcbac|
+ |%+0.20p| : |0x000000000000ffffcbac|
+ |%.2p|  : |0xffffcbac|
+  |%p|  : |0xffffcbac|
+ |% +.0p| : |0xffffcbac|
+ |%.0p|  : |0xffffcbac|
+  |%p|  : |0xffffcbac|
+ |% +20.15p| : |   0x0000000ffffcbac|
+Precision et padding avec flag '0'
+     |%0+20.15p| : |   0x0000000ffffcbac|
+     |%020.15p| : |   0x0000000ffffcbac|
+     |%020.15p| : |   0x0000000ffffcbac|
+ |% 10.5p| : |0xffffcbac|
+ |%+10.5p| : |0xffffcbac|
+ |%10.5p| : |0xffffcbac|
+  |%p|  : |0xffffcbac|
+  |%.p|  : |0xffffcbac|
+  |%0.0p|  : |0xffffcbac|
+ |%5.0p|  : |0xffffcbac|
+ |%0.5p|  : |0xffffcbac|
+ |%0.0p|  : |0xffffcbac|
