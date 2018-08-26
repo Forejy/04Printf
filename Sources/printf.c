@@ -19,7 +19,11 @@ int			count_ap(char const *str)
 
 int			ft_printf(const char *format, ...)
 {
+	int			ret;
+	
+	ret = 0;
 	va_list		ap;
 	va_start(ap, format);
-	handle_format(format, ap);
+	ret = handle_format(format, ap);
+	return (ret);
 }
