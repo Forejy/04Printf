@@ -26,7 +26,7 @@ typedef struct		s_flag
 	int		character_or_string;
 }					t_flag;
 
-void		handle_format(const char *format, va_list ap);
+size_t			handle_format(const char *format, va_list ap);
 size_t		handle_conversions(char conversion, va_list ap, int lenght_conv, t_flag flag);
 
 #endif

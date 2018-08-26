@@ -217,14 +217,16 @@ int			test_precision(const char *format, t_flag *flag)
 	return (i);
 }
 
-void		handle_format(const char *format, va_list ap)
+size_t			handle_format(const char *format, va_list ap)
 {
 	int				i;
 	int				lenght_conv;
+	size_t			lenght_print;
 	t_flag			flag;
 
 	i = 0;
 	initialize_t_flag(&flag);
+	lenght_print = 0;
 	while(format[i])
 	{
 		if (format[i] == '%')
@@ -240,18 +242,25 @@ void		handle_format(const char *format, va_list ap)
 				i = i + test_precision(&format[i], &flag);
 			}
 			if (format[i] == '%')
+			{
 				write(1, "%", 1);
+				lenght_print++;
+			}
 			else
 			{
 				if ((lenght_conv = define_lenght_conv(&format[i])) != 0)
 					i += lenght_conv % 3;
-				handle_conversions(format[i], ap, lenght_conv, flag);
+				lenght_print = lenght_print + handle_conversions(format[i], ap, lenght_conv, flag);
 			}
 		}
 		else
+		{
 			write(1, &format[i], 1);
+			lenght_print++;
+		}
 		i++;
 	}
+	return(lenght_print);
 }
 
 /*
