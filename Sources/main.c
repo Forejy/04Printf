@@ -1061,8 +1061,10 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf(" |%% +.2s| : |% +.2s| \n", "123");
 	ft_printf(" |%% +3.2s| : |% +3.2s| \n", "123");
 
-
-	//TEST D'AFFICHAGE BASIC DE 42FILECHECKER 
+	//TEST D'AFFICHAGE BASIC DE 42FILECHECKER
+	int k = ft_printf("%5%");
+	ft_printf("\n%d\n", k);
+	/*
 	ft_printf("\nBASIC TESTS DE 42FILECHECKER\n");
 	ft_printf("|%%| : |%%|\n");
 	ft_printf("%%");

@@ -242,10 +242,7 @@ size_t			handle_format(const char *format, va_list ap)
 				i = i + test_precision(&format[i], &flag);
 			}
 			if (format[i] == '%')
-			{
-				write(1, "%", 1);
-				lenght_print++;
-			}
+				lenght_print = lenght_print + my_putchar_printf('%', flag);
 			else
 			{
 				if ((lenght_conv = define_lenght_conv(&format[i])) != 0)
