@@ -1072,14 +1072,14 @@ ft_printf(" +d : % +d \n", 0);
 	printf("|%-5%|\n");
 	ft_printf("|%5%|\n");
 	ft_printf("|%-5d|\n", 5);
-	
+
 	k = ft_printf("%x", 0);
 	printf("\n%d\n", k);
-	
+
 	k = ft_printf("%#x", 42);
 	printf("\n%d\n", k);
 
-	k = ft_printf("%#8x", 42);
+	k = ft_printf("%#08x", 42);
 	printf("\n%d\n", k);
 
 	/*

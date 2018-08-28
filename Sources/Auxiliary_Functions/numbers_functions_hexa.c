@@ -26,7 +26,7 @@ size_t			my_putnbr_hexa(uintmax_t nb, t_flag flag)
 			nb = (nb / 16);
 			i--;
 		}
-		if (flag.hash == 1)
+		if (flag.hash == 2)
 		{
 			stock_number[i--] = 'x';
 			stock_number[i--] = '0';
@@ -59,7 +59,7 @@ size_t			my_putnbr_HEXA(uintmax_t nb, t_flag flag)
 			nb = (nb / 16);
 			i--;
 		}
-		if (flag.hash == 1)
+		if (flag.hash == 2)
 		{
 			stock_number[i--] = 'X';
 			stock_number[i--] = '0';

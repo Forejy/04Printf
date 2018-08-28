@@ -173,7 +173,7 @@ int			test_flag(char format_flag, t_flag	*flag)
 	}
 	if (format_flag == '#')
 	{
-		flag->hash = 1;
+		flag->hash = 2;
 		return (1);
 	}
 	if (format_flag == ' ')
