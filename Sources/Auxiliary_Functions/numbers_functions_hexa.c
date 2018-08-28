@@ -61,7 +61,7 @@ size_t			my_putnbr_HEXA(uintmax_t nb, t_flag flag)
 		}
 		if (flag.hash == 1)
 		{
-			stock_number[i--] = 'x';
+			stock_number[i--] = 'X';
 			stock_number[i--] = '0';
 		}
 	}
