@@ -18,7 +18,6 @@ size_t			my_putnbr_hexa(uintmax_t nb, t_flag flag)
 		stock_number[i] = '0';
 		i--;
 	}
-	//	write (1, "0", 1);
 	while (nb > 0)
 	{
 		stock_number[i] = base_hexa[(nb % 16)];
@@ -41,7 +40,10 @@ size_t			my_putnbr_HEXA(uintmax_t nb, t_flag flag)
 	if (nb != 0 && flag.hash == HASH)
 		write(1, "0x", 1);
 	if (nb == 0 && flag.precision != 0)
-		write (1, "0", 1);
+	{
+		stock_number[i] = '0';
+		i--;
+	}
 	while (nb > 0)
 	{
 		stock_number[i] = base_hexa[(nb % 16)];
