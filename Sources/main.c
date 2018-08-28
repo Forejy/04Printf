@@ -1071,7 +1071,11 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("\n|%-5%|\n");
 	printf("|%-5%|\n");
 	ft_printf("|%5%|\n");
-	ft_printf("|%-5d|", 5);
+	ft_printf("|%-5d|\n", 5);
+	
+	k = ft_printf("%x", 0);
+	printf("\n%d\n", k);
+
 	/*
 	ft_printf("|%%| : |%%|\n");
 	ft_printf("%%");
