@@ -13,7 +13,7 @@ size_t			my_putnbr_hexa(uintmax_t nb, t_flag flag)
 	i = 19;
 	total_len = 0;
 
-	if (nb == 0)
+	if (nb == 0 && flag.precision != 0)
 	{
 		stock_number[i] = '0';
 		i--;
