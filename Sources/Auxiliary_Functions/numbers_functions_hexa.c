@@ -44,7 +44,7 @@ size_t			my_putnbr_HEXA(uintmax_t nb, t_flag flag)
 	total_len = 0;
 	if (nb != 0 && flag.hash == 1)
 	{
-		write(1, "0x", 2);
+		write(1, "0X", 2);
 		total_len += 2;
 	}
 	if (nb == 0 && flag.precision != 0)
