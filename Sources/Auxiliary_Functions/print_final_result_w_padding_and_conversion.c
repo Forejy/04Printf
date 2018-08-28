@@ -107,18 +107,21 @@ size_t		print_final_result(t_flag flag, const char *stock, int len_argument, int
 {
 	int			len_precision;
 	int			len_padding;
-	size_t			total_len;
+	size_t		total_len;
 
 	len_precision = flag.precision;
 	len_padding = compute_padding(stock, flag, len_arg);
-	len_argument = len_argument - print_padding(flag, &stock, len_padding);
+	if (flag.less == 0)
+		len_argument = len_argument - print_padding(flag, &stock, len_padding);
 	if ((*stock == '-' || *stock == '+') && flag.character_or_string == 0)
-		{
+	{
 		write(1, stock, 1);
 		stock++;
 		len_argument--;
 	}
 	print_result_w_precision(flag, stock, len_precision, len_argument);
+	if (flag.less == 1)
+		print_padding(flag, &stock, len_padding);
 	if (len_padding < 0)
 		len_padding = 0;
 	if (len_precision < 0)

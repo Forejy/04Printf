@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include "../Includes/printf.h"
 #include "../Includes/Print_Unicode/create_and_print_t_bin_list.h"
 #include "../Includes/Print_Unicode/print_unicode.h"
@@ -1062,10 +1063,16 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf(" |%% +3.2s| : |% +3.2s| \n", "123");
 
 	//TEST D'AFFICHAGE BASIC DE 42FILECHECKER
-	int k = ft_printf("%5%");
-	ft_printf("\n%d\n", k);
-	/*
+
 	ft_printf("\nBASIC TESTS DE 42FILECHECKER\n");
+	int k = ft_printf("%5%");
+	printf("\n%5%\n");
+	ft_printf("\n%d\n", k);
+	ft_printf("\n|%-5%|\n");
+	printf("|%-5%|\n");
+	ft_printf("|%5%|\n");
+	ft_printf("|%-5d|", 5);
+	/*
 	ft_printf("|%%| : |%%|\n");
 	ft_printf("%%");
 	ft_printf("|%%5%%| : |%5%|\n");
