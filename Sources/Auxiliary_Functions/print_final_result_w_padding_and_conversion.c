@@ -34,10 +34,10 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 		if (flag.precision >= 0)
 			while (len_padding-- > 0)
 				write(1, " ", 1);
-		else if (!flag.zero)
+		else if (!flag.zero || flag.zero && flag.less)
 			while (len_padding-- > 0)
 				write(1, " ", 1);
-		if ((flag.zero || flag.precision >= 0) && (flag_pointer == 2 || flag.hash == 2))
+		if ((flag.zero || flag.precision >= 0) && (flag_pointer == 2 || flag.hash == 2) && !flag.less)
 			//Dans le cas des pointeurs :
 				//Si on a champs et precision en meme temps 
 				// le 0x doit etre imprime avant l'appel de la precision :'    0x''000000000000ffffcb84' 'padding''precision'
@@ -52,7 +52,7 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 				while (len_padding-- > flag.hash)
 					write(1, "0", 1);
 		}
-		else if (flag.zero)
+		else if (flag.zero && !flag.less)
 			while (len_padding-- > 0)
 				write(1, "0", 1);
 	}
@@ -99,7 +99,7 @@ int			compute_padding(const char *stock, t_flag flag, int len_arg)
 	}
 	else if (len_precision > 0 && len_precision <= len_arg && flag.character_or_string == 1)
 		len_padding = len_champs - len_precision;
-	else if (flag.hash == 2 && flag.zero)
+	else if (flag.hash == 2 && flag.zero && !flag.less)
 		len_padding = len_champs - len_arg + flag.pointer + flag.hash;
 	else
 		len_padding = len_champs - len_arg + flag.pointer; //J'ajoute flag.pointer pour annuler la soustraction finale
