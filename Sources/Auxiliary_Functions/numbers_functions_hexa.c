@@ -18,7 +18,7 @@ size_t			my_putnbr_hexa(uintmax_t nb, t_flag flag)
 		stock_number[i] = '0';
 		i--;
 	}
-	else
+	else if(nb != 0)
 	{
 		while (nb > 0)
 		{
