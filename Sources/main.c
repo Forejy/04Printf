@@ -1092,6 +1092,9 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("|%.0d|\n", 1);
 	printf("|%.0x|\n", 0);
 	printf("|%.0d|\n", 1);
+
+	k = ft_printf("%5.2s is a string", "");
+	printf("\n%d\n", k);
 	/*
 	ft_printf("|%%| : |%%|\n");
 	ft_printf("%%");
