@@ -11,8 +11,12 @@ size_t			my_putnbr_hexa(uintmax_t nb, t_flag flag)
 
 	base_hexa = "0123456789abcdef";
 	i = 19;
-	if (nb != 0 && flag.hash == HASH)
-		write(1, "0x", 1);
+	total_len = 0;
+	if (nb != 0 && flag.hash == 1)
+	{
+		write(1, "0x", 2);
+		total_len += 2;
+	}
 	if (nb == 0)
 	{
 		stock_number[i] = '0';
@@ -24,7 +28,7 @@ size_t			my_putnbr_hexa(uintmax_t nb, t_flag flag)
 		nb = (nb / 16);
 		i--;
 	}
-	total_len = print_final_result(flag, &stock_number[i + 1], 19 - i, 19 - i);
+	total_len = total_len + print_final_result(flag, &stock_number[i + 1], 19 - i, 19 - i);
 	return (total_len);
 
 }
@@ -37,8 +41,12 @@ size_t			my_putnbr_HEXA(uintmax_t nb, t_flag flag)
 	size_t			total_len;
 	base_hexa = "0123456789ABCDEF";
 	i = 19;
-	if (nb != 0 && flag.hash == HASH)
-		write(1, "0x", 1);
+	total_len = 0;
+	if (nb != 0 && flag.hash == 1)
+	{
+		write(1, "0x", 2);
+		total_len += 2;
+	}
 	if (nb == 0 && flag.precision != 0)
 	{
 		stock_number[i] = '0';
@@ -50,7 +58,7 @@ size_t			my_putnbr_HEXA(uintmax_t nb, t_flag flag)
 		nb = (nb / 16);
 		i--;
 	}
-	total_len = print_final_result(flag, &stock_number[i + 1], 19 - i, 19 - i);
+	total_len = total_len + print_final_result(flag, &stock_number[i + 1], 19 - i, 19 - i);
 	return (total_len);
 
 }

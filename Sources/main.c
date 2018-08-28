@@ -1075,6 +1075,9 @@ ft_printf(" +d : % +d \n", 0);
 	
 	k = ft_printf("%x", 0);
 	printf("\n%d\n", k);
+	
+	k = ft_printf("%#x", 42);
+	printf("\n%d\n", k);
 
 	/*
 	ft_printf("|%%| : |%%|\n");
