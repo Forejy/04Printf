@@ -1095,6 +1095,9 @@ ft_printf(" +d : % +d \n", 0);
 
 	k = ft_printf("%5.2s is a string", "");
 	printf("\n%d\n", k);
+
+	k = ft_printf("@moulitest: %s", NULL);
+	printf("\n%d\n", k);
 	/*
 	ft_printf("|%%| : |%%|\n");
 	ft_printf("%%");
