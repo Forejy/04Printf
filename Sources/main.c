@@ -1111,6 +1111,13 @@ ft_printf(" +d : % +d \n", 0);
 	k = ft_printf("%d\n", -1);
 	printf("%d\n", k);
 
+	k = ft_printf("% d\n", 42);
+	printf("%d\n\n", k);
+
+	k = ft_printf("% o\n", 42);
+	printf("%d\n", k);
+	k = printf("% x\n", 42);
+	printf("%x\n", k);
 
 /*
 	ft_printf("|%%| : |%%|\n");
