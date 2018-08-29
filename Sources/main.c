@@ -1108,6 +1108,9 @@ ft_printf(" +d : % +d \n", 0);
 	printf("|@moulitest: %.o %.0o|\n", 0, 0);
 	printf("|@moulitest: %.o %o|\n", 0, 0);
 
+	k = ft_printf("%d\n", -1);
+	printf("\n%d\n", k);
+
 
 /*
 	ft_printf("|%%| : |%%|\n");
