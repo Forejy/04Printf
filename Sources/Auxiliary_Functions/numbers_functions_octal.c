@@ -9,18 +9,24 @@ size_t			my_put_octal(uintmax_t nbr, t_flag flag)
 	size_t			total_len;
 
 	i = 19;
-	if (nbr != 0 && flag.hash == HASH)
+	if (nbr == 0)
 	{
 		stock_number[i] = '0';
 		i--;
 	}
-//	if (nbr == 0 && flag.precision != 0)
-
-	while (nbr > 0)
+	else
 	{
-		stock_number[i] = (char) ((nbr % 8) + '0');
-		nbr = nbr / 8;
-		i--;
+		while (nbr > 0)
+		{
+			stock_number[i] = (char) ((nbr % 8) + '0');
+			nbr = nbr / 8;
+			i--;
+		}
+		if (flag.hash == 2)
+		{
+			stock_number[i] = '0';
+			i--;
+		}
 	}
 	total_len = print_final_result(flag, &stock_number[i + 1], 19 - i, 19 - i);
 	return (total_len);

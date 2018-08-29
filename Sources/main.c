@@ -1076,7 +1076,7 @@ ft_printf(" +d : % +d \n", 0);
 	k = ft_printf("%x", 0);
 	printf("\n%d\n", k);
 
-	k = ft_printf("%#x", 42);
+	k = ft_printf("#x : %#x", 42);
 	printf("\n%d\n", k);
 
 	k = ft_printf("%#08x", 42);
@@ -1098,7 +1098,12 @@ ft_printf(" +d : % +d \n", 0);
 
 	k = ft_printf("@moulitest: %s", NULL);
 	printf("\n%d\n", k);
-	/*
+	
+	ft_printf("|%#6o|\n", 2500);
+	printf("|%#6o|\n", 2500);
+	ft_printf("|%#6o|\n", 0);
+	printf("|%#6o|\n", 0);
+/*
 	ft_printf("|%%| : |%%|\n");
 	ft_printf("%%");
 	ft_printf("|%%5%%| : |%5%|\n");

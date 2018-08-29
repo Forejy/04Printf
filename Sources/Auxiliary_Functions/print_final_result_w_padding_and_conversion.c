@@ -92,11 +92,11 @@ int			compute_padding(const char *stock, t_flag flag, int len_arg)
 	len_champs = flag.champs;
 	len_precision = flag.precision;
 	if (len_precision >= (len_arg - flag.pointer) && flag.character_or_string == 0)//Si l'argument est un pointeur, je supprimne le '0x' de sa longueur
-	{
-		len_padding = len_champs - len_precision;
-		if (*stock == '-' || (*stock == '+'))
-			len_padding -= 1;
-	}
+		{
+			len_padding = len_champs - len_precision;
+			if (*stock == '-' || (*stock == '+'))
+				len_padding -= 1;
+		}
 	else if (len_precision > 0 && len_precision <= len_arg && flag.character_or_string == 1)
 		len_padding = len_champs - len_precision;
 	else if (flag.hash == 2 && flag.zero && !flag.less)
@@ -117,11 +117,11 @@ size_t		print_final_result(t_flag flag, const char *stock, int len_argument, int
 	if (flag.less == 0)
 		len_argument = len_argument - print_padding(flag, &stock, len_padding);
 	if ((*stock == '-' || *stock == '+') && flag.character_or_string == 0)
-	{
-		write(1, stock, 1);
-		stock++;
-		len_argument--;
-	}
+		{
+			write(1, stock, 1);
+			stock++;
+			len_argument--;
+		}
 	print_result_w_precision(flag, stock, len_precision, len_argument);
 	if (flag.less == 1)
 		print_padding(flag, &stock, len_padding);
