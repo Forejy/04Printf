@@ -1117,7 +1117,15 @@ ft_printf(" +d : % +d \n", 0);
 	k = ft_printf("% o\n", 42);
 	printf("%d\n", k);
 	k = printf("% x\n", 42);
-	printf("%x\n", k);
+	printf("%x\n\n", k);
+	
+	ft_printf("%d\n", 2147483647);
+	ft_printf("%U\n", 4294967295);
+	ft_printf("%lU\n", 4294967295);
+	ft_printf("%hU\n", 4294967295);
+
+
+	printf("%hld\n", 2147483647);
 
 /*
 	ft_printf("|%%| : |%%|\n");

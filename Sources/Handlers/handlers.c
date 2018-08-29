@@ -59,10 +59,15 @@ size_t			handle_conversions(char conversion, va_list ap, int lenght_conv, t_flag
 		else
 			total_len = my_putnbr_long_long(va_arg(ap, int), flag);
 	}
-	else 	if (conversion == 'D' && lenght_conv == L)
-		total_len = my_putnbr_long_long(va_arg(ap, long long), flag);
 	else 	if (conversion == 'D')
-		total_len = my_putnbr_long_long(va_arg(ap, long), flag);
+	{
+		if (lenght_conv == L)
+			total_len = my_putnbr_long_long(va_arg(ap, long long), flag);
+		else if (lenght_conv == H)
+			total_len = my_putnbr_long_long(va_arg(ap, long long), flag);
+		else
+			total_len = my_putnbr_long_long(va_arg(ap, long), flag);
+	}
 	else 	if (conversion == 'u')
 	{
 		if (lenght_conv == H)
@@ -79,6 +84,15 @@ size_t			handle_conversions(char conversion, va_list ap, int lenght_conv, t_flag
 			total_len = my_put_unsigned_long_long(va_arg(ap, size_t), flag);
 		else
 			total_len = my_put_unsigned_long_long(va_arg(ap, unsigned int), flag);
+	}
+	else 	if (conversion == 'U')
+	{
+		if (lenght_conv == L)
+			total_len = my_put_unsigned_long_long(va_arg(ap, unsigned long long), flag);
+		else if (lenght_conv == H)
+			total_len = my_put_unsigned_long_long(va_arg(ap, unsigned long long), flag);
+		else
+			total_len = my_put_unsigned_long_long(va_arg(ap, unsigned long), flag);
 	}
 	else if (conversion == 'o')
 	{
