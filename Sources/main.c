@@ -1103,6 +1103,12 @@ ft_printf(" +d : % +d \n", 0);
 	printf("|%#6o|\n", 2500);
 	ft_printf("|%#6o|\n", 0);
 	printf("|%#6o|\n", 0);
+	
+	ft_printf("|@moulitest: %.o %.0o|\n", 0, 0);
+	printf("|@moulitest: %.o %.0o|\n", 0, 0);
+	printf("|@moulitest: %.o %o|\n", 0, 0);
+
+
 /*
 	ft_printf("|%%| : |%%|\n");
 	ft_printf("%%");

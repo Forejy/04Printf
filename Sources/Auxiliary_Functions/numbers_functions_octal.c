@@ -9,7 +9,7 @@ size_t			my_put_octal(uintmax_t nbr, t_flag flag)
 	size_t			total_len;
 
 	i = 19;
-	if (nbr == 0)
+	if (nbr == 0 && flag.precision == -1)
 	{
 		stock_number[i] = '0';
 		i--;
