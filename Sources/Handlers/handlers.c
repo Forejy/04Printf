@@ -161,8 +161,8 @@ size_t			handle_conversions(char conversion, va_list ap, t_flag flag)
 	}
 	else if (conversion == 'p')
 		total_len = my_putaddress(va_arg(ap, unsigned int), flag);
-	else
-		total_len = my_putchar_printf((char)(va_arg(ap, int)), flag);
+//	else
+//		total_len = my_putchar_printf((char)(va_arg(ap, int)), flag);
 	return (total_len);
 }
 

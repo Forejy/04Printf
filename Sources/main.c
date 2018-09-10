@@ -1285,7 +1285,10 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%");
 	printf("\nk = %d", k);
 	 */
-	ft_printf("%5%");
+	
+	k = ft_printf("% ");
+	printf("\n");
+	printf("%d\n", k);
 
 
 
