@@ -1283,6 +1283,8 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\n");
 	k = printf("%");
 	printf("\nk = %d", k);
+	ft_printf("%%");
+
 
 
 	return (0);
