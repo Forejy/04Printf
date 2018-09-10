@@ -406,7 +406,7 @@ int			analyze_and_printf(const char *format, va_list ap, t_flag *flag)
 		if (format[i] == '.')
 			i += test_precision(&format[i], flag);
 	}
-	if (*format == '\0')
+	if (format[i] == '\0')
 		return (i);
 	flag->lenght_print += handle_conversions(format[i], ap, *flag);
 	return (i + 1);
