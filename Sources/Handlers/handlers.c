@@ -16,13 +16,15 @@ static int			define_lenght_conv(const char *length, t_flag *flag)
 	{
 		if (*(length + 1) == 'l')
 			lenght_conv = LL;
-		lenght_conv = L;
+		else
+			lenght_conv = L;
 	}
 	if (*length == 'h')
 	{
 		if (*(length + 1) == 'h')
 			lenght_conv = HH;
-		lenght_conv = H;
+		else
+			lenght_conv = H;
 	}
 	if (*length == 'j')
 		lenght_conv = J;
