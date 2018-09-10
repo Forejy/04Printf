@@ -1273,6 +1273,10 @@ ft_printf(" +d : % +d \n", 0);
 		 */
 	ft_printf("\n%hhd", 128);
 	printf("\n%hhd", 128);
+	
+	printf("\n");
+	k = ft_printf("%");
+	printf("\n%d", k);
 
 	return (0);
 		/*
