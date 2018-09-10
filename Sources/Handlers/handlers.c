@@ -397,6 +397,8 @@ int			analyze_and_printf(const char *format, va_list ap, t_flag *flag)
 
 	i = 0;
 	j = -1;
+	if (*format == '\0')
+		return (0);
 	while (i > j)
 	{
 		j = i;
@@ -407,7 +409,7 @@ int			analyze_and_printf(const char *format, va_list ap, t_flag *flag)
 			i += test_precision(&format[i], flag);
 	}
 	flag->lenght_print += handle_conversions(format[i], ap, *flag);
-	return (i);
+	return (i + 1);
 }
 
 size_t			handle_format(const char *format, va_list ap)

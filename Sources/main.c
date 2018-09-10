@@ -1273,8 +1273,9 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("  s : %-s \n", "-1");
 		 */
 	ft_printf("\n%hhd", 128);
-	printf("\n%hhd", 128);
+	printf("\n%hhd\n", 128);
 	
+	/*
 	printf("\n");
 	printf("Test du cas %% : |");
 	k = ft_printf("%");
@@ -1283,7 +1284,8 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\n");
 	k = printf("%");
 	printf("\nk = %d", k);
-	ft_printf("%%");
+	 */
+	ft_printf("%5%");
 
 
 
