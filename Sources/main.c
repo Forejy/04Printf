@@ -1277,7 +1277,7 @@ ft_printf(" +d : % +d \n", 0);
 	
 	printf("\n");
 	printf("Test du cas %% : |");
-	ft_printf("%");
+	k = ft_printf("%");
 	printf("|\n");
 	printf("\nk = %d", k);
 	printf("\n");
