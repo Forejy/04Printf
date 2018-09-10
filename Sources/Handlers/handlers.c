@@ -6,35 +6,43 @@
 #include "../../Includes/Auxiliary_Functions/numbers_functions_hexa.h"
 #include "../../Includes/Auxiliary_Functions/print_pointer_address.h"
 
-static int			define_lenght_conv(const char *length)
+
+static int			define_lenght_conv(const char *length, t_flag *flag)
 {
+	int lenght_conv;
+
+	lenght_conv = 0;
 	if (*length == 'l')
 	{
 		if (*(length + 1) == 'l')
-			return (LL);
-		return (L);
+			lenght_conv = LL;
+		lenght_conv = L;
 	}
 	if (*length == 'h')
 	{
 		if (*(length + 1) == 'h')
-			return (HH);
-		return (H);
+			lenght_conv = HH;
+		lenght_conv = H;
 	}
 	if (*length == 'j')
-		return (J);
+		lenght_conv = J;
 	if (*length == 'z')
-		return (Z);
-	return (0);
+		lenght_conv = J;
+	if (lenght_conv > flag->lenght_conv)
+		flag->lenght_conv = lenght_conv;
+	return (lenght_conv % 3);
 }
 
-size_t			handle_conversions(char conversion, va_list ap, int lenght_conv, t_flag flag)
+size_t			handle_conversions(char conversion, va_list ap, t_flag flag)
 {
 	size_t			total_len;
+	int lenght_conv;
 
 	total_len = 0;
+	lenght_conv = flag.lenght_conv;
 	if (conversion == '%')
 		total_len = my_putchar_printf('%', flag);
-	if (conversion == 'C' || (conversion == 'c' && lenght_conv == L))
+	else if (conversion == 'C' || (conversion == 'c' && lenght_conv == L))
 		total_len = my_put_wint_t(va_arg(ap, wint_t));
 	else if (conversion == 'c')
 		total_len = my_putchar_printf((char)(va_arg(ap, int)), flag);
@@ -151,6 +159,8 @@ size_t			handle_conversions(char conversion, va_list ap, int lenght_conv, t_flag
 	}
 	else if (conversion == 'p')
 		total_len = my_putaddress(va_arg(ap, unsigned int), flag);
+	else
+		total_len = my_putchar_printf((char)(va_arg(ap, int)), flag);
 	return (total_len);
 }
 
@@ -166,6 +176,8 @@ void			initialize_t_flag(t_flag	*flag)
 	flag->precision = -1;
 	flag->pointer = 0;
 	flag->character_or_string = 0;
+	flag->lenght_conv = 0;
+	flag->lenght_print = 0;
 }
 
 int			test_flag(char format_flag, t_flag	*flag)
@@ -206,31 +218,47 @@ int			test_champs(const char *format, t_flag *flag)
 
 	i = 0;
 	nb = 0;
+	if (format[0] == '0')//Si on a un 0 et pas de '.' derriere, on doit traiter le 0 dans la fonction test_flags
+	{
+		while (format[i] == '0')
+			i++;
+		if (format[i] != '.')
+			return (i - 1);
+		else
+			return (i);
+	}
 	while (format[i] >= '0' && format[i] <= '9')
 	{
 		nb = nb * 10 + (format[i] - '0');
 		i++;
 	}
-	flag->champs = nb;
-	return (i);
+	if (nb > 0)
+		flag->champs = nb;
+	if (i > 0)
+		return (i);
+	return (0);
 }
 
-int			test_precision(const char *format, t_flag *flag)
+int				test_precision(const char *format, t_flag *flag)
 {
 	int		i;
 	int		nb;
 
 	i = 0;
 	nb = 0;
-	while (format[i] >= '0' && format[i] <= '9')
+	if (format[0] == '.')
 	{
-		nb = nb * 10 + (format[i] - '0');
 		i++;
+		while (format[i] >= '0' && format[i] <= '9')
+		{
+			nb = nb * 10 + (format[i] - '0');
+			i++;
+		}
+		flag->precision = nb;
 	}
-	flag->precision = nb;
 	return (i);
 }
-
+/*HANDLE_FORMAT V1 (FONCTIONNAL)
 size_t			handle_format(const char *format, va_list ap)
 {
 	int				i;
@@ -273,8 +301,8 @@ size_t			handle_format(const char *format, va_list ap)
 	}
 	return(lenght_print);
 }
-
-/*
+*/
+/* OLD HANDLER_FORMAT
 size_t		handle_format(const char *format, va_list ap)
 {
 	int				i;
@@ -315,3 +343,93 @@ size_t		handle_format(const char *format, va_list ap)
 	return (total_len);
 }
 */
+
+/*HANDLE_FORMAT V2
+int 			test_if_conversion(char conv)
+{
+	if (conv == 'd' || conv == 'D' || conv == 'i' || conv == 'o' || 
+		conv == 'O' || conv == 'u' || conv == 'x' || conv == 'X' || 
+		conv == 'p' || conv == 'c' || conv == 'C' || conv == 's' || 
+		conv == 'S')
+		return (1);
+	return (0);
+}
+
+int				pre_analyze(const char *format)
+{
+	int			i;
+	
+	i = 0;
+	while (format[i] != '%' || format[i] != '\0')
+		i++;
+	if (i == 0 && format [i] == '%')
+		return (-1);
+	if (test_if_conversion(format[i - 1]) == 1)
+		return (i);
+	return (-2);
+}
+
+size_t			handle_format(const char *format, va_list ap)
+{
+	int			i;
+	int			len_format;
+	
+	i = 0;
+	if (format != NULL)
+	{
+		while (format[i] != '\0')
+		{
+			if (format[i] == '%')
+				len_format = pre_analyze(&format[i + 1]); //==> utiliser i pour renvoyer le nombre de parametres
+			if (len_format == -2)
+				
+		}
+	}
+}
+*/
+//HANDLE_FORMAT V3 (ACTUAL)
+int			analyze_and_printf(const char *format, va_list ap, t_flag *flag)
+{
+	int			i;
+	int			j;
+
+	i = 0;
+	j = -1;
+	while (i > j)
+	{
+		j = i;
+		i += test_flag(format[i], flag);
+		i += define_lenght_conv(&format[i], flag);
+		i += test_champs(&format[i], flag);
+		if (format[i] == '.')
+			i += test_precision(&format[i], flag);
+	}
+	flag->lenght_print += handle_conversions(format[i], ap, *flag);
+	return (i + 1);
+}
+
+size_t			handle_format(const char *format, va_list ap)
+{
+	int			i;
+	t_flag		flag;
+
+	i = 0;
+	initialize_t_flag(&flag);
+	if (format != NULL)
+	{
+		while (format[i] != '\0')
+		{
+			if (format[i] == '%')
+				i = i + analyze_and_printf(&format[i + 1], ap, &flag) + 1;
+			else
+			{
+				write(1, &format[i], 1);
+				flag.lenght_print++;
+				i++;
+			}
+		}
+	}
+	return(flag.lenght_print);
+}
+
+

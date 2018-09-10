@@ -133,11 +133,14 @@ DONETODO			Finir de corriger le cas %p quand on a precision et champs >0
 	DONETODO		Reverifier tous les %o et les %p
 DONETODO			gerer champs et precision pour %s
 DONETODO			Etudier les makefile et Faire le Makefile pour creer libftprintf.a
-TODO			Supprimer tous les write qui ne sont pas dans la fonction finale
-TODO			gerer le flag -
-TODO			Gerer le flag %
-TODO			Tester puis gerer la conversion %p avec un pointeur null
-TODO			Normer chaque fonction a 25lignes  pour 80 caracteres par ligne max
+TODO				Tester et adapter la nouvelle fonction handle_format
+	DONETODO			J'en etais a TEST FLAG '0' ET CHAMPS : des caracteres etranges resortent de mon printf
+	DONETODO				Tester la modification faites pour la continuite de 0 dans la fonction test_champs
+TODO				Supprimer tous les write qui ne sont pas dans la fonction finale
+DONETODO			gerer le flag -
+DONETODO			Gerer le flag %
+TODO				Tester puis gerer la conversion %p avec un pointeur null
+TODO				Normer chaque fonction a 25lignes  pour 80 caracteres par ligne max
 
 Champs : Longueur total de caracteres affiches
 Precision : Longueur total de l'argument sans le signe

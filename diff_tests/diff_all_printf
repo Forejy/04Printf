@@ -1,3 +1,49 @@
+INT_MAX : 2147483647
+UINT_MAX : 4294967295
+SHRT_MAX : 32767
+USHRT_MAX :65535
+LONG_MAX : 9223372036854775807
+LLONG_MAX : 9223372036854775807
+LLONG_MIN : -9223372036854775808
+ULONG_MAX : 18446744073709551615
+ULLONG MAX : 18446744073709551615
+SIZE_T MAX : 18446744073709551615
+SSIZE_T_MAX : 9223372036854775807
+UNSIGNED CHAR MAX : 255
+HEXA : 9b
+INTMAX_T MAX : 9223372036854775807
+INTMAX_T MIN : -9223372036854775808
+UINTMAX_T MAX : 18446744073709551615
+Short : 2
+Long : 8
+Long Long : 8
+Unsigned Long : 8
+Unsigned Long Long : 8
+Unsigned char : 1
+Size_t : 8
+Ssize_t : 13-648
+225
+180
+159
+10
+Utilisation de write : 
+ᴟ
+ᴟ
+Test unicode avec printf : ᴟ 
+ሴ
+ᴟ
+����
+
+
+printf %p : 0xffffcb9c
+PUTADDRESS : 
+TAiLLE DE POINTER : 8
+300
+FT_PRINT TEST OVERFLOW CHAR
+abc
+ffffffffFFFFFFFF
+25
+0
 TEST FLAG BLANK
 BLANK d : | 0| 
 BLANK d : |0| 
@@ -13,8 +59,8 @@ BLANK u : |4294967295|
 BLANK u : |4294967295| 
 BLANK x : |1| 
 BLANK x : |1| 
-BLANK p : |0xffffcb84| 
-BLANK p : |0xffffcb84| 
+BLANK p : |0xffffcb9c| 
+BLANK p : |0xffffcb9c| 
 BLANK c : |0| 
 BLANK c : |0| 
 BLANK s : |1| 
@@ -35,8 +81,8 @@ TEST FLAG '+'
   u : 4294967295 
 + x : 1 
   x : 1 
-+ p : 0xffffcb84 
-  p : 0xffffcb84 
++ p : 0xffffcb9c 
+  p : 0xffffcb9c 
 + c : 0 
   c : 0 
 + s : 1 
@@ -57,8 +103,8 @@ TEST FLAG '+' et blank
   u : 4294967295 
 + x : 1 
   x : 1 
-+ p : 0xffffcb84 
-  p : 0xffffcb84 
++ p : 0xffffcb9c 
+  p : 0xffffcb9c 
 + c : 0 
   c : 0 
 + s : 1 
@@ -79,8 +125,8 @@ TEST FLAG blank et +
   u : 4294967295 
  +x : 1 
   x : 1 
- +p : 0xffffcb84 
-  p : 0xffffcb84 
+ +p : 0xffffcb9c 
+  p : 0xffffcb9c 
  +c : 0 
   c : 0 
  +s : 1 
@@ -88,6 +134,7 @@ TEST FLAG blank et +
 
 TEST FLAG '0' ET CHAMPS
  %0d : |0| 
+ %0d : |2| 
  %02d : |00| 
   %d : |0| 
  %0d : |1| 
@@ -111,9 +158,9 @@ TEST FLAG '0' ET CHAMPS
  %0x : |1| 
  %02x : |01| 
   %x : |1| 
- %0p : |0xffffcb84| 
- %020p : |0x0000000000ffffcb84| 
-  %p : |0xffffcb84| 
+ %0p : |0xffffcb9c| 
+ %020p : |0x0000000000ffffcb9c| 
+  %p : |0xffffcb9c| 
  %0c : |0| 
  %02c : |00| 
   %c : |0| 
@@ -130,7 +177,7 @@ TEST CHAMPS SANS FLAG
   %d : |1| 
 1 %04d : |-001| 
 2 % 4d : |  -1| 
-3 % 04d : |-001| 
+3 % 04d : |  -1| 
 4 %0 4d : |-001| 
 5 %4d : |  -1| 
 6  %d : |-1|
@@ -150,9 +197,9 @@ TEST CHAMPS SANS FLAG
  %02x : |01| 
  %2x : | 1| 
   %x : |1| 
- %020p : |0x0000000000ffffcb84| 
- %2p : |0xffffcb84| 
-  %p : |0xffffcb84| 
+ %020p : |0x0000000000ffffcb9c| 
+ %2p : |0xffffcb9c| 
+  %p : |0xffffcb9c| 
  %02c : |00| 
  %2c : | 0| 
   %c : |0| 
@@ -189,10 +236,10 @@ TEST BLANK ' ' ET CHAMPS
  |% 2x| : | 1| 
  |%2x|   : | 1| 
   |%x|   : |1| 
- |% 20p| : |          0xffffcb84| 
- |% p| : |0xffffcb84| 
- |%2p|  : |0xffffcb84| 
-  |%p|  : |0xffffcb84| 
+ |% 20p| : |          0xffffcb9c| 
+ |% p| : |0xffffcb9c| 
+ |%2p|  : |0xffffcb9c| 
+  |%p|  : |0xffffcb9c| 
  |% 2c| : | 0| 
  |%2c|  : | 0| 
   |%c|  : |0| 
@@ -228,9 +275,9 @@ TEST CHAMPS BLANK '+' ET ' ' ET CHAMPS
  |%+ 2x| : | 1| 
  |%2x|   : | 1| 
   |%x|   : |1| 
- |%+ 20p| : |          0xffffcb84| 
- |%2p|  : |0xffffcb84| 
-  |%p|  : |0xffffcb84| 
+ |%+ 20p| : |          0xffffcb9c| 
+ |%2p|  : |0xffffcb9c| 
+  |%p|  : |0xffffcb9c| 
  |%+ 2c| : | 0| 
  |%2c|  : | 0| 
   |%c|  : |0| 
@@ -266,9 +313,9 @@ TEST CHAMPS BLANK '+' ET ' ' ET CHAMPS
  |% +2x| : | 1| 
  |%2x|   : | 1| 
   |%x|   : |1| 
- |% +20p| : |          0xffffcb84| 
- |%2p|  : |0xffffcb84| 
-  |%p|  : |0xffffcb84| 
+ |% +20p| : |          0xffffcb9c| 
+ |%2p|  : |0xffffcb9c| 
+  |%p|  : |0xffffcb9c| 
  |% +2c| : | 0| 
  |%2c|  : | 0| 
   |%c|  : |0| 
@@ -307,14 +354,14 @@ TEST CHAMPS BLANK '+' ET ' ' ET CHAMPS
  |% +.2x| : |01| 
  |%.2x|   : |01| 
   |%x|   : |1| 
- |% +.20p| : |0x000000000000ffffcb84| 
- |% +.9p| : |0x0ffffcb84| 
- |%0+.20p| : |0x000000000000ffffcb84| 
- |%+.20p| : |0x000000000000ffffcb84| 
- |%+ .20p| : |0x000000000000ffffcb84| 
- |%+0.20p| : |0x000000000000ffffcb84| 
- |%.2p|  : |0xffffcb84| 
-  |%p|  : |0xffffcb84| 
+ |% +.20p| : |0x000000000000ffffcb9c| 
+ |% +.9p| : |0x0ffffcb9c| 
+ |%0+.20p| : |0x000000000000ffffcb9c| 
+ |%+.20p| : |0x000000000000ffffcb9c| 
+ |%+ .20p| : |0x000000000000ffffcb9c| 
+ |%+0.20p| : |0x000000000000ffffcb9c| 
+ |%.2p|  : |0xffffcb9c| 
+  |%p|  : |0xffffcb9c| 
  |% +.2c| : |0| 
  |%.2c|  : |0| 
   |%.0c|  : |0| 
@@ -358,9 +405,9 @@ TEST CHAMPS BLANK '+' ET ' ' ET CHAMPS
  |% +.0x| : |1| 
  |%.0x|   : |1| 
   |%x|   : |1| 
- |% +.0p| : |0xffffcb84| 
- |%.0p|  : |0xffffcb84| 
-  |%p|  : |0xffffcb84| 
+ |% +.0p| : |0xffffcb9c| 
+ |%.0p|  : |0xffffcb9c| 
+  |%p|  : |0xffffcb9c| 
  |% +.0c| : |0| 
  |%.0c|  : |0| 
   |%.0c|  : |0| 
@@ -464,17 +511,17 @@ TEST CHAMPS BLANK '+' ET ' ' ET CHAMPS
  |%5.0x|   : |    1| 
  |%0.5x|   : |00001| 
  |%0.0x|   : |1| 
- |% +15.5p| : |     0xffffcb84| 
- |% +15.9p| : |    0x0ffffcb84| 
- |% 15.5p| : |     0xffffcb84| 
- |%+15.5p| : |     0xffffcb84| 
- |%15.5p| : |     0xffffcb84| 
-  |%p|  : |0xffffcb84| 
-  |%.p|  : |0xffffcb84| 
-  |%0.0p|  : |0xffffcb84| 
- |%5.0p|  : |0xffffcb84| 
- |%0.5p|  : |0xffffcb84| 
- |%0.0p|  : |0xffffcb84| 
+ |% +15.5p| : |     0xffffcb9c| 
+ |% +15.9p| : |    0x0ffffcb9c| 
+ |% 15.5p| : |     0xffffcb9c| 
+ |%+15.5p| : |     0xffffcb9c| 
+ |%15.5p| : |     0xffffcb9c| 
+  |%p|  : |0xffffcb9c| 
+  |%.p|  : |0xffffcb9c| 
+  |%0.0p|  : |0xffffcb9c| 
+ |%5.0p|  : |0xffffcb9c| 
+ |%0.5p|  : |0xffffcb9c| 
+ |%0.0p|  : |0xffffcb9c| 
  |% +10.5c| : |         0| 
  |% 10.5c| : |         0| 
  |% +5.10c| : |    0| 
@@ -520,48 +567,48 @@ TEST CHAMPS BLANK '+' ET ' ' ET CHAMPS
  |%0.0s| avec 1  : || 
 
 	TEST D'AFFICHAGE DES POINTEURS
-BLANK p : |0xffffcb84| 
-BLANK p : |0xffffcb84| 
- %0p : |0xffffcb84| 
- %020p : |0x0000000000ffffcb84| 
-  %p : |0xffffcb84| 
- %20p : |          0xffffcb84| 
- %2p : |0xffffcb84| 
-  %p : |0xffffcb84| 
- |% 20p| : |          0xffffcb84| 
- |% p| : |0xffffcb84| 
- |%2p|  : |0xffffcb84| 
-  |%p|  : |0xffffcb84| 
- |%+ 20p| : |          0xffffcb84| 
- |%2p|  : |0xffffcb84| 
-  |%p|  : |0xffffcb84| 
- |% +20p| : |          0xffffcb84| 
- |%2p|  : |0xffffcb84| 
-  |%p|  : 0xffffcb84 
- |% +.20p| : |0x000000000000ffffcb84| 
- |%0+.20p| : |0x000000000000ffffcb84| 
- |%+.20p| : |0x000000000000ffffcb84| 
- |%+ .20p| : |0x000000000000ffffcb84| 
- |%+0.20p| : |0x000000000000ffffcb84| 
- |%.2p|  : |0xffffcb84| 
-  |%p|  : |0xffffcb84| 
- |% +.0p| : |0xffffcb84| 
- |%.0p|  : |0xffffcb84| 
-  |%p|  : |0xffffcb84| 
- |% +20.15p| : |   0x0000000ffffcb84| 
+BLANK p : |0xffffcb9c| 
+BLANK p : |0xffffcb9c| 
+ %0p : |0xffffcb9c| 
+ %020p : |0x0000000000ffffcb9c| 
+  %p : |0xffffcb9c| 
+ %20p : |          0xffffcb9c| 
+ %2p : |0xffffcb9c| 
+  %p : |0xffffcb9c| 
+ |% 20p| : |          0xffffcb9c| 
+ |% p| : |0xffffcb9c| 
+ |%2p|  : |0xffffcb9c| 
+  |%p|  : |0xffffcb9c| 
+ |%+ 20p| : |          0xffffcb9c| 
+ |%2p|  : |0xffffcb9c| 
+  |%p|  : |0xffffcb9c| 
+ |% +20p| : |          0xffffcb9c| 
+ |%2p|  : |0xffffcb9c| 
+  |%p|  : 0xffffcb9c 
+ |% +.20p| : |0x000000000000ffffcb9c| 
+ |%0+.20p| : |0x000000000000ffffcb9c| 
+ |%+.20p| : |0x000000000000ffffcb9c| 
+ |%+ .20p| : |0x000000000000ffffcb9c| 
+ |%+0.20p| : |0x000000000000ffffcb9c| 
+ |%.2p|  : |0xffffcb9c| 
+  |%p|  : |0xffffcb9c| 
+ |% +.0p| : |0xffffcb9c| 
+ |%.0p|  : |0xffffcb9c| 
+  |%p|  : |0xffffcb9c| 
+ |% +20.15p| : |   0x0000000ffffcb9c| 
 Precision et padding avec flag '0'
-     |%0+20.15p| : |   0x0000000ffffcb84| 
-     |%020.15p| : |   0x0000000ffffcb84| 
-     |%020.15p| : |   0x0000000ffffcb84| 
- |% 10.5p| : |0xffffcb84| 
- |%+10.5p| : |0xffffcb84| 
- |%10.5p| : |0xffffcb84| 
-  |%p|  : |0xffffcb84| 
-  |%.p|  : |0xffffcb84| 
-  |%0.0p|  : |0xffffcb84| 
- |%5.0p|  : |0xffffcb84| 
- |%0.5p|  : |0xffffcb84| 
- |%0.0p|  : |0xffffcb84| 
+     |%0+20.15p| : |   0x0000000ffffcb9c| 
+     |%020.15p| : |   0x0000000ffffcb9c| 
+     |%020.15p| : |   0x0000000ffffcb9c| 
+ |% 10.5p| : |0xffffcb9c| 
+ |%+10.5p| : |0xffffcb9c| 
+ |%10.5p| : |0xffffcb9c| 
+  |%p|  : |0xffffcb9c| 
+  |%.p|  : |0xffffcb9c| 
+  |%0.0p|  : |0xffffcb9c| 
+ |%5.0p|  : |0xffffcb9c| 
+ |%0.5p|  : |0xffffcb9c| 
+ |%0.0p|  : |0xffffcb9c| 
 
 	TEST D'AFFICHAGE DES OCTAUX
  |% 2o| : | 3| 
@@ -636,3 +683,57 @@ BLANK o : |10|
  |% +3.2s| : |  +| 
  |% +.2s| : |12| 
  |% +3.2s| : | 12| 
+
+BASIC TESTS DE 42FILECHECKER
+    %
+    %
+
+5
+
+|%    |
+|%    |
+|    %|
+|5    |
+0
+1
+#x : 0x2a
+9
+    0x2a
+8
+0
+1
+0x2a    
+8
+||
+|1|
+||
+|1|
+      is a string
+17
+@moulitest: (null)
+18
+| 04704|
+| 04704|
+|     0|
+|     0|
+|@moulitest:  |
+|@moulitest:  |
+|@moulitest:  0|
+-1
+3
+ 42
+4
+
+52
+3
+2a
+3
+
+2147483647
+4294967295
+4294967295
+4294967295
+2147483647
+ Z
+Process finished with exit code 0
+

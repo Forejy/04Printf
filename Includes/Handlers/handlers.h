@@ -4,13 +4,12 @@
 # include <inttypes.h>
 # include <unistd.h>
 
-
-# define L 4
+# define HH 5
 # define H 7
-# define J 10
-# define Z 13
-# define LL 5
-# define HH 8
+# define L 10
+# define LL 11
+# define J 13
+# define Z 16
 # define HASH 3
 
 typedef struct		s_flag
@@ -24,9 +23,11 @@ typedef struct		s_flag
 	int		precision;
 	int		pointer;
 	int		character_or_string;
+	int 	lenght_conv;
+	size_t 	lenght_print;
 }					t_flag;
 
 size_t			handle_format(const char *format, va_list ap);
-size_t		handle_conversions(char conversion, va_list ap, int lenght_conv, t_flag flag);
+size_t			handle_conversions(char conversion, va_list ap, t_flag flag);
 
 #endif

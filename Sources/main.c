@@ -48,12 +48,15 @@ int main(void)
 	ft_printf("INTMAX_T MAX : %jd\n", INTMAX_MAX);
 	ft_printf("INTMAX_T MIN : %jd\n", INTMAX_MIN);
 	ft_printf("UINTMAX_T MAX : %ju\n", UINTMAX_MAX);
-	ft_printf("Short : %zu\nLong : %zu\nLong Long : %zu\nUnsigned Long : %zu\nUnsigned Long Long : %zu\n",
-		   sizeof(short), sizeof(long), 8, sizeof(unsigned long), sizeof(unsigned long long));
+	ft_printf("Short : %zu\n", sizeof(short));
+	ft_printf("Long : %zu\n", sizeof(long));
+	ft_printf("Long Long : %zu\n", 8);
+	ft_printf("Unsigned Long : %zu\n", sizeof(unsigned long));
+	ft_printf("Unsigned Long Long : %zu\n", sizeof(unsigned long long));
 	ft_printf("Unsigned char : %zu\n", sizeof(unsigned char));
 	ft_printf("Size_t : %zu\n", sizeof(size_t));
 	ft_printf("Ssize_t : %zd");
-
+	
 	long		neglg = -648;
 	ft_printf("%li\n", neglg);
 	//ft_printf("\nli\n", -5);
@@ -96,7 +99,10 @@ int main(void)
 	c = 10;
 	write(1, &c, 1);
 
-	ft_printf("%d\n",  L'ᴟ');
+
+	ft_printf("Test unicode avec printf : %C\n",  L'ᴟ');
+
+	/*
 	t_bin_list	*binary;
 	ft_printf("AFFICHAGE DE LA LISTE\n");
 	write(1, "|", 1);
@@ -109,8 +115,7 @@ int main(void)
 	my_put_wchar_t(test_wchar_t);
 	write(1, "/", 1);
 	write(1,"\n", 1);
-
-
+*/
 
 
 
@@ -217,7 +222,7 @@ int main(void)
 	ptr_int = &lpl;
 	ptr_ptr = &ptr_int;
 	ft_printf("\n");
-	ft_printf("ft_printf %%p : %p\n", &lpl);
+	ft_printf("printf %%p : %p\n", &lpl);
 	ft_printf("PUTADDRESS : \n");
 	ft_printf("TAiLLE DE POINTER : %d\n", (int) sizeof(&lpl));
 	//TEST %hhd
@@ -373,6 +378,8 @@ ft_printf(" +d : % +d \n", 0);
 	//TEST FLAG '0' ET CHAMPS
 	ft_printf("\nTEST FLAG '0' ET CHAMPS\n");
 	ft_printf(" %%0d : |%0d| \n",0);
+	ft_printf(" %%0d : |%0d| \n",2);
+
 	ft_printf(" %%02d : |%02d| \n",0);
 	ft_printf("  %%d : |%d| \n",0);
 
@@ -430,6 +437,7 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("1 %%04d : |%04d| \n", -1);
 	ft_printf("2 %% 4d : |% 4d| \n", -1);
 	ft_printf("3 %% 04d : |% 04d| \n", -1);
+	ft_printf("3bis %%0000. 5d : |%0000. 5d| \n", -1);
 	ft_printf("4 %%0 4d : |%0 4d| \n", -1);
 	ft_printf("5 %%4d : |%4d| \n", -1);
 	ft_printf("6  %%d : |%d|\n", -1);
@@ -1126,7 +1134,9 @@ ft_printf(" +d : % +d \n", 0);
 
 
 	printf("%hld\n", 2147483647);
-
+	
+	ft_printf("%Z");
+	printf("%Z");
 /*
 	ft_printf("|%%| : |%%|\n");
 	ft_printf("%%");
