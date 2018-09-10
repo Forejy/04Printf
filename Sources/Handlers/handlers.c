@@ -408,7 +408,7 @@ int			analyze_and_printf(const char *format, va_list ap, t_flag *flag)
 	}
 	if (format[i] != 'd' && format[i] != 'D' && format[i] != 'i' && format[i] != 'o' 
 		&& format[i] != 'O' && format[i] != 'u' && format[i] != 'U'&& format[i] != 'x'
-		&& format[i] != 'X' && format[i] != 'c' && format[i] != 'C')
+		&& format[i] != 'X' && format[i] != 'c' && format[i] != 'C' && format[i] != '%')
 		return (i);
 	flag->lenght_print += handle_conversions(format[i], ap, *flag);
 	return (i + 1);
