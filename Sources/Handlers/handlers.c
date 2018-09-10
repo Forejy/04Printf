@@ -161,8 +161,6 @@ size_t			handle_conversions(char conversion, va_list ap, t_flag flag)
 	}
 	else if (conversion == 'p')
 		total_len = my_putaddress(va_arg(ap, unsigned int), flag);
-//	else
-//		total_len = my_putchar_printf((char)(va_arg(ap, int)), flag);
 	return (total_len);
 }
 
@@ -409,6 +407,8 @@ int			analyze_and_printf(const char *format, va_list ap, t_flag *flag)
 			i += test_precision(&format[i], flag);
 	}
 	flag->lenght_print += handle_conversions(format[i], ap, *flag);
+	if (flag->lenght_print == 0)
+		return (i);
 	return (i + 1);
 }
 
