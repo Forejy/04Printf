@@ -14,6 +14,7 @@
 
 int main(void)
 {
+
 	//SOMMAIRE :
 	//TEST %hhd
 	//TEST FLAGS BLANK
@@ -1275,8 +1276,14 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\n%hhd", 128);
 	
 	printf("\n");
-	k = ft_printf("%");
-	printf("\n%d", k);
+	printf("Test du cas %% : |");
+	ft_printf("%");
+	printf("|\n");
+	printf("\nk = %d", k);
+	printf("\n");
+	k = printf("%");
+	printf("\nk = %d", k);
+
 
 	return (0);
 		/*
