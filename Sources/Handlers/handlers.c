@@ -175,6 +175,7 @@ void			initialize_t_flag(t_flag	*flag)
 	flag->champs = 0;
 	flag->precision = -1;
 	flag->pointer = 0;
+	flag->hexa = 0;
 	flag->character_or_string = 0;
 	flag->lenght_conv = 0;
 	flag->lenght_print = 0;

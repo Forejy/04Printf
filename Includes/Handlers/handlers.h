@@ -22,6 +22,7 @@ typedef struct		s_flag
 	int		champs;
 	int		precision;
 	int		pointer;
+	int		hexa;
 	int		character_or_string;
 	int 	lenght_conv;
 	size_t 	lenght_print;

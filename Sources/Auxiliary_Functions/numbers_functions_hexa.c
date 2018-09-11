@@ -12,7 +12,7 @@ size_t			my_putnbr_hexa(uintmax_t nb, t_flag flag)
 	base_hexa = "0123456789abcdef";
 	i = 19;
 	total_len = 0;
-
+	flag.hexa = 2;
 	if (nb == 0 && flag.precision != 0)
 	{
 		stock_number[i] = '0';
@@ -46,6 +46,7 @@ size_t			my_putnbr_HEXA(uintmax_t nb, t_flag flag)
 	base_hexa = "0123456789ABCDEF";
 	i = 19;
 	total_len = 0;
+	flag.hexa = 2;
 	if (nb == 0 && flag.precision != 0)
 	{
 		stock_number[i] = '0';
