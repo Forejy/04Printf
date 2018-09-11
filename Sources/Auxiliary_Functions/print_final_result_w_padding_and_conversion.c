@@ -60,7 +60,7 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 		return (retenue);
 	return (0);
 }
-
+//
 void		print_result_w_precision(t_flag flag, const char *stock, int len_precision, int len_argument)
 {
 	int		retenue;
