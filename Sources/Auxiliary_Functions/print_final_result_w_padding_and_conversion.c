@@ -118,7 +118,7 @@ size_t		print_final_result(t_flag flag, const char *stock, int len_argument, int
 	if ((*stock == '-' || *stock == '+') && flag.character_or_string == 0)
 		total_len++;
 	if (flag.less == 0)
-		len_argument = len_argument - print_padding(flag, &stock, len_padding) + flag.hash;
+		len_argument = len_argument - print_padding(flag, &stock, len_padding);
 	if ((*stock == '-' || *stock == '+') && flag.character_or_string == 0)
 		{
 			write(1, stock, 1);
@@ -136,5 +136,5 @@ size_t		print_final_result(t_flag flag, const char *stock, int len_argument, int
 		total_len += (size_t)len_padding + (size_t)len_precision;
 	else
 		total_len += (size_t)len_padding + (size_t)len_argument;
-	return (total_len);
+	return (total_len + flag.hash);
 }
