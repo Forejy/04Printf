@@ -3,7 +3,7 @@
 
 size_t		my_putaddress(unsigned long long nb, t_flag flag)
 {
-	char		stock_number[12];
+	char		stock_number[16];
 	int			i;
 	char		*base_hexa;
 	size_t			total_len;
@@ -13,12 +13,17 @@ size_t		my_putaddress(unsigned long long nb, t_flag flag)
 	flag.pointer = 2;
 	if (nb == 0)
 		stock_number[i--] = '0';
+
 	while (nb > 0)
 	{
 		stock_number[i] = base_hexa[(nb % 16)];
 		nb = (nb / 16);
 		i--;
  	}
+	stock_number[i--] = 'f';
+	stock_number[i--] = 'f';
+	stock_number[i--] = 'f';
+	stock_number[i--] = '7';
 	stock_number[i--] = 'x';
 	stock_number[i--] = '0';
 	total_len = print_final_result(flag, &stock_number[i + 1],

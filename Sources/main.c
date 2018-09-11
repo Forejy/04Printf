@@ -1307,11 +1307,11 @@ ft_printf(" +d : % +d \n", 0);
 
 
 	// test->debug = 1;
-	k = ft_printf("ft_printf %%p : %p", 0);
+	k = ft_printf("%%p : %p", sss);
 	printf("\n");
 	printf("%d\n", k);
 
-	k = printf("printf %%p : %p", 0);
+	k = printf("%%p : %p", sss);
 	printf("\n");
 	printf("%d\n", k);
 	return (0);
