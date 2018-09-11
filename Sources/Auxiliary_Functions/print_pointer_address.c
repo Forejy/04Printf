@@ -11,6 +11,8 @@ size_t		my_putaddress(unsigned long long nb, t_flag flag)
 	base_hexa = "0123456789abcdef";
 	i = 11;
 	flag.pointer = 2;
+	if (nb == 0)
+		stock_number[i--] = '0';
 	while (nb > 0)
 	{
 		stock_number[i] = base_hexa[(nb % 16)];

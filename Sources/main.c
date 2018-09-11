@@ -1300,6 +1300,20 @@ ft_printf(" +d : % +d \n", 0);
 	k = ft_printf("%#08x", 42);
 	printf("\n");
 	printf("%d\n", k);
+
+	int s;
+	unsigned long ss;
+	char *sss;
+
+
+	// test->debug = 1;
+	k = ft_printf("ft_printf %%p : %p", 0);
+	printf("\n");
+	printf("%d\n", k);
+
+	k = printf("printf %%p : %p", 0);
+	printf("\n");
+	printf("%d\n", k);
 	return (0);
 		/*
 		 * Long et Long Long sur Unix ont la meme taille, et du coup le meme intervalle	 *
