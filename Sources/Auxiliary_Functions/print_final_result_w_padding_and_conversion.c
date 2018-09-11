@@ -37,16 +37,19 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 		else if (!flag.zero || flag.zero && flag.less)
 			while (len_padding-- > 0)
 				write(1, " ", 1);
-		else if ((flag.zero || flag.precision >= 0) && (flag_pointer == 2 || flag.hash == 2) && !flag.less)
+		else if ((flag.zero || flag.precision >= 0) && (flag_pointer == 2 && flag.hash == 2) && !flag.less)
 			//Dans le cas des pointeurs :
 				//Si on a champs et precision en meme temps 
 				// le 0x doit etre imprime avant l'appel de la precision :'    0x''000000000000ffffcb84' 'padding''precision'
 				//Si on a flag.zero 
 				// le 0x doit etre imprime avant le rembourrage par 0 : 0x000000000000ffffcb84
 		{
-			write(1, *stock, 2);
-			*stock = *stock + 2;
-			retenue = 2;
+			if (flag_pointer == 2)
+			{
+				write(1, *stock, 2);
+				*stock = *stock + 2;
+				retenue = 2;
+			}
 			if (flag.precision == -1)
 				while (len_padding-- > flag.hash)
 					write(1, "0", 1);
