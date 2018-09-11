@@ -1290,6 +1290,12 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\n");
 	printf("%d\n", k);
 
+	k = ft_printf("%33.1#0d", 256);
+	printf("\n");
+	printf("%d\n", k);
+	k = printf("%33.1#0d", 256);
+	printf("\n");
+	printf("%d\n", k);
 
 
 	return (0);
