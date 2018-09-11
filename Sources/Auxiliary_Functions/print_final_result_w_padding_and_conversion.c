@@ -45,14 +45,11 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 				//Si on a flag.zero 
 				// le 0x doit etre imprime avant le rembourrage par 0 : 0x000000000000ffffcb84
 		{
-			if (flag_pointer == 2)
-			{
 				write(1, *stock, 2);
 				*stock = *stock + 2;
 				retenue = 2;
-			}
 			if (flag.precision == -1)
-				while (len_padding-- > flag.hash)
+				while (len_padding-- > 0)
 					write(1, "0", 1);
 		}
 		else if (flag.zero && !flag.less)

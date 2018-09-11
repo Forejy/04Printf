@@ -1297,6 +1297,7 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\n");
 	printf("%d\n", k);
 
+	ft_printf("%#08x", 42);
 
 	return (0);
 		/*
