@@ -57,6 +57,7 @@ int main(void)
 	ft_printf("Unsigned char : %zu\n", sizeof(unsigned char));
 	ft_printf("Size_t : %zu\n", sizeof(size_t));
 	ft_printf("Ssize_t : %zd");
+	ft_printf("INTPTR_MAX : %zu\n", INTPTR_MAX);
 	
 	long		neglg = -648;
 	ft_printf("%li\n", neglg);
@@ -1307,11 +1308,11 @@ ft_printf(" +d : % +d \n", 0);
 
 
 	// test->debug = 1;
-	k = ft_printf("%%p : %p", sss);
+	k = ft_printf("%%p : %p", ss);
 	printf("\n");
 	printf("%d\n", k);
 
-	k = printf("%%p : %p", sss);
+	k = printf("%%p : %p", ss);
 	printf("\n");
 	printf("%d\n", k);
 	return (0);

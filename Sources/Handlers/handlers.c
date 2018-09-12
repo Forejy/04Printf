@@ -160,7 +160,7 @@ size_t			handle_conversions(char conversion, va_list ap, t_flag flag)
 			total_len = my_putnbr_HEXA(va_arg(ap, unsigned int), flag);
 	}
 	else if (conversion == 'p')
-		total_len = my_putaddress(va_arg(ap, unsigned int), flag);
+		total_len = my_putaddress(va_arg(ap, uintmax_t), flag);
 	return (total_len);
 }
 
