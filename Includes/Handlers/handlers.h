@@ -24,6 +24,7 @@ typedef struct		s_flag
 	int		pointer;
 	int		hexa;
 	int		character_or_string;
+	int 	unicode;
 	int 	lenght_conv;
 	size_t 	lenght_print;
 }					t_flag;

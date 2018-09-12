@@ -1315,6 +1315,15 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%%p : %p", ss);
 	printf("\n");
 	printf("%d\n", k);
+	
+	printf("\n");
+	k = ft_printf("%C", L'焚');
+	printf("\n");
+	printf("%d\n", k);
+
+	k = printf("%%C : |%5C|", L'焚');
+	printf("\n");
+	printf("%d\n", k);
 	return (0);
 		/*
 		 * Long et Long Long sur Unix ont la meme taille, et du coup le meme intervalle	 *

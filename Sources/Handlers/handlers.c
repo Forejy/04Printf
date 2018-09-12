@@ -45,11 +45,11 @@ size_t			handle_conversions(char conversion, va_list ap, t_flag flag)
 	if (conversion == '%')
 		total_len = my_putchar_printf('%', flag);
 	else if (conversion == 'C' || (conversion == 'c' && lenght_conv == L))
-		total_len = my_put_wint_t(va_arg(ap, wint_t));
+		total_len = my_put_wint_t(va_arg(ap, wint_t), flag);
 	else if (conversion == 'c')
 		total_len = my_putchar_printf((char)(va_arg(ap, int)), flag);
 	else if (conversion == 'S' || (conversion == 's' && lenght_conv == L))
-		total_len = my_put_wchar_t(va_arg(ap, wchar_t *));
+		total_len = my_put_wchar_t(va_arg(ap, wchar_t *), flag);
 	else if (conversion == 's')
 		total_len = my_putstr_printf(va_arg(ap, char *), flag);
 	else if (conversion == 'd' || conversion == 'i')
@@ -177,6 +177,7 @@ void			initialize_t_flag(t_flag	*flag)
 	flag->pointer = 0;
 	flag->hexa = 0;
 	flag->character_or_string = 0;
+	flag->unicode = 0;
 	flag->lenght_conv = 0;
 	flag->lenght_print = 0;
 }
