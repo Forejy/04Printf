@@ -141,6 +141,7 @@ DONETODO			gerer le flag -
 DONETODO			Gerer le flag %
 TODO				Tester puis gerer la conversion %p avec un pointeur null
 TODO				Normer chaque fonction a 25lignes  pour 80 caracteres par ligne max
+TODO				Amelioration 1 : Se debrouiller pour initialiser les i a 0 en imprimant par la gauche dans les aux_functions
 
 Champs : Longueur total de caracteres affiches
 Precision : Longueur total de l'argument sans le signe
