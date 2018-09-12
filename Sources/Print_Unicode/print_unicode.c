@@ -41,7 +41,7 @@ size_t			my_put_wint_t(int dec, t_flag flag)
 		i++;
 		temp = temp->next;
 	}
-	return (print_final_result(flag, codeset, 6 - i, 6 - i ));
+	return (print_final_result(flag, codeset, i, i ));
 
 	/*
 	while (*number_of_bytes >= 0)

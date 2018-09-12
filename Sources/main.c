@@ -1317,11 +1317,11 @@ ft_printf(" +d : % +d \n", 0);
 	printf("%d\n", k);
 	
 	printf("\n");
-	k = ft_printf("%C", L'焚');
+	k = ft_printf("%C", L'δ');
 	printf("\n");
 	printf("%d\n", k);
 
-	k = printf("%C", L'焚');
+	k = printf("%C", L'δ');
 	printf("\n");
 	printf("%d\n", k);
 
