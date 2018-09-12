@@ -1321,7 +1321,15 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\n");
 	printf("%d\n", k);
 
-	k = printf("%%C : |%5C|", L'焚');
+	k = printf("%C", L'焚');
+	printf("\n");
+	printf("%d\n", k);
+
+	k = ft_printf("%C", 'c');
+	printf("\n");
+	printf("%d\n", k);
+
+	k = printf("%C", 'c');
 	printf("\n");
 	printf("%d\n", k);
 	return (0);

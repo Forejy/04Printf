@@ -26,19 +26,22 @@ size_t			my_put_wint_t(int dec, t_flag flag)
 	t_bin_list			*temp;
 	unsigned char		codeset[6];
 	int					*number_of_bytes;
+	int					i;
 
 	if (!(number_of_bytes = malloc(sizeof(int))))
 		exit_with_msg(ERROR_MALLOC_FAILED);
 	temp = call_functions_to_convert_dec_to_bin(dec, number_of_bytes);
-	int i = 0;
 	flag.unicode = 1;
+	i = 0;
+	if (dec < 255)
+		return(print_final_result(flag, (char *)&dec, 1, 1));
 	while (i < *number_of_bytes)
 	{
 		codeset[i] = temp->binary[0];
 		i++;
 		temp = temp->next;
 	}
-	print_final_result(flag, codeset, 6 - i, 6 - i );
+	return (print_final_result(flag, codeset, 6 - i, 6 - i ));
 
 	/*
 	while (*number_of_bytes >= 0)
