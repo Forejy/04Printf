@@ -5,13 +5,13 @@
 #include "../../Includes/errors.h"
 #include "../../Includes/Auxiliary_Functions/print_final_result_w_padding_and_conversion.h"
 
-t_bin_list		*call_functions_to_convert_dec_to_bin(int dec, int *number_of_bytes)
+t_bin_list		*call_functions_to_convert_dec_to_bin(int dec, int number_of_bytes)
 {
 	t_bin_list	*begin_list;
 
-	*number_of_bytes = compute_minimum_number_of_bytes(dec);
-	begin_list = create_and_initialize_t_bin_list(*number_of_bytes);
-	convert_dec_to_bin_utf8(*number_of_bytes, begin_list, dec);
+//	*number_of_bytes = compute_minimum_number_of_bytes(dec);
+	begin_list = create_and_initialize_t_bin_list(number_of_bytes);
+	convert_dec_to_bin_utf8(number_of_bytes, begin_list, dec);
 	convert_bin_to_dec(begin_list);
 	return (begin_list);
 }
@@ -25,17 +25,18 @@ size_t			my_put_wint_t(int dec, t_flag flag)
 {
 	t_bin_list			*temp;
 	unsigned char		codeset[6];
-	int					*number_of_bytes;
+	int					number_of_bytes;
 	int					i;
 
-	if (!(number_of_bytes = malloc(sizeof(int))))
-		exit_with_msg(ERROR_MALLOC_FAILED);
+//	if (!(number_of_bytes = malloc(sizeof(int))))
+//		exit_with_msg(ERROR_MALLOC_FAILED);
+	number_of_bytes = compute_minimum_number_of_bytes(dec);
 	temp = call_functions_to_convert_dec_to_bin(dec, number_of_bytes);
 	flag.unicode = 1;
 	i = 0;
 	if (dec < 255)
 		return(print_final_result(flag, (char *)&dec, 1, 1));
-	while (i < *number_of_bytes)
+	while (i < number_of_bytes)
 	{
 		codeset[i] = temp->binary[0];
 		i++;
