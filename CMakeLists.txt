@@ -15,4 +15,4 @@ file(GLOB HEADERS
         "Includes/Print_Unicode/*h")
 
 set(CMAKE_C_STANDARD 90)
-add_executable(my_printf_clean ${SOURCES} ${HEADERS} Sources/Auxiliary_Functions/print_final_result_w_padding_and_conversion.c Includes/Auxiliary_Functions/print_final_result_w_padding_and_conversion.h Sources/main.c Sources/Print_Unicode/convert_dec_to_bin_utf16.c Includes/Print_Unicode/convert_dec_to_bin_utf16.h)
+add_executable(my_printf_clean ${SOURCES} ${HEADERS} Sources/Auxiliary_Functions/print_final_result_w_padding_and_conversion.c Includes/Auxiliary_Functions/print_final_result_w_padding_and_conversion.h Sources/main.c)

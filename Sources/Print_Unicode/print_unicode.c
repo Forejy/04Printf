@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "../../Includes/Print_Unicode/create_and_print_t_bin_list.h"
 #include "../../Includes/Print_Unicode/convert_dec_to_bin_utf8.h"
-#include "../../Includes/Print_Unicode/convert_dec_to_bin_utf16.h"
 #include "../../Includes/errors.h"
 #include "../../Includes/Auxiliary_Functions/print_final_result_w_padding_and_conversion.h"
 
@@ -20,16 +19,6 @@ t_bin_list		*call_functions_to_convert_dec_to_bin_in_utf8(int dec, int number_of
  * Stocke le charactere sous forme binaire UTF8 (dans la liste chaine chaine t_bin_list)
  * Convertit chaque octet en decimal puis les combine pour affiche le caractere unicode
  */
-
-t_bin_list		*call_functions_to_convert_dec_to_bin_in_utf16(int dec, int number_of_bytes)
-{
-	t_bin_list	*begin_list;
-
-	begin_list = create_and_initialize_t_bin_list(number_of_bytes);
-	convert_dec_to_bin_utf16(number_of_bytes, begin_list, dec);
-	convert_bin_to_dec(begin_list);
-	return (begin_list);
-}
 
 size_t			my_put_wint_t(int dec, t_flag flag)
 {
