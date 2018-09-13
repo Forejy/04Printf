@@ -58,7 +58,9 @@ int main(void)
 	ft_printf("Size_t : %zu\n", sizeof(size_t));
 	ft_printf("Ssize_t : %zd");
 	ft_printf("INTPTR_MAX : %zu\n", INTPTR_MAX);
-	
+	ft_printf("wint_t : %zu\n", sizeof(wint_t));
+
+
 	long		neglg = -648;
 	ft_printf("%li\n", neglg);
 	//ft_printf("\nli\n", -5);
@@ -1317,21 +1319,26 @@ ft_printf(" +d : % +d \n", 0);
 	printf("%d\n", k);
 	
 	printf("\n");
-	k = ft_printf("%C", L'δ');
+	k = ft_printf("%S", L"ᚠ");
 	printf("\n");
 	printf("%d\n", k);
 
-	k = printf("%C", L'δ');
+	k = ft_printf("%C", L'銟');
 	printf("\n");
 	printf("%d\n", k);
 
-	k = ft_printf("%C", 'c');
+	k = printf("%C", L'ᚠ');
 	printf("\n");
 	printf("%d\n", k);
 
-	k = printf("%C", 'c');
+	k = printf("%S", L"ᚠ");
 	printf("\n");
 	printf("%d\n", k);
+
+	k = ft_printf("test %%S : |%S|", L"δ");
+	
+	printf("Sizeof wchar_t %zu", sizeof(wchar_t));
+
 	return (0);
 		/*
 		 * Long et Long Long sur Unix ont la meme taille, et du coup le meme intervalle	 *

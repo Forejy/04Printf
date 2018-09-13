@@ -15,7 +15,7 @@ unsigned int				compute_minimum_number_of_bits(unsigned int n)
 	return (k);
 }
 
-int				compute_minimum_number_of_bytes(int decimal)
+int				compute_minimum_number_of_bytes_in_utf8(int decimal)
 {
 	int		numb_of_bits;
 
@@ -32,8 +32,9 @@ int				compute_minimum_number_of_bytes(int decimal)
 		return (5);
 	else// (numb_of_bits <= 31)
 		return (6);
-
 }
+
+
 
 int				compute_power(int base, unsigned int exposant)
 {
