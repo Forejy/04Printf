@@ -2,10 +2,11 @@
 #include <stdlib.h>
 #include "../../Includes/Print_Unicode/create_and_print_t_bin_list.h"
 #include "../../Includes/Print_Unicode/convert_dec_to_bin_utf8.h"
+#include "../../Includes/Print_Unicode/convert_dec_to_bin_utf16.h"
 #include "../../Includes/errors.h"
 #include "../../Includes/Auxiliary_Functions/print_final_result_w_padding_and_conversion.h"
 
-t_bin_list		*call_functions_to_convert_dec_to_bin(int dec, int number_of_bytes)
+t_bin_list		*call_functions_to_convert_dec_to_bin_in_utf8(int dec, int number_of_bytes)
 {
 	t_bin_list	*begin_list;
 
@@ -20,6 +21,16 @@ t_bin_list		*call_functions_to_convert_dec_to_bin(int dec, int number_of_bytes)
  * Convertit chaque octet en decimal puis les combine pour affiche le caractere unicode
  */
 
+t_bin_list		*call_functions_to_convert_dec_to_bin_in_utf16(int dec, int number_of_bytes)
+{
+	t_bin_list	*begin_list;
+
+	begin_list = create_and_initialize_t_bin_list(number_of_bytes);
+	convert_dec_to_bin_utf16(number_of_bytes, begin_list, dec);
+	convert_bin_to_dec(begin_list);
+	return (begin_list);
+}
+
 size_t			my_put_wint_t(int dec, t_flag flag)
 {
 	t_bin_list			*temp;
@@ -30,7 +41,7 @@ size_t			my_put_wint_t(int dec, t_flag flag)
 	if (dec < 255)
 		return (print_final_result(flag, (char *)&dec, 1, 1));
 	number_of_bytes = compute_minimum_number_of_bytes_in_utf8(dec);
-	temp = call_functions_to_convert_dec_to_bin(dec, number_of_bytes);
+	temp = call_functions_to_convert_dec_to_bin_in_utf8(dec, number_of_bytes);
 	flag.unicode = 1;
 	i = 0;
 	while (i < number_of_bytes)
@@ -89,7 +100,7 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 	j = 0;
 	while (string_wchar[i] != '\0')
 	{
-		temp = call_functions_to_convert_dec_to_bin(string_wchar[i], number_of_char_per_wint_t);
+		temp = call_functions_to_convert_dec_to_bin_in_utf8(string_wchar[i], number_of_bytes);
 		while (temp)
 		{
 			string[j] = temp->binary[0];
@@ -122,6 +133,7 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 	//total_len = print_final_result(flag, string, 19 - i, 19 - i );
 	return (total_len);
 }
+
 /*
  * Utilise la fonction my_put_wint_t pour afficher une chaine de caractere d'unicode (wchar_t)
  */

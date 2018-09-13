@@ -1318,12 +1318,14 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\n");
 	printf("%d\n", k);
 	
+	
 	printf("\n");
-	k = ft_printf("%S", L"ᚠ");
+	k = ft_printf("%%S : %S", L"ᚠ");
 	printf("\n");
 	printf("%d\n", k);
 
-	k = ft_printf("%C", L'銟');
+	 
+	k = ft_printf("%C", L'ᚠ');
 	printf("\n");
 	printf("%d\n", k);
 

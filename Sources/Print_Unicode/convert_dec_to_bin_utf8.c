@@ -1,5 +1,7 @@
 #include "../../Includes/Print_Unicode/create_and_print_t_bin_list.h"
 
+
+
 unsigned int				compute_minimum_number_of_bits(unsigned int n)
 {
 	unsigned int		pow2;
@@ -22,19 +24,17 @@ int				compute_minimum_number_of_bytes_in_utf8(int decimal)
 	numb_of_bits = compute_minimum_number_of_bits(decimal);
 	if (numb_of_bits <= 8)
 		return (1);
-	if (numb_of_bits <= 11)
+	else if (numb_of_bits <= 11)
 		return (2);
-	if (numb_of_bits <= 16)
+	else if (numb_of_bits <= 16)
 		return (3);
-	if (numb_of_bits <= 21)
+	else if (numb_of_bits <= 21)
 		return (4);
-	if (numb_of_bits <= 26)
+	else if (numb_of_bits <= 26)
 		return (5);
 	else// (numb_of_bits <= 31)
 		return (6);
 }
-
-
 
 int				compute_power(int base, unsigned int exposant)
 {
