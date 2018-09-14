@@ -31,7 +31,7 @@ size_t			my_put_wint_t(int dec, t_flag flag)
 		return (print_final_result(flag, (char *)&dec, 1, 1));
 	number_of_bytes = compute_minimum_number_of_bytes_in_utf8(dec);
 	temp = call_functions_to_convert_dec_to_bin_in_utf8(dec, number_of_bytes);
-	flag.unicode = 1;
+	flag.unicode_c = 1;
 	i = 0;
 	while (i < number_of_bytes)
 	{
@@ -115,7 +115,7 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 		total_len++;
 	}
 	 */
-	flag.unicode = 1;
+	flag.unicode_s = 1;
 	/*
 	string[0] = '\264';
 	string[1] = '\316';
