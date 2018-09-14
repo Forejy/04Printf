@@ -1331,7 +1331,7 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 
 	printf("2 : ft_printf %%ls :");
-	k = ft_printf("%S\n", L"Áᚠc");
+	k = ft_printf("%S", L"ᚠᚠc");
 	printf("\n");
 	printf("ret : %d\n", k);
 
@@ -1352,7 +1352,12 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\n");
 	printf("ret : %d\n", k);
 
-	k = ft_printf("test %%S : |%S|", L"ᚠc");
+	k = ft_printf("test %%S : |%S|\n", L"ᚠc");
+	ft_printf("ret = %d\n", k);
+
+	k = ft_printf("test %%S : |%S|\n", L"Á±≥");
+	ft_printf("ret = %d\n", k);
+	
 	ft_printf("\n");
 		printf("Sizeof wchar_t %zu", sizeof(wchar_t));
 	

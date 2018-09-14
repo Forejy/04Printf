@@ -60,9 +60,10 @@ int			count_char_per_wint_t(wchar_t *string_wchar, int **number_of_char_per_wint
 	number_of_bytes = 0;
 	while (--i >= 0)
 		number_of_char_per_wint_t[0][i] = 1;
+	i = 0;
 	while (string_wchar[i] != '\0')
 	{
-		if (string_wchar[i] > 255)
+		if (string_wchar[i] >= 128)
 			number_of_char_per_wint_t[0][i] =
 				compute_minimum_number_of_bytes_in_utf8(string_wchar[i]);
 		number_of_bytes += number_of_char_per_wint_t[0][i++];
@@ -90,7 +91,7 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 	j = 0;
 	while (string_wchar[i] != '\0')
 	{
-		if (string_wchar[i] > 255)
+		if (string_wchar[i] >= 128)
 		{
 			temp = call_functions_to_convert_dec_to_bin_in_utf8(string_wchar[i], number_of_char_per_wint_t[i]);
 			k = number_of_char_per_wint_t[i] + j - 1;
