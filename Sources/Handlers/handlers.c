@@ -179,6 +179,7 @@ void			initialize_t_flag(t_flag	*flag)
 	flag->character_or_string = 0;
 	flag->unicode_c = 0;
 	flag->unicode_s = 0;
+	flag->conv_d = 0;
 	flag->lenght_conv = 0;
 	flag->lenght_print = 0;
 }

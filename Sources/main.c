@@ -1375,6 +1375,9 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("%O\n", LONG_MAX);
 	printf("%O\n", LONG_MAX);
 
+	ft_printf("% 03d\n", 0);
+	printf("% 05d\n", -1);
+
 	return (0);
 		/*
 		 * Long et Long Long sur Unix ont la meme taille, et du coup le meme intervalle	 *

@@ -9,6 +9,7 @@ size_t		my_putnbr_long_long(intmax_t nb, t_flag flag)
 	uintmax_t		nbr;
 	size_t				total_len;
 
+	flag.conv_d = 1;
 	i = 19;
 	if (nb < 0)
 		nbr = -nb;
