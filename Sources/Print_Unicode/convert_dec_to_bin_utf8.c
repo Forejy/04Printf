@@ -22,7 +22,7 @@ int				compute_minimum_number_of_bytes_in_utf8(int decimal)
 	int		numb_of_bits;
 
 	numb_of_bits = compute_minimum_number_of_bits(decimal);
-	if (numb_of_bits <= 8)
+	if (numb_of_bits <= 7)
 		return (1);
 	else if (numb_of_bits <= 11)
 		return (2);

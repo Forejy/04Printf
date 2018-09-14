@@ -1318,43 +1318,46 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\n");
 	printf("%d\n", k);
 
-	//k = ft_printf("TEST : %C", L'Á');
-	k = ft_printf("TEST : %C\n", L'ᚠ');
 
 	printf("\n");
+	printf("1 : ft_printf %%ls :");
 	k = ft_printf("%S", L"Á±≥");
 	ft_printf("\n");
-	printf("%d\n", k);
-
+	printf("\nret : %d\n", k);
+	
+	printf("1 : printf %%S :");
 	k = printf("%S", L"Á±≥");
 	ft_printf("\n");
-	printf("\n%d\n", k);
+	printf("\nret : %d\n", k);
 
-	printf("ft_printf %%ls :");
+	printf("2 : ft_printf %%ls :");
 	k = ft_printf("%S\n", L"Áᚠc");
 	printf("\n");
-	printf("%d\n", k);
+	printf("ret : %d\n", k);
 
-	printf("Printf %%ls :");
+	printf("2 : Printf %%ls :");
 	k = printf("%ls", L"ᚠc");
 	printf("\n");
-	printf("%d\n", k);
+	printf("ret : %d\n", k);
 
-	k = ft_printf("%C", L'ᚠ');
+	k = ft_printf("3 : %C", L'ᚠ');
 	printf("\n");
-	printf("%d\n", k);
+	printf("ret : %d\n", k);
 
-	k = printf("%C", L'ᚠ');
+	k = printf("3 : %C", L'ᚠ');
 	printf("\n");
-	printf("%d\n", k);
+	printf("ret : %d\n", k);
 
-	k = printf("%S", L"ᚠ");
+	k = printf("4 : %S", L"ᚠ");
 	printf("\n");
-	printf("%d\n", k);
+	printf("ret : %d\n", k);
 
-	k = ft_printf("test %%S : |%S|", L"δ");
+	k = ft_printf("test %%S : |%S|", L"ᚠc");
+	ft_printf("\n");
+		printf("Sizeof wchar_t %zu", sizeof(wchar_t));
 	
-	printf("Sizeof wchar_t %zu", sizeof(wchar_t));
+	k = ft_printf("%%C : %C\n", L'Á');
+	k = ft_printf("%%C : %C\n", L'ᚠ');
 
 	return (0);
 		/*

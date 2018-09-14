@@ -80,8 +80,10 @@ void		print_result_w_precision(t_flag flag, const char *stock, int len_precision
 	if (flag.character_or_string == 1 && len_precision > 0 && len_precision < len_argument)
 		write(1, stock, (size_t) (len_precision));
 	else if (flag.unicode == 1)
-		while(i < len_argument)
-			write(1, &stock[i++], 1);
+		//while(i < len_argument)
+		//	write(1, &stock[i++], 1);
+		while (len_argument > 0)
+			write(1, &stock[len_argument-- - 1], 1);
 	else
 		write(1, stock, (size_t) (len_argument - retenue));
 }
