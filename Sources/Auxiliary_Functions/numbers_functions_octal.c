@@ -4,11 +4,11 @@
 
 size_t			my_put_octal(uintmax_t nbr, t_flag flag)
 {
-	char		stock_number[20];
+	char		stock_number[22];
 	int			i;
 	size_t			total_len;
 
-	i = 19;
+	i = 21;
 	if (nbr == 0 && flag.precision == -1)
 	{
 		stock_number[i] = '0';
@@ -28,7 +28,7 @@ size_t			my_put_octal(uintmax_t nbr, t_flag flag)
 			i--;
 		}
 	}
-	total_len = print_final_result(flag, &stock_number[i + 1], 19 - i, 19 - i);
+	total_len = print_final_result(flag, &stock_number[i + 1], 21 - i, 21 - i);
 	return (total_len);
 
 }

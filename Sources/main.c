@@ -1342,7 +1342,7 @@ ft_printf(" +d : % +d \n", 0);
 
 	k = ft_printf("3 : %C", L'ᚠ');
 	printf("\n");
-	printf("ret : %d\n", k);
+	printf("ret ft : %d\n", k);
 
 	k = printf("3 : %C", L'ᚠ');
 	printf("\n");
@@ -1359,18 +1359,21 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("ret = %d\n", k);
 	
 	ft_printf("\n");
-		printf("Sizeof wchar_t %zu\n", sizeof(wchar_t));
+//		printf("Sizeof wchar_t %zu\n", sizeof(wchar_t));
 	
 	k = ft_printf("%%C : %C\n", L'Á');
 	k = ft_printf("%%C : %C\n", L'ᚠ');
 
 	ft_printf("ft_printf : {%%030S} : ");
 	k = ft_printf("{%030S}", L"我是一只猫。");
-	printf("\n");
+	//是一只猫。
+	 printf("\n");
 	ft_printf("printf : {%%030S} : ");
 	k = printf("{%030S}", L"我是一只猫。");
 	printf("\n");
 
+	ft_printf("%O\n", LONG_MAX);
+	printf("%O\n", LONG_MAX);
 
 	return (0);
 		/*

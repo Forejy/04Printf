@@ -121,7 +121,7 @@ size_t			handle_conversions(char conversion, va_list ap, t_flag flag)
 		else
 			total_len = my_put_octal(va_arg(ap, unsigned int), flag);
 	}
-	else if (conversion == 'O'&& lenght_conv == L)
+	else if (conversion == 'O' && lenght_conv == L)
 		total_len = my_put_octal(va_arg(ap, unsigned long long), flag);
 	else if (conversion == 'O')
 		total_len = my_put_octal(va_arg(ap, unsigned long), flag);
