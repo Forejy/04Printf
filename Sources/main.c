@@ -1320,11 +1320,15 @@ ft_printf(" +d : % +d \n", 0);
 	
 	
 	printf("\n");
-	k = ft_printf("%%S : %S", L"ᚠ");
+	k = ft_printf("%S\n", L"012ᚠc54465");
 	printf("\n");
 	printf("%d\n", k);
 
-	 
+	printf("Printf %%ls :");
+	k = printf("%ls", L"ᚠc");
+	printf("\n");
+	printf("%d\n", k);
+
 	k = ft_printf("%C", L'ᚠ');
 	printf("\n");
 	printf("%d\n", k);

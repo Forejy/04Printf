@@ -46,26 +46,26 @@ size_t			my_put_wint_t(int dec, t_flag flag)
  * Fonction d'affichage de charactere unicode (par combinaison si le charactere est multi-octet)
  */
 
-int			count_char_per_wint_t(wchar_t *string_wchar, int *number_of_char_per_wint_t)
+int			count_char_per_wint_t(wchar_t *string_wchar, int **number_of_char_per_wint_t)
 {
 	int			i;
 	size_t			number_of_bytes;
 	
 	i = 0;
-	i = string_wchar[0];
+	//i = string_wchar[0];
 	while (string_wchar[i] != '\0')
 		i++;
-	if (!(number_of_char_per_wint_t = malloc(sizeof(int) * i)))
+	if (!(number_of_char_per_wint_t[0] = malloc(sizeof(int) * i)))
 		exit_with_msg(ERROR_MALLOC_FAILED);
 	number_of_bytes = 0;
 	while (--i >= 0)
-		number_of_char_per_wint_t[i] = 1;
+		number_of_char_per_wint_t[0][i] = 1;
 	while (string_wchar[i] != '\0')
 	{
 		if (string_wchar[i] > 255)
-			number_of_char_per_wint_t[i] =
+			number_of_char_per_wint_t[0][i] =
 				compute_minimum_number_of_bytes_in_utf8(string_wchar[i]);
-		number_of_bytes += number_of_char_per_wint_t[i++];
+		number_of_bytes += number_of_char_per_wint_t[0][i++];
 	}
 	return (number_of_bytes);
 }
@@ -77,25 +77,33 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 	int			*number_of_char_per_wint_t;
 	int			i;
 	int			j;
+	int			k;
 	char		*string;
 	t_bin_list	*temp;
 	//char		string[5];
 
 	i = 0;
-	number_of_bytes = count_char_per_wint_t(string_wchar, number_of_char_per_wint_t);
+	number_of_bytes = count_char_per_wint_t(string_wchar, &number_of_char_per_wint_t);
 	if (!(string = malloc(sizeof(char) * (number_of_bytes + 1))))
 		exit_with_msg(ERROR_MALLOC_FAILED);
 	string[number_of_bytes] = '\0';
 	j = 0;
 	while (string_wchar[i] != '\0')
 	{
-		temp = call_functions_to_convert_dec_to_bin_in_utf8(string_wchar[i], number_of_bytes);
-		while (temp)
+		if (string_wchar[i] > 255)
 		{
-			string[j] = temp->binary[0];
-			j++;
-			temp = temp->next;
+			temp = call_functions_to_convert_dec_to_bin_in_utf8(string_wchar[i], number_of_char_per_wint_t[i]);
+			k = number_of_char_per_wint_t[i] + j - 1;
+			while (temp)
+			{
+				string[k] = temp->binary[0];
+				k--;
+				j++;
+				temp = temp->next;
+			}
 		}
+		else
+			string[j++] = string_wchar[i];
 		i++;
 	}
 	total_len = 0;
