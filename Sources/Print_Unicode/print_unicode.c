@@ -83,6 +83,12 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 	t_bin_list	*temp;
 	//char		string[5];
 
+
+	if (string_wchar == NULL)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
 	i = 0;
 	number_of_bytes = count_char_per_wint_t(string_wchar, &number_of_char_per_wint_t);
 	if (!(string = malloc(sizeof(char) * (number_of_bytes + 1))))
