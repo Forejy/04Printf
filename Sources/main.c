@@ -1317,10 +1317,21 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%%p : %p", ss);
 	printf("\n");
 	printf("%d\n", k);
-	
-	
+
+	//k = ft_printf("TEST : %C", L'Á');
+	k = ft_printf("TEST : %C\n", L'ᚠ');
+
 	printf("\n");
-	k = ft_printf("%S\n", L"012ᚠc54465");
+	k = ft_printf("%S", L"Á±≥");
+	ft_printf("\n");
+	printf("%d\n", k);
+
+	k = printf("%S", L"Á±≥");
+	ft_printf("\n");
+	printf("\n%d\n", k);
+
+	printf("ft_printf %%ls :");
+	k = ft_printf("%S\n", L"Áᚠc");
 	printf("\n");
 	printf("%d\n", k);
 
