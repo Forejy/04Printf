@@ -414,8 +414,14 @@ int			analyze_and_printf(const char *format, va_list ap, t_flag *flag)
 		&& format[i] != 'O' && format[i] != 'u' && format[i] != 'U'&& format[i] != 'x'
 		&& format[i] != 'X' && format[i] != 'c' && format[i] != 'C' && format[i] != '%' 
 		&& format[i] != 's' && format[i] != 'S' && format[i] != 'p')
-		return (i);
-	flag->lenght_print += handle_conversions(format[i], ap, *flag);
+	{
+		if  (flag->champs == -1)
+			return (i);
+		else
+			flag->lenght_print = my_putchar_printf(format[i], *flag);
+	}
+	else
+		flag->lenght_print += handle_conversions(format[i], ap, *flag);
 	return (i + 1);
 }
 
