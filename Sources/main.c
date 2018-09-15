@@ -1422,7 +1422,6 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %%05.s : ");
 	k = printf("%05.s", 0);
 	printf("\nret : %d\n", k);
-
 	ft_printf("ft_printf : %%Z,bc : ");
 	k = ft_printf("%Z,bc");
 	printf("\nret : %d\n", k);
@@ -1443,8 +1442,6 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %% : ");
 	k = printf("%");
 	printf("\nret : %d\n", k);
-
-	ft_printf("%s%s%s%s%s", "this", "is", "a", "multi", "string");
 
 	return (0);
 		/*

@@ -423,8 +423,8 @@ int			analyze_and_printf(const char *format, va_list ap, t_flag *flag)
 //			return (i);
 //		else
 //			flag->lenght_print = my_putchar_printf(format[i], *flag);
-//		return (-1);
-		return (i);
+		return (-1);
+//		return (i);
 	}
 	else
 		flag->lenght_print += handle_conversions(format[i], ap, *flag);
