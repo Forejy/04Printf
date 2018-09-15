@@ -148,8 +148,9 @@ size_t		print_final_result(t_flag flag, const char *stock, int len_argument, int
 		total_len += (size_t)len_padding + (size_t)len_precision;
 	else
 		total_len += (size_t)len_padding + (size_t)len_argument;
-	if ((flag.hash && flag.zero && flag.champs > 0 && !flag.less && flag.hexa) 
-		|| (flag.pointer == 2 && flag.precision > 0))
+	if ((flag.pointer == 2 && flag.precision >= 0) && len_argument - 2 < flag.precision)
+		total_len += 2;
+	if (flag.hash && flag.zero && flag.champs > 0 && !flag.less && flag.hexa)
 		total_len += 2;
 	return (total_len);
 }
