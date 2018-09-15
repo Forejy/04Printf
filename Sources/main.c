@@ -1378,6 +1378,14 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("% 03d\n", 0);
 	printf("% 05d\n", -1);
 
+	ft_printf("ft_printf : %%.0p, %%.p : ");
+	ft_printf("%.0p, %.p", 0, 0);
+	printf("\n");
+	ft_printf("   printf : %%.0p, %%.p : ");
+	printf("%.0p, %.p", 0, 0);
+	printf("\n");
+
+
 	return (0);
 		/*
 		 * Long et Long Long sur Unix ont la meme taille, et du coup le meme intervalle	 *
