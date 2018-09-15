@@ -1384,6 +1384,13 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %%.0p, %%.p : ");
 	printf("%.0p, %.p", 0, 0);
 	printf("\n");
+	ft_printf("ft_printf : %%.5p, %%.p : ");
+	ft_printf("%.5p, %.p", 0, 0);
+	printf("\n");
+	ft_printf("   printf : %%.5p, %%.p : ");
+	printf("%.5p, %.p", 0, 0);
+
+
 
 
 	return (0);
