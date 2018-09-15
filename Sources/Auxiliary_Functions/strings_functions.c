@@ -42,13 +42,15 @@ size_t		my_putstr_printf(const char *str, t_flag flag)
 	int			flag_precision;
 	size_t		total_len;
 
-	if (str == NULL)
+	if (str == NULL && flag.precision == -1)
 	{
 		write(1, "(null)", 6);
 		return (6);
 	}
+	len_str = 0;
+	if (str != NULL)
+		len_str = my_strlen(str);
 	flag.character_or_string = 1;
-	len_str = my_strlen(str);
 	flag_precision = flag.precision;
 	if (flag_precision > -1 && flag_precision < len_str)
 		len_str = (size_t)flag_precision;

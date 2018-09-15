@@ -23,7 +23,7 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 
 	retenue = 0;
 	flag_pointer = flag.pointer;
-	if ((**stock == '-' || **stock == '+') && !(len_padding > 0 && !flag.zero)  && flag.precision < 0)
+	if (*stock && (**stock == '-' || **stock == '+') && !(len_padding > 0 && !flag.zero)  && flag.precision < 0)
 	{
 		write(1, *stock, 1);
 		(*stock)++;
@@ -83,7 +83,8 @@ void		print_result_w_precision(t_flag flag, const char *stock, int len_precision
 		while (len_precision-- > 0)
 			write(1, "0", 1);
 	}
-	if (flag.character_or_string == 1 && len_precision > 0 && len_precision < len_argument)
+	if (stock && flag.character_or_string == 1 && len_precision > 0
+		&& len_precision < len_argument)
 		write(1, stock, (size_t) (len_precision));
 	else if (flag.unicode_c == 1)
 		while (len_argument > 0)
@@ -91,7 +92,7 @@ void		print_result_w_precision(t_flag flag, const char *stock, int len_precision
 	else if (flag.unicode_s == 1)
 		while(i < len_argument)
 			write(1, &stock[i++], 1);
-	else
+	else if (stock)
 		write(1, stock, (size_t) (len_argument - retenue));
 }
 
@@ -128,11 +129,11 @@ size_t		print_final_result(t_flag flag, const char *stock, int len_argument, int
 	len_precision = flag.precision;
 	len_padding = compute_padding(stock, flag, len_arg);
 	total_len = 0;
-	if ((*stock == '-' || *stock == '+') && flag.character_or_string == 0)
+	if (stock && (*stock == '-' || *stock == '+') && flag.character_or_string == 0)
 		total_len++;
 	if (flag.less == 0)
 		len_argument = len_argument - print_padding(flag, &stock, len_padding);
-	if ((*stock == '-' || *stock == '+') && flag.character_or_string == 0)
+	if (stock && (*stock == '-' || *stock == '+') && flag.character_or_string == 0)
 		{
 			write(1, stock, 1);
 			stock++;
