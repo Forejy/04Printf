@@ -451,7 +451,7 @@ size_t			handle_format(const char *format, va_list ap)
 	{
 		while (format[i] != '\0')
 		{
-			if (ret == 0 && format[i] == '%')
+			if (ret >= 0 && format[i] == '%')
 			{
 				if ((ret = analyze_and_printf(&format[i + 1], ap, &flag)) > -1)
 					i = i + ret + 1;			//
