@@ -1379,11 +1379,11 @@ ft_printf(" +d : % +d \n", 0);
 	printf("% 05d\n", -1);
 
 	ft_printf("ft_printf : %%.0p, %%.p : ");
-	ft_printf("%.0p, %.p", 0, 0);
-	printf("\n");
+	k = ft_printf("%.0p, %.p", 0, 0);
+	printf("\nret : %d\n", k);
 	ft_printf("   printf : %%.0p, %%.p : ");
-	printf("%.0p, %.p", 0, 0);
-	printf("\n");
+	k = printf("%.0p, %.p", 0, 0);
+	printf("\nret : %d\n", k);
 	ft_printf("ft_printf : %%.5p : ");
 	k = ft_printf("%.5p", 0);
 	printf("\nret : %d\n", k);
