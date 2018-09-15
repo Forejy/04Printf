@@ -5,6 +5,7 @@
 #include "../../Includes/Auxiliary_Functions/numbers_functions_octal.h"
 #include "../../Includes/Auxiliary_Functions/numbers_functions_hexa.h"
 #include "../../Includes/Auxiliary_Functions/print_pointer_address.h"
+#include "../../Includes/errors.h"
 
 
 static int			define_lenght_conv(const char *length, t_flag *flag)
@@ -415,6 +416,8 @@ int			analyze_and_printf(const char *format, va_list ap, t_flag *flag)
 		&& format[i] != 'X' && format[i] != 'c' && format[i] != 'C' && format[i] != '%' 
 		&& format[i] != 's' && format[i] != 'S' && format[i] != 'p')
 	{
+		if (format[i] == 'Z')
+			exit_with_msg("-1");
 		if  (flag->champs == -1)
 			return (i);
 		else

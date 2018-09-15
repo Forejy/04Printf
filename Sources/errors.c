@@ -5,5 +5,5 @@
 void		exit_with_msg(const char *message)
 {
 	my_putstr(message);
-	exit(0);
+	exit(1);
 }

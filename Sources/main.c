@@ -1421,10 +1421,10 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 
 	ft_printf("ft_printf : %%05.Z : ");
-	k = ft_printf("%05.Z");
+	k = ft_printf("%05.Z", 0);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %%05.Z : ");
-	k = printf("%05.Z");
+	k = printf("%05.Z", 0);
 	printf("\nret : %d\n", k);
 
 	return (0);
