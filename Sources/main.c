@@ -23,7 +23,7 @@ int main(void)
 	//TEST FLAG blank et +
 
 	setlocale(LC_ALL, "");
-
+/*
 	int i                = 1;
 	unsigned char	x   = 255;
 	long				lg = LONG_MAX;
@@ -147,7 +147,7 @@ int main(void)
 //	ft_printf("%d\n", c);
 	/*c = 0xe1;
 	ft_printf("%d\n", c);
-	write(1, &c, 1);*/
+	write(1, &c, 1);
 	c = 0xe1;
 	write(1, &c, 1);
 	c = 0x88;
@@ -208,6 +208,7 @@ int main(void)
 	//ft_printf("Sizeof wint_t : %d, Caractere Unicode affiche : %C%S\n", sizeof(wint_t), C, wchar);*/
 
 	//TEST FLAGS HEXADECIMAL %x %X
+	/*
 	write(1, "\n", 1);
 	char *test;
 
@@ -1075,6 +1076,7 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf(" |%% +3.2s| : |% +3.2s| \n", "123");
 
 	//TEST D'AFFICHAGE BASIC DE 42FILECHECKER
+	/*
 
 	ft_printf("\nBASIC TESTS DE 42FILECHECKER\n");
 	int k = ft_printf("%5%");
@@ -1138,7 +1140,7 @@ ft_printf(" +d : % +d \n", 0);
 
 
 	printf("%hld\n", 2147483647);
-	
+	*/
 	
 /*
 	ft_printf("|%%| : |%%|\n");
@@ -1274,7 +1276,7 @@ ft_printf(" +d : % +d \n", 0);
 
 	ft_printf(" -s : %-s \n", "1");
 	ft_printf("  s : %-s \n", "-1");
-		 */
+		 
 	ft_printf("\n%hhd", 128);
 	printf("\n%hhd\n", 128);
 	
@@ -1288,7 +1290,8 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%");
 	printf("\nk = %d", k);
 	 */
-	
+	int k;
+
 	k = ft_printf("% ");
 	printf("\n");
 	printf("%d\n", k);
@@ -1420,13 +1423,19 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%05.s", 0);
 	printf("\nret : %d\n", k);
 
-	ft_printf("ft_printf : %%05.Z : ");
-	k = ft_printf("%05.Z", 0);
+	ft_printf("ft_printf : %%Z,bc : ");
+	k = ft_printf("%Z,bc");
 	printf("\nret : %d\n", k);
-	ft_printf("   printf : %%05.Z : ");
-	k = printf("%05.Z", 0);
+	ft_printf("   printf : %%Z,bc : ");
+	k = printf("%Z,bc");
 	printf("\nret : %d\n", k);
 
+	ft_printf("ft_printf : %%05.Z : ");
+	k = ft_printf("%05.Z");
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%05.Z : ");
+	k = printf("%05.Z");
+	printf("\nret : %d\n", k);
 	return (0);
 		/*
 		 * Long et Long Long sur Unix ont la meme taille, et du coup le meme intervalle	 *
