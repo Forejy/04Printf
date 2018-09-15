@@ -393,6 +393,14 @@ size_t			handle_format(const char *format, va_list ap)
 }
 */
 //HANDLE_FORMAT V3 (ACTUAL)
+
+int			handle_special_no_conv(const char *format, int i, va_list ap, t_flag *flag)
+{
+	if (format [i + 1] == '\0')
+		return (-1);
+	return (0);
+}
+
 int			analyze_and_printf(const char *format, va_list ap, t_flag *flag)
 {
 	int			i;
@@ -419,12 +427,11 @@ int			analyze_and_printf(const char *format, va_list ap, t_flag *flag)
 		&& format[i] != 'X' && format[i] != 'c' && format[i] != 'C' && format[i] != '%' 
 		&& format[i] != 's' && format[i] != 'S' && format[i] != 'p')
 	{
-//		if  (flag->champs == -1)
-//			return (i);
-//		else
-//		flag->lenght_print = my_putchar_printf(format[i], *flag);
-		return (-1);
-//		return (i);
+		if (format[i + 1] == '\0')
+			return (-1);
+		else
+			return (-2);
+//		handle_special_no_conv(format[0], i, ap, *flag);
 	}
 	else
 		flag->lenght_print += handle_conversions(format[i], ap, *flag);
@@ -444,12 +451,13 @@ size_t			handle_format(const char *format, va_list ap)
 	{
 		while (format[i] != '\0')
 		{
-			if (format[i] == '%')
+			if (ret == 0 && format[i] == '%')
 			{
-				if ((ret = analyze_and_printf(&format[i + 1], ap, &flag)) != -1)
+				if ((ret = analyze_and_printf(&format[i + 1], ap, &flag)) > -1)
 					i = i + ret + 1;			//
-				else
+				else if (ret == -1)
 					return (-1);
+				
 			}
 			else
 			{
