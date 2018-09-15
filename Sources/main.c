@@ -1399,11 +1399,11 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%9.2p", 1234);
 	printf("\nret : %d\n", k);
 
-	ft_printf("ft_printf : %%.3p : ");
-	k = ft_printf("%.3p", 1234);
+	ft_printf("ft_printf : %%2.9p : ");
+	k = ft_printf("%2.9p", 1234);
 	printf("\nret : %d\n", k);
-	ft_printf("   printf : %%.3p : ");
-	k = printf("%.3p", 1234);
+	ft_printf("   printf : %%2.9p : ");
+	k = printf("%2.9p", 1234);
 	printf("\nret : %d\n", k);
 
 

@@ -72,7 +72,8 @@ void		print_result_w_precision(t_flag flag, const char *stock, int len_precision
 	retenue = 0;
 	if (len_precision > 0 && flag.character_or_string == 0)
 	{
-		if (flag.pointer == 2 && flag.champs == 0)
+		if (flag.pointer == 2 && flag.champs < len_precision) 
+			//&& flag.champs == 0)
 		{
 			write(1, stock, 2);
 			stock = stock + 2;
