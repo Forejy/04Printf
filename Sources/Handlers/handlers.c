@@ -84,7 +84,7 @@ size_t			handle_conversions(char conversion, va_list *ap, t_flag flag)
 		if (lenght_conv == H)
 			total_len = my_put_unsigned_long_long((unsigned short)(va_arg(*ap, int)), flag);
 		else if (lenght_conv == HH)
-			total_len = my_put_unsigned_long_long((unsigned char(va_arg(*ap, int)), flag);
+			total_len = my_put_unsigned_long_long((unsigned char)(va_arg(*ap, int)), flag);
 		else if (lenght_conv == L)
 			total_len = my_put_unsigned_long_long(va_arg(*ap, unsigned long), flag);
 		else if (lenght_conv == LL)
