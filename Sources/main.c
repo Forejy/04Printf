@@ -1512,10 +1512,10 @@ ft_printf(" +d : % +d \n", 0);
 
 	ft_printf("CAS 10\n");
 	ft_printf("ft_printf : {%%o, %%ho, %%hho} : ");
-	k = ft_printf("%o, %ho, %hho", -42, 30, -42);
+	k = ft_printf("%o, %ho, %hho", -42, -42, -42);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : {%%o, %%ho, %%hho} : ");
-	k = printf("%o, %ho, %hho", -42, 30, -42);
+	k = printf("%o, %ho, %hho", -42, -42, -42);
 	printf("\nret : %d\n", k);
 
 	ft_printf("CAS 11\n");
