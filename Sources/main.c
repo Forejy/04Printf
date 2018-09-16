@@ -1430,7 +1430,7 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 
 
-
+	ft_printf("CAS 0\n");
 	ft_printf("ft_printf : %% : ");
 	k = ft_printf("%");
 	printf("\nret : %d\n", k);
@@ -1438,13 +1438,15 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%");
 	printf("\nret : %d\n", k);
 
+	ft_printf("CAS 1\n");
 	ft_printf("ft_printf : {%%05.Z : ");
-	k = ft_printf("{%05.Z");
+	k = ft_printf("{%05.Z}");
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : {%%05.Z : ");
-	k = printf("{%05.Z");
+	k = printf("{%05.Z}");
 	printf("\nret : %d\n", k);
 
+	ft_printf("CAS 2\n");
 	ft_printf("ft_printf : {%%05.Z} : ");
 	k = ft_printf("{%05.Z}");
 	printf("\nret : %d\n", k);
@@ -1452,6 +1454,7 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("{%05.Z}");
 	printf("\nret : %d\n", k);
 
+	ft_printf("CAS 3\n");
 	ft_printf("ft_printf : %% Zoooo : ");
 	k = ft_printf("% Zoooo");
 	printf("\nret : %d\n", k);
@@ -1459,12 +1462,12 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("% Zoooo");
 	printf("\nret : %d\n", k);
 
-
+	ft_printf("CAS 4\n");
 	ft_printf("ft_printf : {%%} : ");
-	k = ft_printf("{%}");
+	k = ft_printf("{%5}");
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : {%%} : ");
-	k = printf("{%}");
+	k = printf("{%5}");
 	printf("\nret : %d\n", k);
 	return (0);
 		/*

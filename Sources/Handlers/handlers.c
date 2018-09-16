@@ -427,11 +427,14 @@ int			analyze_and_printf(const char *format, va_list ap, t_flag *flag)
 		&& format[i] != 'X' && format[i] != 'c' && format[i] != 'C' && format[i] != '%' 
 		&& format[i] != 's' && format[i] != 'S' && format[i] != 'p')
 	{
-		if (format[i + 1] == '\0' && format[i + 1] <= 'a' && format[i + 1] >= 'z')
+		if (format[i] == '\0' 
+			|| (format[i] >= 'a' && format[i] <= 'z'))
 			return (-1);
 		else
-			return (i);
-//		handle_special_no_conv(format[0], i, ap, *flag);
+		{
+			flag->lenght_print += my_putchar_printf(format[i], *flag);
+			return (i + 1);
+		}
 	}
 	else
 		flag->lenght_print += handle_conversions(format[i], ap, *flag);
