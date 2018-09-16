@@ -427,7 +427,7 @@ int			analyze_and_printf(const char *format, va_list ap, t_flag *flag)
 		&& format[i] != 'X' && format[i] != 'c' && format[i] != 'C' && format[i] != '%' 
 		&& format[i] != 's' && format[i] != 'S' && format[i] != 'p')
 	{
-		if (format[i + 1] == '\0')
+		if (format[i + 1] == '\0' && format[i + 1] <= 'a' && format[i + 1] >= 'z')
 			return (-1);
 		else
 			return (i);
