@@ -1511,12 +1511,23 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 
 	ft_printf("CAS 10\n");
-	ft_printf("ft_printf : {%%o} : ");
-	k = ft_printf("%hho", -42);
+	ft_printf("ft_printf : {%%o, %%ho, %%hho} : ");
+	k = ft_printf("%o, %ho, %hho", -42, 30, -42);
 	printf("\nret : %d\n", k);
-	ft_printf("   printf : {%%.4x} : ");
-	k = printf("%hho", -42);
+	ft_printf("   printf : {%%o, %%ho, %%hho} : ");
+	k = printf("%o, %ho, %hho", -42, 30, -42);
 	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 11\n");
+	ft_printf("ft_printf : {%%hho} : ");
+	k = ft_printf("%ho, %hho", 30, -25);
+	ft_printf("\n%hho", -25);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : {%%hho} : ");
+	k = printf("%ho, %hho", 30, -25);
+	printf("\nret : %d\n", k);
+	
+	
 		/*
 		 * Long et Long Long sur Unix ont la meme taille, et du coup le meme intervalle	 *
 		 */
