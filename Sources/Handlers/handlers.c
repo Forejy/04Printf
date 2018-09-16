@@ -427,9 +427,10 @@ int			analyze_and_printf(const char *format, va_list ap, t_flag *flag)
 		&& format[i] != 'X' && format[i] != 'c' && format[i] != 'C' && format[i] != '%' 
 		&& format[i] != 's' && format[i] != 'S' && format[i] != 'p')
 	{
-		if (format[i] == '\0' 
-			|| (format[i] >= 'a' && format[i] <= 'z'))
+		if (format[i] >= 'a' && format[i] <= 'z')
 			return (-1);
+		else if (format[i] == '\0')
+			return (i);
 		else
 		{
 			flag->lenght_print += my_putchar_printf(format[i], *flag);
