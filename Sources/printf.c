@@ -24,6 +24,6 @@ int			ft_printf(const char *format, ...)
 	ret = 0;
 	va_list		ap;
 	va_start(ap, format);
-	ret = handle_format(format, ap);
+	ret = handle_format(format, &ap);
 	return (ret);
 }

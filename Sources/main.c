@@ -1228,10 +1228,7 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("|%%lld| : |%lld|\n", -9223372036854775808);
 	ft_printf("|%%jd| : |%jd|\n", -9223372036854775808);
 	ft_printf("|%%zd| : |%zd|\n", -1);
-	ft_printf("|%%d %%d| : |%d %d|\n", 1, -2);
-	ft_printf("|%%d %%d %%d| : |%d %d %d|\n", 1, -2, 33);
-	ft_printf("|%%d %%d %%d %%d| : |%d %d %d %d|\n", 1, -2, 33, 42);
-	ft_printf("|%%d %%d %%d %%dgg!| |%d %d %d %d gg!|\n", 1, -2, 33, 42, 0);
+
 	ft_printf("|%%-10.5d| : |%-10.5d|\n", 4242);
 	ft_printf("|%%+10.5d| : |%+10.5d|\n", 4242);
 	ft_printf("|%%-+10.5d| : |%-+10.5d|\n", 4242);
@@ -1512,7 +1509,7 @@ ft_printf(" +d : % +d \n", 0);
 
 	ft_printf("CAS 10\n");
 	ft_printf("ft_printf : {%%o, %%ho, %%hho} : ");
-	k = ft_printf("%o, %ho, %hho", -42, -42, -42);
+	k = ft_printf("%o, %hho, %hho", -42, -42, -556);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : {%%o, %%ho, %%hho} : ");
 	k = printf("%o, %ho, %hho", -42, -42, -42);
@@ -1526,10 +1523,13 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : {%%hho} : ");
 	k = printf("%ho, %hho", 30, -25);
 	printf("\nret : %d\n", k);
-	
-	
-		/*
-		 * Long et Long Long sur Unix ont la meme taille, et du coup le meme intervalle	 *
-		 */
+ 
+	ft_printf("%d%hho%o\n", -25, -42, 50);
+
+
+
+	/*
+	 * Long et Long Long sur Unix ont la meme taille, et du coup le meme intervalle	 *
+	 */
 }
 

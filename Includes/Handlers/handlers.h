@@ -31,7 +31,7 @@ typedef struct		s_flag
 	size_t 	lenght_print;
 }					t_flag;
 
-size_t			handle_format(const char *format, va_list ap);
-size_t			handle_conversions(char conversion, va_list ap, t_flag flag);
+size_t			handle_format(const char *format, va_list *ap);
+size_t			handle_conversions(char conversion, va_list *ap, t_flag flag);
 
 #endif
