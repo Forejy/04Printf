@@ -2,38 +2,38 @@
 #include "../../Includes/Handlers/handlers.h"
 #include "../../Includes/Auxiliary_Functions/print_final_result_w_padding_and_conversion.h"
 
-size_t		my_putnbr_long_long(intmax_t nb, t_flag flag)
+size_t		my_putnbr_long_long(intmax_t nbr, t_flag flag)
 {
 	char			stock_number[20];
 	int				i;
-	uintmax_t		nbr;
+	uintmax_t		nb;
 	size_t				total_len;
 
 	flag.conv_d = 1;
 	i = 19;
-	if (nb < 0)
-		nbr = -nb;
+	if (nbr < 0)
+		nb = -nbr;
 	else
-		nbr = nb;
-	if (nbr == 0 && flag.precision != 0)
+		nb = nbr;
+	if (nb == 0 && flag.precision != 0)
 	{
 		stock_number[i] = '0';
 		i--;
 	}
-	while (nbr > 0)
+	while (nb > 0)
 	{
-		stock_number[i] = (char) ((nbr % 10) + '0');
-		nbr = nbr / 10;
+		stock_number[i] = (char) ((nb % 10) + '0');
+		nb = nb / 10;
 		i--;
 	}
-	if (nb < 0)
+	if (nbr < 0)
 	{
 		stock_number[i] = '-';
 		i--;
 	}
-	if (nb >= 0 && flag.more)
+	if (nbr >= 0 && flag.more)
 		stock_number[i--]= '+';
-	if (nb >= 0 && flag.champs == 0 && flag.blank && !flag.more)
+	if (nbr >= 0 && flag.champs == 0 && flag.blank && !flag.more)
 	{
 		stock_number[i] = ' ';
 		i--;	
