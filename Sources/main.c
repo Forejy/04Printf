@@ -1459,7 +1459,6 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("% Zoooo");
 	printf("\nret : %d\n", k);
 	
-	ft_printf("%s %s", "this", "is");
 	return (0);
 		/*
 		 * Long et Long Long sur Unix ont la meme taille, et du coup le meme intervalle	 *

@@ -430,7 +430,7 @@ int			analyze_and_printf(const char *format, va_list ap, t_flag *flag)
 		if (format[i + 1] == '\0')
 			return (-1);
 		else
-			return (-2);
+			return (i);
 //		handle_special_no_conv(format[0], i, ap, *flag);
 	}
 	else
