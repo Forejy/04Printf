@@ -1504,10 +1504,10 @@ ft_printf(" +d : % +d \n", 0);
 
 	ft_printf("CAS 9\n");
 	ft_printf("ft_printf : {%%.4x} : ");
-	k = ft_printf("%.4x", 42);
+	k = ft_printf("%.4x", 424242);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : {%%.4x} : ");
-	k = printf("%.4x", 42);
+	k = printf("%.4x", 424242);
 	printf("\nret : %d\n", k);
 		/*
 		 * Long et Long Long sur Unix ont la meme taille, et du coup le meme intervalle	 *
