@@ -1576,6 +1576,15 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : {%%.2s is a string} : ");
 	k = printf("{%.2s is a string}", "this");
 	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 9\n");
+	ft_printf("ft_printf : {%%.4x} : ");
+	k = ft_printf("%.4x", 42);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : {%%.4x} : ");
+	k = printf("%.4x", 42);
+	printf("\nret : %d\n", k);
+	
 	return (0);
 
 
