@@ -36,7 +36,7 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 			len_padding--;
 			write(1, " ", 1);
 		}
-		if ((flag.precision >= 0 || flag.unicode_s) && !flag.character_or_string)
+		if (flag.precision >= 0 && !flag.character_or_string && !flag.unicode_s)
 			while (len_padding-- > 0)
 				write(1, " ", 1);
 		else if (!flag.zero || flag.zero && flag.less)
@@ -53,7 +53,7 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 				write(1, *stock, 2);
 				*stock = *stock + 2;
 				retenue = 2;
-			if (flag.precision == -1)
+			if (flag.precision <= 0)
 				while (len_padding-- > 0)
 					write(1, "0", 1);
 		}

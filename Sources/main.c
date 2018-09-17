@@ -1611,6 +1611,14 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %%05.s : ");
 	k = printf("%05.s", "5465");
 	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 500\n");
+	ft_printf("ft_printf : %%05.s : ");
+	k = ft_printf("%05.S", L"42 c'est cool");
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%05.s : ");
+	k = printf("%05.S", L"42 c'est cool");
+	printf("\nret : %d\n", k);
 	return (0);
 
 
