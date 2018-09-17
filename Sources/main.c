@@ -1622,10 +1622,17 @@ ft_printf(" +d : % +d \n", 0);
 
 	ft_printf("CAS 500\n");
 	ft_printf("ft_printf : %%30S : ");
-	k = ft_printf("{%30s}", "ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	k = ft_printf("{%S}", "ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %%30S : ");
-	k = printf("{%30s}", "ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	k = printf("{%S}", "ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	printf("\nret : %d\n", k);
+	ft_printf("CAS 500\n");
+	ft_printf("ft_printf : %%30S : ");
+	k = ft_printf("{%S}", "ÊM");
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%30S : ");
+	k = printf("{%S}", "ÊM");
 	printf("\nret : %d\n", k);
 	return (0);
 
