@@ -56,6 +56,8 @@ size_t		my_putstr_printf(const char *str, t_flag flag)
 //		len_str = (size_t)flag_precision;
 	if (flag.champs == 0)
 	{
+		if (flag_precision > -1 && flag_precision < len_str)
+			len_str = (size_t)flag_precision;
 		write(1, str, len_str);
 		total_len = len_str;
 	}

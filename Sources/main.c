@@ -1568,6 +1568,14 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : {%%.2d} : ");
 	k = printf("{%.3d}", 4242);
 	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 17\n");
+	ft_printf("ft_printf : {%%.2s is a string} : ");
+	k = ft_printf("{%.2s is a string}", "this");
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : {%%.2s is a string} : ");
+	k = printf("{%.2s is a string}", "this");
+	printf("\nret : %d\n", k);
 	return (0);
 
 
