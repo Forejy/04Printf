@@ -1554,11 +1554,11 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 
 	ft_printf("CAS 15\n");
-	ft_printf("ft_printf : {%%4.15d} : ");
-	k = ft_printf("{%4.15d}", 42);
+	ft_printf("ft_printf : {%% 10.5d} : ");
+	k = ft_printf("{% 10.5d}", 4242);
 	printf("\nret : %d\n", k);
-	ft_printf("   printf : {%%4.15d} : ");
-	k = printf("{%4.15d}", 42);
+	ft_printf("   printf : {%% 10.5d} : ");
+	k = printf("{% 10.5d}", 4242);
 	printf("\nret : %d\n", k);
 	
 	return (0);
