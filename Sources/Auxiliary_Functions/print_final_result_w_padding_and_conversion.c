@@ -103,7 +103,8 @@ int			compute_padding(const char *stock, t_flag flag, int len_arg, int len_preci
 	int			len_champs;
 
 	len_champs = flag.champs;
-	if (len_precision >= (len_arg - flag.pointer) && flag.character_or_string == 0)//Si l'argument est un pointeur, je supprimne le '0x' de sa longueur
+	if (len_precision >= (len_arg - flag.pointer) && flag.character_or_string == 0 
+		&& flag.unicode_c == 0 && flag.unicode_s == 0)//Si l'argument est un pointeur, je supprimne le '0x' de sa longueur
 	{
 		len_padding = len_champs - len_precision;
 		if (*stock == '-' || (*stock == '+'))
@@ -143,11 +144,15 @@ size_t		print_final_result(t_flag flag, const char *stock, int len_argument, int
 		print_padding(flag, &stock, len_padding);
 	if (len_padding < 0)
 		len_padding = 0;
-	if (len_precision < 0)
-		len_precision = 0;
-	if (flag.hexa && flag.hash && len_precision > len_padding && len_precision > (len_argument - flag.hexa) 
-		|| len_precision > len_argument && flag.character_or_string == 0)
+//	if (len_precision < 0)
+//		len_precision = 0;
+	if ((flag.hexa && flag.hash && len_precision > len_padding && (len_precision > (len_argument - flag.hexa) 
+		|| len_precision > len_argument )) //&& flag.character_or_string == 0
+		|| ((flag.character_or_string == 1 || flag.unicode_s || flag.unicode_c) && len_precision != - 1
+		&& len_precision < len_arg))
 		total_len += (size_t)len_padding + (size_t)len_precision;
+	else if (flag.character_or_string == 1 && len_precision == 0)
+		total_len += len_padding;
 	else
 		total_len += (size_t)len_padding + (size_t)len_argument;
 	if (((flag.pointer == 2 || (flag.hexa == 2 && flag.hash) && flag.precision >= 0) && 

@@ -1538,19 +1538,19 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 
 	ft_printf("CAS 14\n");
-	ft_printf("ft_printf : {%%05.S} : ");
-	k = ft_printf("{%5.S}", L"42");
+	ft_printf("ft_printf : {%%05.3S} : ");
+	k = ft_printf("{%5S}", L"");
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : {%%05.S} : ");
-	k = printf("{%5.S}", L"42");
+	k = printf("{%5S}", L"");
 	printf("\nret : %d\n", k);
 
-	ft_printf("CAS 14\n");
+	ft_printf("CAS 15\n");
 	ft_printf("ft_printf : {%%05.S} : ");
-	k = ft_printf("{%5.s}", "42");
+	k = ft_printf("{%5.3s}", "");
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : {%%05.S} : ");
-	k = printf("{%5.s}", "42");
+	k = printf("{%5.3s}", "");
 	printf("\nret : %d\n", k);
 	return (0);
 
