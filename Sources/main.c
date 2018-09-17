@@ -1523,10 +1523,19 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : {%%hho} : ");
 	k = printf("%ho, %hho", 30, -25);
 	printf("\nret : %d\n", k);
- 
+
+	ft_printf("CAS 12\n");
 	ft_printf("%d%hho%o\n", -25, -42, 50);
 	ft_printf("%15d%hho%o\n", -25, -42, 50);
 	printf("%15d%hho%o\n", -25, -42, 50);
+
+	ft_printf("CAS 13\n");
+	ft_printf("ft_printf : {%%hhu %%hhu} : ");
+	k = ft_printf("%hhu, %hhu", 0, UCHAR_MAX + 42);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : {%%hhu, %%hhu} : ");
+	k = printf("%hhu, %hhu", 0, UCHAR_MAX + 42);
+	printf("\nret : %d\n", k);
 
 	return (0);
 
