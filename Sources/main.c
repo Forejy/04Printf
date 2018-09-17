@@ -1552,6 +1552,15 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : {%%05.S} : ");
 	k = printf("{%5.3s}", "");
 	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 15\n");
+	ft_printf("ft_printf : {%%4.15d} : ");
+	k = ft_printf("{%4.15d}", 42);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : {%%4.15d} : ");
+	k = printf("{%4.15d}", 42);
+	printf("\nret : %d\n", k);
+	
 	return (0);
 
 
