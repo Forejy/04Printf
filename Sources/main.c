@@ -1592,6 +1592,14 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : {%%.4x} : ");
 	k = printf("%.4x", 424242);
 	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 9\n");
+	ft_printf("ft_printf : {%%15.4x} : ");
+	k = ft_printf("%15.4x", 42);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : {%%15.4x} : ");
+	k = printf("%15.4x", 42);
+	printf("\nret : %d\n", k);
 	return (0);
 
 
