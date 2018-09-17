@@ -79,7 +79,7 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 	int			i;
 	int			j;
 	int			k;
-	char		*string;
+	unsigned char		*string;
 	t_bin_list	*temp;
 	//char		string[5];
 

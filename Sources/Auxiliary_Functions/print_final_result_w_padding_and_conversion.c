@@ -29,7 +29,8 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 		(*stock)++;
 		retenue++;
 	}//Cas si on a pas de precision, et pas de padding ou un flag '0'
-	if (len_padding > 0 && flag.character_or_string != 2)
+	if (len_padding > 0)
+		//&& !flag.unicode_s
 	{
 		if (flag.zero && flag.blank && flag.conv_d)
 		{
