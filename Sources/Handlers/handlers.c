@@ -108,9 +108,9 @@ size_t			handle_conversions(char conversion, va_list *ap, t_flag flag)
 	else if (conversion == 'o')
 	{
 		if (lenght_conv == H)
-			total_len = my_put_octal((unsigned short)(va_arg(*ap, long long)), flag);
+			total_len = my_put_octal((unsigned short)(va_arg(*ap,  unsigned int)), flag);
 		else if (lenght_conv == HH)
-			total_len = my_put_octal((unsigned char)(va_arg(*ap, long long)), flag);
+			total_len = my_put_octal((unsigned char)(va_arg(*ap,  unsigned int)), flag);
 		else if (lenght_conv == L)
 			total_len = my_put_octal(va_arg(*ap, unsigned long), flag);
 		else if (lenght_conv == LL)
@@ -182,7 +182,6 @@ void			initialize_t_flag(t_flag	*flag)
 	flag->unicode_s = 0;
 	flag->conv_d = 0;
 	flag->lenght_conv = 0;
-	flag->lenght_print = 0;
 }
 
 int			test_flag(char format_flag, t_flag	*flag)
@@ -413,6 +412,7 @@ int			analyze_and_printf(const char *format, va_list *ap, t_flag *flag)
 //		flag->lenght_print = -1;
 		return (0);
 	}
+	initialize_t_flag(flag);
 	while (i > j)
 	{
 		j = i;
@@ -450,7 +450,7 @@ size_t			handle_format(const char *format, va_list *ap)
 
 	i = 0;
 	ret = 0;
-	initialize_t_flag(&flag);
+	flag.lenght_print = 0;
 	if (format != NULL)
 	{
 		while (format[i] != '\0')
