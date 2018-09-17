@@ -50,7 +50,7 @@ size_t		my_putstr_printf(const char *str, t_flag flag)
 	len_str = 0;
 	if (str != NULL)
 		len_str = my_strlen(str);
-	flag.character_or_string = 1;
+	flag.character_or_string = 2;
 	flag_precision = flag.precision;
 //	if (flag_precision > -1 && flag_precision < len_str)
 //		len_str = (size_t)flag_precision;

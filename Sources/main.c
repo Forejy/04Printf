@@ -1406,12 +1406,7 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%2.9p", 1234);
 	printf("\nret : %d\n", k);
 
-	ft_printf("ft_printf : %%05.c : ");
-	k = ft_printf("%05.c", 0);
-	printf("\nret : %d\n", k);
-	ft_printf("   printf : %%05.c : ");
-	k = printf("%05.c", 0);
-	printf("\nret : %d\n", k);
+
 
 	ft_printf("ft_printf : %%05.s : ");
 	k = ft_printf("%05.s", 0);
@@ -1599,6 +1594,22 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : {%%15.4x} : ");
 	k = printf("%15.4x", 42);
+	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 9\n");
+	ft_printf("ft_printf : %%05.c : ");
+	k = ft_printf("%05.c", 0);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%05.c : ");
+	k = printf("%05.c", 0);
+	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 9\n");
+	ft_printf("ft_printf : %%05.s : ");
+	k = ft_printf("%05.s", "5465");
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%05.s : ");
+	k = printf("%05.s", "5465");
 	printf("\nret : %d\n", k);
 	return (0);
 

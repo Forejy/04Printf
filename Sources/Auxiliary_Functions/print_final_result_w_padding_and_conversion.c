@@ -83,7 +83,7 @@ void		print_result_w_precision(t_flag flag, const char *stock, int len_precision
 		while (len_precision-- > 0)
 			write(1, "0", 1);
 	}
-	if (stock && (flag.character_or_string == 1 || flag.unicode_c || flag.unicode_s) && len_precision >= 0
+	if (stock && (flag.character_or_string == 2 || flag.unicode_c || flag.unicode_s) && len_precision >= 0
 		&& len_precision < len_argument)
 		write(1, stock, (size_t) (len_precision));
 	else if (flag.unicode_c == 1)
@@ -110,7 +110,7 @@ int			compute_padding(const char *stock, t_flag flag, int len_arg, int len_preci
 		if (*stock == '-' || (*stock == '+'))
 			len_padding -= 1;
 	}
-	else if (len_precision >= 0 && len_precision <= len_arg && (flag.character_or_string == 1 
+	else if (len_precision >= 0 && len_precision <= len_arg && (flag.character_or_string == 2 
 			 || flag.unicode_c || flag.unicode_s))
 		len_padding = len_champs - len_precision;
 	else if (flag.hash == 2 && flag.zero && !flag.less && flag.precision == -1 && !flag.hexa)
@@ -148,13 +148,13 @@ size_t		print_final_result(t_flag flag, const char *stock, int len_argument, int
 //		len_precision = 0;
 	if ((flag.hexa  && (len_precision > (len_argument - flag.hash) 
 		|| len_precision > len_argument )) //&& flag.character_or_string == 0
-		|| ((flag.character_or_string == 1 || flag.unicode_s || flag.unicode_c) && len_precision != - 1
+		|| ((flag.character_or_string == 2 || flag.unicode_s || flag.unicode_c) && len_precision != - 1
 		&& len_precision < len_arg) 
 		|| (!flag.hexa && !flag.unicode_s && !flag.unicode_c && !flag.character_or_string 
 		//&& ((len_precision > len_padding) && len_precision >= len_argument 
 		&& len_precision > len_argument))
 		total_len += (size_t)len_padding + (size_t)len_precision;
-	else if (flag.character_or_string == 1 && len_precision == 0) 
+	else if (flag.character_or_string == 2 && len_precision == 0) 
 		total_len += len_padding;
 	else
 		total_len += (size_t)len_padding + (size_t)len_argument;
