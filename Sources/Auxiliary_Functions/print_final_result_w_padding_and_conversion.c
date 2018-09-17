@@ -70,7 +70,7 @@ void		print_result_w_precision(t_flag flag, const char *stock, int len_precision
 	int		i;
 
 	retenue = 0;
-	if (len_precision > 0 && flag.character_or_string == 0)
+	if (len_precision > 0 && flag.character_or_string == 0 && flag.unicode_c == 0 && flag.unicode_s == 0)
 	{
 		if ((flag.pointer == 2 || (flag.hexa == 2 && flag.hash) && flag.champs < len_precision))
 			//&& flag.champs == 0)
@@ -83,7 +83,7 @@ void		print_result_w_precision(t_flag flag, const char *stock, int len_precision
 		while (len_precision-- > 0)
 			write(1, "0", 1);
 	}
-	if (stock && flag.character_or_string == 1 && len_precision > 0
+	if (stock && (flag.character_or_string == 1 || flag.unicode_c || flag.unicode_s) && len_precision >= 0
 		&& len_precision < len_argument)
 		write(1, stock, (size_t) (len_precision));
 	else if (flag.unicode_c == 1)
@@ -97,21 +97,20 @@ void		print_result_w_precision(t_flag flag, const char *stock, int len_precision
 }
 
 
-int			compute_padding(const char *stock, t_flag flag, int len_arg)
+int			compute_padding(const char *stock, t_flag flag, int len_arg, int len_precision)
 {
 	int			len_padding;
-	int			len_precision;
 	int			len_champs;
 
 	len_champs = flag.champs;
-	len_precision = flag.precision;
 	if (len_precision >= (len_arg - flag.pointer) && flag.character_or_string == 0)//Si l'argument est un pointeur, je supprimne le '0x' de sa longueur
 	{
 		len_padding = len_champs - len_precision;
 		if (*stock == '-' || (*stock == '+'))
 			len_padding -= 1;
 	}
-	else if (len_precision > 0 && len_precision <= len_arg && flag.character_or_string == 1)
+	else if (len_precision >= 0 && len_precision <= len_arg && (flag.character_or_string == 1 
+			 || flag.unicode_c || flag.unicode_s))
 		len_padding = len_champs - len_precision;
 	else if (flag.hash == 2 && flag.zero && !flag.less && flag.precision == -1 && !flag.hexa)
 		len_padding = len_champs - len_arg + flag.pointer + flag.hash;
@@ -127,7 +126,7 @@ size_t		print_final_result(t_flag flag, const char *stock, int len_argument, int
 	size_t		total_len;
 
 	len_precision = flag.precision;
-	len_padding = compute_padding(stock, flag, len_arg);
+	len_padding = compute_padding(stock, flag, len_arg, len_precision);
 	total_len = 0;
 	if (stock && (*stock == '-' || *stock == '+') && flag.character_or_string == 0)
 		total_len++;

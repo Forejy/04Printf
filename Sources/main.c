@@ -1537,6 +1537,21 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%hhu, %hhu", 0, UCHAR_MAX + 42);
 	printf("\nret : %d\n", k);
 
+	ft_printf("CAS 14\n");
+	ft_printf("ft_printf : {%%05.S} : ");
+	k = ft_printf("{%5.S}", L"42");
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : {%%05.S} : ");
+	k = printf("{%5.S}", L"42");
+	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 14\n");
+	ft_printf("ft_printf : {%%05.S} : ");
+	k = ft_printf("{%5.s}", "42");
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : {%%05.S} : ");
+	k = printf("{%5.s}", "42");
+	printf("\nret : %d\n", k);
 	return (0);
 
 
