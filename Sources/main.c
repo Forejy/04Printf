@@ -1701,21 +1701,7 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("{%30S}", L"我是一只猫。");
 	printf("\nret : %d\n", k);
 
-	ft_printf("CAS 5100\n");
-	ft_printf("ft_printf : %%05p : ");
-	k = ft_printf("{%05p}", 0);
-	printf("\nret : %d\n", k);
-	ft_printf("   printf : %%05p : ");
-	k = printf("{%05p}", 0);
-	printf("\nret : %d\n", k);
 
-	ft_printf("CAS 5100\n");
-	ft_printf("ft_printf : %%05p : ");
-	k = ft_printf("{%05p}", 5);
-	printf("\nret : %d\n", k);
-	ft_printf("   printf : %%05p : ");
-	k = printf("{%05p}", 5);
-	printf("\nret : %d\n", k);
 
 	ft_printf("CAS 5100\n");
 	ft_printf("ft_printf : %%0.5p : ");
@@ -1732,6 +1718,15 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %%030x : ");
 	k = printf("{%030x}", 0xFFFF);
 	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 5200\n");
+	ft_printf("ft_printf : %%05p : ");
+	k = ft_printf("{%05p}", 0);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%05p : ");
+	k = printf("{%05p}", 0);
+	printf("\nret : %d\n", k);
+
 	return (0);
 
 
