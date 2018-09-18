@@ -116,7 +116,7 @@ int			compute_padding(const char *stock, t_flag flag, int len_arg, int len_preci
 		len_padding = len_champs - len_precision;
 	else if (flag.hash == 2 && flag.zero && !flag.less && flag.precision == -1 && !flag.hexa)
 		len_padding = len_champs - len_arg + flag.pointer + flag.hash;
-	else
+	else if (!flag.unicode_s || (flag.unicode_s && len_champs > len_arg))
 		len_padding = len_champs - len_arg + flag.pointer; //J'ajoute flag.pointer pour annuler la soustraction finale
 	return (len_padding - flag.pointer);
 }
