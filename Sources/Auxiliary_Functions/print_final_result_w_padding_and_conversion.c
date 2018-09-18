@@ -65,10 +65,12 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 	return (retenue);
 }
 
-void		print_result_w_precision(t_flag flag, const char *stock, int len_precision, int len_argument)
+int		print_result_w_precision(t_flag flag, const char *stock, int len_precision, int len_argument)
 {
-	int		retenue;
 	int		i;
+	int		retenue;
+	int		temp;
+	int		ret;
 
 	i = 0;
 	retenue = 0;
@@ -82,8 +84,13 @@ void		print_result_w_precision(t_flag flag, const char *stock, int len_precision
 			stock = stock + 2;
 			retenue = 2;
 		}
-		len_precision = len_precision - len_argument + retenue;
-		while (len_precision-- > 0)
+		temp = len_precision - len_argument + retenue;
+		if (flag.champs < len_precision && flag.blank)
+		{
+			write(1, " ", 1);
+			ret += 1;
+		}
+		while (temp-- > 0)
 			write(1, "0", 1);
 	}
 	if (stock && (flag.character_or_string == 2 || flag.unicode_c || flag.unicode_s) && len_precision >= 0
@@ -97,6 +104,7 @@ void		print_result_w_precision(t_flag flag, const char *stock, int len_precision
 			write(1, &stock[i++], 1);
 	else if (stock)
 			write(1, stock, (size_t) (len_argument - retenue));
+	return(ret);
 }
 
 
@@ -106,7 +114,7 @@ int			compute_padding(const char *stock, t_flag flag, int len_arg, int len_preci
 	int			len_champs;
 
 	len_champs = flag.champs;
-	if (len_precision >= (len_arg - flag.pointer) && flag.character_or_string == 0 
+	if (len_champs > 0 && len_precision >= (len_arg - flag.pointer) && flag.character_or_string == 0 
 		&& flag.unicode_c == 0 && flag.unicode_s == 0)//Si l'argument est un pointeur, je supprimne le '0x' de sa longueur
 	{
 		len_padding = len_champs - len_precision;
@@ -142,7 +150,7 @@ size_t		print_final_result(t_flag flag, const char *stock, int len_argument, int
 			stock++;
 			len_argument--;
 		}
-	print_result_w_precision(flag, stock, len_precision, len_argument);
+	total_len += print_result_w_precision(flag, stock, len_precision, len_argument);
 	if (flag.less == 1)
 		print_padding(flag, &stock, len_padding);
 	if (len_padding < 0)
