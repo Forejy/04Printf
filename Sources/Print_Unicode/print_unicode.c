@@ -71,6 +71,31 @@ int			count_char_per_wint_t(wchar_t *string_wchar, int **number_of_char_per_wint
 	return (number_of_bytes);
 }
 
+int				adapts_precision_to_numbers_of_bytes(int presumed_precision, int *number_of_char_per_wint_t)
+{
+	int		i;
+	int		temp_bytes;
+	int		temp_precision;
+	
+	i = 0;
+	temp_bytes = number_of_char_per_wint_t[0];
+	temp_precision = presumed_precision;
+	while (temp_precision > 0)
+	{
+		if (temp_bytes == 0)
+		{
+			i++;
+			temp_bytes = number_of_char_per_wint_t[i];
+		}
+		temp_precision--;
+		temp_bytes--;
+	}
+	if (temp_bytes > 0)
+			return (presumed_precision - (number_of_char_per_wint_t[i] - temp_bytes));
+	else
+		return (presumed_precision);
+}
+
 size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 {
 	size_t		total_len;
@@ -132,7 +157,8 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 	 \240\232\341
 	 */
 	
-	
+	if (flag.precision > -1 && flag.precision < number_of_bytes)
+		flag.precision = adapts_precision_to_numbers_of_bytes(flag.precision, number_of_char_per_wint_t);
 	total_len = print_final_result(flag, string, number_of_bytes, number_of_bytes);
 	//total_len = print_final_result(flag, string, 19 - i, 19 - i );
 	return (total_len);

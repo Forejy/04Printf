@@ -137,7 +137,7 @@ TODO				Tester et adapter la nouvelle fonction handle_format
 	DONETODO			J'en etais a TEST FLAG '0' ET CHAMPS : des caracteres etranges resortent de mon printf
 	DONETODO				Tester la modification faites pour la continuite de 0 dans la fonction test_champs
 	DONETODO			Resoudre l'erreur du moulitest 05, et se detendre quand je dois revenir sur mon travailler : C'est dur, mais je reussirai
-	TODO				Trouver pourquoi les wchar_t ne s'affichent pas de la meme facon avec champs et sans champs  
+	DONETODO				Trouver pourquoi les wchar_t ne s'affichent pas de la meme facon avec champs et sans champs  
 TODO				Supprimer tous les write qui ne sont pas dans la fonction finale
 DONETODO			gerer le flag -
 DONETODO			Gerer le flag %

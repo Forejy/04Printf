@@ -1777,6 +1777,16 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %%05s : ");
 	k = printf("{%05s}", "abc");
 	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 5600\n");
+	ft_printf("ft_printf : %%.4S : ");
+	k = ft_printf("{%.4S}", L"我是一只猫。");
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%.4S : ");
+	k = printf("{%.4S}", L"我是一只猫。");
+	printf("\nret : %d\n", k);
+
+
 	return (0);
 
 
