@@ -146,7 +146,7 @@ size_t		print_final_result(t_flag flag, const char *stock, int len_argument, int
 	if (len_padding < 0)
 		len_padding = 0;
 //	if (len_precision < 0)
-//		len_precision = 0;
+//		len_precib b sion = 0;
 	if ((flag.hexa  && (len_precision > (len_argument - flag.hash) 
 		|| len_precision > len_argument )) //&& flag.character_or_string == 0
 		|| ((flag.character_or_string == 2 || flag.unicode_s || flag.unicode_c) && len_precision != - 1
