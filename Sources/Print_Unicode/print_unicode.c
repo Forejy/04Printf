@@ -27,11 +27,11 @@ size_t			my_put_wint_t(int dec, t_flag flag)
 	int					number_of_bytes;
 	int					i;
 
+	flag.unicode_c = 1;
 	if (dec <= 128)
 		return (print_final_result(flag, (char *)&dec, 1, 1));
 	number_of_bytes = compute_minimum_number_of_bytes_in_utf8(dec);
 	temp = call_functions_to_convert_dec_to_bin_in_utf8(dec, number_of_bytes);
-	flag.unicode_c = 1;
 	i = 0;
 	while (i < number_of_bytes)
 	{

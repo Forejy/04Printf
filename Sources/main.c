@@ -1721,10 +1721,10 @@ ft_printf(" +d : % +d \n", 0);
 
 	ft_printf("CAS 5200\n");
 	ft_printf("ft_printf : %%05p : ");
-	k = ft_printf("{%05p}", 0);
+	k = ft_printf("{%01p}", 0);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %%05p : ");
-	k = printf("{%05p}", 0);
+	k = printf("{%01p}", 0);
 	printf("\nret : %d\n", k);
 
 	
@@ -1736,6 +1736,30 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %%05p : ");
 	k = printf("{%025p}", &kop);
+	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 5400\n");
+	ft_printf("ft_printf : %%.5C : ");
+	k = ft_printf("{%.5C}", 0);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%.5C : ");
+	k = printf("{%.5C}", 0);
+	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 5500\n");
+	ft_printf("ft_printf : %%.5C : ");
+	k = ft_printf("{%.5C}", 0);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%.5C : ");
+	k = printf("{%.5C}", 0);
+	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 5500\n");
+	ft_printf("ft_printf : %%.5C : ");
+	k = ft_printf("{%.5C}", L'Ê');
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%.5C : ");
+	k = printf("{%.5C}", L'Ê');
 	printf("\nret : %d\n", k);
 	return (0);
 
