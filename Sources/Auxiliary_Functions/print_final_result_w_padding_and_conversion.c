@@ -62,7 +62,7 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 			while (len_padding-- > 0)
 				write(1, "0", 1);
 	}
-	return (retenue);
+	return (0);
 }
 
 void		print_result_w_precision(t_flag flag, const char *stock, int len_precision, int len_argument)
@@ -96,7 +96,8 @@ void		print_result_w_precision(t_flag flag, const char *stock, int len_precision
 		while(i < len_argument)
 			write(1, &stock[i++], 1);
 	else if (stock)
-		write(1, stock, (size_t) (len_argument - retenue));
+		write(1, stock, (size_t) (len_argument - flag.pointer));
+//	write(1, stock, (size_t) (len_argument - retenue));
 }
 
 
