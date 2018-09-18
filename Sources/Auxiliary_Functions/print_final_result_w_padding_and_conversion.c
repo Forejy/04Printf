@@ -70,6 +70,7 @@ void		print_result_w_precision(t_flag flag, const char *stock, int len_precision
 	int		retenue;
 	int		i;
 
+	i = 0;
 	retenue = 0;
 	if (len_precision > 0 && flag.character_or_string == 0 && flag.unicode_c == 0 && flag.unicode_s == 0)
 	{
