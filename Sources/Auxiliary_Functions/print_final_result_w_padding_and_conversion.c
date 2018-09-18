@@ -167,7 +167,7 @@ size_t		print_final_result(t_flag flag, const char *stock, int len_argument, int
 	if (flag.hash && flag.zero && flag.champs > 0 && !flag.less && flag.hexa)
 		// && len_argument - 2 < flag.precision
 		total_len += 2;
-	if (flag.pointer == 2 && flag.champs > 0 && flag.zero)
+	if (flag.pointer == 2 && flag.champs > len_argument && flag.zero)
 		total_len += 2;
 	return (total_len);
 }
