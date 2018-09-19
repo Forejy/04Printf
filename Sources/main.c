@@ -1793,6 +1793,14 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %% 0.2d : ");
 	k = printf("{% 0.2d}", 0);
 	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 5800\n");
+	ft_printf("ft_printf : 42%% 24.28zd42 : ");
+	k = ft_printf("{42% 24.28zd42}", 0);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : 42%% 24.28zd42 : ");
+	k = printf("{42% 24.28zd42}", 0);
+	printf("\nret : %d\n", k);
 	return (0);
 
 
