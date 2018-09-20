@@ -1966,13 +1966,28 @@ ft_printf(" +d : % +d \n", 0);
 	k =   printf("%2.9p", 1234567);
 	printf("\nret : %d\n", k);
 
-
 	ft_printf("CAS 9000\n");
 	ft_printf("ft_printf : ^.^%% 27.34zd^.^ ");
 	k =   ft_printf("^.^% 27.34zd^.^", 0);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : ^.^%% 27.34zd^.^");
 	k =   printf("^.^% 27.34zd^.^", 0);
+	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 9000\n");
+	ft_printf("ft_printf : %%31.15hhd, 1004946852");
+	k =   ft_printf("%31.15hhd", 1004946852);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%31.15hhd, 1004946852");
+	k =   printf("%31.15hhd", 1004946852);
+	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 9000\n");
+	ft_printf("ft_printf : %%31.15hhd, 1004946852");
+	k =   ft_printf("%31.15d", -92);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%31.15d, 1004946852");
+	k =   printf("%31.15d", -92);
 	printf("\nret : %d\n", k);
 	return (0);
 }

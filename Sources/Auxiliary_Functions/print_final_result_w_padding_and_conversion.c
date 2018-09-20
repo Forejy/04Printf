@@ -81,7 +81,8 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument, 
 	ret = 0;
 	sign = 0;
 	len_precision = flag.precision;
-	if ((len_padding < len_precision || len_padding > len_precision ) && len_precision >= len_argument && stock && (*stock == '-' || *stock == '+') && flag.character_or_string == 0)
+	if (len_precision >= len_argument && stock && (*stock == '-' || *stock == '+') && flag.character_or_string == 0)
+		//&&(len_padding < len_precision || len_padding > len_precision ) && 
 	//len_padding > len_precision
 	{
 		write(1, stock, 1);
