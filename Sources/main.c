@@ -1385,12 +1385,7 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%.0p, %.p", 0, 0);
 	printf("\nret : %d\n", k);
 	
-	ft_printf("ft_printf : %%.5p : ");
-	k = ft_printf("%.5p", 0);
-	printf("\nret : %d\n", k);
-	ft_printf("   printf : %%.5p : ");
-	k = printf("%.5p", 0);
-	printf("\nret : %d\n", k);
+
 	
 	ft_printf("ft_printf : %%9.2p : ");
 	k = ft_printf("%9.2p", 1234);
@@ -2021,6 +2016,20 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %%.2hhi, -1096457820 : ");
 	k =   printf("{% .2hhi}", 92);
+	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %%.5p : ");
+	k = ft_printf("%.5p", 0);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%.5p : ");
+	k = printf("%.5p", 0);
+	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %%.5p : ");
+	k = ft_printf("%.0p", 0);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%.5p : ");
+	k = printf("%.0p", 0);
 	printf("\nret : %d\n", k);
 	return (0);
 }

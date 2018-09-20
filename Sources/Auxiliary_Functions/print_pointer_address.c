@@ -11,7 +11,7 @@ size_t		my_putaddress(uintmax_t nb, t_flag flag)
 	base_hexa = "0123456789abcdef";
 	i = 19;
 	flag.pointer = 2;
-	if (nb == 0 && flag.precision == -1)//On met un 0 seulement s'il n'y a pas de precision
+	if (nb == 0 && flag.precision != 0)
 		stock_number[i--] = '0';
 	while (nb > 0)
 	{
