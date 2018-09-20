@@ -1795,12 +1795,89 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 
 	ft_printf("CAS 5800\n");
-	ft_printf("ft_printf : ^.^/%%42.53zd^.^/ : ");
-	k = ft_printf("{^.^/%42.53zd^.^/}", 0);
+	ft_printf("ft_printf : %%42.53zd : ");
+	k = ft_printf("{% 34.50hhd}", -5);
 	printf("\nret : %d\n", k);
-	ft_printf("   printf : ^.^/%%42.53zd^.^/ : ");
-	k = printf("{^.^/%42.53zd^.^/}", 0);
+	ft_printf("   printf : %%42.53zd : ");
+	k = printf("{% 34.50hhd}", -5);
 	printf("\nret : %d\n", k);
+
+
+
+    ft_printf("CAS 5800\n");
+    ft_printf("ft_printf : %%42.53zd : ");
+    k = ft_printf("{%60.10d}", -1044492945);
+    printf("\nret : %d\n", k);
+    ft_printf("   printf : %%42.53zd : ");
+    k = printf("{%60.10d}", -1044492945);
+    printf("\nret : %d\n", k);
+
+
+    ft_printf("CAS 5800\n");
+    ft_printf("ft_printf : %%42.53zd : ");
+    k = ft_printf("{% d}", -42);
+    printf("\nret : %d\n", k);
+    ft_printf("   printf : %%42.53zd : ");
+    k = printf("{% d}", -42);
+    printf("\nret : %d\n", k);
+
+    ft_printf("CAS 5800\n");
+    ft_printf("ft_printf : %%42.53zd : ");
+    k = ft_printf("%d", 42);
+    printf("\nret : %d\n", k);
+    ft_printf("   printf : %%42.53zd : ");
+    k = printf("%d", 42);
+    printf("\nret : %d\n", k);
+
+
+    ft_printf("CAS 5800\n");
+    ft_printf("ft_printf : %%S : ");
+    k = ft_printf("{% 03d}", 0);
+    printf("\nret : %d\n", k);
+    ft_printf("   printf : %%S : ");
+    k = printf("{% 03d}", 0);
+    printf("\nret : %d\n", k);
+
+    ft_printf("CAS 5800\n");
+    ft_printf("ft_printf : %%S : ");
+    k = ft_printf("{% d}", 9999);
+    printf("\nret : %d\n", k);
+    ft_printf("   printf : %%S : ");
+    k = printf("{% d}", 9999);
+    printf("\nret : %d\n", k);
+
+    ft_printf("CAS 5800\n");
+    ft_printf("ft_printf : %%S : ");
+    k = ft_printf("{%.4d}", -424242);
+    printf("\nret : %d\n", k);
+    ft_printf("   printf : %%S : ");
+    k = printf("{%.4d}", -424242);
+    printf("\nret : %d\n", k);
+
+    ft_printf("CAS 5800\n");
+    ft_printf("ft_printf : %%S : ");
+    k =   ft_printf("%+10.5d", 4242);
+    printf("\nret : %d\n", k);
+    ft_printf("   printf : %%S : ");
+    k =   printf("%+10.5d", 4242);
+    printf("\nret : %d\n", k);
+
+    ft_printf("CAS 5800\n");
+    ft_printf("ft_printf : %%S : ");
+    k =   ft_printf("%15.4d", -424242);
+    printf("\nret : %d\n", k);
+    ft_printf("   printf : %%S : ");
+    k =   printf("%15.4d", -424242);
+    printf("\nret : %d\n", k);
+
+    ft_printf("CAS 5800\n");
+    ft_printf("ft_printf : %%S : ");
+    k =   ft_printf("%15.4d", -42);
+    printf("\nret : %d\n", k);
+    ft_printf("   printf : %%S : ");
+    k =   printf("%15.4d", -42);
+    printf("\nret : %d\n", k);
+
 	return (0);
 
 

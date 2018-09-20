@@ -138,7 +138,8 @@ TODO				Tester et adapter la nouvelle fonction handle_format
 	DONETODO				Tester la modification faites pour la continuite de 0 dans la fonction test_champs
 	DONETODO			Resoudre l'erreur du moulitest 05, et se detendre quand je dois revenir sur mon travailler : C'est dur, mais je reussirai
 	DONETODO				Trouver pourquoi les wchar_t ne s'affichent pas de la meme facon avec champs et sans champs  
-TODO				Supprimer tous les write qui ne sont pas dans la fonction finale
+     TODO                   Gerer le cas printf("%15.4d", -42)
+TODO			Supprimer tous les write qui ne sont pas dans la fonction finale
 DONETODO			gerer le flag -
 DONETODO			Gerer le flag %
 TODO				Tester puis gerer la conversion %p avec un pointeur null

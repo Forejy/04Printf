@@ -21,6 +21,6 @@ size_t		my_putaddress(uintmax_t nb, t_flag flag)
  	}
 	stock_number[i--] = 'x';
 	stock_number[i--] = '0';
-	total_len = print_final_result(flag, &stock_number[i + 1], 19 - i, 19 - i );
+	total_len = print_final_result(flag, &stock_number[i + 1], 19 - i);
 	return (total_len);
 }

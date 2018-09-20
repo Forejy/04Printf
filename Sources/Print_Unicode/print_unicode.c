@@ -29,7 +29,7 @@ size_t			my_put_wint_t(int dec, t_flag flag)
 
 	flag.unicode_c = 1;
 	if (dec <= 128)
-		return (print_final_result(flag, (char *)&dec, 1, 1));
+		return (print_final_result(flag, (char *)&dec, 1));
 	number_of_bytes = compute_minimum_number_of_bytes_in_utf8(dec);
 	temp = call_functions_to_convert_dec_to_bin_in_utf8(dec, number_of_bytes);
 	i = 0;
@@ -39,7 +39,7 @@ size_t			my_put_wint_t(int dec, t_flag flag)
 		i++;
 		temp = temp->next;
 	}
-	return (print_final_result(flag, codeset, i, i ));
+	return (print_final_result(flag, codeset, i));
 }
 
 /*
@@ -159,8 +159,7 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 	
 	if (flag.precision > -1 && flag.precision < number_of_bytes)
 		flag.precision = adapts_precision_to_numbers_of_bytes(flag.precision, number_of_char_per_wint_t);
-	total_len = print_final_result(flag, string, number_of_bytes, number_of_bytes);
-	//total_len = print_final_result(flag, string, 19 - i, 19 - i );
+	total_len = print_final_result(flag, string, number_of_bytes);
 	return (total_len);
 }
 

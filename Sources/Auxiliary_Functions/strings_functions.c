@@ -32,7 +32,7 @@ int			my_putchar_printf(char c, t_flag flag)
 		return (1);
 	}
 	else
-		total_len = print_final_result(flag, &c, 1, 1);
+		total_len = print_final_result(flag, &c, 1);
 	return(total_len);
 }
 
@@ -62,7 +62,7 @@ size_t		my_putstr_printf(const char *str, t_flag flag)
 		total_len = len_str;
 	}
 	else
-		total_len = print_final_result(flag, str, len_str, len_str);
+		total_len = print_final_result(flag, str, len_str);
 	return (total_len);
 }
 

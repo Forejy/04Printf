@@ -32,7 +32,7 @@ size_t			my_putnbr_hexa(uintmax_t nb, t_flag flag)
 			stock_number[i--] = '0';
 		}
 	}
-	total_len = total_len + print_final_result(flag, &stock_number[i + 1], 19 - i, 19 - i);
+	total_len = total_len + print_final_result(flag, &stock_number[i + 1], 19 - i);
 	return (total_len);
 
 }
@@ -66,7 +66,7 @@ size_t			my_putnbr_HEXA(uintmax_t nb, t_flag flag)
 			stock_number[i--] = '0';
 		}
 	}
-	total_len = total_len + print_final_result(flag, &stock_number[i + 1], 19 - i, 19 - i);
+	total_len = total_len + print_final_result(flag, &stock_number[i + 1], 19 - i);
 	return (total_len);
 
 }

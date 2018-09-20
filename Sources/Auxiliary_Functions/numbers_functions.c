@@ -33,7 +33,7 @@ size_t		my_putnbr_long_long(intmax_t nbr, t_flag flag)
 	}
 	if (nbr >= 0 && flag.more)
 		stock_number[i--]= '+';
-	total_len = print_final_result(flag, &stock_number[i + 1], 19 - i, 19 - i);
+	total_len = print_final_result(flag, &stock_number[i + 1], 19 - i);
 	return (total_len);
 
 }

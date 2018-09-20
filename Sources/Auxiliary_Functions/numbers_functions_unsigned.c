@@ -19,6 +19,6 @@ size_t			my_put_unsigned_long_long(uintmax_t nbr, t_flag flag)
 		nbr = nbr / 10;
 		i--;
 	}
-	total_len = print_final_result(flag, &stock_number[i + 1], 19 - i, 19 - i);
+	total_len = print_final_result(flag, &stock_number[i + 1], 19 - i);
 	return (total_len);
 }

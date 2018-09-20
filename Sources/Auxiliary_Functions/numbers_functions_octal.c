@@ -29,7 +29,7 @@ size_t			my_put_octal(uintmax_t nbr, t_flag flag)
 			i--;
 		}
 	}
-	total_len = print_final_result(flag, &stock_number[i + 1], 22 - i, 22 - i);
+	total_len = print_final_result(flag, &stock_number[i + 1], 22 - i);
 	return (total_len);
 
 }
