@@ -2031,6 +2031,13 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %%.5p : ");
 	k = printf("%.0p", 0);
 	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %%0 .2ji : ");
+	k = ft_printf("% .4ji", 10);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%0 .2ji : ");
+	k = printf("% .4ji", 10);
+	printf("\nret : %d\n", k);
 	return (0);
 }
 

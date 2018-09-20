@@ -102,8 +102,9 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument, 
 			Ox += 2;
 		}
 		temp = len_precision - len_argument + ret;
-		if (len_padding < len_argument && len_argument >= len_precision && flag.blank && !sign 
+		if (len_padding < len_argument && len_padding < len_precision && flag.blank && !sign 
 			&& stock && *stock != '-' && *stock != '+')
+		//&& len_argument >= len_precision
 		{
 			write(1, " ", 1);
 			ret += 1;
