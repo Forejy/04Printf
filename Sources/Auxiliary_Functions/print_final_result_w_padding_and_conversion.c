@@ -194,19 +194,12 @@ size_t		print_final_result(t_flag flag, const char *stock, int len_argument)
 	len_padding = compute_padding(stock, flag, len_argument, 42);
 	total_len = 0;
 	sign = 0;
-//	if (stock && (*stock == '-' || *stock == '+') && flag.character_or_string == 0)
-//		total_len++;
+
 	if (len_padding > 0 && flag.less == 0)
 	{
 		sign = print_padding(flag, &stock, len_padding);
 		len_argument = len_argument - sign;
 	}
-	//if (stock && (*stock == '-' || *stock == '+') && flag.character_or_string == 0)
-	//	{
-	//		write(1, stock, 1);
-	//		stock++;
-	//		len_argument--;
-	//	}
 	if (len_precision != -1)
 		total_len += print_result_w_precision(flag, stock, len_argument, len_padding);
 	else
@@ -215,8 +208,6 @@ size_t		print_final_result(t_flag flag, const char *stock, int len_argument)
 		print_padding(flag, &stock, len_padding);
 	if (len_padding < 0)
 		len_padding = 0;
-//	if (len_precision < 0)
-//		len_precib b sion = 0;
 	if ((flag.hexa  && (len_precision > (len_argument - flag.hash) 
 		|| len_precision > len_argument )) //&& flag.character_or_string == 0
 		|| (((flag.character_or_string == 2 || flag.unicode_s) && len_precision != -1 
@@ -232,18 +223,5 @@ size_t		print_final_result(t_flag flag, const char *stock, int len_argument)
 		total_len += len_padding;
 	else
 		total_len += (size_t)len_padding + (size_t)len_argument;
-	/*
-	if (((flag.pointer == 2 || (flag.hexa == 2 && flag.hash) && flag.precision >= 0) && 
-		len_argument >= 2 && len_argument - 2 < flag.precision))
-		total_len += 2;
-	if (flag.hash && flag.zero && flag.champs > 0 && !flag.less && flag.hexa)
-		// && len_argument - 2 < flag.precision
-		total_len += 2;
-	if (flag.pointer == 2 && flag.champs > len_argument && flag.zero)
-		total_len += 2;
-	 */
-	//if (sign == 1)
-	//	return (total_len + sign);
-	//else
-		return (total_len + sign);
+	return (total_len + sign);
 }
