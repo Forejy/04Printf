@@ -1965,7 +1965,14 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %%2.9p, 1234567 ");
 	k =   printf("%2.9p", 1234567);
 	printf("\nret : %d\n", k);
-
+	
+	ft_printf("CAS 800\n");
+	ft_printf("ft_printf : %% 5.3zd\", 0 : ");
+	k =   ft_printf("% 5.3zd", 0);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% 5.3zd\", 0 : ");
+	k =   printf("% 5.3zd", 0);
+	printf("\nret : %d\n", k);
 	return (0);
 }
 
