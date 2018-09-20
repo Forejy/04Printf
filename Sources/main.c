@@ -2005,7 +2005,23 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %% 24.22i, 2044020523 : ");
 	k =   printf("{% 24.22i}", 2044020523);
 	printf("\nret : %d\n", k);
-	
+
+
+	ft_printf("CAS 9100\n");
+	ft_printf("ft_printf : %%.2hhi, -1096457820 : ");
+	k =   ft_printf("{% .2hhi}", -1096457820);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%.2hhi, -1096457820 : ");
+	k =   printf("{% .2hhi}", -1096457820);
+	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 9100\n");
+	ft_printf("ft_printf : %%.2hhi, -1096457820 : ");
+	k =   ft_printf("{% .2hhi}", 92);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%.2hhi, -1096457820 : ");
+	k =   printf("{% .2hhi}", 92);
+	printf("\nret : %d\n", k);
 	return (0);
 }
 

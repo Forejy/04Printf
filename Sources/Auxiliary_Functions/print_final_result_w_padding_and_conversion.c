@@ -70,16 +70,14 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 int		print_result_w_precision(t_flag flag, const char *stock, int len_argument, int len_padding)
 {
 	int		i;
-	int		retenue;
 	int		temp;
 	int		ret;
 	int 	sign;
 	int 	len_precision;
 
 	i = 0;
-	retenue = 0;
 	ret = 0;
-	sign = 0;
+	sign = 0;	
 	len_precision = flag.precision;
 	if (len_precision >= len_argument && stock && (*stock == '-' || *stock == '+') && flag.character_or_string == 0)
 		//&&(len_padding < len_precision || len_padding > len_precision ) && 
@@ -98,10 +96,12 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument, 
 		{
 			write(1, stock, 2);
 			stock = stock + 2;
+			len_argument -= 2;
 			ret += 2;
 		}
 		temp = len_precision - len_argument + ret;
-		if (len_padding < len_argument && len_argument > len_precision && flag.blank && !sign)
+		if (len_padding < len_argument && len_argument >= len_precision && flag.blank && !sign 
+			&& stock && *stock != '-' && *stock != '+')
 		{
 			write(1, " ", 1);
 			ret += 1;
@@ -119,7 +119,7 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument, 
 		while(i < len_argument)
 			write(1, &stock[i++], 1);
 	else if (stock)
-			write(1, stock, (size_t) (len_argument - ret));
+			write(1, stock, (size_t) (len_argument));
 	return(ret + sign);
 }
 
