@@ -160,7 +160,7 @@ int			print_result_with_no_precision(t_flag flag,char *stock, int len_argument, 
 	i = 0;
 	ret = 0;
 
-	if (len_padding <= -1 && flag.conv_d && flag.blank && *stock != '-' && *stock != '+')
+	if (len_padding <= len_argument && flag.conv_d && flag.blank && *stock != '-' && *stock != '+')
 	{
 		write(1, " ", 1);
 		ret++;

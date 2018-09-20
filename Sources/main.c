@@ -2038,6 +2038,13 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %%0 .2ji : ");
 	k = printf("% .4ji", 10);
 	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %% 2hhi, -1595175326 : ");
+	k = ft_printf("{% 2hhi}", -1595175326);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% 2hhi, -1595175326 : ");
+	k = printf("{% 2hhi}", -1595175326);
+	printf("\nret : %d\n", k);
 	return (0);
 }
 
