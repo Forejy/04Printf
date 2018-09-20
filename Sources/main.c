@@ -1997,6 +1997,8 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %% 56.32zd42, 0");
 	k =   printf("42% 56.32zd42", 0);
 	printf("\nret : %d\n", k);
+	
+	write (1, "test write", 25);
 	return (0);
 }
 
