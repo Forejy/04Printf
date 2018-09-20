@@ -24,7 +24,8 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 	retenue = 0;
 	flag_pointer = flag.pointer;
 
-	if (!flag.less && *stock && (**stock == '-' || **stock == '+') && !(len_padding > 0 && !flag.zero)  && flag.precision < 0)
+	if (!flag.less && *stock && (**stock == '-' || **stock == '+') && flag.character_or_string == 0
+		&& !(len_padding > 0 && !flag.zero) && flag.precision < 0)
 	{
 		write(1, *stock, 1);
 		(*stock)++;
@@ -34,7 +35,7 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 	if (len_padding > 0)
 		//&& !flag.unicode_s
 	{
-		if (flag.zero && flag.blank && flag.conv_d)
+		if (flag.zero && flag.blank && flag.conv_d && !retenue)
 		{
 			len_padding -= 1;
 			write(1, " ", 1);

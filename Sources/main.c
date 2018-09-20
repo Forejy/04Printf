@@ -2045,6 +2045,20 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %% 2hhi, -1595175326 : ");
 	k = printf("{% 2hhi}", -1595175326);
 	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %% 045i, -2131582368 : ");
+	k = ft_printf("{% 045i}", -2131582368);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% 045i, -2131582368 : ");
+	k = printf("{% 045i}", -2131582368);
+	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %% 045s, -2131582368 : ");
+	k = ft_printf("{% 045s}", "-2131582368");
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% 045i, -2131582368 : ");
+	k = printf("{% 045s}", "-2131582368");
+	printf("\nret : %d\n", k);
 	return (0);
 }
 
