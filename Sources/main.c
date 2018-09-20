@@ -1997,8 +1997,15 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %% 56.32zd42, 0");
 	k =   printf("42% 56.32zd42", 0);
 	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 9100\n");
+	ft_printf("ft_printf : %% 24.22i, 2044020523 : ");
+	k =   ft_printf("{% 24.22i}", 2044020523);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% 24.22i, 2044020523 : ");
+	k =   printf("{% 24.22i}", 2044020523);
+	printf("\nret : %d\n", k);
 	
-	write (1, "test write", 25);
 	return (0);
 }
 
