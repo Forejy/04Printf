@@ -1878,11 +1878,46 @@ ft_printf(" +d : % +d \n", 0);
     k =   printf("%15.4d", -42);
     printf("\nret : %d\n", k);
 
+	ft_printf("CAS 5800\n");
+	ft_printf("ft_printf : %4.15d 42 : ");
+	k =   ft_printf("%4.15d", 42);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %4.15d 42 : ");
+	k =   printf("%4.15d", 42);
+	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 6500\n");
+	ft_printf("ft_printf : %%4.15d 424242: ");
+	k =   ft_printf("%4.15d", 424242);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%4.15d 424242: ");
+	k =   printf("%4.15d", 424242);
+	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 6600\n");
+	ft_printf("ft_printf : %%4.8d 424242424: ");
+	k =   ft_printf("%4.8d", 424242424);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%4.8d 424242424: ");
+	k =   printf("%4.8d", 424242424);
+	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 6700\n");
+	ft_printf("ft_printf : %%4.15d -42: ");
+	k =   ft_printf("%4.15d", -42);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%4.15d -42: ");
+	k =   printf("%4.15d", -42);
+	printf("\nret : %d\n", k);
+
+	ft_printf("CAS 6800\n");
+	ft_printf("ft_printf : %%4.15d -424242: ");
+	k =   ft_printf("%4.15d", -424242);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%4.15d -424242: ");
+	k =   printf("%4.15d", -424242);
+	printf("\nret : %d\n", k);
+
 	return (0);
-
-
-	/*
-	 * Long et Long Long sur Unix ont la meme taille, et du coup le meme intervalle	 *
-	 */
 }
 
