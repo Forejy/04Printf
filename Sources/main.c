@@ -1856,10 +1856,10 @@ ft_printf(" +d : % +d \n", 0);
 
     ft_printf("CAS 5800\n");
     ft_printf("ft_printf : %%S : ");
-    k =   ft_printf("%+10.5d", 4242);
+    k =   ft_printf("%+10.3d", 4242);
     printf("\nret : %d\n", k);
     ft_printf("   printf : %%S : ");
-    k =   printf("%+10.5d", 4242);
+    k =   printf("%+10.3d", 4242);
     printf("\nret : %d\n", k);
 
     ft_printf("CAS 5800\n");

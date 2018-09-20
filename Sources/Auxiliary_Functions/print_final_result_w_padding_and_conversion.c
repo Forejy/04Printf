@@ -81,7 +81,7 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument, 
 	ret = 0;
 	sign = 0;
 	len_precision = flag.precision;
-	if (len_padding > 0 && len_padding < len_precision && stock && (*stock == '-' || *stock == '+') && flag.character_or_string == 0)
+	if (len_padding > 0 && len_precision >= len_argument && stock && (*stock == '-' || *stock == '+') && flag.character_or_string == 0)
 	//len_padding > len_precision
 	{
 		write(1, stock, 1);
@@ -219,10 +219,10 @@ size_t		print_final_result(t_flag flag, const char *stock, int len_argument)
 //		len_precib b sion = 0;
 	if ((flag.hexa  && (len_precision > (len_argument - flag.hash) 
 		|| len_precision > len_argument )) //&& flag.character_or_string == 0
-		|| (((flag.character_or_string == 2 || flag.unicode_s) && len_precision != -1
-		 || (flag.unicode_c && len_precision > 0)) 
+		|| (((flag.character_or_string == 2 || flag.unicode_s) && len_precision != -1 
+		|| (flag.unicode_c && len_precision > 0)) 
 		//&& len_precision < len_arg)
-			&& len_precision < len_argument)
+		&& len_precision < len_argument)
 
 		   || (!flag.hexa && !flag.unicode_s && !flag.unicode_c && !flag.character_or_string
 		//&& ((len_precision > len_padding) && len_precision >= len_argument 
