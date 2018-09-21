@@ -2074,6 +2074,7 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("{% -3zi}", 0);
 	printf("\nret : %d\n", k);
 	
+	ft_printf("{%d}", 42);
 	return (0);
 }
 

@@ -164,8 +164,9 @@ int			print_result_with_no_precision(t_flag flag,char *stock, int len_argument, 
 	i = 0;
 	ret = 0;
 
-	if ((len_padding < len_argument && !flag.less ) || (flag.less) && flag.conv_d && flag.blank && *stock != '-' && *stock != '+') 
+	if ((flag.less) && flag.conv_d && flag.blank && *stock != '-' && *stock != '+') 
 		//&& !flag.less)
+		// || (len_padding > 0 && len_padding < len_argument && !flag.less ) 
 	{
 		write(1, " ", 1);
 		ret++;
