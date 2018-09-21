@@ -40,6 +40,7 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 			len_padding -= 1;
 			write(1, " ", 1);
 		}
+		//if (flag.less && len_padding > flag.len)
 		if (flag.precision >= 0 && !flag.character_or_string && !flag.unicode_s)
 			while (len_padding-- > 0)
 				write(1, " ", 1);
@@ -56,7 +57,7 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 		{
 				write(1, *stock, 2);
 				*stock = *stock + 2;
-				retenue = 2;
+				retenue += 2;
 			if (flag.precision <= 0)
 				while (len_padding-- > 0)
 					write(1, "0", 1);
@@ -150,6 +151,8 @@ int			compute_padding(const char *stock, t_flag flag, int len_arg, int wtf)
 		len_padding = len_champs - len_arg + flag.pointer + flag.hash;
 	else if (!flag.unicode_s || (flag.unicode_s && len_champs > len_arg))
 		len_padding = len_champs - len_arg + flag.pointer; //J'ajoute flag.pointer pour annuler la soustraction finale
+	if (flag.less && flag.blank && flag.conv_d)//Cas " -3zi" = { 0 } : blank a gauche par defaut, puis suite du padding a droite 
+		len_padding -= 1;
 	return (len_padding - flag.pointer);
 }
 
@@ -161,7 +164,8 @@ int			print_result_with_no_precision(t_flag flag,char *stock, int len_argument, 
 	i = 0;
 	ret = 0;
 
-	if (len_padding <= len_argument && flag.conv_d && flag.blank && *stock != '-' && *stock != '+')
+	if ((len_padding < len_argument && !flag.less ) || (flag.less) && flag.conv_d && flag.blank && *stock != '-' && *stock != '+') 
+		//&& !flag.less)
 	{
 		write(1, " ", 1);
 		ret++;
