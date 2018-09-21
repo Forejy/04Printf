@@ -1978,7 +1978,7 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 
 	ft_printf("CAS 9000\n");
-	ft_printf("ft_printf : %%31.15hhd, 1004946852");
+	ft_printf("ft_printf : %%31.15d, 1004946852");
 	k =   ft_printf("%31.15d", -92);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %%31.15d, 1004946852");
@@ -2055,12 +2055,6 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("% .4ji", 10);
 	printf("\nret : %d\n", k);
 
-	ft_printf("ft_printf : %% 2hhi, -1595175326 : ");
-	k = ft_printf("{% 2hhi}", -1595175326);
-	printf("\nret : %d\n", k);
-	ft_printf("   printf : %% 2hhi, -1595175326 : ");
-	k = printf("{% 2hhi}", -1595175326);
-	printf("\nret : %d\n", k);
 
 	ft_printf("ft_printf : %% 045i, -2131582368 : ");
 	k = ft_printf("{% 045i}", -2131582368);
@@ -2076,19 +2070,7 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("{% 045s}", "-2131582368");
 	printf("\nret : %d\n", k);
 
-	ft_printf("ft_printf : 42%% -2zi42, 0 : ");
-	k = ft_printf("{42% -5zi42}", 0);
-	printf("\nret : %d\n", k);
-	ft_printf("   printf : 42%% -2zi42, 0 : ");
-	k = printf("{42% -5zi42}", 0);
-	printf("\nret : %d\n", k);
 
-	ft_printf("ft_printf : 42%% -2zi42, 0 : ");
-	k = ft_printf("{% -3zi}", 0);
-	printf("\nret : %d\n", k);
-	ft_printf("   printf : 42%% -2zi42, 0 : ");
-	k = printf("{% -3zi}", 0);
-	printf("\nret : %d\n", k);
 	
 	ft_printf("{%d}", 42);
 
@@ -2186,6 +2168,54 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %%.2hhi, 92 : ");
 	k =   printf("{% 3.3hhi}", 100);
+	printf("\nret : %d\n", k);
+
+
+	ft_printf("CAS UBH1\n");
+	ft_printf("ft_printf : %%#0 33.1..d : ");
+	k =   ft_printf("{%0 33.1d}", 100);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%#0 33.1..d : ");
+	k =   printf("{%0 33.1d}", 100);
+	printf("\nret : %d\n", k);
+
+	ft_printf("CAS UBH1\n");
+	ft_printf("ft_printf : %%.2hhi, 92 : ");
+	k =   ft_printf("{%#0 33..1d}", 100);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%.2hhi, 92 : ");
+	k =   printf("{%#0 33..1d}", 100);
+	printf("\nret : %d\n", k);
+
+
+	ft_printf("CAS UBH1\n");
+	ft_printf("ft_printf : %%.2hhi, 92 : ");
+	k =   ft_printf("{%-0 33.12.d}", 100);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%.2hhi, 92 : ");
+	k =   printf("{%-0 33.12.d}", 100);
+	printf("\nret : %d\n", k);
+
+
+	ft_printf("ft_printf : 42%% -2zi42, 0 : ");
+	k = ft_printf("{42% -5zi42}", 0);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : 42%% -2zi42, 0 : ");
+	k = printf("{42% -5zi42}", 0);
+	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : 42%% -2zi42, 0 : ");
+	k = ft_printf("{% -3zi}", 0);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : 42%% -2zi42, 0 : ");
+	k = printf("{% -3zi}", 0);
+	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %% 2hhi, -1595175326 : ");
+	k = ft_printf("{% 2hhi}", -1595175326);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% 2hhi, -1595175326 : ");
+	k = printf("{% 2hhi}", -1595175326);
 	printf("\nret : %d\n", k);
 	return (0);
 }

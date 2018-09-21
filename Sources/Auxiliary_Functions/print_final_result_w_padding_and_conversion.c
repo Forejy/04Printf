@@ -41,7 +41,8 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 			write(1, " ", 1);
 		}
 		//if (flag.less && len_padding > flag.len)
-		if (flag.precision >= 0 && !flag.character_or_string && !flag.unicode_s && !flag.blank
+		if (flag.precision >= 0 && !flag.character_or_string && !flag.unicode_s && (!flag.blank 
+			|| (flag.blank && flag.zero)) //cas flag.blank && flag.zero : %0 33.1d, 100
 			|| (!flag.zero || (flag.zero && flag.less)))
 			while (len_padding-- > 0)
 				write(1, " ", 1);
@@ -94,7 +95,7 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument, 
 		len_argument--;
 		sign = 1;
 	}
-	if (len_precision > 0 && flag.character_or_string == 0 && flag.unicode_c == 0 && flag.unicode_s == 0)
+	if (flag.character_or_string == 0 && flag.unicode_c == 0 && flag.unicode_s == 0)
 	{
 		if (len_precision > len_argument && flag.pointer == 2 || (flag.hexa == 2 && flag.hash))
 			//&& flag.champs < len_precision))
@@ -107,7 +108,7 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument, 
 		}
 		temp = len_precision - len_argument + ret;
 		
-		if ((len_precision >= flag.champs || len_argument > flag.champs)&& flag.blank && !sign 
+		if ((len_precision >= flag.champs || len_argument > flag.champs || flag.less)&& flag.blank && !sign 
 			&& stock && *stock != '-' && *stock != '+')
 			
 		//&& len_argument >= len_precision //% 27.34zd  %.2hhi
@@ -169,7 +170,7 @@ int			print_result_with_no_precision(t_flag flag,char *stock, int len_argument, 
 	i = 0;
 	ret = 0;
 
-	if (flag.champs < len_argument && flag.conv_d && flag.blank && *stock != '-' && *stock != '+') 
+	if (flag.conv_d && flag.blank && *stock != '-' && *stock != '+' && (flag.champs <= len_argument || flag.less)) 
 	//(flag.less)
 		//&& !flag.less)
 		// && (len_padding > 0 && len_padding < len_argument && !flag.less ) 
