@@ -162,7 +162,7 @@ int			compute_padding(const char *stock, t_flag flag, int len_arg, int wtf)
 	return (len_padding - flag.pointer);
 }
 
-int			print_result_with_no_precision(t_flag flag,char *stock, int len_argument, int len_padding)
+int			print_result_with_no_precision(t_flag flag, const char *stock, int len_argument, int len_padding)
 {
 	int		i;
 	int 	ret;

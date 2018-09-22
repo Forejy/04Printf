@@ -106,7 +106,7 @@ int main(void)
 
 	ft_printf("Test unicode avec printf : %C\n",  L'ᴟ');
 
-	/*
+	
 	t_bin_list	*binary;
 	ft_printf("AFFICHAGE DE LA LISTE\n");
 	write(1, "|", 1);
@@ -119,14 +119,14 @@ int main(void)
 	my_put_wchar_t(test_wchar_t);
 	write(1, "/", 1);
 	write(1,"\n", 1);
-*/
 
 
 
 
 
 
-	/*//ft_printf("%d\n", '10');
+
+	//ft_printf("%d\n", '10');
 	//TEST D'AFFICHAGE DE LA LISTE
 	print_list(binary, BINARY);
 	convert_bin_to_dec(binary);
@@ -137,7 +137,7 @@ int main(void)
 	{
 		ft_printf("%d\n", (titi % 16));
 		titi = titi / 16;
-	}*/
+	}
 	//Resultat attendu :
 	// 11110000
 	// 10000000
@@ -145,7 +145,7 @@ int main(void)
 	// 10111001
 //10000110 10111010
 //	ft_printf("%d\n", c);
-	/*c = 0xe1;
+	c = 0xe1;
 	ft_printf("%d\n", c);
 	write(1, &c, 1);
 	c = 0xe1;
@@ -180,7 +180,7 @@ int main(void)
 	write(1, &c, 1);
 
 
-	/*unsigned char test[3];
+	unsigned char test[3];
 	test[2] = binary->binary[0];
 	binary = binary->next;
 	test[1] = binary->binary[0];
@@ -189,7 +189,7 @@ int main(void)
 	 write(1, &(test[0]), 1);
 	write(1, &(test[1]), 1);
 	write(1, &(test[2]), 1);
-	/*c = 0b11100001;
+	c = 0b11100001;
 	write(1, &c, 1);
 	c = 0b10110100;
 	write(1, &c, 1);
@@ -1076,7 +1076,7 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf(" |%% +3.2s| : |% +3.2s| \n", "123");
 
 	//TEST D'AFFICHAGE BASIC DE 42FILECHECKER
-	/*
+	
 
 	ft_printf("\nBASIC TESTS DE 42FILECHECKER\n");
 	int k = ft_printf("%5%");
@@ -1238,8 +1238,8 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("|%%U| : |%U|\n", 4294967295);
 	ft_printf("|%%hU| : |%hU|\n", 4294967296);
 	ft_printf("|%%U| : |%U|\n", 4294967296);
-	/*
-	//TEST FLAG '-'
+	
+ //TEST FLAG '-'
 	ft_printf("\nTEST FLAG '-'\n");
 	ft_printf(" -d : %-d \n",0);
 	ft_printf("  d : %d \n",0);
@@ -1277,7 +1277,7 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("\n%hhd", 128);
 	printf("\n%hhd\n", 128);
 	
-	/*
+	
 	printf("\n");
 	printf("Test du cas %% : |");
 	k = ft_printf("%");
@@ -1304,17 +1304,14 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\n");
 	printf("%d\n", k);
 
-	int s;
 	unsigned long ss;
-	char *sss;
-
 
 	// test->debug = 1;
-	k = ft_printf("%%p : %p", ss);
+	k = ft_printf("%%p : %p", (void*)ss);
 	printf("\n");
 	printf("%d\n", k);
 
-	k = printf("%%p : %p", ss);
+	k = printf("%%p : %p", (void*)ss);
 	printf("\n");
 	printf("%d\n", k);
 

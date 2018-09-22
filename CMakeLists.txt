@@ -13,6 +13,7 @@ file(GLOB HEADERS
         "Includes/Auxiliary_Functions/*.h"
         "Includes/Handlers/*.h"
         "Includes/Print_Unicode/*h")
+#set(CMAKE_C_STANDARD 90)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra")
 
-set(CMAKE_C_STANDARD 90)
 add_executable(my_printf_clean ${SOURCES} ${HEADERS} Sources/Auxiliary_Functions/print_final_result_w_padding_and_conversion.c Includes/Auxiliary_Functions/print_final_result_w_padding_and_conversion.h Sources/main.c)
