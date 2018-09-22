@@ -2344,6 +2344,13 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %% -3zi, 0 : ");
 	k = printf("{%#02hho}", -1252916177);
 	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %% -3zi, 0 : ");
+	k = ft_printf("%32.2i", 15425432);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% -3zi, 0 : ");
+	k = printf("%32.2i", 15425432);
+	printf("\nret : %d\n", k);
 	return (0);
 }
 
