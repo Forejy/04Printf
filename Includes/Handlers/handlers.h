@@ -23,7 +23,6 @@ typedef struct		s_flag
 	int		precision;
 	int		pointer;
 	int		hexa;
-	int		octal;
 	int		character_or_string;
 	int		unicode_c;
 	int		unicode_s;
