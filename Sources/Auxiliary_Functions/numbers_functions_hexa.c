@@ -5,9 +5,10 @@
 size_t			my_putnbr_hexa(uintmax_t nb, t_flag flag)
 {
 	char		stock_number[20];
+	char		test[2];
 	int			i;
 	char		*base_hexa;
-	size_t				total_len;
+	size_t		total_len;
 
 	base_hexa = "0123456789abcdef";
 	i = 19;
@@ -18,6 +19,8 @@ size_t			my_putnbr_hexa(uintmax_t nb, t_flag flag)
 		stock_number[i] = '0';
 		i--;
 	}
+	else if (nb == 0)
+		stock_number[0] = '\0';
 	else if(nb != 0)
 	{
 		while (nb > 0)
