@@ -213,7 +213,7 @@ size_t		print_final_result(t_flag flag, const char *stock, int len_argument)
 	if(flag.champs > 0)
 		len_padding = compute_padding(stock, flag, len_argument, 42);
 
-	if (flag.champs > 0 && flag.less == 0)
+	if (len_padding > 0 && flag.less == 0)
 	{
 		sign = print_padding(flag, &stock, len_padding);
 		len_argument = len_argument - sign;
