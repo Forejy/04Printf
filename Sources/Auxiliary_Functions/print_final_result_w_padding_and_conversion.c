@@ -97,7 +97,7 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument, 
 	}
 	if (flag.character_or_string == 0 && flag.unicode_c == 0 && flag.unicode_s == 0)
 	{
-		if (stock && *stock && (len_precision > len_argument && flag.pointer == 2 || (flag.hexa == 2 && flag.hash)))
+		if (len_precision > 0 && (len_precision > len_argument && flag.pointer == 2 || (flag.hexa == 2 && flag.hash)))
 			//&& flag.champs < len_precision))
 			//&& flag.champs == 0)
 		{
@@ -129,7 +129,7 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument, 
 	else if (flag.unicode_s == 1)
 		while(i < len_argument)
 			write(1, &stock[i++], 1);
-	else if (stock)
+	else if (stock && len_argument > 0)
 			write(1, stock, (size_t) (len_argument));
 	return(ret + sign + Ox);
 }
