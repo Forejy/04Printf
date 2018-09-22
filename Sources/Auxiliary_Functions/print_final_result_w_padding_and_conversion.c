@@ -108,7 +108,7 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument, 
 		}
 		temp = len_precision - len_argument + ret;
 		
-		if ((len_precision >= flag.champs || len_argument > flag.champs || flag.less)&& flag.blank && !sign 
+		if ((len_precision >= flag.champs  || len_argument >= flag.champs || flag.less)&& flag.blank && !sign 
 			&& stock && *stock != '-' && *stock != '+')
 			
 		//&& len_argument >= len_precision //% 27.34zd  %.2hhi
