@@ -2204,19 +2204,43 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("{42% -5zi42}", 0);
 	printf("\nret : %d\n", k);
 
-	ft_printf("ft_printf : 42%% -2zi42, 0 : ");
-	k = ft_printf("{% -3zi}", 0);
-	printf("\nret : %d\n", k);
-	ft_printf("   printf : 42%% -2zi42, 0 : ");
-	k = printf("{% -3zi}", 0);
-	printf("\nret : %d\n", k);
-
 	ft_printf("ft_printf : %% 2hhi, -1595175326 : ");
 	k = ft_printf("{% 2hhi}", -1595175326);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %% 2hhi, -1595175326 : ");
 	k = printf("{% 2hhi}", -1595175326);
 	printf("\nret : %d\n", k);
+
+
+
+	ft_printf("ft_printf : %% 2hhi, -1595175326 : ");
+	k = ft_printf("{%- 33.12#+d}", 256);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% 2hhi, -1595175326 : ");
+	k = printf("{%- 33.12#+d}", 256);
+	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %% 2hhi, -1595175326 : ");
+	k = ft_printf("{%- 33d}", 256);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% 2hhi, -1595175326 : ");
+	k = printf("{%- 33d}", 256);
+	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %% 2hhi, -1595175326 : ");
+	k = ft_printf("{%- 33d}", -256);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% 2hhi, -1595175326 : ");
+	k = printf("{%- 33d}", -256);
+	printf("\nret : %d\n", k);
+	
+	ft_printf("ft_printf : %% -3zi, 0 : ");
+	k = ft_printf("{% -4.2zi}", 0);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% -3zi, 0 : ");
+	k = printf("{% -4.2zi}", 0);
+	printf("\nret : %d\n", k);
+
 	return (0);
 }
 

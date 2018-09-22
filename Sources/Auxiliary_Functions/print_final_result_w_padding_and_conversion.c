@@ -35,7 +35,7 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 	if (len_padding > 0)
 		//&& !flag.unicode_s
 	{
-		if (flag.zero && flag.blank && flag.conv_d && !retenue)
+		if ((flag.zero && flag.blank && flag.conv_d && !retenue )|| flag.less)
 		{
 			len_padding -= 1;
 			write(1, " ", 1);
@@ -157,7 +157,7 @@ int			compute_padding(const char *stock, t_flag flag, int len_arg, int wtf)
 		len_padding = len_champs - len_arg + flag.pointer + flag.hash;
 	else if (!flag.unicode_s || (flag.unicode_s && len_champs > len_arg))
 		len_padding = len_champs - len_arg + flag.pointer; //J'ajoute flag.pointer pour annuler la soustraction finale
-	if (flag.less && flag.blank && flag.conv_d)//Cas " -3zi" = { 0 } : blank a gauche par defaut, puis suite du padding a droite 
+	if (stock && *stock != '+' && *stock != '-' && flag.less && flag.blank && flag.conv_d)//Cas " -3zi" = { 0 } : blank a gauche par defaut, puis suite du padding a droite 
 		len_padding -= 1;
 	return (len_padding - flag.pointer);
 }
