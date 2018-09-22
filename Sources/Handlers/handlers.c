@@ -259,7 +259,10 @@ int				test_precision(const char *format, t_flag *flag)
 			nb = nb * 10 + (format[i] - '0');
 			i++;
 		}
-		flag->precision = nb;
+		if (nb < 0)
+			flag->precision = 0;
+		else
+			flag->precision = nb;
 	}
 	return (i);
 }
