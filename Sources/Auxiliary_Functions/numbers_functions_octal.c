@@ -10,6 +10,7 @@ size_t			my_put_octal(uintmax_t nbr, t_flag flag)
 
 
 	i = 22;
+	flag.octal = 1;
 	if (nbr == 0 && flag.precision == -1)
 	{
 		stock_number[i] = '0';
