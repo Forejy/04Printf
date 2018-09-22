@@ -177,6 +177,7 @@ void			initialize_t_flag(t_flag	*flag)
 	flag->precision = -1;
 	flag->pointer = 0;
 	flag->hexa = 0;
+	flag->octal = 0;
 	flag->character_or_string = 0;
 	flag->unicode_c = 0;
 	flag->unicode_s = 0;
