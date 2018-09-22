@@ -2240,6 +2240,24 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %% -3zi, 0 : ");
 	k = printf("{% -4.2zi}", 0);
 	printf("\nret : %d\n", k);
+	
+	
+	ft_printf("ft_printf : %% -3zi, 0 : ");
+	k = ft_printf("{%#.0x}", 0);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% -3zi, 0 : ");
+	k = printf("{%#.0x}", 0);
+	printf("\nret : %d\n", k);
+	
+	
+	ft_printf("ft_printf : %% -3zi, 0 : ");
+	k = ft_printf("{%#.x }", 0);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% -3zi, 0 : ");
+	k = printf("{%#.x }", 0);
+	printf("\nret : %d\n", k);
+
+	//%#.x %#.0x}", 0, 0
 
 	return (0);
 }
