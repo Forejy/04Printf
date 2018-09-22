@@ -2312,6 +2312,21 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %% -3zi, 0 : ");
 	k = printf("{%52.2i}", 0);
 	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %% -3zi, 0 : ");
+	k = ft_printf("{%.2i}", 129518426);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% -3zi, 0 : ");
+	k = printf("{%.2i}", 129518426);
+	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %% -3zi, 0 : ");
+	k = ft_printf("{%2.40zi}", 191209487);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% -3zi, 0 : ");
+	k = printf("{%2.40zi}", 191209487);
+	printf("\nret : %d\n", k);
+	
 	return (0);
 }
 
