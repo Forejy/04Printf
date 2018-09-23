@@ -41,8 +41,8 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 			write(1, " ", 1);
 		}
 		//if (flag.less && len_padding > flag.len)
-		if ((flag.precision >= 0 && !flag.character_or_string && !flag.unicode_s && (!flag.blank) || (flag.blank && flag.zero)) //cas flag.blank && flag.zero : %0 33.1d, 100
-			|| (!flag.zero || (flag.zero && flag.less)))
+		if (flag.precision >= 0 && !flag.character_or_string && !flag.unicode_s && (!flag.blank || (flag.blank && flag.zero) //cas flag.blank && flag.zero : %0 33.1d, 100
+			|| !flag.zero || (flag.zero && flag.less)))
 			while (len_padding-- > 0)
 				write(1, " ", 1);
 			/*
