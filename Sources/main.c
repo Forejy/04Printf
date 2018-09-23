@@ -2359,12 +2359,15 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%34.14hhi", 0);
 	printf("\nret : %d\n", k);
 
+
 	ft_printf("ft_printf : %% -3zi, 0 : ");
-	k = ft_printf("{% 4hi}", 0);
+	k = ft_printf("{%- 16i}", 1391592226);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %% -3zi, 0 : ");
-	k = printf("{% 4hi}", 0);
+	k = printf("{%- 16i}", 1391592226);
 	printf("\nret : %d\n", k);
+	
 	return (0);
 }
 
+  
