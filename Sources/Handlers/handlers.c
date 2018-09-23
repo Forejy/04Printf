@@ -397,13 +397,15 @@ size_t			handle_format(const char *format, va_list ap)
 */
 //HANDLE_FORMAT V3 (ACTUAL)
 
+/*
 int			handle_special_no_conv(const char *format, int i, va_list ap, t_flag *flag)
 {
 	if (format [i + 1] == '\0')
 		return (-1);
 	return (0);
 }
-
+*/
+ 
 int			analyze_and_printf(const char *format, va_list *ap, t_flag *flag)
 {
 	int			i;
