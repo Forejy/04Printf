@@ -24,13 +24,13 @@ t_bin_list		*create_and_initialize_t_bin_list(int	number_of_byte)
 	t_bin_list	*begin_list;
 	t_bin_list	*temp;
 
-	if (!(begin_list = malloc(sizeof(t_bin_list))))
+	if (!(begin_list = (t_bin_list *)malloc(sizeof(t_bin_list))))
 		exit_with_msg(ERROR_MALLOC_FAILED);
 	temp = begin_list;
 	initialize_t_bin_list_elem(temp);
 	while(number_of_byte - 1 > 0)
 	{
-		if (!(temp->next = malloc(sizeof(t_bin_list))))
+		if (!(temp->next = (t_bin_list *)malloc(sizeof(t_bin_list))))
 			exit_with_msg(ERROR_MALLOC_FAILED);
 		temp = temp->next;
 		initialize_t_bin_list_elem(temp);

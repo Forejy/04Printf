@@ -56,7 +56,7 @@ int			count_char_per_wint_t(wchar_t *string_wchar, int **number_of_char_per_wint
 	//i = string_wchar[0];
 	while (string_wchar[i] != '\0')
 		i++;
-	if (!(number_of_char_per_wint_t[0] = malloc(sizeof(int) * i)))
+	if (!(number_of_char_per_wint_t[0] = (int *)malloc(sizeof(int) * i)))
 		exit_with_msg(ERROR_MALLOC_FAILED);
 	number_of_bytes = 0;
 	while (--i >= 0)
@@ -119,7 +119,7 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 	}
 	i = 0;
 	number_of_bytes = count_char_per_wint_t(string_wchar, &number_of_char_per_wint_t);
-	if (!(string = malloc(sizeof(char) * (number_of_bytes + 1))))
+	if (!(string = (char *)malloc(sizeof(char) * (number_of_bytes + 1))))
 		exit_with_msg(ERROR_MALLOC_FAILED);
 	string[number_of_bytes] = '\0';
 	j = 0;
