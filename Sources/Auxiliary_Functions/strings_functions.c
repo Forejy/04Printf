@@ -42,13 +42,7 @@ size_t		my_putstr_printf(const char *str, t_flag flag)
 	int			flag_precision;
 	size_t		total_len;
 
-	if (str == NULL && flag.champs == 0)
-	{
-		write(1, "(null)", 6);
-		return (6);
-	}
-	else if (str == NULL)
-		return(print_final_result(flag, "(null)", 6));
+	
 	len_str = 0;
 	if (str != NULL)
 		len_str = my_strlen(str);
@@ -58,11 +52,19 @@ size_t		my_putstr_printf(const char *str, t_flag flag)
 //		len_str = (size_t)flag_precision;
 	if (flag.champs == 0)
 	{
+
+		if (str == NULL)
+		{
+			write(1, "(null)", 6);
+			return (6);
+		}
 		if (flag_precision > -1 && flag_precision < (int)len_str)
 			len_str = (size_t)flag_precision;
 		write(1, str, len_str);
 		total_len = len_str;
 	}
+	else if (str == NULL)
+		return(print_final_result(flag, "(null)", 6));
 	else
 		total_len = print_final_result(flag, str, len_str);
 	return (total_len);
