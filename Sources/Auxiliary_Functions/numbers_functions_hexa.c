@@ -43,6 +43,7 @@ size_t			my_putnbr_HEXA(uintmax_t nb, t_flag flag)
 	int			i;
 	char		*base_hexa;
 	size_t			total_len;
+	
 	base_hexa = "0123456789ABCDEF";
 	i = 19;
 	total_len = 0;
