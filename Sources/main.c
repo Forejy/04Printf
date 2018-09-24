@@ -2096,10 +2096,10 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 
 	ft_printf("CAS 10\n");
-	ft_printf("ft_printf : %%.2hhi, 92 : ");
+	ft_printf("ft_printf : %% 2.1hhi, 92 : ");
 	k =   ft_printf("{% 2.1hhi}", 100);
 	printf("\nret : %d\n", k);
-	ft_printf("   printf : %%.2hhi, 92 : ");
+	ft_printf("   printf : %% 2.1hhi, 92 : ");
 	k =   printf("{% 2.1hhi}", 100);
 	printf("\nret : %d\n", k);
 
@@ -2464,6 +2464,13 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %% -3zi, 0 : ");
 	k = printf("{%#44.43x}", 1);
+	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %% -3zi, 0 : ");
+	k = ft_printf("{% 44.43d}", 114790132);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% -3zi, 0 : ");
+	k = printf("{% 44.43d}", 114790132);
 	printf("\nret : %d\n", k);
 	return (0);
 }
