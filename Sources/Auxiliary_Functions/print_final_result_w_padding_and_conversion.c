@@ -159,7 +159,7 @@ int			compute_padding(const char *stock, t_flag flag, int len_arg)//, int wtf
 		len_padding = len_champs - len_arg + flag.pointer; //J'ajoute flag.pointer pour annuler la soustraction finale
 	if (stock && *stock != '+' && *stock != '-' && flag.less && flag.blank && flag.conv_d)//Cas " -3zi" = { 0 } : blank a gauche par defaut, puis suite du padding a droite 
 		len_padding -= 1;
-	return (len_padding - flag.pointer);
+	return (len_padding - flag.pointer - flag.hexa);
 }
 
 int			print_result_with_no_precision(t_flag flag, const char *stock, int len_argument)//, int len_padding
