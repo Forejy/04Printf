@@ -98,7 +98,7 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument)
 	}
 	if (flag.character_or_string == 0 && flag.unicode_c == 0 && flag.unicode_s == 0)
 	{
-		if (len_precision > 0 && (len_precision > len_argument)
+		if (len_precision > 0 && (len_precision > len_argument - flag.hexa)
 			&& (flag.pointer == 2 || (flag.hexa == 2 && flag.hash && stock && *(stock + 1) == 'x')))
 			//&& flag.champs < len_precision))
 			//&& flag.champs == 0)

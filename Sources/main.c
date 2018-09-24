@@ -2437,6 +2437,13 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %%0#2x, 0 : ");
 	k = printf("{%0#2x}", 1);
 	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %%0#2x, 0 : ");
+	k = ft_printf("{%-#2.2x}", 5);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%0#2x, 0 : ");
+	k = printf("{%-#2.2x}", 5);
+	printf("\nret : %d\n", k);
 	return (0);
 }
 
