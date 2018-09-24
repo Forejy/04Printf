@@ -146,7 +146,9 @@ int			compute_padding(const char *stock, t_flag flag, int len_arg)//, int wtf
 
 	len_champs = flag.champs;
 	len_precision = flag.precision;
-	if (len_champs > 0 && len_precision >= (len_arg - flag.pointer) && flag.character_or_string == 0
+	if (flag.hash == 2 && flag.hexa == 2 && len_precision > len_arg - 2)
+		len_padding = len_champs - len_precision - 2;
+	else if (len_precision >= (len_arg - flag.pointer) && flag.character_or_string == 0
 		&& flag.unicode_c == 0 && flag.unicode_s == 0)//Si l'argument est un pointeur, je supprimne le '0x' de sa longueur
 	{
 		len_padding = len_champs - len_precision;
@@ -162,9 +164,9 @@ int			compute_padding(const char *stock, t_flag flag, int len_arg)//, int wtf
 		len_padding = len_champs - len_arg + flag.pointer; //J'ajoute flag.pointer pour annuler la soustraction finale
 	if (stock && *stock != '+' && *stock != '-' && flag.less && flag.blank && flag.conv_d)//Cas " -3zi" = { 0 } : blank a gauche par defaut, puis suite du padding a droite 
 		len_padding -= 1;
-	if (len_precision >= len_arg && flag.hash && flag.hexa && stock && *(stock + 1) == 'x')
-		return (len_padding - flag.hexa);
-	else
+//	if (len_precision >= len_arg && flag.hash && flag.hexa)
+//		return (len_padding - flag.hexa);
+//	else
 		return (len_padding - flag.pointer);
 	// - flag.hexa
 }
