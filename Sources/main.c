@@ -2373,7 +2373,35 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %% -3zi, 0 : ");
 	k = printf("{%#32.8hhx}", 1403649820);
 	printf("\nret : %d\n", k);
+
+
+	ft_printf("ft_printf : %% -3zi, 0 : ");
+	k = ft_printf("{%44.43x}", 0);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% -3zi, 0 : ");
+	k = printf("{%44.43x}", 0);
+	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %%#44.43d, 0 : ");
+	k = ft_printf("{%#44.43d}", 0);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%#44.43d, 0 : ");
+	k = printf("{%#44.43d}", 0);
+	printf("\nret : %d\n", k);
 	
+	ft_printf("ft_printf : %% -3zi, 0 : ");
+	k = ft_printf("{%#44.43x}", 0);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% -3zi, 0 : ");
+	k = printf("{%#44.43x}", 0);
+	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %% -3zi, 0 : ");
+	k = ft_printf("{%#44.43x}", 1);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% -3zi, 0 : ");
+	k = printf("{%#44.43x}", 1);
+	printf("\nret : %d\n", k);
 	return (0);
 }
 

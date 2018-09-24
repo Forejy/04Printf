@@ -41,7 +41,8 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 			write(1, " ", 1);
 		}
 		//if (flag.less && len_padding > flag.len)
-		if (((flag.precision >= 0 && !flag.character_or_string && !flag.unicode_s && (!flag.blank || (flag.blank && flag.zero))) //cas flag.blank && flag.zero : %0 33.1d, 100
+		if (((flag.precision >= 0 && !flag.character_or_string && !flag.unicode_s && 
+			(!flag.blank || (flag.blank && flag.zero))) //cas flag.blank && flag.zero : %0 33.1d, 100
 			|| !flag.zero || (flag.zero && flag.less)))
 			while (len_padding-- > 0)
 				write(1, " ", 1);
@@ -97,7 +98,8 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument)
 	}
 	if (flag.character_or_string == 0 && flag.unicode_c == 0 && flag.unicode_s == 0)
 	{
-		if (len_precision > 0 && (len_precision > len_argument && (flag.pointer == 2 || (flag.hexa == 2 && flag.hash))))
+		if (len_precision > 0 && (len_precision > len_argument)
+			&& (flag.pointer == 2 || (flag.hexa == 2 && flag.hash && stock && *(stock + 1) == 'x')))
 			//&& flag.champs < len_precision))
 			//&& flag.champs == 0)
 		{
@@ -108,8 +110,9 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument)
 		}
 		temp = len_precision - len_argument + ret;
 		
-		if ((len_precision >= flag.champs  || len_argument >= flag.champs || flag.less)&& flag.blank && !sign 
-			&& stock && *stock != '-' && *stock != '+')
+		if ((len_precision >= flag.champs  || (len_argument + len_precision) >= flag.champs || flag.less) 
+			&& flag.blank //|| (stock && *stock == '0')) 
+			&& !sign && stock && *stock != '-' && *stock != '+')
 			
 		//&& len_argument >= len_precision //% 27.34zd  %.2hhi
 		{
@@ -151,7 +154,7 @@ int			compute_padding(const char *stock, t_flag flag, int len_arg)//, int wtf
 			len_padding -= 1;
 	}
 	else if (len_precision >= 0 && len_precision <= len_arg && (flag.character_or_string == 2
-			 || flag.unicode_c || flag.unicode_s))
+			 || flag.unicode_c || flag.unicode_s)) //Cas Unicode
 		len_padding = len_champs - len_precision;
 	else if (flag.hash == 2 && flag.zero && !flag.less && len_precision == -1 && !flag.hexa && !flag.octal)
 		len_padding = len_champs - len_arg + flag.pointer + flag.hash;
@@ -159,7 +162,11 @@ int			compute_padding(const char *stock, t_flag flag, int len_arg)//, int wtf
 		len_padding = len_champs - len_arg + flag.pointer; //J'ajoute flag.pointer pour annuler la soustraction finale
 	if (stock && *stock != '+' && *stock != '-' && flag.less && flag.blank && flag.conv_d)//Cas " -3zi" = { 0 } : blank a gauche par defaut, puis suite du padding a droite 
 		len_padding -= 1;
-	return (len_padding - flag.pointer - flag.hexa);
+	if (flag.hash && flag.hexa && stock && *(stock + 1) == 'x')
+		return (len_padding - flag.hexa);
+	else
+		return (len_padding - flag.pointer);
+	// - flag.hexa
 }
 
 int			print_result_with_no_precision(t_flag flag, const char *stock, int len_argument)//, int len_padding
