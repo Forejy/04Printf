@@ -2553,10 +2553,10 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 
 	ft_printf("ft_printf : %% -3zi, 0 : ");
-	k = ft_printf("abc%lc", 55323	);
+	k = ft_printf("abc%lc", 64976	);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %% -3zi, 0 : ");
-	k = printf("abc%lc", 55323	);
+	k = printf("abc%lc", 64976	);
 	printf("\nret : %d\n", k);
 	
 	printf("mbcurmax : %d\n", MB_LEN_MAX);
