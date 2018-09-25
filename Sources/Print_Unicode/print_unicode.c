@@ -22,15 +22,17 @@ t_bin_list		*call_functions_to_convert_dec_to_bin_in_utf8(int dec, int number_of
 
 size_t			my_put_wint_t(int dec, t_flag flag)
 {
-	t_bin_list			*temp;
-	char		codeset[6];
-	int					number_of_bytes;
-	int					i;
+	t_bin_list *temp;
+	char       codeset[6];
+	int        number_of_bytes;
+	int        i;
 //	unsigned char		codeset[6];
 
 	flag.unicode_c = 1;
 	if (dec <= 128)
-		return (print_final_result(flag, (char *)&dec, 1));
+		return (print_final_result(flag, (char *) &dec, 1));
+	else if (dec > 1114111)
+		return (-1);
 	number_of_bytes = compute_minimum_number_of_bytes_in_utf8(dec);
 	temp = call_functions_to_convert_dec_to_bin_in_utf8(dec, number_of_bytes);
 	i = 0;

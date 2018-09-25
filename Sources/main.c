@@ -2539,11 +2539,25 @@ ft_printf(" +d : % +d \n", 0);
 */
 
 	ft_printf("ft_printf : %% -3zi, 0 : ");
-	k = ft_printf("%.lc%", 0x11ffff);
+	k = ft_printf("%lc", 1114112);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %% -3zi, 0 : ");
-	k = printf("%.lc", 0x11ffff);
+	k = printf("%lc", 1114112);
 	printf("\nret : %d\n", k);
+	
+	printf("%d\n", sizeof(wint_t));
+	
+	unsigned char c;
+	
+	c = 0xF0 ;
+	write(1, &c, 1);
+	c = 0x9F ;
+	write(1, &c, 1);
+	c = 0x97;
+	write(1, &c, 1);
+	c = 0xBB;
+	write(1, &c, 1);
+
 	return (0);
 	
 }
