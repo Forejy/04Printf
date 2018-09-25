@@ -2565,7 +2565,20 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %% -3zi, 0 : ");
 	k = printf("%.1s", NULL);
 	printf("\nret : %d\n", k);
+
+	wchar_t		s[4];
 	
+	s[0] = 0x53;
+	s[1] = 0x3abc;
+	s[2] = 0x81000;
+	s[3] = '\0';
+	
+	ft_printf("ft_printf : %% -3zi, 0 : ");
+	k = ft_printf("%5S", s);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% -3zi, 0 : ");
+	k = printf("%5S", s);
+	printf("\nret : %d\n", k);
 	return (0);
 	
 }
