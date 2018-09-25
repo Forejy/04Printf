@@ -2553,15 +2553,19 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 
 	ft_printf("ft_printf : %% -3zi, 0 : ");
-	k = ft_printf("abc%lc", 64976	);
+	k = ft_printf("abc%lc", 0xbffe);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %% -3zi, 0 : ");
-	k = printf("abc%lc", 64976	);
+	k = printf("abc%lc", 0xbffe);
+	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %% -3zi, 0 : ");
+	k = ft_printf("%.1s", NULL);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% -3zi, 0 : ");
+	k = printf("%.1s", NULL);
 	printf("\nret : %d\n", k);
 	
-	printf("mbcurmax : %d\n", MB_LEN_MAX);
-	
-
 	return (0);
 	
 }
