@@ -2522,7 +2522,6 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%28.32ls",  L"┬─┬ ノ( ゜-゜ノ)");
 	printf("\nret : %d\n", k);
 
-*/
 	ft_printf("ft_printf : %% -3zi, 0 : ");
 	k = ft_printf("%20ls", L"こんにちは、私は単体テストです");
 	printf("\nret : %d\n", k);
@@ -2536,8 +2535,15 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %% -3zi, 0 : ");
 	k = printf("%1S",  L"こ");
-	printf("\nret : %d\n", k);	return (0);
-	
+	printf("\nret : %d\n", k);
+*/
+
+	ft_printf("ft_printf : %% -3zi, 0 : ");
+	k = ft_printf("%.lc%", 0x11ffff);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% -3zi, 0 : ");
+	k = printf("%.lc", 0x11ffff);
+	printf("\nret : %d\n", k);
 	return (0);
 	
 }

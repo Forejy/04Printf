@@ -52,7 +52,7 @@ size_t			my_putnbr_HEXA(uintmax_t nb, t_flag flag)
 		stock_number[i] = '0';
 		i--;
 	}
-	else
+	else if (nb != 0)
 	{
 		flag.hexa = 2;
 		while (nb > 0)
