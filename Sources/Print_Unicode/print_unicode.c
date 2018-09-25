@@ -33,6 +33,8 @@ size_t			my_put_wint_t(int dec, t_flag flag)
 		return (print_final_result(flag, (char *) &dec, 1));
 	else if (dec > 1114111 || dec < 0)
 		return (-1);
+	else if ((dec > 196608 && dec < 262143) || (dec > 55296 && dec < 57343))
+		return (0);
 	number_of_bytes = compute_minimum_number_of_bytes_in_utf8(dec);
 	temp = call_functions_to_convert_dec_to_bin_in_utf8(dec, number_of_bytes);
 	i = 0;
