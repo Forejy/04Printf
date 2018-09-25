@@ -2539,10 +2539,10 @@ ft_printf(" +d : % +d \n", 0);
 */
 
 	ft_printf("ft_printf : %% -3zi, 0 : ");
-	k = ft_printf("%lc", 1114112);
+	k = ft_printf("%lc", 0);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %% -3zi, 0 : ");
-	k = printf("%lc", 1114112);
+	k = printf("%lc", 0);
 	printf("\nret : %d\n", k);
 	
 	printf("%d\n", sizeof(wint_t));
