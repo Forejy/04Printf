@@ -56,7 +56,7 @@ size_t		my_putstr_printf(const char *str, t_flag flag)
 		if (str == NULL)
 		{
 			if (flag_precision > 6 || flag_precision == -1)
-				flag_precision == 6;
+				flag_precision = 6;
 				write(1, "(null)", flag_precision);
 				return (flag_precision);
 		}
