@@ -110,6 +110,21 @@ int				adapts_precision_to_numbers_of_bytes(int presumed_precision, int *number_
 		return (presumed_precision);
 }
 
+int 	test_validity_of_characters(wchar_t *string_wchar)
+{
+	int i;
+	wint_t temp;
+
+	i = 0;
+	while ((temp = string_wchar[i++]) != '\0')
+	{
+		if ((temp >= 129 && temp <= 255 && MB_CUR_MAX < 2) || (temp > 1114111 || temp < 0) 
+			|| (temp >= 55296 && temp <= 57343))
+			return (-1);
+	}
+	return (1);
+}
+
 size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 {
 	size_t		total_len;
@@ -131,7 +146,8 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 		return (6);
 	}
 	i = 0;
-	if((number_of_bytes = count_char_per_wint_t(string_wchar, &number_of_char_per_wint_t)) == -1)
+	if((test_validity_of_characters(string_wchar) == -1) 
+		||(number_of_bytes = count_char_per_wint_t(string_wchar, &number_of_char_per_wint_t)) == -1)
 		return (-1);
 	if (!(string = (char *)malloc(sizeof(char) * (number_of_bytes + 1))))
 		exit_with_msg(ERROR_MALLOC_FAILED);
