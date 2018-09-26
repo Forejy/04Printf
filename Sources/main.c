@@ -2624,6 +2624,13 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%C", L'Ѻ');
 	printf("\nret : %d\n", k);
 
+	ft_printf("ft_printf : %% -3zi, 0 : ");
+	k = ft_printf("%C", 129);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %% -3zi, 0 : ");
+	k = printf("%C", 129);
+	printf("\nret : %d\n", k);
+
 	return (0);
 
 }

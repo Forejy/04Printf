@@ -31,6 +31,11 @@ size_t			my_put_wint_t(int dec, t_flag flag)
 	flag.unicode_c = 1;
 	if (dec <= 128 && dec >= 0)
 		return (print_final_result(flag, (char *) &dec, 1));
+	else if (dec >= 129 && dec <= 255)
+	{
+		write(1,"�", 2);
+		return (-1);
+	}
 	else if ((dec > 1114111 || dec < 0) || (dec >= 55296 && dec <= 57343))
 		return (-1);
 	else if (dec > 196608 && dec < 262143)
@@ -71,7 +76,10 @@ int			count_char_per_wint_t(wchar_t *string_wchar, int **number_of_char_per_wint
 	{
 		if (string_wchar[i] >= 128)
 			if((number_of_char_per_wint_t[0][i] =	compute_minimum_number_of_bytes_in_utf8(string_wchar[i])) > MB_CUR_MAX)
+			{
+				write(1,"�", 2);
 				return (-1);
+			}
 		number_of_bytes += number_of_char_per_wint_t[0][i++];
 	}
 	return (number_of_bytes);
