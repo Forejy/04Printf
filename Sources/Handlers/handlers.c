@@ -489,6 +489,7 @@ size_t			handle_format(const char *format, va_list *ap)
 			}
 		}
 	}
+	write(1, buffer, j);
 	return(flag.lenght_print);
 }
 

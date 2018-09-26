@@ -2665,6 +2665,8 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%S", s);
 	printf("\nret : %d\n", k);
 	
+	ft_printf("abc");
+	
 	return (0);
 
 }
