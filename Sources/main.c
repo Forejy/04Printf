@@ -1286,7 +1286,7 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\n");
 	k = printf("%");
 	printf("\nk = %d", k);
-	 */
+	 
 	int k;
 
 	k = ft_printf("% ");
@@ -2604,6 +2604,8 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%C", 254);
 	printf("\nret : %d\n", k);
 */
+	int k ;
+	
 	wchar_t s[4];
 	s[0] = 'a';
 	s[1] = 'a';
@@ -2631,6 +2633,31 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%C", 129);
 	printf("\nret : %d\n", k);
 
+/*	setlocale(LC_ALL, "");
+	s[0] = 83;
+	s[1] = 55296;
+	s[2] = 528384;
+	s[3] = '\0';
+
+	ft_printf("ft_printf : %%S, s : ");
+	k = ft_printf("%S", s);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%S, s : ");
+	k = printf("%S", s);
+	printf("\nret : %d\n", k);
+*/
+	s[0] = 'a';
+	s[1] = 254;
+	s[2] = 'b';
+	s[3] = '\0';
+
+	ft_printf("ft_printf : %%S, s : ");
+	k = ft_printf("%S", s);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%S, s : ");
+	k = printf("%S", s);
+	printf("\nret : %d\n", k);
+	
 	return (0);
 
 }

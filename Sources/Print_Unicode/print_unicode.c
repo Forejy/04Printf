@@ -75,11 +75,15 @@ int			count_char_per_wint_t(wchar_t *string_wchar, int **number_of_char_per_wint
 	while (string_wchar[i] != '\0')
 	{
 		if (string_wchar[i] >= 128)
-			if((number_of_char_per_wint_t[0][i] =	compute_minimum_number_of_bytes_in_utf8(string_wchar[i])) > MB_CUR_MAX 
-			   && string_wchar[i] != 65533)
+			if((number_of_char_per_wint_t[0][i] =	compute_minimum_number_of_bytes_in_utf8(string_wchar[i])) > MB_CUR_MAX)
 			{
-				//write(1,"�", 2);
-				return (-1);
+				if (string_wchar[i] != 65533)
+					number_of_char_per_wint_t[0][i] = 1;
+				else
+				{
+					//write(1,"�", 2);
+					return (-1);
+				}
 			}
 		number_of_bytes += number_of_char_per_wint_t[0][i++];
 	}
