@@ -22,7 +22,7 @@ int main(void)
 	//TEST FLAG + et blank
 	//TEST FLAG blank et +
 
-	setlocale(LC_ALL, "");
+	//setlocale(LC_ALL, "");
 /*
 	int i                = 1;
 	unsigned char	x   = 255;
@@ -2537,7 +2537,7 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%1S",  L"こ");
 	printf("\nret : %d\n", k);
 */
-
+/*
 	ft_printf("ft_printf : %% -3zi, 0 : ");
 	k = ft_printf("%#.X%###.1x", 0);
 	printf("\nret : %d\n", k);
@@ -2603,16 +2603,17 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %% -3zi, 0 : ");
 	k = printf("%C", 254);
 	printf("\nret : %d\n", k);
-
-	s[0] = 254;
-	s[1] = 256;
+*/
+	wchar_t s[4];
+	s[0] = 'a';
+	s[1] = 'a';
 	s[2] = 'b';
 	s[3] = '\0';
 
-	ft_printf("ft_printf : %% -3zi, 0 : ");
+	ft_printf("ft_printf : %%S, s : ");
 	k = ft_printf("%S", s);
 	printf("\nret : %d\n", k);
-	ft_printf("   printf : %% -3zi, 0 : ");
+	ft_printf("   printf : %%S, s : ");
 	k = printf("%S", s);
 	printf("\nret : %d\n", k);
 

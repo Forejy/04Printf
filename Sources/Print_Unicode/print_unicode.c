@@ -35,7 +35,8 @@ size_t			my_put_wint_t(int dec, t_flag flag)
 		return (-1);
 	else if (dec > 196608 && dec < 262143)
 		return (0);
-	number_of_bytes = compute_minimum_number_of_bytes_in_utf8(dec);
+	if((number_of_bytes = compute_minimum_number_of_bytes_in_utf8(dec)) > MB_CUR_MAX)
+		return (-1);
 	temp = call_functions_to_convert_dec_to_bin_in_utf8(dec, number_of_bytes);
 	i = 0;
 	while (i < number_of_bytes)
@@ -69,8 +70,8 @@ int			count_char_per_wint_t(wchar_t *string_wchar, int **number_of_char_per_wint
 	while (string_wchar[i] != '\0')
 	{
 		if (string_wchar[i] >= 128)
-			number_of_char_per_wint_t[0][i] =
-				compute_minimum_number_of_bytes_in_utf8(string_wchar[i]);
+			if((number_of_char_per_wint_t[0][i] =	compute_minimum_number_of_bytes_in_utf8(string_wchar[i])) > MB_CUR_MAX)
+				return (-1);
 		number_of_bytes += number_of_char_per_wint_t[0][i++];
 	}
 	return (number_of_bytes);
@@ -122,7 +123,8 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 		return (6);
 	}
 	i = 0;
-	number_of_bytes = count_char_per_wint_t(string_wchar, &number_of_char_per_wint_t);
+	if((number_of_bytes = count_char_per_wint_t(string_wchar, &number_of_char_per_wint_t)) == -1)
+		return (-1);
 	if (!(string = (char *)malloc(sizeof(char) * (number_of_bytes + 1))))
 		exit_with_msg(ERROR_MALLOC_FAILED);
 	string[number_of_bytes] = '\0';
