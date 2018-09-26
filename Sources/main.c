@@ -2604,6 +2604,7 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%C", 254);
 	printf("\nret : %d\n", k);
 */
+/*
 	int k ;
 	
 	wchar_t s[4];
@@ -2646,6 +2647,8 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%S", s);
 	printf("\nret : %d\n", k);
 */
+    wchar_t s[4];
+    int k;
 	s[0] = 'a';
 	s[1] = 254;
 	s[2] = 'b';
@@ -2654,7 +2657,11 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("ft_printf : %%S, s : ");
 	k = ft_printf("%S", s);
 	printf("\nret : %d\n", k);
-	ft_printf("   printf : %%S, s : ");
+
+
+
+
+    ft_printf("   printf : %%S, s : ");
 	k = printf("%S", s);
 	printf("\nret : %d\n", k);
 	

@@ -76,9 +76,9 @@ int			count_char_per_wint_t(wchar_t *string_wchar, int **number_of_char_per_wint
 	while (string_wchar[i] != '\0')
 	{
 		if (string_wchar[i] >= 128)
-			if((number_of_char_per_wint_t[0][i] =	compute_minimum_number_of_bytes_in_utf8(string_wchar[i])) > MB_CUR_MAX)
+			if((number_of_char_per_wint_t[0][i] = compute_minimum_number_of_bytes_in_utf8(string_wchar[i])) > MB_CUR_MAX)
 			{
-				if (string_wchar[i] != 65533)
+				if (string_wchar[i] >= 129 && string_wchar[i] <= 255)
 					number_of_char_per_wint_t[0][i] = 1;
 				else
 				{
@@ -124,8 +124,8 @@ int 	test_validity_of_characters(wchar_t *string_wchar)
 	i = 0;
 	while ((temp = string_wchar[i]) != '\0')
 	{
-		if (temp >= 129 && temp <= 255)
-			string_wchar[i] = 65533;
+	//	if (temp >= 129 && temp <= 255)
+	//		string_wchar[i] = 65533;
 		if ((temp > 1114111 || temp < 0) || (temp >= 55296 && temp <= 57343))
 			return (-1);
 		i++;
@@ -178,6 +178,8 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 		else if (string_wchar[i] > 1114111 || string_wchar[i] < 0 
 				 || (string_wchar[i] >= 55296 && string_wchar[i] <= 57343 ))
 			return (-1);
+		else if (temp >= 129 && temp <= 255)
+			string[j++] = 65533;
 		else
 			string[j++] = string_wchar[i];
 		i++;
