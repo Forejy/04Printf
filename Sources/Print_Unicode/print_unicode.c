@@ -141,6 +141,9 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 				temp = temp->next;
 			}
 		}
+		else if (string_wchar[i] > 1114111 || string_wchar[i] < 0 
+				 || (string_wchar[i] >= 55296 && string_wchar[i] <= 57343 ))
+			return (-1);
 		else
 			string[j++] = string_wchar[i];
 		i++;
