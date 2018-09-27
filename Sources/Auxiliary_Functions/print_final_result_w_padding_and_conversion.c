@@ -168,7 +168,7 @@ int			compute_padding(const char *stock, t_flag flag, int len_arg)//, int wtf
 //	if (len_precision >= len_arg && flag.hash && flag.hexa)
 //		return (len_padding - flag.hexa);
 //	else
-		return (len_padding - flag.pointer);
+	return (len_padding - flag.pointer);
 	// - flag.hexa
 }
 
@@ -209,7 +209,7 @@ int			print_result_with_no_precision(t_flag flag, const char *stock, int len_arg
 }
 
 
-size_t		print_final_result(t_flag flag, const char *stock, int len_argument)
+uintmax_t		print_final_result(t_flag flag, const char *stock, int len_argument)
 {
 	int						len_precision;
 	int						len_padding;

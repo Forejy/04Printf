@@ -37,7 +37,7 @@ int			my_putchar_printf(char c, t_flag flag)
 	return(total_len);
 }
 
-size_t		my_putstr_printf(const char *str, t_flag flag)
+int		my_putstr_printf(const char *str, t_flag flag)
 {
 	size_t		len_str;
 	int			flag_precision;

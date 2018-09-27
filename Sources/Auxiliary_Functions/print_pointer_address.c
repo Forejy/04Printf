@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include "../../Includes/Auxiliary_Functions/print_final_result_w_padding_and_conversion.h"
 
-size_t		my_putaddress(uintmax_t nb, t_flag flag)
+size_t	my_putaddress(uintmax_t nb, t_flag flag)
 {
 	char		stock_number[20];
 	int			i;

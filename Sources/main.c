@@ -2686,8 +2686,19 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("Coucou %.0s%sabc%---12s", "hi", "coco", NULL);
 	printf("\nret : %d\n", k);
 
+	ft_printf("ft_printf : %%S, s : ");
+	k = ft_printf("%lc titi", 256);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%S, s : ");
+	k = printf("%lc titi", 256);
+	printf("\nret : %d\n", k);
 
-	
+	ft_printf("ft_printf : %%S, s : ");
+	k = ft_printf("%lc", 256);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%S, s : ");
+	k = printf("%lc", 256);
+	printf("\nret : %d\n", k);
 	
 	return (0);
 

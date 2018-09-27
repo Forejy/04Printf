@@ -36,10 +36,10 @@ static int			define_lenght_conv(const char *length, t_flag *flag)
 	return (lenght_conv % 3);
 }
 
-size_t			handle_conversions(char conversion, va_list *ap, t_flag flag)
+int			handle_conversions(char conversion, va_list *ap, t_flag flag)
 {
-	size_t			total_len;
-	int lenght_conv;
+	int		total_len;
+	int		lenght_conv;
 
 	total_len = 0;
 	lenght_conv = flag.lenght_conv;
@@ -410,9 +410,11 @@ int			analyze_and_printf(const char *format, va_list *ap, t_flag *flag)
 {
 	int			i;
 	int			j;
+	int			ret;
 
 	i = 0;
 	j = -1;
+	ret = 0;
 	if (*format == '\0')
 	{
 //		flag->lenght_print = -1;
@@ -443,25 +445,27 @@ int			analyze_and_printf(const char *format, va_list *ap, t_flag *flag)
 			return (i + 1);
 		}
 	}
+	else if ((ret = handle_conversions(format[i], ap, *flag)) == -1)
+		return (-1);
 	else
-		flag->lenght_print += handle_conversions(format[i], ap, *flag);
+		flag->lenght_print += ret;
 	return (i + 1);
 }
 
-size_t			handle_format(const char *format, va_list *ap)
+int			handle_format(const char *format, va_list *ap)
 {
-	int			i;
+	int		i;
 	int			ret;
 	t_flag		flag;
-	int 		j;
+	unsigned short 		j;
 	
 	i = 0;
 	ret = 0;
 	flag.lenght_print = 0;
 	flag.len_buffer = 0;
+	j = 0;
 	if (format != NULL)
 	{
-		j = 0;
 		while (format[i] != '\0')
 		{
 			if (ret >= 0 && format[i] == '%')

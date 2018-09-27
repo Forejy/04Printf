@@ -194,14 +194,6 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 	}
 	 */
 	flag.unicode_s = 1;
-	/*
-	string[0] = '\264';
-	string[1] = '\316';
-	string[2] = 160;
-	string[3] = 154;
-	string[4] = 225;
-	 \240\232\341
-	 */
 	
 	if (flag.precision > -1 && flag.precision < number_of_bytes)
 		flag.precision = adapts_precision_to_numbers_of_bytes(flag.precision, number_of_char_per_wint_t);

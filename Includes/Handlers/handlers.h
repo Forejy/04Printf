@@ -29,12 +29,12 @@ typedef struct		s_flag
 	int		unicode_s;
 	int		conv_d;
 	int 	lenght_conv;
-	size_t 	lenght_print;
+	int 	lenght_print;
 	int		len_buffer;
 	char	buffer[4096];
 }					t_flag;
 
-size_t			handle_format(const char *format, va_list *ap);
-size_t			handle_conversions(char conversion, va_list *ap, t_flag flag);
+int			handle_format(const char *format, va_list *ap);
+int			handle_conversions(char conversion, va_list *ap, t_flag flag);
 
 #endif
