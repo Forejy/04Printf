@@ -28,6 +28,7 @@ int			my_putchar_printf(char c, t_flag flag)
 	flag.character_or_string = 1;
 	if (flag.champs == 0)
 	{
+		write(1, flag.buffer, flag.len_buffer);
 		write(1, &c, 1);
 		return (1);
 	}

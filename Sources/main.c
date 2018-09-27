@@ -2671,6 +2671,13 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %%S, s : ");
 	k = printf("%20.ld et %.4hhi !", 0x11ffaa147, -8);
 	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %%S, s : ");
+	k = ft_printf("titi % +---12.5% et%%%0004% et %+1%");
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%S, s : ");
+	k = printf("titi % +---12.5% et%%%0004% et %+1%");
+	printf("\nret : %d\n", k);
 	
 	return (0);
 
