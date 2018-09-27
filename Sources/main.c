@@ -2717,10 +2717,10 @@ ft_printf(" +d : % +d \n", 0);
 	s[2] = 256;
 	s[3] = '\0';
 	ft_printf("ft_printf : %%S, s : ");
-	k = ft_printf("%.3ls", s);
+	k = ft_printf("%.1ls", s);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %%S, s : ");
-	k = printf("%.3ls", s);
+	k = printf("%.1ls", s);
 	printf("\nret : %d\n", k);
 
 	ft_printf("ft_printf : %%S, s : ");
@@ -2728,6 +2728,17 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %%S, s : ");
 	k = printf("%-62.3ls", L"(null)");
+	printf("\nret : %d\n", k);
+
+	s[0] = 254;
+	s[1] = 256;
+	s[2] = 'b';
+	s[3] = '\0';
+	ft_printf("ft_printf : %%S, s : ");
+	k = ft_printf("%ls", s);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%S, s : ");
+	k = printf("%ls", s);
 	printf("\nret : %d\n", k);
 	return (0);
 }
