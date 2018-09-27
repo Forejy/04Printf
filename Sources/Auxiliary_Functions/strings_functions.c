@@ -64,6 +64,7 @@ size_t		my_putstr_printf(const char *str, t_flag flag)
 		
 		if (flag_precision > -1 && flag_precision < (int)len_str)
 			len_str = (size_t)flag_precision;
+		write(1, flag.buffer, flag.len_buffer);
 		write(1, str, len_str);
 		total_len = len_str;
 	}
