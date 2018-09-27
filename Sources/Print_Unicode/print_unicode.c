@@ -61,9 +61,11 @@ size_t			my_put_wint_t(int dec, t_flag flag)
 int			count_char_per_wint_t(t_flag flag, wchar_t *string_wchar, int **number_of_char_per_wint_t)
 {
 	int			i;
+	int 		len_precision;
 	size_t			number_of_bytes;
 	
 	i = 0;
+	len_precision = flag.precision;
 	//i = string_wchar[0];
 	while (string_wchar[i] != '\0')
 		i++;
@@ -80,7 +82,7 @@ int			count_char_per_wint_t(t_flag flag, wchar_t *string_wchar, int **number_of_
 			{
 				if (string_wchar[i] >= 129 && string_wchar[i] <= 255)
 					number_of_char_per_wint_t[0][i] = 1;
-				else if (flag.precision <= 0)
+				else if (len_precision > 0)
 				{
 				//	if (flag.precision > 0)
 						
@@ -88,6 +90,7 @@ int			count_char_per_wint_t(t_flag flag, wchar_t *string_wchar, int **number_of_
 					return (-1);
 				}
 			}
+		len_precision -= number_of_char_per_wint_t[0][i];
 		number_of_bytes += number_of_char_per_wint_t[0][i++];
 	}
 	return (number_of_bytes);

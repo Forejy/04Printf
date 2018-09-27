@@ -2717,10 +2717,10 @@ ft_printf(" +d : % +d \n", 0);
 	s[2] = 256;
 	s[3] = '\0';
 	ft_printf("ft_printf : %%S, s : ");
-	k = ft_printf("%.2ls", s);
+	k = ft_printf("%.3ls", s);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %%S, s : ");
-	k = printf("%.2ls", s);
+	k = printf("%.3ls", s);
 	printf("\nret : %d\n", k);
 
 	ft_printf("ft_printf : %%S, s : ");
