@@ -2649,6 +2649,7 @@ ft_printf(" +d : % +d \n", 0);
 */
     wchar_t s[4];
     int k;
+	/*
 	s[0] = 'a';
 	s[1] = 254;
 	s[2] = 'b';
@@ -2707,8 +2708,21 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %%S, s : ");
 	k = printf("%lc", 200);
 	printf("\nret : %d\n", k);
-	return (0);
 
+*/
+	setlocale(LC_ALL, "");
+
+	s[0] = 'a';
+	s[1] = 'u';
+	s[2] = 256;
+	s[3] = '\0';
+	ft_printf("ft_printf : %%S, s : ");
+	k = ft_printf("%.2ls", s);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%S, s : ");
+	k = printf("%.2ls", s);
+	printf("\nret : %d\n", k);
+	return (0);
 }
 
   

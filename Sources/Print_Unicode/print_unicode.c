@@ -32,9 +32,9 @@ size_t			my_put_wint_t(int dec, t_flag flag)
 	flag.unicode_c = 1;
 	if (dec <= 128 && dec >= 0)
 		return (print_final_result(flag, (char *) &dec, 1));
-	else if (dec >= 129 && dec <= 255 && MB_CUR_MAX == 1)
+	else if (dec >= 129 && dec <= 255 && MB_CUR_MAX < 2 )
 	{
-	//	write(1,"�", 2);
+		write(1,"�", 2);
 		return (-1);
 	}
 	else if ((dec > 1114111 || dec < 0) || (dec >= 55296 && dec <= 57343))
@@ -58,7 +58,7 @@ size_t			my_put_wint_t(int dec, t_flag flag)
  * Fonction d'affichage de charactere unicode (par combinaison si le charactere est multi-octet)
  */
 
-int			count_char_per_wint_t(wchar_t *string_wchar, int **number_of_char_per_wint_t)
+int			count_char_per_wint_t(t_flag flag, wchar_t *string_wchar, int **number_of_char_per_wint_t)
 {
 	int			i;
 	size_t			number_of_bytes;
@@ -80,8 +80,10 @@ int			count_char_per_wint_t(wchar_t *string_wchar, int **number_of_char_per_wint
 			{
 				if (string_wchar[i] >= 129 && string_wchar[i] <= 255)
 					number_of_char_per_wint_t[0][i] = 1;
-				else
+				else if (flag.precision <= 0)
 				{
+				//	if (flag.precision > 0)
+						
 					//write(1,"�", 2);
 					return (-1);
 				}
@@ -155,7 +157,7 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 	}
 	i = 0;
 	if((test_validity_of_characters(string_wchar) == -1) 
-		||(number_of_bytes = count_char_per_wint_t(string_wchar, &number_of_char_per_wint_t)) == -1)
+		||(number_of_bytes = count_char_per_wint_t(flag, string_wchar, &number_of_char_per_wint_t)) == -1)
 		return (-1);
 	if (!(string = (char *)malloc(sizeof(char) * (number_of_bytes + 1))))
 		exit_with_msg(ERROR_MALLOC_FAILED);
