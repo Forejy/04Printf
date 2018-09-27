@@ -2710,7 +2710,7 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 
 */
-	setlocale(LC_ALL, "");
+	//setlocale(LC_ALL, "");
 
 	s[0] = 'a';
 	s[1] = 'u';
@@ -2721,6 +2721,13 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %%S, s : ");
 	k = printf("%.2ls", s);
+	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %%S, s : ");
+	k = ft_printf("%-62.3ls", L"(null)");
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%S, s : ");
+	k = printf("%-62.3ls", L"(null)");
 	printf("\nret : %d\n", k);
 	return (0);
 }
