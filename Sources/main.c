@@ -2699,7 +2699,14 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %%S, s : ");
 	k = printf("%lc", 256);
 	printf("\nret : %d\n", k);
-	
+
+	//setlocale(LC_ALL, "");
+	ft_printf("ft_printf : %%S, s : ");
+	k = ft_printf("%lc", 200);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%S, s : ");
+	k = printf("%lc", 200);
+	printf("\nret : %d\n", k);
 	return (0);
 
 }

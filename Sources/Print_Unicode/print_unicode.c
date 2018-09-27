@@ -32,9 +32,9 @@ size_t			my_put_wint_t(int dec, t_flag flag)
 	flag.unicode_c = 1;
 	if (dec <= 128 && dec >= 0)
 		return (print_final_result(flag, (char *) &dec, 1));
-	else if (dec >= 129 && dec <= 255 && MB_CUR_MAX < 2 )
+	else if (dec >= 129 && dec <= 255 && MB_CUR_MAX == 1)
 	{
-		write(1,"�", 2);
+	//	write(1,"�", 2);
 		return (-1);
 	}
 	else if ((dec > 1114111 || dec < 0) || (dec >= 55296 && dec <= 57343))
