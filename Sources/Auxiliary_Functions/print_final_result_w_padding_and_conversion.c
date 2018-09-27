@@ -220,6 +220,7 @@ size_t		print_final_result(t_flag flag, const char *stock, int len_argument)
 	len_precision = flag.precision;
 	total_len = 0;
 	sign = 0;
+	write(1, flag.buffer, flag.len_buffer);
 	if(flag.champs > 0)
 		len_padding = compute_padding(stock, flag, len_argument);//, 42
 

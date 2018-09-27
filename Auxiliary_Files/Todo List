@@ -33,7 +33,8 @@ DONETODO : Flags #x
 DONETODO : Flags #X
 DONETODO : Comprendre pourquoi les defines ne fonctionnent pas : voir handlers.h et tests du flag #
 DONETODO : Comprendre pourquoi la conversion %o n'affiche pas le chiffre 0
-TODO		Regler le probmeme de l'affichage des espaces par la droite avec le flag '-'. Il y a des tests a faire.
+DONETODO		Regler le probmeme de l'affichage des espaces par la droite avec le flag '-'. Il y a des tests a faire.
+TODO		Adapter le programme avec le buffer pour les cas speciaux avec argument et resultat = -1 avec chaines avant
 
 10/05/18 30min :  comprendre difference entre longueur de champs et champs
 				  conversion l'attribution des lenght_convs (astuce avec le modulo pour increm i)

@@ -2662,10 +2662,15 @@ ft_printf(" +d : % +d \n", 0);
 
 
     ft_printf("   printf : %%S, s : ");
-	k = printf("%S", s);
+//	k = printf("%S", s);
 	printf("\nret : %d\n", k);
-	
-	ft_printf("abc");
+
+	ft_printf("ft_printf : %%S, s : ");
+	k = ft_printf("%20.ld et %.4hhi !", 0x11ffaa147, -8);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%S, s : ");
+	k = printf("%20.ld et %.4hhi !", 0x11ffaa147, -8);
+	printf("\nret : %d\n", k);
 	
 	return (0);
 

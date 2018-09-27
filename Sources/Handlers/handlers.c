@@ -453,12 +453,12 @@ size_t			handle_format(const char *format, va_list *ap)
 	int			i;
 	int			ret;
 	t_flag		flag;
-	char		buffer[4096];
 	int 		j;
 	
 	i = 0;
 	ret = 0;
 	flag.lenght_print = 0;
+	flag.len_buffer = 0;
 	if (format != NULL)
 	{
 		j = 0;
@@ -466,22 +466,16 @@ size_t			handle_format(const char *format, va_list *ap)
 		{
 			if (ret >= 0 && format[i] == '%')
 			{
+				flag.len_buffer = j;
 				if ((ret = analyze_and_printf(&format[i + 1], ap, &flag)) > -1)
-				{
-					if (j > 0)
-					{
-						write(1, buffer, j + 1);
-						j = 0;
-					}
 					i = i + ret + 1;            //
-				}
 				else if (ret == -1)
 					return (-1);
-				
+				j = 0;
 			}
 			else
 			{
-				buffer[j] = format[i];
+				flag.buffer[j] = format[i];
 			//	write(1, &format[i], 1);
 				flag.lenght_print++;
 				i++;
@@ -489,7 +483,7 @@ size_t			handle_format(const char *format, va_list *ap)
 			}
 		}
 	}
-	write(1, buffer, j);
+	write(1, flag.buffer, j);
 	return(flag.lenght_print);
 }
 
