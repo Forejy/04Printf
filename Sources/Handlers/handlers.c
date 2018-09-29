@@ -20,18 +20,18 @@ static int			define_lenght_conv(const char *length, t_flag *flag)
 		else
 			lenght_conv = L;
 	}
-	if (*length == 'h')
+	else if (*length == 'h')
 	{
 		if (*(length + 1) == 'h')
 			lenght_conv = HH;
 		else
 			lenght_conv = H;
 	}
-	if (*length == 'j')
+    else if (*length == 'j')
 		lenght_conv = J;
-	if (*length == 'z')
+    else if (*length == 'z')
 		lenght_conv = Z;
-	if (lenght_conv > flag->lenght_conv)
+    else if (lenght_conv > flag->lenght_conv)
 		flag->lenght_conv = lenght_conv;
 	return (lenght_conv % 3);
 }
@@ -424,6 +424,8 @@ int			analyze_and_printf(const char *format, va_list *ap, t_flag *flag)
 	while (i > j)
 	{
 		j = i;
+//		if (format[i] == '*')
+//		    format[i] = va_arg(*ap, int);
 		i += test_flag(format[i], flag);
 		i += define_lenght_conv(&format[i], flag);
 		i += test_champs(&format[i], flag);

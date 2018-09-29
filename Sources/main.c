@@ -2784,9 +2784,11 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("@moulitest: %s", NULL);
 	printf("\nret : %d\n", k);
 */
+	//setlocale(LC_ALL, "");
+
 //	ft_printf("ft_printf : %%S, s : ");
-	k = ft_printf("% S", NULL);
-	printf("\nret : %d\n", k);
+//	k = ft_printf("% S", NULL);
+//	printf("\nret : %d\n", k);
 //	ft_printf("   printf : %%S, s : ");
 	k = printf("% S", NULL);
 	printf("\nret : %d\n", k);
