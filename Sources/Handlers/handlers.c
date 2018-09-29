@@ -220,13 +220,20 @@ int			test_champs(const char *format, t_flag *flag, va_list *ap)
 {
 	int		i;
 	int		nb;
+	int		temp_star;
 
 	i = 0;
 	nb = 0;
 	
 	if (format[0] == '*')
 	{
-		flag->champs = va_arg(*ap, int);
+		temp_star = va_arg(*ap, int);
+		if (temp_star < 0)
+		{
+			flag->less = 1;
+			temp_star *= -1;
+		}
+		flag->champs = temp_star;
 		return (1);
 	}
 	if (format[0] == '0')//Si on a un 0 et pas de '.' derriere, on doit traiter le 0 dans la fonction test_flags
@@ -254,6 +261,7 @@ int				test_precision(const char *format, t_flag *flag, va_list *ap)
 {
 	int		i;
 	int		nb;
+	int		temp_star;
 
 	i = 0;
 	nb = 0;
@@ -271,7 +279,13 @@ int				test_precision(const char *format, t_flag *flag, va_list *ap)
 			flag->precision = nb;
 		else if (*format == '*')
 		{
-			flag->precision = va_arg(*ap, int);
+			temp_star = va_arg(*ap, int);
+			if (temp_star < 0)
+			{
+				flag->less = 1;
+				temp_star *= -1;
+			}
+			flag->precision = temp_star;
 			i++;
 		}
 	}
