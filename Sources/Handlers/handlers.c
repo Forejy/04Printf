@@ -281,7 +281,7 @@ int				test_precision(const char *format, t_flag *flag, va_list *ap)
 				flag->less = 1;
 				temp_star *= -1;
 			}*/
-			if (temp_star > 0)
+			if (temp_star >= 0)
 				flag->precision = temp_star;
 			i++;
 		}
