@@ -2783,9 +2783,19 @@ ft_printf(" +d : % +d \n", 0);
 	printf("\n");
 //	printf("%.d, %.0d", 0, 0);
 	
-	ft_printf("{%*d}", -5, 42);
+//	ft_printf("{%*d}", -5, 42);
+//	printf("\n");
+//	printf("{%*d}", -5, 42);
+
+	ft_printf("{%.5d}", 5, 42);
 	printf("\n");
-	printf("{%*d}", -5, 42);
+	printf("{%.5d}", 5, 42);
+
+	printf("\n");
+	
+	ft_printf("{%.*d}", 5, 42);
+	printf("\n");
+	printf("{%.*d}", 5, 42);
 	return (0);
 }
 
