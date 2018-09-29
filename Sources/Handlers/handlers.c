@@ -276,12 +276,13 @@ int				test_precision(const char *format, t_flag *flag, va_list *ap)
 		if (format[i] == '*')
 		{
 			temp_star = va_arg(*ap, int);
-			if (temp_star < 0)
+			/*if (temp_star < 0)
 			{
 				flag->less = 1;
 				temp_star *= -1;
-			}
-			flag->precision = temp_star;
+			}*/
+			if (temp_star > 0)
+				flag->precision = temp_star;
 			i++;
 		}
 	//	if (nb < 0)
