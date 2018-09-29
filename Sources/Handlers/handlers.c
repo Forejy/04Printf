@@ -27,11 +27,11 @@ static int			define_lenght_conv(const char *length, t_flag *flag)
 		else
 			lenght_conv = H;
 	}
-    else if (*length == 'j')
+	else if (*length == 'j')
 		lenght_conv = J;
-    else if (*length == 'z')
+	else if (*length == 'z')
 		lenght_conv = Z;
-    else if (lenght_conv > flag->lenght_conv)
+	else if (lenght_conv > flag->lenght_conv)
 		flag->lenght_conv = lenght_conv;
 	return (lenght_conv % 3);
 }
