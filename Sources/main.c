@@ -2723,6 +2723,7 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%.1ls", s);
 	printf("\nret : %d\n", k);
 */
+/*
 	ft_printf("ft_printf : %%S, s : ");
 	k = ft_printf("%-62.3ls", L"(null)");
 	printf("\nret : %d\n", k);
@@ -2775,13 +2776,28 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %%S, s : ");
 	k = printf("^.^/%s^.^/", "(null)");
 	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %%S, s : ");
+	k = ft_printf("@moulitest: %s", NULL);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%S, s : ");
+	k = printf("@moulitest: %s", NULL);
+	printf("\nret : %d\n", k);
+*/
+//	ft_printf("ft_printf : %%S, s : ");
+	k = ft_printf("% S", NULL);
+	printf("\nret : %d\n", k);
+//	ft_printf("   printf : %%S, s : ");
+	k = printf("% S", NULL);
+	printf("\nret : %d\n", k);
+/*
+
+//	ft_printf("ft_printf : %%S, s : ");
+	k = ft_printf("%S", NULL);
+	printf("\nret : %d\n", k);
+//	ft_printf("   printf : %%S, s : ");
+	k = printf("%S", NULL);
+	printf("\nret : %d\n", k);
+*/
 	return (0);
 }
-
-
-/*
- *
- * ^.^/%s^.^/" and arg: "(null)"
-expected: [^.^/(null)^.^/]
-     got: [(null)^.^/\x00\x00\x81\x51]
- */

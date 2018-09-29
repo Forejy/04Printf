@@ -58,7 +58,8 @@ int		my_putstr_printf(const char *str, t_flag flag)
 		{
 			if (flag_precision > 6 || flag_precision == -1)
 				flag_precision = 6;
-				write(1, "(null)", flag_precision);
+            write(1, flag.buffer, flag.len_buffer);
+            write(1, "(null)", flag_precision);
 				return (flag_precision);
 		}
 		
