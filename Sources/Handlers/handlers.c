@@ -216,13 +216,19 @@ int			test_flag(char format_flag, t_flag	*flag)
 		return (0);
 }
 
-int			test_champs(const char *format, t_flag *flag)
+int			test_champs(const char *format, t_flag *flag, va_list *ap)
 {
 	int		i;
 	int		nb;
 
 	i = 0;
 	nb = 0;
+	
+	if (format[0] == '*')
+	{
+		flag->champs = va_arg(*ap, int);
+		return (1);
+	}
 	if (format[0] == '0')//Si on a un 0 et pas de '.' derriere, on doit traiter le 0 dans la fonction test_flags
 	{
 		while (format[i] == '0')
@@ -244,7 +250,7 @@ int			test_champs(const char *format, t_flag *flag)
 	return (0);
 }
 
-int				test_precision(const char *format, t_flag *flag)
+int				test_precision(const char *format, t_flag *flag, va_list *ap)
 {
 	int		i;
 	int		nb;
@@ -259,10 +265,12 @@ int				test_precision(const char *format, t_flag *flag)
 			nb = nb * 10 + (format[i] - '0');
 			i++;
 		}
-		if (nb < 0)
-			flag->precision = 0;
-		else
+//		if (nb < 0)
+//			flag->precision = 0;
+		if (nb > 0)
 			flag->precision = nb;
+		else if (*format == '*')
+			flag->precision = va_arg(*ap, int);
 	}
 	return (i);
 }
@@ -424,13 +432,11 @@ int			analyze_and_printf(const char *format, va_list *ap, t_flag *flag)
 	while (i > j)
 	{
 		j = i;
-//		if (format[i] == '*')
-//		    format[i] = va_arg(*ap, int);
 		i += test_flag(format[i], flag);
 		i += define_lenght_conv(&format[i], flag);
-		i += test_champs(&format[i], flag);
+		i += test_champs(&format[i], flag, ap);
 		if (format[i] == '.')
-			i += test_precision(&format[i], flag);
+			i += test_precision(&format[i], flag, ap);
 	}
 	if (format[i] != 'd' && format[i] != 'D' && format[i] != 'i' && format[i] != 'o' 
 		&& format[i] != 'O' && format[i] != 'u' && format[i] != 'U'&& format[i] != 'x'
