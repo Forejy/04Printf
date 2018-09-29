@@ -2776,8 +2776,12 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("^.^/%s^.^/", "(null)");
 	printf("\nret : %d\n", k);
 	
-	ft_printf("%lld", LLONG_MAX);
-	printf("%lld", LLONG_MAX);
+//	ft_printf("%lld", LLONG_MAX);
+//	printf("%lld", LLONG_MAX);
+	
+	ft_printf("%.d, %.0d", 0, 0);
+	printf("\n");
+	printf("%.d, %.0d", 0, 0);
 	return (0);
 }
 
