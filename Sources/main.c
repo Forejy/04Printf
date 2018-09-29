@@ -2712,7 +2712,7 @@ ft_printf(" +d : % +d \n", 0);
 */
 	//setlocale(LC_ALL, "");
 
-	s[0] = 'a';
+/*	s[0] = 'a';
 	s[1] = 'u';
 	s[2] = 256;
 	s[3] = '\0';
@@ -2722,12 +2722,40 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %%S, s : ");
 	k = printf("%.1ls", s);
 	printf("\nret : %d\n", k);
-
+*/
 	ft_printf("ft_printf : %%S, s : ");
 	k = ft_printf("%-62.3ls", L"(null)");
 	printf("\nret : %d\n", k);
 	ft_printf("   printf : %%S, s : ");
 	k = printf("%-62.3ls", L"(null)");
+	printf("\nret : %d\n", k);
+
+	ft_printf("   printf : %%S, s : ");
+	k = printf("42%35.54ls42", L"(null)");
+	printf("\nret : %d\n", k);
+	ft_printf("ft_printf : %%S, s : ");
+	k = ft_printf("42%35.54ls42", L"(null)");
+	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %%S, s : ");
+	k = ft_printf("%2lc", 248);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%S, s : ");
+	k = printf("%2lc", 248);
+	printf("\nret : %d\n", k);
+
+
+	//setlocale(LC_ALL, "");
+
+	s[0] = 'a';
+	s[1] = 254;
+	s[2] = 'b';
+	s[3] = '\0';
+	ft_printf("ft_printf : %%S, s : ");
+	k = ft_printf("%3ls", s);
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%S, s : ");
+	k = printf("%3ls", s);
 	printf("\nret : %d\n", k);
 
 	s[0] = 254;
@@ -2740,7 +2768,20 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("   printf : %%S, s : ");
 	k = printf("%ls", s);
 	printf("\nret : %d\n", k);
+
+	ft_printf("ft_printf : %%S, s : ");
+	k = ft_printf("^.^/%s^.^/", "(null)");
+	printf("\nret : %d\n", k);
+	ft_printf("   printf : %%S, s : ");
+	k = printf("^.^/%s^.^/", "(null)");
+	printf("\nret : %d\n", k);
 	return (0);
 }
 
-  
+
+/*
+ *
+ * ^.^/%s^.^/" and arg: "(null)"
+expected: [^.^/(null)^.^/]
+     got: [(null)^.^/\x00\x00\x81\x51]
+ */

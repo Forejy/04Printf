@@ -80,15 +80,17 @@ int			count_char_per_wint_t(t_flag flag, wchar_t *string_wchar, int **number_of_
 		if (string_wchar[i] >= 128)
 			if((number_of_char_per_wint_t[0][i] = compute_minimum_number_of_bytes_in_utf8(string_wchar[i])) > MB_CUR_MAX)
 			{
-				//if (string_wchar[i] >= 129 && string_wchar[i] <= 255)
-				//	number_of_char_per_wint_t[0][i] = 1;
-				if (len_precision > 0 || flag.precision == -1)
+				if (string_wchar[i] >= 129 && string_wchar[i] <= 255)
+					number_of_char_per_wint_t[0][i] = 1;
+				else if (len_precision > 0 || flag.precision == -1)
 				{
 				//	if (flag.precision > 0)
-						
+
 					//write(1,"�", 2);
 					return (-1);
 				}
+			//	else if (flag.precision == -1)
+            //        number_of_char_per_wint_t[0][i] = 1;
 			}
 		len_precision -= number_of_char_per_wint_t[0][i];
 		number_of_bytes += number_of_char_per_wint_t[0][i++];
