@@ -2933,6 +2933,15 @@ ft_printf(" +d : % +d \n", 0);
 	k = ft_printf("{%S}", NULL);
 	printf("%d\n", k);
 
+	k = ft_printf("{%030x}\n", 0xFFFF);
+	printf("%d\n", k);
+
+	k = printf("{%030x}\n", 0xFFFF);
+	printf("%d\n", k);
+	
+	//printf("%F", 1444565444646.6465424242242);
+
+
 	return (0);
 }
 
