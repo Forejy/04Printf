@@ -539,8 +539,8 @@ int			handle_format(const char *format, va_list *ap)
 				i += 5;
 				flag.color = 0;
 			}
-			else if (format[i] == '{')
-				i += handle_colors(&format[i + 1], &flag, &j);
+			else if (format[i] == '{' && (ret = handle_colors(&format[i + 1], &flag, &j)) > 0)
+				i += ret;
 			else
 			{
 				flag.buffer[j] = format[i];

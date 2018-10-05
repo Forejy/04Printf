@@ -2929,7 +2929,7 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("DOUBLE_MAX : %lf\n", DBL_MAX);
 	printf("k = %d\n", k);
 	
-	ft_printf("%s", "abc");
+	ft_printf("{%s}", NULL);
 
 	return (0);
 }
