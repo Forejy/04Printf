@@ -29,6 +29,7 @@ typedef struct		s_flag
 	int		unicode_c;
 	int		unicode_s;
 	int		conv_d;
+	int 	flt;
 	int 	lenght_conv;
 	int 	lenght_print;
 	int		len_buffer;

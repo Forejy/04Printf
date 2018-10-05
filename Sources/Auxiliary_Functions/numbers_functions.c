@@ -36,20 +36,46 @@ size_t		my_putnbr_long_long(intmax_t nbr, t_flag flag)
 
 size_t		my_putnbr_double(double nbr)
 {
-	long double	nb;
-	long double int_part_test;
-	long long		int_part;
-	int		decimal_part;
-	char	string[318];//20 chars pour ULLONG_MAX, 1 pour '.', et 6 pour la partie decimal
+	double	nb;
+	double int_part_test;
+	unsigned long long		int_part;
+	double		dec_part;
+	unsigned int dec_part_bis;
+	char	stock_number[318];//20 chars pour ULLONG_MAX, 1 pour '.', et 6 pour la partie decimal
+	int			i;
 	int		total_len;
 	t_flag 	flag;
 	
 	total_len = 0;
-	initialize_t_flag(&flag);
+	i = 317;
+	initialize_t_flag(&flag);///A delete
 	
 	nb = nbr;
+	int_part = nbr;
+	dec_part = (nbr - int_part) * 10000000;
+	dec_part_bis = dec_part;
 	
-	string[0] = (char)nb;
+	flag.flt = 1;
+	if ((dec_part_bis % 10) >= 5)
+		dec_part_bis = dec_part_bis/10 + 1;
+	else
+		dec_part_bis = dec_part_bis/10;
+	while (dec_part_bis > 0)
+	{
+		stock_number[i] = (char) ((dec_part_bis % 10) + '0');
+		dec_part_bis = dec_part_bis / 10;
+		i--;
+	}
+	stock_number[i--] = '.';
+
+	while (int_part > 0)
+	{
+		stock_number[i] = (char) ((int_part % 10) + '0');
+		int_part = int_part / 10;
+		i--;
+	}
+	
+	write(1, &stock_number[i + 1], 317 - i);
 	/*
 	nb = nbr/10;
 	int_part = nbr;

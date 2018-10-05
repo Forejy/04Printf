@@ -2925,7 +2925,6 @@ ft_printf(" +d : % +d \n", 0);
 //	printf("color ?");
 
 	
-	my_putnbr_double(15.65);
 	k = printf("DOUBLE_MAX : %lf\n", DBL_MAX);
 	printf("k = %d\n", k);
 	
@@ -2942,6 +2941,18 @@ ft_printf(" +d : % +d \n", 0);
 	//printf("%F", 1444565444646.6465424242242);
 
 
+	my_putnbr_double( 17976931348623.17);
+	printf("\n%.50f\n",  17976931348623.17);
+	printf("\n%.50d\n",  17976931348623);
+	printf("\n%e\n",  17976931348623.6465424242242);
+	printf("%e\n",  17976931348623.6465424242242);
+	printf("\n%g\n",  159123.6465424242242);
+	printf("%G\n",  159123.6465424242242);
+	printf("\n%g\n",  1591234.6465424242242);
+	printf("%G\n",  1591234.6465424242242);
+
+	k = ft_printf("{%%   %}", "test");
+	printf("%d\n", k);
 	return (0);
 }
 

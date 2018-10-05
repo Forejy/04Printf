@@ -204,6 +204,7 @@ void			initialize_t_flag(t_flag	*flag)
 	flag->unicode_c = 0;
 	flag->unicode_s = 0;
 	flag->conv_d = 0;
+	flag->flt = 0;
 	flag->lenght_conv = 0;
 }
 
@@ -466,7 +467,7 @@ int			analyze_and_printf(const char *format, va_list *ap, t_flag *flag)
 	ret = 0;
 	if (*format == '\0')
 	{
-//		flag->lenght_print = -1;
+		write(1, flag->buffer, flag->len_buffer);
 		return (0);
 	}
 	initialize_t_flag(flag);
