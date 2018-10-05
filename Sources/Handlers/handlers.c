@@ -528,7 +528,7 @@ int			handle_format(const char *format, va_list *ap)
 					return (-1);
 				j = 0;
 			}
-			if (flag.color == 1 && format[i] == '{' && format[i + 1] == 'e' && format[i + 2] == 'o' 
+			else if (flag.color == 1 && format[i] == '{' && format[i + 1] == 'e' && format[i + 2] == 'o' 
 				&& format[i + 3] == 'f' && format[i + 4] == '}')
 			{
 				flag.buffer[j++] = '\033';
@@ -539,7 +539,7 @@ int			handle_format(const char *format, va_list *ap)
 				i += 5;
 				flag.color = 0;
 			}
-			if (format[i] == '{')
+			else if (format[i] == '{')
 				i += handle_colors(&format[i + 1], &flag, &j);
 			else
 			{

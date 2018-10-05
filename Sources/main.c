@@ -2928,6 +2928,8 @@ ft_printf(" +d : % +d \n", 0);
 	my_putnbr_double(15.65);
 	k = printf("DOUBLE_MAX : %lf\n", DBL_MAX);
 	printf("k = %d\n", k);
+	
+	ft_printf("%s", "abc");
 
 	return (0);
 }
