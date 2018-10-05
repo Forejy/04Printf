@@ -2929,7 +2929,9 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("DOUBLE_MAX : %lf\n", DBL_MAX);
 	printf("k = %d\n", k);
 	
-	ft_printf("{%s}", NULL);
+	ft_printf("{%s}\n", NULL);
+	k = ft_printf("{%S}", NULL);
+	printf("%d\n", k);
 
 	return (0);
 }

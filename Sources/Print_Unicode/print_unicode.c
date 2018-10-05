@@ -157,6 +157,7 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 
 	if (string_wchar == NULL)
 	{
+		write(1, flag.buffer, flag.len_buffer);
 		write(1, "(null)", 6);
 		return (6);
 	}
