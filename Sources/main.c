@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <float.h>
 #include "../Includes/printf.h"
 #include "../Includes/Print_Unicode/create_and_print_t_bin_list.h"
 #include "../Includes/Print_Unicode/print_unicode.h"
@@ -11,6 +12,21 @@
 #include "../Includes/Auxiliary_Functions/strings_functions.h"
 #include "../Includes/Auxiliary_Functions/print_pointer_address.h"
 #include "../Includes/Auxiliary_Functions/numbers_functions.h"
+#include "../Includes/Auxiliary_Functions/bonus.h"
+
+void		pourcent_n(char *str, int *n)
+{
+	int total_len;
+	int i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	write(1, str, i);
+
+	*n = i;
+}
+
 
 int main(void)
 {
@@ -2723,6 +2739,7 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%.1ls", s);
 	printf("\nret : %d\n", k);
 */
+	/*
 	ft_printf("ft_printf : %%S, s : ");
 	k = ft_printf("%-62.3ls", L"(null)");
 	printf("\nret : %d\n", k);
@@ -2802,6 +2819,116 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("{%.*s}", 0, "42");
 	printf("\n");
 	printf("{%.*s}", 0, "42");
+
+	printf("\n");
+	
+/*
+
+//	printf("\n");
+//	my_putnbr_double(5.610);
+//	printf("%zu, %llu\n", sizeof(unsigned long long), ULLONG_MAX);
+	printf("ULLONG MAX : %llu\n", ULLONG_MAX);
+	printf("%D\n", MAX_INPUT);
+	printf("%a\n", FLT_MAX);
+	printf("Taille d'un float : %zu\n", sizeof(float));
+	printf("Taille d'un double : %zu\n", sizeof(double));
+	printf("Taille d'un long double : %zu\n", sizeof(long double));
+	printf("Taille d'un intmax_t : %zu\n", sizeof(intmax_t));
+	printf("Valeur maximum pour un float : %f\n", FLT_MAX);
+	printf("Valeur maximum pour un double : %f\n", DBL_MAX);
+	printf("Valeur maximum pour un long double : %Lf\n", LDBL_MAX);
+	
+//	printf("%f", FLT_MAX);
+	printf("%a\n", 726.123456);
+	printf("%a\n", 123.123);
+	printf("1.123456 : %a\n", 1.123456);
+	printf("2.0 : %a\n", 2.0);
+	printf("3.0 : %a\n", 3.0);
+	printf("3.5 : %a\n", 3.5);
+	printf("%a\n", 4.0);
+	printf("%a\n", 5.0);
+	printf("%a\n", 9.0);
+	printf("%a\n", 10.0);
+	printf("%a\n", 100.0);
+	printf("%a\n", 0.0);
+
+	printf("2.0 : %f\n", 2.0);
+	printf("3.0 : %f\n", 3.0);
+	printf("3.5 : %f\n", 3.5);
+	printf("%f\n", 4.0);
+	printf("%f\n", 5.0);
+	printf("%f\n", 9.0);
+	printf("%f\n", 10.0);
+	printf("%#0-10.18f\n", 100.0);
+	printf("%f\n", 0);
+	
+	my_putnbr_double(123.4);
+	
+*/
+	/*
+	short b;
+	printf("%%n : ");
+	printf("abcd%hn\n", &b);
+	printf("%d\n", b);
+	
+	//pourcent_n("12345678\n", &b);
+	//printf("%d\n", b);
+	ft_printf("abcdef%n\n", &b);
+	printf("%d\n", b);
+	
+	printf("%2$d%d\n", 1, 5, 20);
+
+	/*printf("\033[0;31m"); 
+	write(1, "\033[32mnocolor", 7);
+	printf("abc\n");
+	write(1, "color?", 6);
+	printf("Hello\n");
+	printf("%d\n", 5);
+	printf("\033[0m");
+	printf("ABC");*/
+//	k = ft_printf("%d\033[0;31m", 3);
+//	printf("k : %d\n", k);
+	
+//	k = printf("%d\033[0;31m", 3);
+//	printf("k : %d", k);
+	
+	ft_printf("nocolor {red}red{eof} nocoloragain\n");
+	ft_printf("nocolor {boldred}boldred{eof} nocoloragain\n");
+	ft_printf("nocolor {green}green{eof} nocoloragain\n");
+	ft_printf("nocolor {boldgreen}boldgreen{eof} nocoloragain\n");
+	ft_printf("nocolor {yellow}yellow{eof} nocoloragain\n");
+	ft_printf("nocolor {boldyellow}boldyellow{eof} nocoloragain\n");
+	ft_printf("nocolor {blue}blue{eof} nocoloragain\n");
+	ft_printf("nocolor {boldblue}boldblue{eof} nocoloragain\n");
+	ft_printf("nocolor {magenta}magenta{eof} nocoloragain\n");
+	ft_printf("nocolor {boldmagenta}boldmagenta{eof} nocoloragain\n");
+	ft_printf("nocolor {cyan}cyan{eof} nocoloragain\n");
+	ft_printf("nocolor {boldcyan}boldcyan{eof} nocoloragain\n");
+
+//	printf("%zu\n", sizeof(intmax_t));
+//	printf("nocolor \033[0;31mcyan\033[0m nocolor");
+	
+//	write(1, "nocolor \033[0;31mcyan\033[0m nocolor", 31);
+//	printf("%li\n", INTMAX_MIN);
+	k =ft_printf("%.2b\n", 0);
+	printf("k = %d\n", k);
+	k =ft_printf("INTMAX_MIN : %b\n", INTMAX_MIN);
+	printf("k = %d\n", k);
+	k =ft_printf("INTMAX_MAX : %b\n", INTMAX_MAX);
+	printf("k = %d\n", k);
+	k = printf("%+.2x\n", 0);
+	
+//	ft_printf("%c", 'b');
+
+	//printf("\n-11011001011001000111011011");
+
+//	printf("color ?");
+
+	
+	my_putnbr_double(15.65);
+	k = printf("DOUBLE_MAX : %lf\n", DBL_MAX);
+	printf("k = %d\n", k);
+
 	return (0);
 }
 

@@ -13,10 +13,7 @@ size_t			my_putnbr_hexa(uintmax_t nb, t_flag flag)
 	i = 19;
 	total_len = 0;
 	if (nb == 0 && flag.precision != 0)
-	{
-		stock_number[i] = '0';
-		i--;
-	}
+		stock_number[i--] = '0';
 	else if(nb != 0)
 	{
 		flag.hexa = 2;
@@ -34,7 +31,6 @@ size_t			my_putnbr_hexa(uintmax_t nb, t_flag flag)
 	}
 	total_len = total_len + print_final_result(flag, &stock_number[i + 1], 19 - i);
 	return (total_len);
-
 }
 
 size_t			my_putnbr_HEXA(uintmax_t nb, t_flag flag)

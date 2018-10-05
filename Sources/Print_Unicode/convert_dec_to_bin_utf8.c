@@ -1,5 +1,5 @@
 #include "../../Includes/Print_Unicode/create_and_print_t_bin_list.h"
-
+#include "../../Includes/Handlers/handlers.h"
 
 
 unsigned int				compute_minimum_number_of_bits(unsigned int n)
@@ -127,6 +127,3 @@ void			convert_dec_to_bin_utf8(int	number_of_bytes, t_bin_list *begin_bin_list, 
 /*
  * Remplit les octets en convertissant le nombre decimal en binaire, au format UTF8
  */
-
-
-

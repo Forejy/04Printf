@@ -51,7 +51,8 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 			while (len_padding-- > 0)
 				write(1, " ", 1);*/
 		else if ((flag.zero || flag.precision >= 0) && (flag_pointer == 2 ||
-				 flag.hexa == 2 )  && !flag.less && ((flag.hexa && flag.hash == 2) || !flag.hexa))
+				flag.hexa == 2 || flag.binary)  && !flag.less && (((flag.hexa  || flag.binary ) && flag.hash == 2) 
+				|| !flag.hexa || !flag.binary))
 			//Dans le cas des pointeurs :
 				//Si on a champs et precision en meme temps 
 				// le 0x doit etre imprime avant l'appel de la precision :'    0x''000000000000ffffcb84' 'padding''precision'
@@ -98,8 +99,8 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument)
 	}
 	if (flag.character_or_string == 0 && flag.unicode_c == 0 && flag.unicode_s == 0)
 	{
-		if (len_precision > 0 && (len_precision > len_argument - flag.hexa)
-			&& (flag.pointer == 2 || (flag.hexa == 2 && flag.hash)))
+		if (len_precision > 0 && (len_precision > len_argument - flag.hexa - flag.binary)
+			&& (flag.pointer == 2 || ((flag.hexa == 2 || flag.binary) && flag.hash)))
 			//&& flag.champs < len_precision))
 			//&& flag.champs == 0)
 		{
@@ -147,7 +148,7 @@ int			compute_padding(const char *stock, t_flag flag, int len_arg)//, int wtf
 	len_champs = flag.champs;
 	len_precision = flag.precision;
 	len_padding = -1;
-	if (flag.hash == 2 && flag.hexa == 2 && len_precision > len_arg - 2)
+	if (flag.hash == 2 && (flag.hexa == 2 || flag.binary) && len_precision > len_arg - 2)
 		len_padding = len_champs - len_precision - 2;
 	else if (len_precision >= (len_arg - flag.pointer) && flag.character_or_string == 0
 		&& flag.unicode_c == 0 && flag.unicode_s == 0)//Si l'argument est un pointeur, je supprimne le '0x' de sa longueur
@@ -180,7 +181,7 @@ int			print_result_with_no_precision(t_flag flag, const char *stock, int len_arg
 	i = 0;
 	ret = 0;
 
-	if (flag.conv_d && flag.blank && *stock != '-' && *stock != '+' && (flag.champs <= len_argument || flag.less)) 
+	if (flag.conv_d && flag.blank && *stock != '-' && *stock != '+' && (flag.champs <= len_argument || flag.less))
 	//(flag.less)
 		//&& !flag.less)
 		// && (len_padding > 0 && len_padding < len_argument && !flag.less ) 
@@ -237,14 +238,14 @@ uintmax_t		print_final_result(t_flag flag, const char *stock, int len_argument)
 		print_padding(flag, &stock, len_padding);
 	if (len_padding < 0)
 		len_padding = 0;
-	if ((flag.hexa  && (len_precision > (len_argument - flag.hash) 
+	if (((flag.hexa || flag.binary) && (len_precision > (len_argument - flag.hash) 
 		|| len_precision > len_argument )) //&& flag.character_or_string == 0
 		|| (((flag.character_or_string == 2 || flag.unicode_s) && (len_precision != -1 
 		|| (flag.unicode_c && len_precision > 0)))
 		//&& len_precision < len_arg)
 		&& len_precision < len_argument)
 
-		   || (!flag.hexa && !flag.unicode_s && !flag.unicode_c && !flag.character_or_string
+		   || ((!flag.hexa || !flag.binary) && !flag.unicode_s && !flag.unicode_c && !flag.character_or_string
 		//&& ((len_precision > len_padding) && len_precision >= len_argument 
 		&& len_precision > len_argument))
 		total_len += (size_t)len_padding + (size_t)len_precision;

@@ -133,19 +133,24 @@ DONETODO			Finir de corriger le cas %p quand on a precision et champs >0
 	DONETODO		Reverifier tous les %o et les %p
 DONETODO			gerer champs et precision pour %s
 DONETODO			Etudier les makefile et Faire le Makefile pour creer libftprintf.a
-TODO				Tester et adapter la nouvelle fonction handle_format
+DONETODO				Tester et adapter la nouvelle fonction handle_format
 	DONETODO			J'en etais a TEST FLAG '0' ET CHAMPS : des caracteres etranges resortent de mon printf
 	DONETODO				Tester la modification faites pour la continuite de 0 dans la fonction test_champs
 	DONETODO			Resoudre l'erreur du moulitest 05, et se detendre quand je dois revenir sur mon travailler : C'est dur, mais je reussirai
 	DONETODO				Trouver pourquoi les wchar_t ne s'affichent pas de la meme facon avec champs et sans champs  
     DONETODO                   Gerer le cas printf("%15.4d", -42)
-    TODO						Finir la gestion du flag.blank + flag.less
-TODO			Supprimer tous les write qui ne sont pas dans la fonction finale
+    DONETODO						Finir la gestion du flag.blank + flag.less
 DONETODO			gerer le flag -
 DONETODO			Gerer le flag %
 TODO				Tester puis gerer la conversion %p avec un pointeur null
 TODO				Normer chaque fonction a 25lignes  pour 80 caracteres par ligne max
 TODO				Amelioration 1 : Se debrouiller pour initialiser les i a 0 en imprimant par la gauche dans les aux_functions
+ABORTTODO				Regarder comment obtenir le n-ieme argument sans avoir a stocker la va_list
+DONETODO				Faire la fonction de convertion d'un intmax_t en binaire avec signe -+ et 0
+TODO				refaire les tests en changeant le type de nbr de uintmax_t vers intmax_t dans my_putnbr_long_long
+TODO				Gerer le intmax_min dans la fonction my_putnbr_long_long dans numbers_functions.c
+TODO			Supprimer tous les write et commentaires qui ne sont pas dans la fonction finale
+
 
 Champs : Longueur total de caracteres affiches
 Precision : Longueur total de l'argument sans le signe

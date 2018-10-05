@@ -6,6 +6,8 @@
 #include "../../Includes/Auxiliary_Functions/numbers_functions_hexa.h"
 #include "../../Includes/Auxiliary_Functions/print_pointer_address.h"
 #include "../../Includes/errors.h"
+#include "../../Includes/Auxiliary_Functions/bonus.h"
+#include "../../Includes/Handlers/handle_colors.h"
 
 
 static int			define_lenght_conv(const char *length, t_flag *flag)
@@ -160,8 +162,27 @@ int			handle_conversions(char conversion, va_list *ap, t_flag flag)
 		else
 			total_len = my_putnbr_HEXA(va_arg(*ap, unsigned int), flag);
 	}
+	else if (conversion == 'b')
+	{
+		if (lenght_conv == H)
+			total_len = convert_dec_to_binary((unsigned short) (va_arg(*ap, int)), flag);
+		else if (lenght_conv == HH)
+			total_len = convert_dec_to_binary((unsigned char) (va_arg(*ap, int)), flag);
+		else if (lenght_conv == L)
+			total_len = convert_dec_to_binary(va_arg(*ap, unsigned long), flag);
+		else if (lenght_conv == LL)
+			total_len = convert_dec_to_binary(va_arg(*ap, unsigned long long), flag);
+		else if (lenght_conv == J)
+			total_len = convert_dec_to_binary(va_arg(*ap, uintmax_t), flag);
+		else if (lenght_conv == Z)
+			total_len = convert_dec_to_binary(va_arg(*ap, unsigned long), flag);
+		else
+			total_len = convert_dec_to_binary(va_arg(*ap, unsigned int), flag);
+	}
 	else if (conversion == 'p')
 		total_len = my_putaddress(va_arg(*ap, uintmax_t), flag);
+	else if (conversion == 'n')
+		assigns_to_n(ap, lenght_conv, flag);
 	return (total_len);
 }
 
@@ -177,6 +198,7 @@ void			initialize_t_flag(t_flag	*flag)
 	flag->precision = -1;
 	flag->pointer = 0;
 	flag->hexa = 0;
+	flag->binary = 0;
 	flag->octal = 0;
 	flag->character_or_string = 0;
 	flag->unicode_c = 0;
@@ -460,7 +482,8 @@ int			analyze_and_printf(const char *format, va_list *ap, t_flag *flag)
 	if (format[i] != 'd' && format[i] != 'D' && format[i] != 'i' && format[i] != 'o' 
 		&& format[i] != 'O' && format[i] != 'u' && format[i] != 'U'&& format[i] != 'x'
 		&& format[i] != 'X' && format[i] != 'c' && format[i] != 'C' && format[i] != '%' 
-		&& format[i] != 's' && format[i] != 'S' && format[i] != 'p')
+		&& format[i] != 's' && format[i] != 'S' && format[i] != 'p' && format[i] != 'n'
+		&& format[i] != 'b')
 	{
 		if (format[i] >= 'a' && format[i] <= 'z')
 			return (-1);
@@ -490,6 +513,7 @@ int			handle_format(const char *format, va_list *ap)
 	ret = 0;
 	flag.lenght_print = 0;
 	flag.len_buffer = 0;
+	flag.color = 0;
 	j = 0;
 	if (format != NULL)
 	{
@@ -499,11 +523,24 @@ int			handle_format(const char *format, va_list *ap)
 			{
 				flag.len_buffer = j;
 				if ((ret = analyze_and_printf(&format[i + 1], ap, &flag)) > -1)
-					i = i + ret + 1;            //
+					i = i + ret + 1;
 				else if (ret == -1)
 					return (-1);
 				j = 0;
 			}
+			if (flag.color == 1 && format[i] == '{' && format[i + 1] == 'e' && format[i + 2] == 'o' 
+				&& format[i + 3] == 'f' && format[i + 4] == '}')
+			{
+				flag.buffer[j++] = '\033';
+				flag.buffer[j++] = '[';
+				flag.buffer[j++] = '0';
+				flag.buffer[j++] = 'm';
+				//write(1, "\033[0m", 4);
+				i += 5;
+				flag.color = 0;
+			}
+			if (format[i] == '{')
+				i += handle_colors(&format[i + 1], &flag, &j);
 			else
 			{
 				flag.buffer[j] = format[i];

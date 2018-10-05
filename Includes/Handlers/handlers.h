@@ -23,6 +23,7 @@ typedef struct		s_flag
 	int		precision;
 	int		pointer;
 	int		hexa;
+	int 	binary;
 	int		octal;
 	int		character_or_string;
 	int		unicode_c;
@@ -31,10 +32,15 @@ typedef struct		s_flag
 	int 	lenght_conv;
 	int 	lenght_print;
 	int		len_buffer;
+	short	color;
 	char	buffer[4096];
 }					t_flag;
 
 int			handle_format(const char *format, va_list *ap);
 int			handle_conversions(char conversion, va_list *ap, t_flag flag);
+
+//A supprimer apres cette ligne
+void			initialize_t_flag(t_flag	*flag);
+
 
 #endif
