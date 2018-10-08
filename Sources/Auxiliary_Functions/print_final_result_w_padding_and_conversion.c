@@ -109,7 +109,7 @@ int		print_conv_f_w_prec(t_flag flag, const char *stock, int len_argument)
 	}
 	else if (flag.precision == 0)
 	{
-		write(1, stock, len_int_part);
+		write(1, stock, len_int_part + flag.hash/2);
 	}
 	return (ret);
 }

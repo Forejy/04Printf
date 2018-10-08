@@ -2959,7 +2959,7 @@ ft_printf(" +d : % +d \n", 0);
 	printf("%f\n", 45.0);
 
 	printf("%.0f\n", 45.0);
-	
+	*/
 	ft_printf("{red}Champs > Precision > Len_arg : {eof}\n");
 	k = printf("%20.14f\n", 45.123456);
 	printf("k = %d\n", k);
@@ -3735,7 +3735,7 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("{red}Precision > Champs > Len_arg: {eof}\n");
 	k = printf("%-014.20f\n", +45.123456);
 	printf("k = %d\n", k);
-	k =ft_printf("%-014.20f\n", +45.123456);
+	k = ft_printf("%-014.20f\n", +45.123456);
 	printf("k = %d\n", k);
 	ft_printf("{red}Precision > Champs > Len_arg: {eof}\n");
 	k = printf("%-014.50f\n", +45.123456);
@@ -3747,7 +3747,7 @@ ft_printf(" +d : % +d \n", 0);
 	printf("k = %d\n", k);
 	k =ft_printf("%-014.8f\n", +45.123456);
 	printf("k = %d\n", k);
-*/
+
 	setlocale(LC_ALL, "");
 
 	k = printf("[%-36.2ls]\n", L"(null)");
@@ -3755,9 +3755,10 @@ ft_printf(" +d : % +d \n", 0);
 	ft_printf("[%-36.2ls]\n", L"(null)");
 	//printf("k = %d\n", k);
 
-	k = printf("[%036.20lf]\n", 0,000000);
+	k = printf("[%36.20lf]\n", 0,000000);
 	//printf("k = %d\n", k);
-	ft_printf("[%036.20lf]", 0,000000);
+	ft_printf("[%36.20lf]", 0,000000);
+	
 	//printf("k = %d\n", k);
 
 	 
