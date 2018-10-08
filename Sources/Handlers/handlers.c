@@ -38,155 +38,7 @@ static int			define_lenght_conv(const char *length, t_flag *flag)
 	return (lenght_conv % 3);
 }
 
-int			handle_conversions(char conversion, va_list *ap, t_flag flag)
-{
-	int		total_len;
-	int		lenght_conv;
 
-	total_len = 0;
-	lenght_conv = flag.lenght_conv;
-	if (conversion == '%')
-		total_len = my_putchar_printf('%', flag);
-	else if (conversion == 'C' || (conversion == 'c' && lenght_conv == L))
-		total_len = my_put_wint_t(va_arg(*ap, wint_t), flag);
-	else if (conversion == 'c')
-		total_len = my_putchar_printf((char)(va_arg(*ap, int)), flag);
-	else if (conversion == 'S' || (conversion == 's' && lenght_conv == L))
-		total_len = my_put_wchar_t(va_arg(*ap, wchar_t *), flag);
-	else if (conversion == 's')
-		total_len = my_putstr_printf(va_arg(*ap, char *), flag);
-	else if (conversion == 'd' || conversion == 'i')
-	{
-		if (lenght_conv == H)
-			total_len = my_putnbr_long_long((short)(va_arg(*ap, int)), flag);
-		else if (lenght_conv == HH)
-			total_len = my_putnbr_long_long((char)(va_arg(*ap, int)), flag);
-		else if (lenght_conv == L)
-			total_len = my_putnbr_long_long(va_arg(*ap, long), flag);
-		else if (lenght_conv == LL)
-			total_len = my_putnbr_long_long(va_arg(*ap, long long), flag);
-		else if (lenght_conv == J)
-			total_len = my_putnbr_long_long(va_arg(*ap, intmax_t), flag);
-		else if (lenght_conv == Z)
-			total_len = my_putnbr_long_long(va_arg(*ap, ssize_t), flag);
-		else
-			total_len = my_putnbr_long_long(va_arg(*ap, int), flag);
-	}
-	else 	if (conversion == 'D')
-	{
-		if (lenght_conv == L)
-			total_len = my_putnbr_long_long(va_arg(*ap, long long), flag);
-		else if (lenght_conv == H)
-			total_len = my_putnbr_long_long(va_arg(*ap, long long), flag);
-		else
-			total_len = my_putnbr_long_long(va_arg(*ap, long), flag);
-	}
-	else 	if (conversion == 'u')
-	{
-		if (lenght_conv == H)
-			total_len = my_put_unsigned_long_long((unsigned short)(va_arg(*ap, int)), flag);
-		else if (lenght_conv == HH)
-			total_len = my_put_unsigned_long_long((unsigned char)(va_arg(*ap, int)), flag);
-		else if (lenght_conv == L)
-			total_len = my_put_unsigned_long_long(va_arg(*ap, unsigned long), flag);
-		else if (lenght_conv == LL)
-			total_len = my_put_unsigned_long_long(va_arg(*ap, unsigned long long), flag);
-		else if (lenght_conv == J)
-			total_len = my_put_unsigned_long_long(va_arg(*ap, uintmax_t), flag);
-		else if (lenght_conv == Z)
-			total_len = my_put_unsigned_long_long(va_arg(*ap, size_t), flag);
-		else
-			total_len = my_put_unsigned_long_long(va_arg(*ap, unsigned int), flag);
-	}
-	else 	if (conversion == 'U')
-	{
-		if (lenght_conv == L)
-			total_len = my_put_unsigned_long_long(va_arg(*ap, unsigned long long), flag);
-		else if (lenght_conv == H)
-			total_len = my_put_unsigned_long_long(va_arg(*ap, unsigned long long), flag);
-		else
-			total_len = my_put_unsigned_long_long(va_arg(*ap, unsigned long), flag);
-	}
-	else if (conversion == 'o')
-	{
-		if (lenght_conv == H)
-			total_len = my_put_octal((unsigned short)(va_arg(*ap,  unsigned int)), flag);
-		else if (lenght_conv == HH)
-			total_len = my_put_octal((unsigned char)(va_arg(*ap,  unsigned int)), flag);
-		else if (lenght_conv == L)
-			total_len = my_put_octal(va_arg(*ap, unsigned long), flag);
-		else if (lenght_conv == LL)
-			total_len = my_put_octal(va_arg(*ap, unsigned long long), flag);
-		else if (lenght_conv == J)
-			total_len = my_put_octal(va_arg(*ap, uintmax_t), flag);
-		else if (lenght_conv == Z)
-			total_len = my_put_octal(va_arg(*ap, unsigned long), flag);
-		else
-			total_len = my_put_octal(va_arg(*ap, unsigned int), flag);
-	}
-	else if (conversion == 'O' && lenght_conv == L)
-		total_len = my_put_octal(va_arg(*ap, unsigned long long), flag);
-	else if (conversion == 'O')
-		total_len = my_put_octal(va_arg(*ap, unsigned long), flag);
-	else if (conversion == 'x')
-	{
-		if (lenght_conv == H)
-			total_len = my_putnbr_hexa((unsigned short)(va_arg(*ap, int)), flag);
-		else if (lenght_conv == HH)
-			total_len = my_putnbr_hexa((unsigned char)(va_arg(*ap, int)), flag);
-		else if (lenght_conv == L)
-			total_len = my_putnbr_hexa(va_arg(*ap, unsigned long), flag);
-		else if (lenght_conv == LL)
-			total_len = my_putnbr_hexa(va_arg(*ap, unsigned long long), flag);
-		else if (lenght_conv == J)
-			total_len = my_putnbr_hexa(va_arg(*ap, uintmax_t), flag);
-		else if (lenght_conv == Z)
-			total_len = my_putnbr_hexa(va_arg(*ap, unsigned long), flag);
-		else
-			total_len = my_putnbr_hexa(va_arg(*ap, unsigned int), flag);
-	}
-	else if (conversion == 'X')
-	{
-		if (lenght_conv == H)
-			total_len = my_putnbr_HEXA((unsigned short) (va_arg(*ap, int)), flag);
-		else if (lenght_conv == HH)
-			total_len = my_putnbr_HEXA((unsigned char) (va_arg(*ap, int)), flag);
-		else if (lenght_conv == L)
-			total_len = my_putnbr_HEXA(va_arg(*ap, unsigned long), flag);
-		else if (lenght_conv == LL)
-			total_len = my_putnbr_HEXA(va_arg(*ap, unsigned long long), flag);
-		else if (lenght_conv == J)
-			total_len = my_putnbr_HEXA(va_arg(*ap, uintmax_t), flag);
-		else if (lenght_conv == Z)
-			total_len = my_putnbr_HEXA(va_arg(*ap, unsigned long), flag);
-		else
-			total_len = my_putnbr_HEXA(va_arg(*ap, unsigned int), flag);
-	}
-	else if (conversion == 'b')
-	{
-		if (lenght_conv == H)
-			total_len = convert_dec_to_binary((unsigned short) (va_arg(*ap, int)), flag);
-		else if (lenght_conv == HH)
-			total_len = convert_dec_to_binary((unsigned char) (va_arg(*ap, int)), flag);
-		else if (lenght_conv == L)
-			total_len = convert_dec_to_binary(va_arg(*ap, unsigned long), flag);
-		else if (lenght_conv == LL)
-			total_len = convert_dec_to_binary(va_arg(*ap, unsigned long long), flag);
-		else if (lenght_conv == J)
-			total_len = convert_dec_to_binary(va_arg(*ap, uintmax_t), flag);
-		else if (lenght_conv == Z)
-			total_len = convert_dec_to_binary(va_arg(*ap, unsigned long), flag);
-		else
-			total_len = convert_dec_to_binary(va_arg(*ap, unsigned int), flag);
-	}
-	else if (conversion == 'f' || conversion == 'F')
-		total_len = my_putnbr_double(va_arg(*ap, double), flag);
-	else if (conversion == 'p')
-		total_len = my_putaddress(va_arg(*ap, uintmax_t), flag);
-	else if (conversion == 'n')
-		assigns_to_n(ap, lenght_conv, flag);
-	return (total_len);
-}
 
 
 void			initialize_t_flag(t_flag	*flag)
@@ -302,162 +154,17 @@ int				test_precision(const char *format, t_flag *flag, va_list *ap)
 		if (format[i] == '*')
 		{
 			temp_star = va_arg(*ap, int);
-			/*if (temp_star < 0)
-			{
-				flag->less = 1;
-				temp_star *= -1;
-			}*/
 			if (temp_star >= 0)
 				flag->precision = temp_star;
 			i++;
 		}
-	//	if (nb < 0)
-	//		flag->precision = 0;
 		else if (nb >= 0)
 			flag->precision = nb;
 
 	}
 	return (i);
 }
-/*HANDLE_FORMAT V1 (FONCTIONNAL)
-size_t			handle_format(const char *format, va_list ap)
-{
-	int				i;
-	int				lenght_conv;
-	size_t			lenght_print;
-	t_flag			flag;
 
-	i = 0;
-	initialize_t_flag(&flag);
-	lenght_print = 0;
-	while(format[i])
-	{
-		if (format[i] == '%')
-		{
-			i++;
-
-			while((test_flag(format[i], &flag)) != 0)
-				i++;
-			i = i + test_champs(&format[i], &flag);
-			if (format[i] == '.')
-			{
-				i++;
-				i = i + test_precision(&format[i], &flag);
-			}
-			if (format[i] == '%')
-				lenght_print = lenght_print + my_putchar_printf('%', flag);
-			else
-			{
-				if ((lenght_conv = define_lenght_conv(&format[i])) != 0)
-					i += lenght_conv % 3;
-				lenght_print = lenght_print + handle_conversions(format[i], ap, lenght_conv, flag);
-			}
-		}
-		else
-		{
-			write(1, &format[i], 1);
-			lenght_print++;
-		}
-		i++;
-	}
-	return(lenght_print);
-}
-*/
-/* OLD HANDLER_FORMAT
-size_t		handle_format(const char *format, va_list ap)
-{
-	int				i;
-	int				lenght_conv;
-	t_flag			flag;
-	size_t			total_len;
-
-	i = 0;
-	total_len = 0;
-	initialize_t_flag(&flag);
-	while(format[i])
-	{
-		if (format[i] == '%')
-		{
-			i++;
-			while((test_flag(format[i], &flag)) != 0)
-				i++;
-			i = i + test_champs(&format[i], &flag);
-			if (format[i] == '.')
-			{
-				i++;
-				i = i + test_precision(&format[i], &flag);
-			}
-			else
-			{
-				if ((lenght_conv = define_lenght_conv(&format[i])) != 0)
-					i += lenght_conv % 3;
-				total_len += handle_conversions(format[i], ap, lenght_conv, flag);
-			}
-		}
-		else
-		{
-			write(1, &format[i], 1);
-			total_len += 1;
-		}
-		i++;
-	}
-	return (total_len);
-}
-*/
-
-/*HANDLE_FORMAT V2
-int 			test_if_conversion(char conv)
-{
-	if (conv == 'd' || conv == 'D' || conv == 'i' || conv == 'o' || 
-		conv == 'O' || conv == 'u' || conv == 'x' || conv == 'X' || 
-		conv == 'p' || conv == 'c' || conv == 'C' || conv == 's' || 
-		conv == 'S')
-		return (1);
-	return (0);
-}
-
-int				pre_analyze(const char *format)
-{
-	int			i;
-	
-	i = 0;
-	while (format[i] != '%' || format[i] != '\0')
-		i++;
-	if (i == 0 && format [i] == '%')
-		return (-1);
-	if (test_if_conversion(format[i - 1]) == 1)
-		return (i);
-	return (-2);
-}
-
-size_t			handle_format(const char *format, va_list ap)
-{
-	int			i;
-	int			len_format;
-	
-	i = 0;
-	if (format != NULL)
-	{
-		while (format[i] != '\0')
-		{
-			if (format[i] == '%')
-				len_format = pre_analyze(&format[i + 1]); //==> utiliser i pour renvoyer le nombre de parametres
-			if (len_format == -2)
-				
-		}
-	}
-}
-*/
-//HANDLE_FORMAT V3 (ACTUAL)
-
-/*
-int			handle_special_no_conv(const char *format, int i, va_list ap, t_flag *flag)
-{
-	if (format [i + 1] == '\0')
-		return (-1);
-	return (0);
-}
-*/
  
 int			analyze_and_printf(const char *format, va_list *ap, t_flag *flag)
 {
@@ -467,7 +174,6 @@ int			analyze_and_printf(const char *format, va_list *ap, t_flag *flag)
 
 	i = 0;
 	j = -1;
-	ret = 0;
 	if (*format == '\0')
 	{
 		write(1, flag->buffer, flag->len_buffer);
@@ -515,10 +221,10 @@ int			handle_format(const char *format, va_list *ap)
 	
 	i = 0;
 	ret = 0;
-	flag.lenght_print = 0;
+	j = 0;
 	flag.len_buffer = 0;
 	flag.color = 0;
-	j = 0;
+	(flag.lenght_print = 0);
 	if (format != NULL)
 	{
 		while (format[i] != '\0')
@@ -539,7 +245,6 @@ int			handle_format(const char *format, va_list *ap)
 				flag.buffer[j++] = '[';
 				flag.buffer[j++] = '0';
 				flag.buffer[j++] = 'm';
-				//write(1, "\033[0m", 4);
 				i += 5;
 				flag.color = 0;
 			}
@@ -547,11 +252,8 @@ int			handle_format(const char *format, va_list *ap)
 				i += ret;
 			else
 			{
-				flag.buffer[j] = format[i];
-			//	write(1, &format[i], 1);
+				flag.buffer[j++] = format[i++];
 				flag.lenght_print++;
-				i++;
-				j++;
 			}
 		}
 	}

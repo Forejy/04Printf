@@ -102,7 +102,7 @@ size_t		my_putnbr_double(double nbr, t_flag flag)
 	}
 	if(!(len_precision == 0 && !flag.hash))
 	{
-		stock_number[i = 20] = ',';
+		stock_number[i = 20] = '.';
 		i--;
 	}
 	if (int_part == 0)
