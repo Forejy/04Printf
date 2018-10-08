@@ -22,10 +22,10 @@ int		handle_conversions_7(char conv, va_list *ap, t_flag flag, int lenght_conv)
 		else if (lenght_conv == Z)
 			total_len = convert_dec_to_binary(va_arg(*ap, unsigned long), flag);
 		else
-		total_len = convert_dec_to_binary(va_arg(*ap, unsigned int), flag);
+			total_len = convert_dec_to_binary(va_arg(*ap, unsigned int), flag);
 	}
 	else if (conv == 'f' || conv == 'F')
-		total_len = my_putnbr_double(va_arg(*ap, double), flag);
+		return(my_putnbr_double(va_arg(*ap, double), flag));
 	return (total_len);
 }
 
@@ -55,6 +55,6 @@ int		handle_conversions_6(char conv, va_list *ap, t_flag flag,int lenght_conv)
 	else if (conv == 's')
 		total_len = my_putstr_printf(va_arg(*ap, char *), flag);
 	else
-	handle_conversions_7(conv, ap, flag, lenght_conv);
+		total_len = handle_conversions_7(conv, ap, flag, lenght_conv);
 	return (total_len);
 }

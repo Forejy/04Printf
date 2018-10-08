@@ -3757,7 +3757,12 @@ ft_printf(" +d : % +d \n", 0);
 
 	k = printf("[%36.20lf]\n", 0,000000);
 	//printf("k = %d\n", k);
-	ft_printf("[%36.20lf]", 0,000000);
+	ft_printf("[%36.20lf]\n", 0,000000);
+
+	k = printf("%-014.8hX\n", +45256);
+	printf("k = %d\n", k);
+	k =ft_printf("%-014.8b\n", +45256);
+	printf("k = %d\n", k);
 	
 	//printf("k = %d\n", k);
 

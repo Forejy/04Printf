@@ -212,19 +212,24 @@ int			analyze_and_printf(const char *format, va_list *ap, t_flag *flag)
 	return (i + 1);
 }
 
+void			initialize_handle_format(int *i, int *j, int *ret, t_flag *flag)
+{
+	*i = 0;
+	*ret = 0;
+	flag->lenght_print = 0;
+	flag->len_buffer = 0;
+	flag->color = 0;
+	*j = 0;
+}
+
 int			handle_format(const char *format, va_list *ap)
 {
-	int		i;
-	int			ret;
-	t_flag		flag;
-	unsigned short 		j;
+	int				i;
+	int				ret;
+	t_flag			flag;
+	unsigned short	j;
 
-	i = 0;
-	ret = 0;
-	flag.lenght_print = 0;
-	flag.len_buffer = 0;
-	flag.color = 0;
-	j = 0;
+	initialize_handle_format(&i, &j, &ret, &flag);
 	if (format != NULL)
 	{
 		while (format[i] != '\0')
