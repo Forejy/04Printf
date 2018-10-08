@@ -35,7 +35,7 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 	if (len_padding > 0)
 		//&& !flag.unicode_s
 	{
-		if ((flag.zero && flag.blank && flag.conv_d && !retenue )|| flag.less)
+		if ((flag.zero && flag.blank && (flag.conv_d || flag.conv_f) && !retenue )|| flag.less)
 		{
 			len_padding -= 1;
 			write(1, " ", 1);
@@ -43,7 +43,7 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 		//if (flag.less && len_padding > flag.len)
 		if (((flag.precision >= 0 && !flag.character_or_string && !flag.unicode_s && 
 			(!flag.blank || (flag.blank && flag.zero))) //cas flag.blank && flag.zero : %0 33.1d, 100
-			|| !flag.zero || (flag.zero && flag.less)))
+			|| !flag.zero || (flag.zero && flag.less)) && !(flag.conv_f && flag.zero) || (flag.conv_f && flag.less))
 			while (len_padding-- > 0)
 				write(1, " ", 1);
 			/*
@@ -73,6 +73,47 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 	return (retenue);
 }
 
+
+int		print_conv_f_w_prec(t_flag flag, const char *stock, int len_argument)
+{
+	int 	len_precision;
+	int		len_int_part;
+	int		padding;
+	int		ret;
+
+	len_precision = flag.precision;
+	padding = len_precision - 15;
+	ret = 0;
+	
+	len_int_part = flag.conv_f_intpart;
+	if ((len_precision > 0 && (flag.champs < (flag.conv_f_intpart + 1 + len_precision) && flag.blank))
+		|| ((len_precision >= flag.champs || flag.conv_f_intpart >= flag.champs  || flag.less) //|| (len_argument + len_precision) >= flag.champs 
+			&& flag.blank //|| (stock && *stock == '0')) 
+			&& stock && *stock != '-' && *stock != '+'))
+	{
+		write(1, " ", 1);
+		ret += 1;
+	}
+	if (flag.precision > 0)
+	{
+		//if (flag.champs <= len_int_part + 1 + len_precision)
+			write(1, stock, len_int_part + 1);
+		if (len_precision > 0 && len_precision <= 15)
+			write(1, &stock[len_int_part + 1], len_precision);
+		else
+		{
+			write(1, &stock[len_int_part + 1], 15);
+			while (padding-- > 0)
+				write(1, "0", 1);
+		}
+	}
+	else if (flag.precision == 0)
+	{
+		write(1, stock, len_int_part);
+	}
+	return (ret);
+}
+ 
 int		print_result_w_precision(t_flag flag, const char *stock, int len_argument)
 //, int len_padding
 {
@@ -88,7 +129,10 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument)
 	sign = 0;	
 	Ox = 0;
 	len_precision = flag.precision;
-	if (len_precision >= len_argument && stock && (*stock == '-' || *stock == '+') && flag.character_or_string == 0)
+	if (flag.conv_f)
+		sign += print_conv_f_w_prec(flag, stock,  len_argument);
+	if (flag.character_or_string == 0 && stock && (*stock == '-' || *stock == '+')
+		&& (len_precision >= len_argument && !flag.conv_f))
 		//&&(len_padding < len_precision || len_padding > len_precision ) && 
 	//len_padding > len_precision
 	{
@@ -97,7 +141,7 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument)
 		len_argument--;
 		sign = 1;
 	}
-	if (flag.character_or_string == 0 && flag.unicode_c == 0 && flag.unicode_s == 0)
+	if (flag.character_or_string == 0 && flag.unicode_c == 0 && flag.unicode_s == 0 && !flag.conv_f)
 	{
 		if (len_precision > 0 && (len_precision > len_argument - flag.hexa - flag.binary)
 			&& (flag.pointer == 2 || ((flag.hexa == 2 || flag.binary) && flag.hash)))
@@ -110,7 +154,6 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument)
 			Ox += 2;
 		}
 		temp = len_precision - len_argument + ret;
-		
 		if ((len_precision >= flag.champs || len_argument >= flag.champs  || flag.less) //|| (len_argument + len_precision) >= flag.champs 
 			&& flag.blank //|| (stock && *stock == '0')) 
 			&& !sign && stock && *stock != '-' && *stock != '+')
@@ -120,12 +163,12 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument)
 			write(1, " ", 1);
 			ret += 1;
 		}
-		 
+
 		while (temp-- > 0)
 			write(1, "0", 1);
 	}
 	if (stock && (flag.character_or_string == 2 || flag.unicode_c || flag.unicode_s) && len_precision >= 0
-		&& len_precision < len_argument)
+		&& len_precision < len_argument && !flag.conv_f)
 		write(1, stock, (size_t) (len_precision));
 	else if (flag.unicode_c == 1)
 		while (len_argument > 0)
@@ -133,11 +176,32 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument)
 	else if (flag.unicode_s == 1)
 		while(i < len_argument)
 			write(1, &stock[i++], 1);
-	else if (stock && len_argument > 0)
+	else if (stock && len_argument > 0 && !flag.conv_f)
 			write(1, stock, (size_t) (len_argument));
 	return(ret + sign + Ox);
 }
 
+int		compute_padding_conv_f(const char *stock, t_flag flag, int len_arg)
+{
+	int		len_padding;
+	int		len_champs;
+	int		len_precision;
+	
+	len_padding = 0;
+	len_champs = flag.champs;
+	len_precision = flag.precision;
+	if (len_precision == -1 && len_champs > 0)
+		len_padding = len_champs - len_arg;
+	else if (len_precision == 0 && len_champs == (flag.conv_f_intpart + 1))// Pourquoi cette ligne ?
+		len_padding = 1;
+	else if (len_precision == 0)
+		len_padding = len_champs - flag.conv_f_intpart;
+//	else if (len_champs > flag.conv_f_intpart + 1 + len_precision)
+//		len_padding = len_champs - (flag.conv_f_intpart + 1);
+	else if (len_precision > 0 && flag.champs > flag.conv_f_intpart + 1 + len_precision)
+		len_padding = len_champs - (flag.conv_f_intpart + 1) - len_precision ;
+	return (len_padding);
+}
 
 int			compute_padding(const char *stock, t_flag flag, int len_arg)//, int wtf
 {
@@ -148,7 +212,9 @@ int			compute_padding(const char *stock, t_flag flag, int len_arg)//, int wtf
 	len_champs = flag.champs;
 	len_precision = flag.precision;
 	len_padding = -1;
-	if (flag.hash == 2 && (flag.hexa == 2 || flag.binary) && len_precision > len_arg - 2)
+	if (flag.conv_f)
+		len_padding = compute_padding_conv_f(stock, flag, len_arg);
+	else if (flag.hash == 2 && (flag.hexa == 2 || flag.binary) && len_precision > len_arg - 2)
 		len_padding = len_champs - len_precision - 2;
 	else if (len_precision >= (len_arg - flag.pointer) && flag.character_or_string == 0
 		&& flag.unicode_c == 0 && flag.unicode_s == 0)//Si l'argument est un pointeur, je supprimne le '0x' de sa longueur
@@ -164,7 +230,7 @@ int			compute_padding(const char *stock, t_flag flag, int len_arg)//, int wtf
 //		len_padding = len_champs - len_arg + flag.pointer + flag.hash;
 	else if (!flag.unicode_s || (flag.unicode_s && len_champs > len_arg))
 		len_padding = len_champs - len_arg + flag.pointer; //J'ajoute flag.pointer pour annuler la soustraction finale
-	if (stock && *stock != '+' && *stock != '-' && flag.less && flag.blank && flag.conv_d)//Cas " -3zi" = { 0 } : blank a gauche par defaut, puis suite du padding a droite 
+	if (stock && *stock != '+' && *stock != '-' && flag.less && flag.blank && (flag.conv_d || flag.conv_f_intpart))//Cas " -3zi" = { 0 } : blank a gauche par defaut, puis suite du padding a droite 
 		len_padding -= 1;
 //	if (len_precision >= len_arg && flag.hash && flag.hexa)
 //		return (len_padding - flag.hexa);
@@ -181,7 +247,7 @@ int			print_result_with_no_precision(t_flag flag, const char *stock, int len_arg
 	i = 0;
 	ret = 0;
 
-	if (flag.conv_d && flag.blank && *stock != '-' && *stock != '+' && (flag.champs <= len_argument || flag.less))
+	if ((flag.conv_d || flag.conv_f) && flag.blank && *stock != '-' && *stock != '+' && (flag.champs <= len_argument || flag.less))
 	//(flag.less)
 		//&& !flag.less)
 		// && (len_padding > 0 && len_padding < len_argument && !flag.less ) 
@@ -238,7 +304,20 @@ uintmax_t		print_final_result(t_flag flag, const char *stock, int len_argument)
 		print_padding(flag, &stock, len_padding);
 	if (len_padding < 0)
 		len_padding = 0;
-	if (((flag.hexa || flag.binary) && (len_precision > (len_argument - flag.hash) 
+	if (flag.conv_f)
+	{
+		if (len_padding > 0 && len_precision > 0)
+			total_len += len_padding + flag.conv_f_intpart + 1 + flag.precision;
+		else if (len_padding > 0 && len_precision == 0)
+			total_len += len_padding + flag.conv_f_intpart;
+		else if (len_padding <= 0 && len_precision > 0)
+			total_len += flag.precision + flag.conv_f_intpart + 1;
+		else if (len_precision == -1)
+			total_len += len_argument + len_padding;
+		else
+			total_len += flag.conv_f_intpart;
+	}
+	else if (((flag.hexa || flag.binary) && (len_precision > (len_argument - flag.hash) 
 		|| len_precision > len_argument )) //&& flag.character_or_string == 0
 		|| (((flag.character_or_string == 2 || flag.unicode_s) && (len_precision != -1 
 		|| (flag.unicode_c && len_precision > 0)))

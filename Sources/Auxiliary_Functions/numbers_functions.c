@@ -34,59 +34,91 @@ size_t		my_putnbr_long_long(intmax_t nbr, t_flag flag)
 	return (total_len);
 }
 
-size_t		my_putnbr_double(double nbr)
+unsigned long long		power_of_10(int n)
 {
-	double	nb;
-	double int_part_test;
+	unsigned long long			power;
+	
+	power = 1;
+	if (n <= 0)
+		power = 1;
+	while (n-- > 0)
+		power = power * 10;
+	return (power);
+}
+
+size_t		my_putnbr_double(double nbr, t_flag flag)
+{
 	unsigned long long		int_part;
 	double		dec_part;
-	unsigned int dec_part_bis;
-	char	stock_number[318];//20 chars pour ULLONG_MAX, 1 pour '.', et 6 pour la partie decimal
+	unsigned long long dec_part_bis;
+	char	stock_number[36];//20 chars pour ULLONG_MAX, 1 pour '.', et 6 pour la partie decimal
 	int			i;
 	int		total_len;
-	t_flag 	flag;
+	double		nb;
+	int			len_precision;
 	
-	total_len = 0;
-	i = 317;
-	initialize_t_flag(&flag);///A delete
-	
-	nb = nbr;
-	int_part = nbr;
-	dec_part = (nbr - int_part) * 10000000;
+	i = 35;
+	if (nbr < 0)
+		nb = -nbr;
+	else
+		nb = nbr;
+	int_part = nb;
+	dec_part = (nb - int_part) * 1000000000000000;
 	dec_part_bis = dec_part;
-	
-	flag.flt = 1;
-	if ((dec_part_bis % 10) >= 5)
-		dec_part_bis = dec_part_bis/10 + 1;
+	flag.conv_f = 1;
+	len_precision = flag.precision <= 15 ? flag.precision : 15;
+	len_precision = len_precision == -1 ? 6 : len_precision;
+/*	if ((dec_part_bis % 10) >= 5)
+	{
+		if (dec_part_bis/10 == 999999999999999)
+		{
+			int_part += 1;
+			dec_part_bis = 0;
+		}
+		else
+			dec_part_bis = dec_part_bis / 10 + 1;
+	}
+ 
 	else
 		dec_part_bis = dec_part_bis/10;
+		*/
+	if (len_precision > 0)
+	{
+		dec_part_bis = dec_part_bis/power_of_10(14 - len_precision);//Divise par longueur du nombre - 1
+		if (dec_part_bis % 10 >= 5 && flag.precision <= 15)
+			dec_part_bis = dec_part_bis/10 + 1;
+		else if (flag.precision <= 15)
+			dec_part_bis = dec_part_bis/10;
+		i = 21 + len_precision;
+	}
+	if (dec_part_bis == 0)
+		while (i > 20)
+			stock_number[i--] = '0';
 	while (dec_part_bis > 0)
 	{
 		stock_number[i] = (char) ((dec_part_bis % 10) + '0');
 		dec_part_bis = dec_part_bis / 10;
 		i--;
 	}
-	stock_number[i--] = '.';
-
+	if(!(len_precision == 0 && !flag.hash))
+		stock_number[i--] = '.';
+	
 	while (int_part > 0)
 	{
 		stock_number[i] = (char) ((int_part % 10) + '0');
 		int_part = int_part / 10;
 		i--;
 	}
+	flag.conv_f_intpart = 20 - i;
+	if (nbr < 0)
+		stock_number[i--] = '-';
+	if (nbr >= 0 && flag.more)
+		stock_number[i--]= '+';
+	if (nbr < 0 || (nbr >= 0 && flag.more))
+		flag.conv_f_intpart += 1;
 	
-	write(1, &stock_number[i + 1], 317 - i);
-	/*
-	nb = nbr/10;
-	int_part = nbr;
-	decimal_part = (nbr - int_part) * 1000000;
-	total_len += my_putnbr_long_long(int_part, flag);
-	write(1, ".", 1);
-	total_len += 1;
-	total_len += my_putnbr_long_long(decimal_part, flag);
-	 */
-	
-	return (0);
+	total_len = print_final_result(flag, &stock_number[i + 1], len_precision + flag.conv_f_intpart + 1);
+	return (total_len);
 }
 
 

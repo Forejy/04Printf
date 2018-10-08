@@ -62,7 +62,7 @@ short		handle_colors(char *color, t_flag *flag, unsigned short *j)
 	{
 		flag->color = 1;
 		flag->lenght_print += i;
-		*j += 8;
+		*j += 7;
 	}
 	return (i);
 }

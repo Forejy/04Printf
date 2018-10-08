@@ -150,7 +150,7 @@ DONETODO				Faire la fonction de convertion d'un intmax_t en binaire avec signe 
 TODO				refaire les tests en changeant le type de nbr de uintmax_t vers intmax_t dans my_putnbr_long_long
 TODO				Gerer le intmax_min dans la fonction my_putnbr_long_long dans numbers_functions.c
 TODO			Supprimer tous les write et commentaires qui ne sont pas dans la fonction finale
-
+TODO			Grosse erreur dans %f pour couper la partie decimale avec la precision
 
 Champs : Longueur total de caracteres affiches
 Precision : Longueur total de l'argument sans le signe

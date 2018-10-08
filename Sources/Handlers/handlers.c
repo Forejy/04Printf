@@ -179,6 +179,8 @@ int			handle_conversions(char conversion, va_list *ap, t_flag flag)
 		else
 			total_len = convert_dec_to_binary(va_arg(*ap, unsigned int), flag);
 	}
+	else if (conversion == 'f' || conversion == 'F')
+		total_len = my_putnbr_double(va_arg(*ap, double), flag);
 	else if (conversion == 'p')
 		total_len = my_putaddress(va_arg(*ap, uintmax_t), flag);
 	else if (conversion == 'n')
@@ -204,7 +206,8 @@ void			initialize_t_flag(t_flag	*flag)
 	flag->unicode_c = 0;
 	flag->unicode_s = 0;
 	flag->conv_d = 0;
-	flag->flt = 0;
+	flag->conv_f = 0;
+	flag->conv_f_intpart = 0;
 	flag->lenght_conv = 0;
 }
 
@@ -484,7 +487,7 @@ int			analyze_and_printf(const char *format, va_list *ap, t_flag *flag)
 		&& format[i] != 'O' && format[i] != 'u' && format[i] != 'U'&& format[i] != 'x'
 		&& format[i] != 'X' && format[i] != 'c' && format[i] != 'C' && format[i] != '%' 
 		&& format[i] != 's' && format[i] != 'S' && format[i] != 'p' && format[i] != 'n'
-		&& format[i] != 'b')
+		&& format[i] != 'b'&& format[i] != 'f' && format[i] != 'F')
 	{
 		if (format[i] >= 'a' && format[i] <= 'z')
 			return (-1);
