@@ -218,13 +218,13 @@ int			handle_format(const char *format, va_list *ap)
 	int			ret;
 	t_flag		flag;
 	unsigned short 		j;
-	
+
 	i = 0;
 	ret = 0;
-	j = 0;
+	flag.lenght_print = 0;
 	flag.len_buffer = 0;
 	flag.color = 0;
-	(flag.lenght_print = 0);
+	j = 0;
 	if (format != NULL)
 	{
 		while (format[i] != '\0')
@@ -238,13 +238,14 @@ int			handle_format(const char *format, va_list *ap)
 					return (-1);
 				j = 0;
 			}
-			else if (flag.color == 1 && format[i] == '{' && format[i + 1] == 'e' && format[i + 2] == 'o' 
-				&& format[i + 3] == 'f' && format[i + 4] == '}')
+			else if (flag.color == 1 && format[i] == '{' && format[i + 1] == 'e' && format[i + 2] == 'o'
+					 && format[i + 3] == 'f' && format[i + 4] == '}')
 			{
 				flag.buffer[j++] = '\033';
 				flag.buffer[j++] = '[';
 				flag.buffer[j++] = '0';
 				flag.buffer[j++] = 'm';
+				//write(1, "\033[0m", 4);
 				i += 5;
 				flag.color = 0;
 			}
@@ -252,8 +253,11 @@ int			handle_format(const char *format, va_list *ap)
 				i += ret;
 			else
 			{
-				flag.buffer[j++] = format[i++];
+				flag.buffer[j] = format[i];
+				//	write(1, &format[i], 1);
 				flag.lenght_print++;
+				i++;
+				j++;
 			}
 		}
 	}
