@@ -2891,7 +2891,7 @@ ft_printf(" +d : % +d \n", 0);
 	
 //	k = printf("%d\033[0;31m", 3);
 //	printf("k : %d", k);
-	
+	/*
 	ft_printf("nocolor {red}red{eof} nocoloragain\n");
 	ft_printf("nocolor {boldred}boldred{eof} nocoloragain\n");
 	ft_printf("nocolor {green}green{eof} nocoloragain\n");
@@ -3747,6 +3747,19 @@ ft_printf(" +d : % +d \n", 0);
 	printf("k = %d\n", k);
 	k =ft_printf("%-014.8f\n", +45.123456);
 	printf("k = %d\n", k);
+*/
+	setlocale(LC_ALL, "");
+
+	k = printf("[%-36.2ls]\n", L"(null)");
+	//printf("k = %d\n", k);
+	ft_printf("[%-36.2ls]\n", L"(null)");
+	//printf("k = %d\n", k);
+
+	k = printf("[%036.20lf]\n", 0,000000);
+	//printf("k = %d\n", k);
+	ft_printf("[%036.20lf]", 0,000000);
+	//printf("k = %d\n", k);
+
 	 
 	//tester .0
 	//					  12345678912345 1926570851355791
@@ -3754,6 +3767,8 @@ ft_printf(" +d : % +d \n", 0);
 	return (0);
 }
 //9223372036854775807
+//[(null)                  ]
+//[(null)                  ]
 /*12345599999999
  *123455999999997.34
  * 45.123455999999997
