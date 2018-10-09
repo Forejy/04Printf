@@ -27,7 +27,6 @@ size_t			my_put_wint_t(int dec, t_flag flag)
 	char       codeset[6];
 	int        number_of_bytes;
 	int        i;
-//	unsigned char		codeset[6];
 
 	flag.unicode_c = 1;
 	if (dec <= 128 && dec >= 0)
@@ -47,8 +46,7 @@ size_t			my_put_wint_t(int dec, t_flag flag)
 	i = 0;
 	while (i < number_of_bytes)
 	{
-		codeset[i] = temp->binary[0];
-		i++;
+		codeset[i++] = temp->binary[0];
 		temp = temp->next;
 	}
 	return (print_final_result(flag, codeset, i));
@@ -58,23 +56,15 @@ size_t			my_put_wint_t(int dec, t_flag flag)
  * Fonction d'affichage de charactere unicode (par combinaison si le charactere est multi-octet)
  */
 
-int			count_char_per_wint_t(t_flag flag, wchar_t *string_wchar, int **number_of_char_per_wint_t)
+int			annex_to_count_char(t_flag flag, wchar_t *string_wchar, int **number_of_char_per_wint_t)
 {
-	int			i;
-	int 		len_precision;
-	size_t			number_of_bytes;
-	
+	short	i;
+	int		len_precision;
+	size_t	number_of_bytes;
+
 	i = 0;
 	len_precision = flag.precision;
-	//i = string_wchar[0];
-	while (string_wchar[i] != '\0')
-		i++;
-	if (!(number_of_char_per_wint_t[0] = (int *)malloc(sizeof(int) * i)))
-		exit_with_msg(ERROR_MALLOC_FAILED);
 	number_of_bytes = 0;
-	while (--i >= 0)
-		number_of_char_per_wint_t[0][i] = 1;
-	i = 0;
 	while (string_wchar[i] != '\0')
 	{
 		if (string_wchar[i] >= 128)
@@ -83,19 +73,27 @@ int			count_char_per_wint_t(t_flag flag, wchar_t *string_wchar, int **number_of_
 				if (string_wchar[i] >= 129 && string_wchar[i] <= 255)
 					number_of_char_per_wint_t[0][i] = 1;
 				else if (len_precision > 0 || flag.precision == -1)
-				{
-				//	if (flag.precision > 0)
-
-					//write(1,"�", 2);
 					return (-1);
-				}
-			//	else if (flag.precision == -1)
-            //        number_of_char_per_wint_t[0][i] = 1;
 			}
 		len_precision -= number_of_char_per_wint_t[0][i];
 		number_of_bytes += number_of_char_per_wint_t[0][i++];
 	}
 	return (number_of_bytes);
+}
+
+int			count_char_per_wint_t(t_flag flag, wchar_t *string_wchar, int **number_of_char_per_wint_t)
+{
+	int			i;
+	
+	i = 0;
+	while (string_wchar[i] != '\0')
+		i++;
+	if (!(number_of_char_per_wint_t[0] = (int *)malloc(sizeof(int) * i)))
+		exit_with_msg(ERROR_MALLOC_FAILED);
+	while (--i >= 0)
+		number_of_char_per_wint_t[0][i] = 1;
+	annex_to_count_char(flag, string_wchar, number_of_char_per_wint_t);
+	return (annex_to_count_char(flag, string_wchar, number_of_char_per_wint_t));
 }
 
 int				adapts_precision_to_numbers_of_bytes(int presumed_precision, int *number_of_char_per_wint_t)
@@ -131,8 +129,6 @@ int 	test_validity_of_characters(wchar_t *string_wchar)
 	i = 0;
 	while ((temp = string_wchar[i]) != '\0')
 	{
-	//	if (temp >= 129 && temp <= 255)
-	//		string_wchar[i] = 65533;
 		if ((temp > 1114111 || temp < 0) || (temp >= 55296 && temp <= 57343))
 			return (-1);
 		i++;
