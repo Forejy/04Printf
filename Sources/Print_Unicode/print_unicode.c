@@ -192,7 +192,8 @@ int			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 	if (!(string = (char *)malloc(sizeof(char) * (number_of_bytes + 1))))
 		exit_with_msg(ERROR_MALLOC_FAILED);
 	string[number_of_bytes] = '\0';
-	annex_to_put_wchar_t(string_wchar, number_of_char_per_wint_t, string);
+	if ((annex_to_put_wchar_t(string_wchar, number_of_char_per_wint_t, string)) == -1)
+		return (-1);
 	flag.unicode_s = 1;
 	if (flag.precision > -1 && flag.precision < number_of_bytes)
 		flag.precision = adapts_precision_to_numbers_of_bytes(flag.precision, number_of_char_per_wint_t);
