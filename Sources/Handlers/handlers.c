@@ -116,9 +116,9 @@ int			handle_format(const char *format, va_list *ap)
 				flag.len_buffer = j;
 				if ((ret = analyze_and_printf(&format[i + 1], ap, &flag)) > -1)
 					i = i + ret + 1;
-				if ((j = 0) && ret == -1)
+				if ((j = 0) || ret == -1)
 					return (-1);
-			}
+            }
 			else if ((ret = pre_handle_colors(&format[i], &flag, &j)) > 0)
 				i += ret;
 			else if ((flag.buffer[j++] = format[i++]))
