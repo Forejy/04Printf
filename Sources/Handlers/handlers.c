@@ -80,7 +80,7 @@ int			analyze_and_printf(const char *format, va_list *ap, t_flag *flag)
 		if (format[i] == '.')
 			i += test_precision(&format[i], flag, ap);
 	}
-	if ((ret = test_if_conv(format[i], flag, i) != -2))
+	if ((ret = test_if_conv(format[i], flag, i)) != -2)
 		return (ret);
 	else if ((ret = handle_conversions(format[i], ap, *flag)) == -1)
 		return (-1);

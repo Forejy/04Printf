@@ -125,29 +125,28 @@ int		handle_conversions_2(char conv, va_list *ap, t_flag flag,int lenght_conv)
 int			handle_conversions(char conv, va_list *ap, t_flag flag)
 {
 	int  total_len;
-	int  lenght_conv;
 
-	if ((lenght_conv = flag.lenght_conv) && conv == 'o')
+	if (conv == 'o')
 	{
-		if (lenght_conv == H)
+		if (flag.lenght_conv == H)
 			total_len = my_put_octal((unsigned short)(va_arg(*ap,  unsigned int)), flag);
-		else if (lenght_conv == HH)
+		else if (flag.lenght_conv == HH)
 			total_len = my_put_octal((unsigned char)(va_arg(*ap,  unsigned int)), flag);
-		else if (lenght_conv == L)
+		else if (flag.lenght_conv == L)
 			total_len = my_put_octal(va_arg(*ap, unsigned long), flag);
-		else if (lenght_conv == LL)
+		else if (flag.lenght_conv == LL)
 			total_len = my_put_octal(va_arg(*ap, unsigned long long), flag);
-		else if (lenght_conv == J)
+		else if (flag.lenght_conv == J)
 			total_len = my_put_octal(va_arg(*ap, uintmax_t), flag);
-		else if (lenght_conv == Z)
+		else if (flag.lenght_conv == Z)
 			total_len = my_put_octal(va_arg(*ap, unsigned long), flag);
 		else
 			total_len = my_put_octal(va_arg(*ap, unsigned int), flag);
 	}
-	else if (conv == 'S' || (conv == 's' && lenght_conv == L))
+	else if (conv == 'S' || (conv == 's' && flag.lenght_conv == L))
 		total_len = my_put_wchar_t(va_arg(*ap, wchar_t *), flag);
 	else
-		total_len = handle_conversions_2(conv, ap, flag, lenght_conv);
+		total_len = handle_conversions_2(conv, ap, flag, flag.lenght_conv);
 	return (total_len);
 }
 

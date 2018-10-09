@@ -214,5 +214,5 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
  */
 
 //DONETODO Compter nombre de caracteres total
-//TODO Creer la string qui va les contenir
-//TODO Converti les unicodees en "char" un par un et je les stocke dans la string
+//DONETODO Creer la string qui va les contenir
+//DONETODO Converti les unicodees en "char" un par un et je les stocke dans la string

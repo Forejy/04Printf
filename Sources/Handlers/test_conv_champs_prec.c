@@ -100,10 +100,10 @@ int				test_precision(const char *format, t_flag *flag, va_list *ap)
 	return (i);
 }
 
-short		test_if_conv(char conv, t_flag *flag, short i)
+int		test_if_conv(char conv, t_flag *flag, short i)
 {
 	if (conv != 'd' && conv != 'D' && conv != 'i' && conv != 'o'
-		&& conv != 'O' && conv != 'u' && conv != 'U'&& conv != 'x'
+		&& conv != 'O' && conv != 'u' && conv != 'U' && conv != 'x'
 		&& conv != 'X' && conv != 'c' && conv != 'C' && conv != '%'
 		&& conv != 's' && conv != 'S' && conv != 'p' && conv != 'n'
 		&& conv != 'b'&& conv != 'f' && conv != 'F')

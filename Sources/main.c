@@ -3762,10 +3762,13 @@ ft_printf(" +d : % +d \n", 0);
 	k = printf("%-014.8hX\n", +45256);
 	printf("k = %d\n", k);
 	k =ft_printf("%-014.8b\n", +45256);
-	printf("k = %d\n", k);
+	printf("k = %d\n\n", k);
 	
 	//printf("k = %d\n", k);
-
+	k = printf("%o\n", 40);
+	printf("k = %d\n", k);
+	k =ft_printf("%o\n", 40);
+	printf("k = %d\n", k);
 	 
 	//tester .0
 	//					  12345678912345 1926570851355791
