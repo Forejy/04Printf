@@ -8,7 +8,7 @@
 #include "../../Includes/errors.h"
 #include "../../Includes/Auxiliary_Functions/bonus.h"
 #include "../../Includes/Handlers/handle_colors.h"
-
+#include "../../Includes/Handlers/test_conv_champs_prec.h"
 
 static int			define_lenght_conv(const char *length, t_flag *flag)
 {
@@ -38,9 +38,6 @@ static int			define_lenght_conv(const char *length, t_flag *flag)
 	return (lenght_conv % 3);
 }
 
-
-
-
 void			initialize_t_flag(t_flag	*flag)
 {
 	flag->more = 0;
@@ -63,122 +60,16 @@ void			initialize_t_flag(t_flag	*flag)
 	flag->lenght_conv = 0;
 }
 
-int			test_flag(char format_flag, t_flag	*flag)
-{
-	if (format_flag == '+')
-	{
-		flag->more = 1;
-		return (1);
-	}
-	if (format_flag == '-')
-	{
-		flag->less = 1;
-		return (1);
-	}
-	if (format_flag == '0')
-	{
-		flag->zero = 1;
-		return (1);
-	}
-	if (format_flag == '#')
-	{
-		flag->hash = 2;
-		return (1);
-	}
-	if (format_flag == ' ')
-	{
-		flag->blank = 1;
-		return (1);
-	}
-	else
-		return (0);
-}
-
-int			test_champs(const char *format, t_flag *flag, va_list *ap)
-{
-	int		i;
-	int		nb;
-	int		temp_star;
-
-	i = 0;
-	nb = 0;
-	
-	if (format[0] == '*')
-	{
-		temp_star = va_arg(*ap, int);
-		if (temp_star < 0)
-		{
-			flag->less = 1;
-			temp_star *= -1;
-		}
-		flag->champs = temp_star;
-		return (1);
-	}
-	if (format[0] == '0')//Si on a un 0 et pas de '.' derriere, on doit traiter le 0 dans la fonction test_flags
-	{
-		while (format[i] == '0')
-			i++;
-		if (format[i] != '.')
-			return (i - 1);
-		else
-			return (i);
-	}
-	while (format[i] >= '0' && format[i] <= '9')
-	{
-		nb = nb * 10 + (format[i] - '0');
-		i++;
-	}
-	if (nb > 0)
-		flag->champs = nb;
-	if (i > 0)
-		return (i);
-	return (0);
-}
-
-int				test_precision(const char *format, t_flag *flag, va_list *ap)
-{
-	int		i;
-	int		nb;
-	int		temp_star;
-
-	i = 0;
-	nb = 0;
-	if (format[0] == '.')
-	{
-		i++;
-		while (format[i] >= '0' && format[i] <= '9')
-		{
-			nb = nb * 10 + (format[i] - '0');
-			i++;
-		}
-		if (format[i] == '*')
-		{
-			temp_star = va_arg(*ap, int);
-			if (temp_star >= 0)
-				flag->precision = temp_star;
-			i++;
-		}
-		else if (nb >= 0)
-			flag->precision = nb;
-
-	}
-	return (i);
-}
-
- 
 int			analyze_and_printf(const char *format, va_list *ap, t_flag *flag)
 {
-	int			i;
-	int			j;
-	int			ret;
+	short i;
+	short j;
+	int   ret;
 
-	i = 0;
-	j = -1;
-	if (*format == '\0')
-	{
-		write(1, flag->buffer, flag->len_buffer);
+	i        = 0;
+	j        = -1;
+	if (*format == '\0' && (write(1, flag->buffer, flag->len_buffer) >= 0))
 		return (0);
-	}
 	initialize_t_flag(flag);
 	while (i > j)
 	{
@@ -189,22 +80,8 @@ int			analyze_and_printf(const char *format, va_list *ap, t_flag *flag)
 		if (format[i] == '.')
 			i += test_precision(&format[i], flag, ap);
 	}
-	if (format[i] != 'd' && format[i] != 'D' && format[i] != 'i' && format[i] != 'o' 
-		&& format[i] != 'O' && format[i] != 'u' && format[i] != 'U'&& format[i] != 'x'
-		&& format[i] != 'X' && format[i] != 'c' && format[i] != 'C' && format[i] != '%' 
-		&& format[i] != 's' && format[i] != 'S' && format[i] != 'p' && format[i] != 'n'
-		&& format[i] != 'b'&& format[i] != 'f' && format[i] != 'F')
-	{
-		if (format[i] >= 'a' && format[i] <= 'z')
-			return (-1);
-		else if (format[i] == '\0')
-			return (i);
-		else
-		{
-			flag->lenght_print += my_putchar_printf(format[i], *flag);
-			return (i + 1);
-		}
-	}
+	if ((ret = test_if_conv(format[i], flag, i) != -2))
+		return (ret);
 	else if ((ret = handle_conversions(format[i], ap, *flag)) == -1)
 		return (-1);
 	else
@@ -212,7 +89,7 @@ int			analyze_and_printf(const char *format, va_list *ap, t_flag *flag)
 	return (i + 1);
 }
 
-void			initialize_handle_format(int *i, int *j, int *ret, t_flag *flag)
+short			initialize_handle_format(int *i, unsigned short *j, int *ret, t_flag *flag)
 {
 	*i = 0;
 	*ret = 0;
@@ -220,6 +97,7 @@ void			initialize_handle_format(int *i, int *j, int *ret, t_flag *flag)
 	flag->len_buffer = 0;
 	flag->color = 0;
 	*j = 0;
+	return (1);
 }
 
 int			handle_format(const char *format, va_list *ap)
@@ -229,8 +107,7 @@ int			handle_format(const char *format, va_list *ap)
 	t_flag			flag;
 	unsigned short	j;
 
-	initialize_handle_format(&i, &j, &ret, &flag);
-	if (format != NULL)
+	if (((initialize_handle_format(&i, &j, &ret, &flag))) && format != NULL)
 	{
 		while (format[i] != '\0')
 		{
@@ -239,35 +116,15 @@ int			handle_format(const char *format, va_list *ap)
 				flag.len_buffer = j;
 				if ((ret = analyze_and_printf(&format[i + 1], ap, &flag)) > -1)
 					i = i + ret + 1;
-				else if (ret == -1)
+				if ((j = 0) && ret == -1)
 					return (-1);
-				j = 0;
 			}
-			else if (flag.color == 1 && format[i] == '{' && format[i + 1] == 'e' && format[i + 2] == 'o'
-					 && format[i + 3] == 'f' && format[i + 4] == '}')
-			{
-				flag.buffer[j++] = '\033';
-				flag.buffer[j++] = '[';
-				flag.buffer[j++] = '0';
-				flag.buffer[j++] = 'm';
-				//write(1, "\033[0m", 4);
-				i += 5;
-				flag.color = 0;
-			}
-			else if (format[i] == '{' && (ret = handle_colors(&format[i + 1], &flag, &j)) > 0)
+			else if ((ret = pre_handle_colors(&format[i], &flag, &j)) > 0)
 				i += ret;
-			else
-			{
-				flag.buffer[j] = format[i];
-				//	write(1, &format[i], 1);
+			else if ((flag.buffer[j++] = format[i++]))
 				flag.lenght_print++;
-				i++;
-				j++;
-			}
 		}
 	}
 	write(1, flag.buffer, j);
 	return(flag.lenght_print);
 }
-
-

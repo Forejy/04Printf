@@ -73,6 +73,37 @@ void			convert_bin_to_dec(t_bin_list *begin_list)
 	}
 }
 
+void	annex_to_convert_dectobin(int i, int n_bytes, t_bin_list *b_list, int dec)
+{
+	int		j;
+	
+	while (i++ <= n_bytes)
+	{
+		j = 7;
+		if (i == n_bytes)
+		{
+			while (j > n_bytes)
+			{
+				b_list->binary[j--] = (unsigned char) (char)(dec % 2 + 48);
+				dec = dec / 2;
+			}
+			while (--j >= 0)
+				b_list->binary[j] = '1';
+			break;
+		}
+		else
+		{
+			(b_list->binary)[0] = '1';
+			while (j >= 2)
+			{
+				b_list->binary[j--] = (unsigned char)(dec % 2 + 48);
+				dec = dec / 2;
+			}
+		}
+		b_list = b_list->next;
+	}
+}
+
 void			convert_dec_to_bin_utf8(int	number_of_bytes, t_bin_list *begin_bin_list, int dec)
 {
 	t_bin_list	*temp;
@@ -82,44 +113,14 @@ void			convert_dec_to_bin_utf8(int	number_of_bytes, t_bin_list *begin_bin_list, 
 	temp = begin_bin_list;
 	i = 1;
 	if (number_of_bytes != 1)
-	{
-		while (i <= number_of_bytes)
-		{
-			j = 7;
-			if (i == number_of_bytes)
-			{
-				while (j > number_of_bytes)
-				{
-					temp->binary[j] = (unsigned char) (char)(dec % 2 + 48);
-					dec = dec / 2;
-					j--;
-				}
-				while (--j >= 0)
-					temp->binary[j] = '1';
-				break;
-			}
-			else
-			{
-				(temp->binary)[0] = '1';
-				while (j >= 2)
-				{
-					temp->binary[j] = (unsigned char)(dec % 2 + 48);
-					dec = dec / 2;
-					j--;
-				}
-			}
-			i++;
-			temp = temp->next;
-		}
-	}
+		annex_to_convert_dectobin(i, number_of_bytes, begin_bin_list, dec);
 	else
 	{
 		j = 7;
 		while (j >= 0)
 		{
-			temp->binary[j] = (unsigned char)(dec % 2 + 48);
+			temp->binary[j--] = (unsigned char)(dec % 2 + 48);
 			dec = dec / 2;
-			j--;
 		}
 	}
 }

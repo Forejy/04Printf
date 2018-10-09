@@ -34,7 +34,7 @@ short		handle_bold_colors(char *color, char *flag_buffer)
 	return (i);
 }
 
-short		handle_colors(char *color, t_flag *flag, unsigned short *j)
+short		handle_colors(const char *color, t_flag *flag, unsigned short *j)
 {
 	short		i;
 	short		temp;
@@ -65,4 +65,29 @@ short		handle_colors(char *color, t_flag *flag, unsigned short *j)
 		*j += 7;
 	}
 	return (i);
+}
+
+int		pre_handle_colors(const char *format, t_flag *flag, unsigned short *j)
+{
+	int			ret;
+	int			temp;
+	char		*flag_buffer;
+
+	temp = *j;
+	flag_buffer = flag->buffer;
+	ret = 0;
+	if (format[0] == '{' && (ret = handle_colors(&format[1], flag, j)) > 0)
+		return (ret);
+	else if (flag->color == 1 && format[0] == '{' && format[1] == 'e' && format[2] == 'o'
+			 && format[3] == 'f' && format[4] == '}')
+	{
+		flag_buffer[temp++] = '\033';
+		flag_buffer[temp++] = '[';
+		flag_buffer[temp++] = '0';
+		flag_buffer[temp++] = 'm';
+		*j += 4;
+		flag->color = 0;
+		return (5);
+	}
+	return (0);
 }

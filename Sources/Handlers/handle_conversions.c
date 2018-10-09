@@ -10,32 +10,31 @@
 
 int		handle_conversions_5(char conv, va_list *ap, t_flag flag, int lenght_conv)
 {
-	int total_len;
-
 	if (conv == 'x')
 	{
 		if (lenght_conv == H)
-			total_len = my_putnbr_hexa((unsigned short) (va_arg(*ap, int)), flag);
+			return (my_putnbr_hexa((unsigned short) (va_arg(*ap, int)), flag));
 		else if (lenght_conv == HH)
-			total_len = my_putnbr_hexa((unsigned char) (va_arg(*ap, int)), flag);
+			return(my_putnbr_hexa((unsigned char) (va_arg(*ap, int)), flag));
 		else if (lenght_conv == L)
-			total_len = my_putnbr_hexa(va_arg(*ap, unsigned long), flag);
+			return(my_putnbr_hexa(va_arg(*ap, unsigned long), flag));
 		else if (lenght_conv == LL)
-			total_len = my_putnbr_hexa(va_arg(*ap, unsigned long long), flag);
+			return(my_putnbr_hexa(va_arg(*ap, unsigned long long), flag));
 		else if (lenght_conv == J)
-			total_len = my_putnbr_hexa(va_arg(*ap, uintmax_t), flag);
+			return(my_putnbr_hexa(va_arg(*ap, uintmax_t), flag));
 		else if (lenght_conv == Z)
-			total_len = my_putnbr_hexa(va_arg(*ap, unsigned long), flag);
+			return(my_putnbr_hexa(va_arg(*ap, unsigned long), flag));
 		else
-			total_len = my_putnbr_hexa(va_arg(*ap, unsigned int), flag);
+			return(my_putnbr_hexa(va_arg(*ap, unsigned int), flag));
 	}
 	else if (conv == '%')
-		total_len = my_putchar_printf('%', flag);
+		return(my_putchar_printf('%', flag));
 	else if (conv == 'C' || (conv == 'c' && lenght_conv == L))
-		total_len = my_put_wint_t(va_arg(*ap, wint_t), flag);
+		return(my_put_wint_t(va_arg(*ap, wint_t), flag));
+	else if (conv == 'O')
+		return(my_put_octal(va_arg(*ap, unsigned long), flag));
 	else
-		total_len = handle_conversions_6(conv, ap, flag, lenght_conv);
-	return (total_len);
+		return(handle_conversions_6(conv, ap, flag, lenght_conv));
 }
 
 int		handle_conversions_4(char conv, va_list *ap, t_flag flag,int lenght_conv)
@@ -61,8 +60,6 @@ int		handle_conversions_4(char conv, va_list *ap, t_flag flag,int lenght_conv)
 	}
 	else if (conv == 'O' && lenght_conv == L)
 		total_len = my_put_octal(va_arg(*ap, unsigned long long), flag);
-	else if (conv == 'O')
-		total_len = my_put_octal(va_arg(*ap, unsigned long), flag);
 	else
 		total_len = handle_conversions_5(conv, ap, flag, lenght_conv);
 	return (total_len);
@@ -72,7 +69,6 @@ int			handle_conversions_3(char conv, va_list *ap, t_flag flag,int lenght_conv)
 {
 	int total_len;
 
-	total_len = 0;
 	if (conv == 'D')
 	{
 		if (lenght_conv == L)
@@ -102,7 +98,6 @@ int		handle_conversions_2(char conv, va_list *ap, t_flag flag,int lenght_conv)
 {
 	int total_len;
 
-	total_len = 0;
 	if (conv == 'd' || conv == 'i')
 	{
 		if (lenght_conv == H)
@@ -132,9 +127,7 @@ int			handle_conversions(char conv, va_list *ap, t_flag flag)
 	int  total_len;
 	int  lenght_conv;
 
-	total_len     = 0;
-	lenght_conv   = flag.lenght_conv;
-	if (conv == 'o')
+	if ((lenght_conv = flag.lenght_conv) && conv == 'o')
 	{
 		if (lenght_conv == H)
 			total_len = my_put_octal((unsigned short)(va_arg(*ap,  unsigned int)), flag);
@@ -151,6 +144,8 @@ int			handle_conversions(char conv, va_list *ap, t_flag flag)
 		else
 			total_len = my_put_octal(va_arg(*ap, unsigned int), flag);
 	}
+	else if (conv == 'S' || (conv == 's' && lenght_conv == L))
+		total_len = my_put_wchar_t(va_arg(*ap, wchar_t *), flag);
 	else
 		total_len = handle_conversions_2(conv, ap, flag, lenght_conv);
 	return (total_len);
