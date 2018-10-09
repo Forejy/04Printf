@@ -140,7 +140,7 @@ int 	test_validity_of_characters(wchar_t *string_wchar)
 	return (1);
 }
 
-int			annex_to_put_wchar_t(char *string_wchar, int *number_of_char_per_wint_t, char *string)
+int			annex_to_put_wchar_t(wchar_t *string_wchar, int *number_of_char_per_wint_t, char *string)
 {
 	short	i;
 	short	j;
@@ -171,6 +171,7 @@ int			annex_to_put_wchar_t(char *string_wchar, int *number_of_char_per_wint_t, c
 			string[j++] = string_wchar[i];
 		i++;
 	}
+	return (0);
 }
 
 int			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)

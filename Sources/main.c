@@ -2960,6 +2960,7 @@ ft_printf(" +d : % +d \n", 0);
 
 	printf("%.0f\n", 45.0);
 	*/
+	/*
 	ft_printf("{red}Champs > Precision > Len_arg : {eof}\n");
 	k = printf("%20.14f\n", 45.123456);
 	printf("k = %d\n", k);
@@ -3781,6 +3782,15 @@ ft_printf(" +d : % +d \n", 0);
     printf("k = %d\n", k);
     k = ft_printf("%C\n", 0x11ffff);
     printf("k = %d\n", k);
+
+	*/
+	
+	setlocale(LC_ALL, "");
+
+//	k =printf("%hhS\n", L"Á±≥k");
+//	printf("k = %d\n", k);
+	k = ft_printf("%hhS\n", L"Á±≥k");
+	printf("k = %d\n", k);
 	//tester .0
 	//					  12345678912345 1926570851355791
 	//					  22222222222222 8538157651200891
