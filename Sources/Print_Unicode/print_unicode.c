@@ -140,34 +140,14 @@ int 	test_validity_of_characters(wchar_t *string_wchar)
 	return (1);
 }
 
-size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
+int			annex_to_put_wchar_t(char *string_wchar, int *number_of_char_per_wint_t, char *string)
 {
-	size_t		total_len;
-	int			number_of_bytes;
-	int			*number_of_char_per_wint_t;
-	int			i;
-	int			j;
-	int			k;
-	char		*string;
-	//unsigned char		*string;
-
+	short	i;
+	short	j;
+	short	k;
 	t_bin_list	*temp;
-	//char		string[5];
 
-
-	if (string_wchar == NULL)
-	{
-		write(1, flag.buffer, flag.len_buffer);
-		write(1, "(null)", 6);
-		return (6);
-	}
 	i = 0;
-	if((test_validity_of_characters(string_wchar) == -1) 
-		||(number_of_bytes = count_char_per_wint_t(flag, string_wchar, &number_of_char_per_wint_t)) == -1)
-		return (-1);
-	if (!(string = (char *)malloc(sizeof(char) * (number_of_bytes + 1))))
-		exit_with_msg(ERROR_MALLOC_FAILED);
-	string[number_of_bytes] = '\0';
 	j = 0;
 	while (string_wchar[i] != '\0')
 	{
@@ -175,15 +155,14 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 		{
 			temp = call_functions_to_convert_dec_to_bin_in_utf8(string_wchar[i], number_of_char_per_wint_t[i]);
 			k = number_of_char_per_wint_t[i] + j - 1;
-			while (temp)
+			while (temp && (j++))
 			{
-				string[k] = temp->binary[0];
-				k--;
-				j++;
+				string[k--] = temp->binary[0];
+				//j++;
 				temp = temp->next;
 			}
 		}
-		else if (string_wchar[i] > 1114111 || string_wchar[i] < 0 
+		else if (string_wchar[i] > 1114111 || string_wchar[i] < 0
 				 || (string_wchar[i] >= 55296 && string_wchar[i] <= 57343 ))
 			return (-1);
 		else if (temp >= 129 && temp <= 255)
@@ -192,17 +171,29 @@ size_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 			string[j++] = string_wchar[i];
 		i++;
 	}
-	total_len = 0;
-	/*
-	while (*string_wchar)
+}
+
+int			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
+{
+	size_t		total_len;
+	int			number_of_bytes;
+	int			*number_of_char_per_wint_t;
+	char		*string;
+
+	if (string_wchar == NULL)
 	{
-		my_put_wint_t(*string_wchar, flag);
-		string_wchar++;
-		total_len++;
+		write(1, flag.buffer, flag.len_buffer);
+		write(1, "(null)", 6);
+		return (6);
 	}
-	 */
+	if((test_validity_of_characters(string_wchar) == -1) 
+		||(number_of_bytes = count_char_per_wint_t(flag, string_wchar, &number_of_char_per_wint_t)) == -1)
+		return (-1);
+	if (!(string = (char *)malloc(sizeof(char) * (number_of_bytes + 1))))
+		exit_with_msg(ERROR_MALLOC_FAILED);
+	string[number_of_bytes] = '\0';
+	annex_to_put_wchar_t(string_wchar, number_of_char_per_wint_t, string);
 	flag.unicode_s = 1;
-	
 	if (flag.precision > -1 && flag.precision < number_of_bytes)
 		flag.precision = adapts_precision_to_numbers_of_bytes(flag.precision, number_of_char_per_wint_t);
 	total_len = print_final_result(flag, string, number_of_bytes);

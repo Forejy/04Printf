@@ -68,20 +68,6 @@ size_t		my_putnbr_double(double nbr, t_flag flag)
 	flag.conv_f = 1;
 	len_precision = flag.precision <= 15 ? flag.precision : 15;
 	len_precision = len_precision == -1 ? 6 : len_precision;
-/*	if ((dec_part_bis % 10) >= 5)
-	{
-		if (dec_part_bis/10 == 999999999999999)
-		{
-			int_part += 1;
-			dec_part_bis = 0;
-		}
-		else
-			dec_part_bis = dec_part_bis / 10 + 1;
-	}
- 
-	else
-		dec_part_bis = dec_part_bis/10;
-		*/
 	if (len_precision > 0 && dec_part_bis != 0)
 	{
 		dec_part_bis = dec_part_bis/power_of_10(14 - len_precision);//Divise par longueur du nombre - 1
