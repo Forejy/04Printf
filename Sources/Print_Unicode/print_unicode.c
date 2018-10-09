@@ -21,7 +21,7 @@ t_bin_list		*call_functions_to_convert_dec_to_bin_in_utf8(int dec, int number_of
  * Convertit chaque octet en decimal puis les combine pour affiche le caractere unicode
  */
 
-size_t			my_put_wint_t(int dec, t_flag flag)
+intmax_t		my_put_wint_t(int dec, t_flag flag)
 {
 	t_bin_list *temp;
 	char       codeset[6];
@@ -32,16 +32,13 @@ size_t			my_put_wint_t(int dec, t_flag flag)
 	if (dec <= 128 && dec >= 0)
 		return (print_final_result(flag, (char *) &dec, 1));
 	else if (dec >= 129 && dec <= 255 && MB_CUR_MAX < 2 )
-	{
 		write(1,"�", 2);
-		return (-1);
-	}
-	else if ((dec > 1114111 || dec < 0) || (dec >= 55296 && dec <= 57343))
+	if ((dec >= 129 && dec <= 255 && MB_CUR_MAX < 2 )
+		|| (dec > 1114111 || dec < 0) || (dec >= 55296 && dec <= 57343)
+		||(number_of_bytes = compute_minimum_number_of_bytes_in_utf8(dec)) > MB_CUR_MAX)
 		return (-1);
 	else if (dec > 196608 && dec < 262143)
 		return (0);
-	if((number_of_bytes = compute_minimum_number_of_bytes_in_utf8(dec)) > MB_CUR_MAX)
-		return (-1);
 	temp = call_functions_to_convert_dec_to_bin_in_utf8(dec, number_of_bytes);
 	i = 0;
 	while (i < number_of_bytes)
@@ -136,7 +133,7 @@ int 	test_validity_of_characters(wchar_t *string_wchar)
 	return (1);
 }
 
-int		annex_to_annex_put_wchart_t(t_bin_list *temp, short k, short *j, char *string)
+int		annex_to_annex_put_wchart_t(t_bin_list *temp, int k, short *j, char *string)
 {
 	while (temp)
 	{
@@ -150,7 +147,7 @@ int			annex_to_put_wchar_t(wchar_t *string_wchar, int *number_of_char_per_wint_t
 {
 	short	i;
 	short	j;
-	short	k;
+	int		k;
 	t_bin_list	*temp;
 
 	i = 0;

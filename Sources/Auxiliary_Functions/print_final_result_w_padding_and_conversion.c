@@ -276,7 +276,7 @@ int			print_result_with_no_precision(t_flag flag, const char *stock, int len_arg
 }
 
 
-uintmax_t		print_final_result(t_flag flag, const char *stock, int len_argument)
+intmax_t		print_final_result(t_flag flag, const char *stock, int len_argument)
 {
 	int						len_precision;
 	int						len_padding;
