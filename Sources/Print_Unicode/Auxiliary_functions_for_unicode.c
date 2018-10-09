@@ -1,3 +1,23 @@
+#include <zconf.h>
+
+int 	test_validity_of_characters(wchar_t *string_wchar)
+{
+	int i;
+	wint_t temp;
+
+	i = 0;
+	while ((temp = string_wchar[i]) != '\0')
+	{
+		if ((temp > 1114111 || temp < 0) || (temp >= 55296 && temp <= 57343))
+			return (-1);
+		i++;
+	}
+	return (1);
+}
+
+
+
+
 unsigned int				compute_minimum_number_of_bits(unsigned int n)
 {
 	unsigned int		pow2;

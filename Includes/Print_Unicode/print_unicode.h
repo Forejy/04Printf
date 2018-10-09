@@ -7,6 +7,6 @@
 
 intmax_t			my_put_wint_t(int dec, t_flag flag);
 intmax_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag);
-t_bin_list			*call_functions_to_convert_dec_to_bin_in_utf8(int dec, int number_of_bytes[1]);
+int					count_char_per_wint_t(t_flag flag, wchar_t *string_wchar, int **number_of_char_per_wint_t);
 
 #endif

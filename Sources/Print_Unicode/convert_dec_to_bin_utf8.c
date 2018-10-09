@@ -3,6 +3,7 @@
 #include "../../Includes/Print_Unicode/Auxiliary_functions_for_unicode.h"
 
 
+
 void			convert_bin_to_dec(t_bin_list *begin_list)
 {
 	t_bin_list	*temp;
@@ -73,6 +74,16 @@ void			convert_dec_to_bin_utf8(int	number_of_bytes, t_bin_list *begin_bin_list, 
 			dec = dec / 2;
 		}
 	}
+}
+
+t_bin_list		*call_functions_to_convert_dec_to_bin_in_utf8(int dec, int number_of_bytes)
+{
+	t_bin_list	*begin_list;
+
+	begin_list = create_and_initialize_t_bin_list(number_of_bytes);
+	convert_dec_to_bin_utf8(number_of_bytes, begin_list, dec);
+	convert_bin_to_dec(begin_list);
+	return (begin_list);
 }
 
 /*

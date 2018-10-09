@@ -6,7 +6,6 @@ void		assigns_to_n(va_list *ap, int lenght_conv, t_flag flag)
 {
 	uintmax_t		*temp_ap;
 	
-	
 		if (lenght_conv == H)
 			temp_ap = (unsigned short*) (va_arg(*ap, int*));
 		else if (lenght_conv == HH)
