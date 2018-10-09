@@ -3787,8 +3787,8 @@ ft_printf(" +d : % +d \n", 0);
 	
 	setlocale(LC_ALL, "");
 
-//	k =printf("%hhS\n", L"Á±≥k");
-//	printf("k = %d\n", k);
+	k =printf("%hhS\n", L"Á±≥k");
+	printf("k = %d\n", k);
 	k = ft_printf("%hhS\n", L"Á±≥k");
 	printf("k = %d\n", k);
 	//tester .0

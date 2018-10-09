@@ -140,6 +140,16 @@ int 	test_validity_of_characters(wchar_t *string_wchar)
 	return (1);
 }
 
+int		annex_to_annex_put_wchart_t(t_bin_list *temp, short k, short *j, char *string)
+{
+	while (temp)
+	{
+		string[k--] = temp->binary[0];
+        (*j)++;
+		temp = temp->next;
+	}
+}
+
 int			annex_to_put_wchar_t(wchar_t *string_wchar, int *number_of_char_per_wint_t, char *string)
 {
 	short	i;
@@ -155,12 +165,7 @@ int			annex_to_put_wchar_t(wchar_t *string_wchar, int *number_of_char_per_wint_t
 		{
 			temp = call_functions_to_convert_dec_to_bin_in_utf8(string_wchar[i], number_of_char_per_wint_t[i]);
 			k = number_of_char_per_wint_t[i] + j - 1;
-			while (temp && (j++))
-			{
-				string[k--] = temp->binary[0];
-				//j++;
-				temp = temp->next;
-			}
+			annex_to_annex_put_wchart_t(temp, k, &j, string);
 		}
 		else if (string_wchar[i] > 1114111 || string_wchar[i] < 0
 				 || (string_wchar[i] >= 55296 && string_wchar[i] <= 57343 ))
