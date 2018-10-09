@@ -16,7 +16,9 @@ SRCS += Sources/Handlers/test_conv_champs_prec.c
 SRCS += Sources/Print_Unicode/convert_dec_to_bin_utf8.c
 SRCS += Sources/Print_Unicode/create_and_print_t_bin_list.c
 SRCS += Sources/Print_Unicode/print_unicode.c
+SRCS += Sources/Print_Unicode/printf_wchar_t.c
 SRCS += Sources/Print_Unicode/Auxiliary_functions_for_unicode.c
+
 
 SRCS += Sources/errors.c
 SRCS += Sources/printf.c
@@ -53,6 +55,7 @@ OBJS += Sources/Handlers/test_conv_champs_prec.o
 OBJS += Sources/Print_Unicode/convert_dec_to_bin_utf8.o
 OBJS += Sources/Print_Unicode/create_and_print_t_bin_list.o
 OBJS += Sources/Print_Unicode/print_unicode.o
+OBJS += Sources/Print_Unicode/printf_wchar_t.o
 OBJS += Sources/Print_Unicode/Auxiliary_functions_for_unicode.o
 OBJS += Sources/errors.o
 OBJS += Sources/printf.o
