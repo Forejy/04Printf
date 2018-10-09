@@ -1,4 +1,4 @@
-#include <zconf.h>
+#include <wchar.h>
 
 int 	test_validity_of_characters(wchar_t *string_wchar)
 {
