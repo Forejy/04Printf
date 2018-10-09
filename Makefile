@@ -18,8 +18,6 @@ SRCS += Sources/Print_Unicode/create_and_print_t_bin_list.c
 SRCS += Sources/Print_Unicode/print_unicode.c
 SRCS += Sources/Print_Unicode/printf_wchar_t.c
 SRCS += Sources/Print_Unicode/Auxiliary_functions_for_unicode.c
-
-
 SRCS += Sources/errors.c
 SRCS += Sources/printf.c
 
@@ -30,12 +28,17 @@ INCLUDES += Includes/Auxiliary_Functions/numbers_functions_unsigned.h
 INCLUDES += Includes/Auxiliary_Functions/print_final_result_w_padding_and_conversion.h
 INCLUDES += Includes/Auxiliary_Functions/print_pointer_address.h
 INCLUDES += Includes/Auxiliary_Functions/strings_functions.h
-INCLUDES += Sources/Auxiliary_Functions/bonus.h
+INCLUDES += Includes/Auxiliary_Functions/bonus.h
 INCLUDES += Includes/Handlers/handlers.h
-INCLUDES += Sources/Handlers/handle_colors.h
+INCLUDES += Includes/Handlers/handle_colors.h
+INCLUDES += Includes/Handlers/handle_conversions.c
+INCLUDES += Includes/Handlers/handle_conversions_2.c
+INCLUDES += Includes/Handlers/test_conv_champs_prec.c
 INCLUDES += Includes/Print_Unicode/convert_dec_to_bin_utf8.h
 INCLUDES += Includes/Print_Unicode/create_and_print_t_bin_list.h
 INCLUDES += Includes/Print_Unicode/print_unicode.h
+INCLUDES += Includes/Print_Unicode/printf_wchar_t.c
+INCLUDES += Includes/Print_Unicode/Auxiliary_functions_for_unicode.c
 INCLUDES += Includes/errors.h
 INCLUDES += Includes/printf.h
 
