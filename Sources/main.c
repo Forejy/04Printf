@@ -3769,7 +3769,12 @@ ft_printf(" +d : % +d \n", 0);
 	printf("k = %d\n", k);
 	k =ft_printf("%o\n", 40);
 	printf("k = %d\n", k);
-	 
+
+	k =printf("%S", L"Á±≥");
+	printf("k = %d\n", k);
+	k = ft_printf("%S", L"Á±≥");
+	printf("k = %d\n", k);
+
 	//tester .0
 	//					  12345678912345 1926570851355791
 	//					  22222222222222 8538157651200891

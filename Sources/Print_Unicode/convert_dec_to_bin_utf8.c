@@ -77,10 +77,10 @@ void	annex_to_convert_dectobin(int i, int n_bytes, t_bin_list *b_list, int dec)
 {
 	int		j;
 	
-	while (i++ <= n_bytes)
+	while (i <= n_bytes)
 	{
 		j = 7;
-		if (i == n_bytes)
+		if (i++ == n_bytes)
 		{
 			while (j > n_bytes)
 			{
