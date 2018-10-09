@@ -79,8 +79,7 @@ void	annex_to_convert_dectobin(int i, int n_bytes, t_bin_list *b_list, int dec)
 	
 	while (i <= n_bytes)
 	{
-		j = 7;
-		if (i++ == n_bytes)
+		if ((j = 7) && i++ == n_bytes)
 		{
 			while (j > n_bytes)
 			{
@@ -89,7 +88,6 @@ void	annex_to_convert_dectobin(int i, int n_bytes, t_bin_list *b_list, int dec)
 			}
 			while (--j >= 0)
 				b_list->binary[j] = '1';
-			break;
 		}
 		else
 		{
