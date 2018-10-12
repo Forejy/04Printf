@@ -42,6 +42,7 @@ size_t	annex_to_putstr_printf(const char* str, t_flag flag, size_t len_str)
 	int			flag_precision;
 	size_t		total_len;
 
+	flag_precision = flag.precision;
 	if (str == NULL)
 	{
 		if (flag_precision > 6 || flag_precision == -1)

@@ -47,20 +47,40 @@ int main(void)
 	size_t s_t			 = SIZE_MAX;
 	//suite_nombre(4, 1, 2, 3, 4);
 	//\ft_printf("%zhd\n", -50);
-//	ft_printf("%lli \n", -9223372036854775807);
+	printf("INT_MAX : %d\n", INT_MAX);
+	printf("INT_MAX : %d\n", INT_MIN);
+	printf("UINT_MAX : %u\n", UINT_MAX);
+	printf("SHRT_MAX : %hd\n", SHRT_MAX);
+	printf("SHRT_MIN : %hd\n", SHRT_MIN);
+	printf("USHRT_MAX :%hu\n", USHRT_MAX);
+	printf("LONG_MAX : %ld\n", LONG_MAX); // Si hld ou lhd le l surcharge le h
+	printf("LONG_MIN : %ld\n", LONG_MIN); // Si hld ou lhd le l surcharge le h
+	printf("LLONG_MAX : %lld\n", LLONG_MAX);
+	printf("LLONG_MIN : %lld\n", LLONG_MIN);
+	printf("ULONG_MAX : %lu\n", ULONG_MAX);
+	printf("ULLONG MAX : %llu\n", ULLONG_MAX);
+	printf("SIZE_T MAX : %llu\n", SIZE_MAX);
+	printf("SSIZE_T_MAX : %llu\n", SSIZE_MAX);
+	printf("UNSIGNED CHAR MAX : %d\n", UCHAR_MAX);
+	printf("INTMAX_T MAX : %jd\n", INTMAX_MAX);
+	printf("INTMAX_T MIN : %jd\n", INTMAX_MIN);
+	printf("UINTMAX_T MAX : %ju\n", UINTMAX_MAX);
+	
 	ft_printf("INT_MAX : %d\n", INT_MAX);
+	ft_printf("INT_MAX : %d\n", INT_MIN);
 	ft_printf("UINT_MAX : %u\n", UINT_MAX);
 	ft_printf("SHRT_MAX : %hd\n", SHRT_MAX);
+	ft_printf("SHRT_MIN : %hd\n", SHRT_MIN);
 	ft_printf("USHRT_MAX :%hu\n", USHRT_MAX);
-	ft_printf("LONG_MAX : %ld\n", lg); // Si hld ou lhd le l surcharge le h
-	ft_printf("LLONG_MAX : %lld\n", llg);
-	ft_printf("LLONG_MIN : %lld\n", LLONG_MIN);
+	ft_printf("LONG_MAX : %ld\n", LONG_MAX); // Si hld ou lhd le l surcharge le h
+	ft_printf("LONG_MIN : %ld\n", LONG_MIN); // Si hld ou lhd le l surcharge le h
+	ft_printf("LLONG_MAX : %lld\n", LLONG_MAX);
+	ft_printf("LLONG_MIN : %lld\n" LLONG_MIN);
 	ft_printf("ULONG_MAX : %lu\n", ULONG_MAX);
 	ft_printf("ULLONG MAX : %llu\n", ULLONG_MAX);
-	ft_printf("SIZE_T MAX : %llu\n", s_t);
-	ft_printf("SSIZE_T_MAX : %llu\n", ss_t);
-	ft_printf("UNSIGNED CHAR MAX : %d\n", x);
-	ft_printf("HEXA : %x\n", 155);
+	ft_printf("SIZE_T MAX : %llu\n", SIZE_MAX);
+	ft_printf("SSIZE_T_MAX : %llu\n", SSIZE_MAX);
+	ft_printf("UNSIGNED CHAR MAX : %d\n", UCHAR_MAX);
 	ft_printf("INTMAX_T MAX : %jd\n", INTMAX_MAX);
 	ft_printf("INTMAX_T MIN : %jd\n", INTMAX_MIN);
 	ft_printf("UINTMAX_T MAX : %ju\n", UINTMAX_MAX);
@@ -74,6 +94,7 @@ int main(void)
 	ft_printf("Ssize_t : %zd");
 	ft_printf("INTPTR_MAX : %zu\n", INTPTR_MAX);
 	ft_printf("wint_t : %zu\n", sizeof(wint_t));
+	/
 
 
 	long		neglg = -648;
@@ -3792,53 +3813,12 @@ ft_printf(" +d : % +d \n", 0);
 	//					  22222222222222 8538157651200891
 
 	//	ft_printf("%lli \n", -9223372036854775807);
-	printf("INT_MAX : %d\n", INT_MAX);
-	printf("INT_MAX : %d\n", INT_MIN);
-	printf("UINT_MAX : %u\n", UINT_MAX);
-	printf("SHRT_MAX : %hd\n", SHRT_MAX);
-	printf("SHRT_MIN : %hd\n", SHRT_MIN);
-	printf("USHRT_MAX :%hu\n", USHRT_MAX);
-	printf("LONG_MAX : %ld\n", LONG_MAX); // Si hld ou lhd le l surcharge le h
-	printf("LONG_MIN : %ld\n", LONG_MIN); // Si hld ou lhd le l surcharge le h
-	printf("LLONG_MAX : %lld\n", LLONG_MAX);
-	printf("LLONG_MIN : %lld\n", LLONG_MIN);
-	printf("ULONG_MAX : %lu\n", ULONG_MAX);
-	printf("ULLONG MAX : %llu\n", ULLONG_MAX);
-	printf("SIZE_T MAX : %llu\n", SIZE_MAX);
-	printf("SSIZE_T_MAX : %llu\n", SSIZE_MAX);
-	printf("UNSIGNED CHAR MAX : %d\n", UCHAR_MAX);
-	printf("INTMAX_T MAX : %jd\n", INTMAX_MAX);
-	printf("INTMAX_T MIN : %jd\n", INTMAX_MIN);
-	printf("UINTMAX_T MAX : %ju\n", UINTMAX_MAX);
-	
-	ft_printf("INT_MAX : %d\n", INT_MAX);
-	ft_printf("INT_MAX : %d\n", INT_MIN);
-	ft_printf("UINT_MAX : %u\n", UINT_MAX);
-	ft_printf("SHRT_MAX : %hd\n", SHRT_MAX);
-	ft_printf("SHRT_MIN : %hd\n", SHRT_MIN);
-	ft_printf("USHRT_MAX :%hu\n", USHRT_MAX);
-	ft_printf("LONG_MAX : %ld\n", LONG_MAX); // Si hld ou lhd le l surcharge le h
-	ft_printf("LONG_MIN : %ld\n", LONG_MIN); // Si hld ou lhd le l surcharge le h
-	ft_printf("LLONG_MAX : %lld\n", LLONG_MAX);
-	ft_printf("LLONG_MIN : %lld\n", LLONG_MIN);
-	ft_printf("ULONG_MAX : %lu\n", ULONG_MAX);
-	ft_printf("ULLONG MAX : %llu\n", ULLONG_MAX);
-	ft_printf("SIZE_T MAX : %llu\n", SIZE_MAX);
-	ft_printf("SSIZE_T_MAX : %llu\n", SSIZE_MAX);
-	ft_printf("UNSIGNED CHAR MAX : %d\n", UCHAR_MAX);
-	ft_printf("INTMAX_T MAX : %jd\n", INTMAX_MAX);
-	ft_printf("INTMAX_T MIN : %jd\n", INTMAX_MIN);
-	ft_printf("UINTMAX_T MAX : %ju\n", UINTMAX_MAX);
-	ft_printf("Short : %zu\n", sizeof(short));
-	ft_printf("Long : %zu\n", sizeof(long));
-	ft_printf("Long Long : %zu\n", 8);
-	ft_printf("Unsigned Long : %zu\n", sizeof(unsigned long));
-	ft_printf("Unsigned Long Long : %zu\n", sizeof(unsigned long long));
-	ft_printf("Unsigned char : %zu\n", sizeof(unsigned char));
-	ft_printf("Size_t : %zu\n", sizeof(size_t));
-	ft_printf("Ssize_t : %zd");
-	ft_printf("INTPTR_MAX : %zu\n", INTPTR_MAX);
-	ft_printf("wint_t : %zu\n", sizeof(wint_t));
+
+	k =printf("%s\n", "abc");
+	printf("k = %d\n", k);
+	k = ft_printf("%s\n", "abc");
+	printf("k = %d\n", k);
+
 	return (0);
 }
 //9223372036854775807
