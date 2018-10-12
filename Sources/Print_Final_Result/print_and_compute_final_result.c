@@ -24,7 +24,7 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 			len_padding -= 1;
 			write(1, " ", 1);
 		}
-		retenue = annex_to_print_padding(flag, stock, len_padding);
+		retenue += annex_to_print_padding(flag, stock, len_padding);
 	}
 	return (retenue);
 }
