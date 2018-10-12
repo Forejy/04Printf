@@ -52,42 +52,31 @@ int		print_padding(t_flag flag, const char **stock, int len_padding)
 				// le 0x doit etre imprime avant le rembourrage par 0 : 0x000000000000ffffcb84
  */
 
-int		print_conv_f_w_prec(t_flag flag, const char *stock, int len_argument)
+void		print_conv_f_w_prec(t_flag f, const char *s, int len_prec, int *sign)
 {
-	int 	len_precision;
 	int		len_int_part;
 	int		padding;
-	int		ret;
 
-	len_precision = flag.precision;
-	padding = len_precision - 15;
-	ret = 0;
-	
-	len_int_part = flag.conv_f_intpart;
-	if ((len_precision > 0 && (flag.champs < (flag.conv_f_intpart + 1 + len_precision) && flag.blank))
-		|| ((len_precision >= flag.champs || flag.conv_f_intpart >= flag.champs  || flag.less) //|| (len_argument + len_precision) >= flag.champs 
-			&& flag.blank && stock && *stock != '-' && *stock != '+'))
-	{
+	padding = len_prec - 15;
+	len_int_part = f.conv_f_intpart;
+	if ((len_prec > 0 && (f.champs < (f.conv_f_intpart + 1 + len_prec) 
+		&& f.blank)) || ((len_prec >= f.champs || f.conv_f_intpart >= f.champs  
+		|| f.less) && f.blank && s && *s != '-' && *s != '+') && (*sign += 1))
 		write(1, " ", 1);
-		ret += 1;
-	}
-	if (flag.precision > 0)
+	if (f.precision > 0)
 	{
-			write(1, stock, len_int_part + 1);
-		if (len_precision > 0 && len_precision <= 15)
-			write(1, &stock[len_int_part + 1], len_precision);
+		write(1, s, len_int_part + 1);
+		if (len_prec > 0 && len_prec <= 15)
+			write(1, &s[len_int_part + 1], len_prec);
 		else
 		{
-			write(1, &stock[len_int_part + 1], 15);
+			write(1, &s[len_int_part + 1], 15);
 			while (padding-- > 0)
 				write(1, "0", 1);
 		}
 	}
-	else if (flag.precision == 0)
-	{
-		write(1, stock, len_int_part + flag.hash/2);
-	}
-	return (ret);
+	else if (f.precision == 0)
+		write(1, s, len_int_part + f.hash/2);
 }
  
 int		print_result_w_precision(t_flag flag, const char *stock, int len_argument)
@@ -105,7 +94,7 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument)
 	Ox = 0;
 	len_precision = flag.precision;
 	if (flag.conv_f)
-		sign += print_conv_f_w_prec(flag, stock,  len_argument);
+		print_conv_f_w_prec(flag, stock, len_precision, &sign);
 	if (flag.character_or_string == 0 && stock && (*stock == '-' || *stock == '+')
 		&& (len_precision >= len_argument && !flag.conv_f))
 	{
@@ -169,14 +158,12 @@ int		compute_padding_conv_f(const char *stock, t_flag flag, int len_arg)
 	return (len_padding);
 }
 
-int			compute_padding(const char *stock, t_flag flag, int len_arg)//, int wtf
+int			compute_padding(const char *stock, t_flag flag, int len_precision, int len_arg)//, int wtf
 {
 	int			len_padding;
 	int			len_champs;
-	int 		len_precision;
 
 	len_champs = flag.champs;
-	len_precision = flag.precision;
 	len_padding = -1;
 	if (flag.conv_f)
 		len_padding = compute_padding_conv_f(stock, flag, len_arg);
@@ -237,8 +224,7 @@ intmax_t		print_final_result(t_flag flag, const char *stock, int len_argument)
 	sign = 0;
 	write(1, flag.buffer, flag.len_buffer);
 	if(flag.champs > 0)
-		len_padding = compute_padding(stock, flag, len_argument);//, 42
-
+		len_padding = compute_padding(stock, flag, len_precision, len_argument);
 	if (len_padding > 0 && flag.less == 0)
 	{
 		sign = print_padding(flag, &stock, len_padding);

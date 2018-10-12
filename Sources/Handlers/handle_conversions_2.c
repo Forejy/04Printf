@@ -1,7 +1,7 @@
 #include "../../Includes/Auxiliary_Functions/bonus.h"
-#include "../../Includes/Auxiliary_Functions/numbers_functions.h"
-#include "../../Includes/Auxiliary_Functions/numbers_functions_hexa.h"
+#include "../../Includes/Auxiliary_Functions/numbers_functions_double.h"
 #include "../../Includes/Auxiliary_Functions/strings_functions.h"
+#include "../../Includes/Auxiliary_Functions/numbers_functions.h"
 
 int		handle_conversions_7(char conv, va_list *ap, t_flag flag, int lenght_conv)
 {

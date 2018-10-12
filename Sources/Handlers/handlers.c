@@ -1,12 +1,5 @@
 #include "../../Includes/Auxiliary_Functions/strings_functions.h"
 #include "../../Includes/Print_Unicode/print_unicode.h"
-#include "../../Includes/Auxiliary_Functions/numbers_functions.h"
-#include "../../Includes/Auxiliary_Functions/numbers_functions_unsigned.h"
-#include "../../Includes/Auxiliary_Functions/numbers_functions_octal.h"
-#include "../../Includes/Auxiliary_Functions/numbers_functions_hexa.h"
-#include "../../Includes/Auxiliary_Functions/print_pointer_address.h"
-#include "../../Includes/errors.h"
-#include "../../Includes/Auxiliary_Functions/bonus.h"
 #include "../../Includes/Handlers/handle_colors.h"
 #include "../../Includes/Handlers/test_conv_champs_prec.h"
 

@@ -37,34 +37,44 @@ int			my_putchar_printf(char c, t_flag flag)
 	return(total_len);
 }
 
-int		my_putstr_printf(const char *str, t_flag flag)
+size_t	annex_to_putstr_printf(const char* str, t_flag flag, size_t len_str)
 {
-	size_t		len_str;
 	int			flag_precision;
 	size_t		total_len;
 
-	
+	if (str == NULL)
+	{
+		if (flag_precision > 6 || flag_precision == -1)
+			flag_precision = 6;
+		write(1, flag.buffer, flag.len_buffer);
+		write(1, "(null)", flag_precision);
+		total_len = flag_precision;
+	}
+	else
+	{
+		if (flag_precision > -1 && flag_precision < (int) len_str)
+			len_str = (size_t) flag_precision;
+		write(1, flag.buffer, flag.len_buffer);
+		write(1, str, len_str);
+		total_len = len_str;
+	}
+	return  (total_len);
+}
+
+
+int		my_putstr_printf(const char* str, t_flag flag)
+{
+	size_t		len_str;
+	size_t		total_len;
+
 	len_str = 0;
 	if (str != NULL)
 		len_str = my_strlen(str);
 	flag.character_or_string = 2;
-	flag_precision = flag.precision;
 	if (flag.champs == 0)
 	{
-		if (str == NULL)
-		{
-			if (flag_precision > 6 || flag_precision == -1)
-				flag_precision = 6;
-            write(1, flag.buffer, flag.len_buffer);
-            write(1, "(null)", flag_precision);
-				return (flag_precision);
-		}
-		
-		if (flag_precision > -1 && flag_precision < (int)len_str)
-			len_str = (size_t)flag_precision;
-		write(1, flag.buffer, flag.len_buffer);
-		write(1, str, len_str);
-		total_len = len_str;
+		total_len = annex_to_putstr_printf(str, flag, len_str);
+		return (total_len);
 	}
 	else if (str == NULL)
 		return(print_final_result(flag, "(null)", 6));

@@ -31,84 +31,110 @@ size_t		my_putnbr_long_long(intmax_t nbr, t_flag flag)
 	return (total_len);
 }
 
-unsigned long long		power_of_10(int n)
+size_t			my_put_unsigned_long_long(uintmax_t nbr, t_flag flag)
 {
-	unsigned long long			power;
-	
-	power = 1;
-	if (n <= 0)
-		power = 1;
-	while (n-- > 0)
-		power = power * 10;
-	return (power);
-}
+	char			stock_number[20];
+	int				i;
+	size_t			total_len;
 
-size_t		my_putnbr_double(double nbr, t_flag flag)
-{
-	unsigned long long		int_part;
-	double		dec_part;
-	unsigned long long dec_part_bis;
-	char	stock_number[36];//20 chars pour ULLONG_MAX, 1 pour '.', et 6 pour la partie decimal
-	int			i;
-	int		total_len;
-	double		nb;
-	int			len_precision;
-	
-	i = 35;
-	if (nbr < 0)
-		nb = -nbr;
-	else
-		nb = nbr;
-	int_part = nb;
-	dec_part = (nb - int_part) * 1000000000000000;
-	dec_part_bis = dec_part;
-	flag.conv_f = 1;
-	len_precision = flag.precision <= 15 ? flag.precision : 15;
-	len_precision = len_precision == -1 ? 6 : len_precision;
-	if (len_precision > 0 && dec_part_bis != 0)
+	i = 19;
+	if (nbr == 0 && flag.precision != 0)
 	{
-		dec_part_bis = dec_part_bis/power_of_10(14 - len_precision);//Divise par longueur du nombre - 1
-		if (dec_part_bis % 10 >= 5 && flag.precision <= 15)
-			dec_part_bis = dec_part_bis/10 + 1;
-		else if (flag.precision <= 15)
-			dec_part_bis = dec_part_bis/10;
-		i = 20 + len_precision;
-	}
-	else if (dec_part_bis == 0)
-		while (i > 20)
-			stock_number[i--] = '0';
-	while (dec_part_bis > 0)
-	{
-		stock_number[i] = (char) ((dec_part_bis % 10) + '0');
-		dec_part_bis = dec_part_bis / 10;
+		stock_number[i] = '0';
 		i--;
 	}
-	if(!(len_precision == 0 && !flag.hash))
+	while (nbr > 0)
 	{
-		stock_number[i = 20] = '.';
+		stock_number[i] = (char) ((nbr % 10) + '0');
+		nbr = nbr / 10;
 		i--;
 	}
-	if (int_part == 0)
-	{
-		stock_number[i = 19] = '0';
-		flag.conv_f_intpart++;
-		i--;
-	}
-	while (int_part > 0)
-	{
-		stock_number[i] = (char) ((int_part % 10) + '0');
-		int_part = int_part / 10;
-		flag.conv_f_intpart++;
-		i--;
-	}
-	if (nbr < 0)
-		stock_number[i--] = '-';
-	if (nbr >= 0 && flag.more)
-		stock_number[i--]= '+';
-	if (nbr < 0 || (nbr >= 0 && flag.more))
-		flag.conv_f_intpart += 1;
-	total_len = print_final_result(flag, &stock_number[i + 1], len_precision + flag.conv_f_intpart + 1);
+	total_len = print_final_result(flag, &stock_number[i + 1], 19 - i);
 	return (total_len);
 }
 
+size_t			my_putnbr_hexa(uintmax_t nb, t_flag flag)
+{
+	char		stock_number[20];
+	int			i;
+	char		*base_hexa;
+	size_t		total_len;
 
+	base_hexa = "0123456789abcdef";
+	i = 19;
+	total_len = 0;
+	if (nb == 0 && flag.precision != 0)
+		stock_number[i--] = '0';
+	else if(nb != 0)
+	{
+		while (nb > 0)
+		{
+			stock_number[i--] = base_hexa[(nb % 16)];
+			nb = (nb / 16);
+		}
+		if ((flag.hexa = 2) && flag.hash == 2)
+		{
+			stock_number[i--] = 'x';
+			stock_number[i--] = '0';
+		}
+	}
+	total_len = total_len + print_final_result(flag, &stock_number[i + 1], 19 - i);
+	return (total_len);
+}
+
+size_t			my_putnbr_HEXA(uintmax_t nb, t_flag flag)
+{
+	char		stock_number[20];
+	int			i;
+	char		*base_hexa;
+	size_t			total_len;
+
+	base_hexa = "0123456789ABCDEF";
+	i = 19;
+	total_len = 0;
+	if (nb == 0 && flag.precision != 0)
+		stock_number[i--] = '0';
+	else if (nb != 0)
+	{
+		while (nb > 0)
+		{
+			stock_number[i--] = base_hexa[(nb % 16)];
+			nb = (nb / 16);
+		}
+		if ((flag.hexa = 2) && flag.hash == 2)
+		{
+			stock_number[i--] = 'X';
+			stock_number[i--] = '0';
+		}
+	}
+	total_len = total_len + print_final_result(flag, &stock_number[i + 1], 19 - i);
+	return (total_len);
+}
+
+size_t			my_put_octal(uintmax_t nbr, t_flag flag)
+{
+	char		stock_number[23];
+	int			i;
+	size_t			total_len;
+
+	i = 22;
+	flag.octal = 1;
+	if (nbr == 0 && flag.precision == -1)
+		stock_number[i--] = '0';
+	else
+	{
+		while (nbr > 0)
+		{
+			stock_number[i] = (char) ((nbr % 8) + '0');
+			nbr = nbr / 8;
+			i--;
+		}
+		if (flag.hash == 2)
+		{
+			stock_number[i] = '0';
+			i--;
+		}
+	}
+	total_len = print_final_result(flag, &stock_number[i + 1], 22 - i);
+	return (total_len);
+}

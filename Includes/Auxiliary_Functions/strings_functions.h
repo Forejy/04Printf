@@ -1,5 +1,5 @@
-#ifndef PRINTF_FUNCTIONS_H
-# define PRINTF_FUNCTIONS_H
+#ifndef STRINGS_FUNCTIONS_H
+# define STRINGS_FUNCTIONS_H
 
 # include <unistd.h>
 # include <inttypes.h>
