@@ -2,7 +2,7 @@ NAME = libftprintf.a
 
 SRCS += Sources/Auxiliary_Functions/numbers_functions.c
 SRCS += Sources/Auxiliary_Functions/numbers_functions_double.c
-SRCS += Sources/Print_Final_Result/annex.functions.c
+SRCS += Sources/Print_Final_Result/annex_functions.c
 SRCS += Sources/Print_Final_Result/compute_functions.c
 SRCS += Sources/Print_Final_Result/print_and_compute_final_result.c
 SRCS += Sources/Auxiliary_Functions/print_pointer_address.c
@@ -23,7 +23,7 @@ SRCS += Sources/printf.c
 
 INCLUDES += Includes/Auxiliary_Functions/numbers_functions.h
 INCLUDES += Includes/Auxiliary_Functions/numbers_functions_double.h
-INCLUDES += Sources/Print_Final_Result/annex.functions.h
+INCLUDES += Sources/Print_Final_Result/annex_functions.h
 INCLUDES += Sources/Print_Final_Result/compute_functions.h
 INCLUDES += Sources/Print_Final_Result/print_and_compute_final_result.h
 INCLUDES += Includes/Auxiliary_Functions/print_pointer_address.h
@@ -44,7 +44,7 @@ INCLUDES += Includes/printf.h
 
 OBJS += Sources/Auxiliary_Functions/numbers_functions.o
 OBJS += Sources/Auxiliary_Functions/numbers_functions_double.o
-OBJS += Sources/Print_Final_Result/annex.functions.o
+OBJS += Sources/Print_Final_Result/annex_functions.o
 OBJS += Sources/Print_Final_Result/compute_functions.o
 OBJS += Sources/Print_Final_Result/print_and_compute_final_result.o
 OBJS += Sources/Auxiliary_Functions/print_pointer_address.o
