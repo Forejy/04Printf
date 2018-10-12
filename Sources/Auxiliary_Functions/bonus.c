@@ -1,25 +1,24 @@
 #include "../../Includes/Handlers/handlers.h"
-#include "../../Includes/Print_Unicode/convert_dec_to_bin_utf8.h"
 #include "../../Includes/Auxiliary_Functions/print_final_result_w_padding_and_conversion.h"
 
 void		assigns_to_n(va_list *ap, int lenght_conv, t_flag flag)
 {
 	uintmax_t		*temp_ap;
-	
-		if (lenght_conv == H)
-			temp_ap = (unsigned short*) (va_arg(*ap, int*));
-		else if (lenght_conv == HH)
-			temp_ap = (unsigned char*) (va_arg(*ap, int*));
-		else if (lenght_conv == L)
-			temp_ap = va_arg(*ap, unsigned long*);
-		else if (lenght_conv == LL)
-			temp_ap = (uintmax_t *) va_arg(*ap, unsigned long long*);
-		else if (lenght_conv == J)
-			temp_ap = va_arg(*ap, uintmax_t*);
-		else if (lenght_conv == Z)
-			temp_ap = va_arg(*ap, size_t*);
-		else
-			temp_ap = va_arg(*ap, int*);
+
+	if (lenght_conv == H)
+		temp_ap = (unsigned short*) (va_arg(*ap, int*));
+	else if (lenght_conv == HH)
+		temp_ap = (unsigned char*) (va_arg(*ap, int*));
+	else if (lenght_conv == L)
+		temp_ap = va_arg(*ap, unsigned long*);
+	else if (lenght_conv == LL)
+		temp_ap = (uintmax_t *) va_arg(*ap, unsigned long long*);
+	else if (lenght_conv == J)
+		temp_ap = va_arg(*ap, uintmax_t*);
+	else if (lenght_conv == Z)
+		temp_ap = va_arg(*ap, size_t*);
+	else
+		temp_ap = va_arg(*ap, int*);
 	if (temp_ap)
 		*temp_ap = (uintmax_t) flag.lenght_print;
 }
@@ -64,7 +63,6 @@ size_t		convert_dec_to_binary(intmax_t nbr, t_flag flag)
 				stock_number[i--] = (char) ((nb % 2) + '0');
 				nb = nb / 2;
 			}
-			
 		}
 	}
 	if (flag.hash == 2 && nbr != 0)

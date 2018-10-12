@@ -39,36 +39,6 @@ t_bin_list		*create_and_initialize_t_bin_list(int	number_of_byte)
 	return (begin_list);
 }
 
-
-/*
-void			print_list(t_bin_list *begin_list, unsigned int representation_of_number)
-{
-	t_bin_list	*temp;
-
-	temp = begin_list;
-	if (representation_of_number == BINARY)
-	{
-		while (temp)
-		{
-			write(1, &(temp->binary), 8);
-			write(1, "\n", 1);
-			temp = temp->next;
-		}
-	}
-	else if (representation_of_number == DECIMAL)
-	{
-		{
-			while (temp)
-			{
-				my_putnbr_long_long((int)temp->binary[0]);
-				write(1, "\n", 1);
-				temp = temp->next;
-			}
-		}
-	}
-}
-*/
-
 /*
  * Create the chain list to stock the conversion char to binary formatted in UTF8
  */

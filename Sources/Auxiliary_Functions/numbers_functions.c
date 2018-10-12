@@ -16,10 +16,7 @@ size_t		my_putnbr_long_long(intmax_t nbr, t_flag flag)
 	else
 		nb = nbr;
 	if (nb == 0 && flag.precision != 0)
-	{
-		stock_number[i] = '0';
-		i--;
-	}
+		stock_number[i--] = '0';
 	while (nb > 0)
 	{
 		stock_number[i] = (char) ((nb % 10) + '0');

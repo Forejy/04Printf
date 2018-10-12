@@ -1,6 +1,5 @@
 #include <unistd.h>
 #include <stdlib.h>
-#include <wchar.h>
 #include "../../Includes/Print_Unicode/create_and_print_t_bin_list.h"
 #include "../../Includes/Print_Unicode/convert_dec_to_bin_utf8.h"
 #include "../../Includes/errors.h"

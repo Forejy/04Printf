@@ -29,7 +29,7 @@ void			convert_bin_to_dec(t_bin_list *begin_list)
 void	annex_to_convert_dectobin(int i, int n_bytes, t_bin_list *b_list, int dec)
 {
 	int		j;
-	
+
 	while (i <= n_bytes)
 	{
 		if ((j = 7) && i++ == n_bytes)
