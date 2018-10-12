@@ -3924,10 +3924,11 @@ ft_printf(" +d : % +d \n", 0);
 	k = ft_printf("%jb%jb\n", 9223372036854775807, -9223372036854775808);
 	printf("k = %d\n", k);
 
-	k =printf("%0+5d", 42);
+	k =printf("%+10.5d", 4242);
 	printf("k = %d\n", k);
-	k = ft_printf("%0+5d", 42);
+	k = ft_printf("%+10.5d", 4242);
 	printf("k = %d\n", k);
+
 
 
 	return (0);

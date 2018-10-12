@@ -54,7 +54,7 @@ int		a2_print_rlt_wp(t_flag f, const char *stock, int len_argument, int sign)
 	}
 	while (temp-- > 0)
 		write(1, "0", 1);
-	return (ret + sign);
+	return (ret);
 }
 
 void		a3_print_rlt_wp(t_flag flag, const char *stock, int len_argument, int len_prec)
