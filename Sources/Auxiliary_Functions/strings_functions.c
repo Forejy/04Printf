@@ -1,8 +1,8 @@
 #include <unistd.h>
 #include "../../Includes/Handlers/handlers.h"
-#include "../../Includes/Auxiliary_Functions/print_final_result_w_padding_and_conversion.h"
+#include "../../Includes/Print_Final_Result/print_and_compute_final_result.h"
 
-size_t		my_strlen(const char *str)
+size_t	my_strlen(const char *str)
 {
 	size_t		i;
 
@@ -21,7 +21,7 @@ size_t		my_strlen(const char *str)
 	}
 }
 
-int			my_putchar_printf(char c, t_flag flag)
+int		my_putchar_printf(char c, t_flag flag)
 {
 	int			total_len;
 
@@ -84,7 +84,7 @@ int		my_putstr_printf(const char* str, t_flag flag)
 	return (total_len);
 }
 
-size_t			my_putstr(const char *str)
+size_t	my_putstr(const char *str)
 {
 	size_t				total_len;
 

@@ -11,19 +11,19 @@ int		handle_conversions_7(char conv, va_list *ap, t_flag flag, int lenght_conv)
 	if (conv == 'b')
 	{
 		if (lenght_conv == H)
-			total_len = convert_dec_to_binary((unsigned short) (va_arg(*ap, int)), flag);
+			total_len = convert_dec_to_binary((short) (va_arg(*ap, int)), flag);
 		else if (lenght_conv == HH)
-			total_len = convert_dec_to_binary((unsigned char) (va_arg(*ap, int)), flag);
+			total_len = convert_dec_to_binary((char) (va_arg(*ap, int)), flag);
 		else if (lenght_conv == L)
-			total_len = convert_dec_to_binary(va_arg(*ap, unsigned long), flag);
+			total_len = convert_dec_to_binary(va_arg(*ap, long), flag);
 		else if (lenght_conv == LL)
-			total_len = convert_dec_to_binary(va_arg(*ap, unsigned long long), flag);
+			total_len = convert_dec_to_binary(va_arg(*ap, long long), flag);
 		else if (lenght_conv == J)
-			total_len = convert_dec_to_binary(va_arg(*ap, uintmax_t), flag);
+			total_len = convert_dec_to_binary(va_arg(*ap, intmax_t), flag);
 		else if (lenght_conv == Z)
-			total_len = convert_dec_to_binary(va_arg(*ap, unsigned long), flag);
+			total_len = convert_dec_to_binary(va_arg(*ap, ssize_t), flag);
 		else
-			total_len = convert_dec_to_binary(va_arg(*ap, unsigned int), flag);
+			total_len = convert_dec_to_binary(va_arg(*ap, int), flag);
 	}
 	else if (conv == 'f' || conv == 'F')
 		total_len = my_putnbr_double(va_arg(*ap, double), flag);

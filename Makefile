@@ -2,7 +2,9 @@ NAME = libftprintf.a
 
 SRCS += Sources/Auxiliary_Functions/numbers_functions.c
 SRCS += Sources/Auxiliary_Functions/numbers_functions_double.c
-SRCS += Sources/Auxiliary_Functions/print_final_result_w_padding_and_conversion.c
+SRCS += Sources/Auxiliary_Functions/Print_Final_Result/annex.functions.c
+SRCS += Sources/Auxiliary_Functions/Print_Final_Result/compute_functions.c
+SRCS += Sources/Auxiliary_Functions/Print_Final_Result/print_and_compute_final_result.c
 SRCS += Sources/Auxiliary_Functions/print_pointer_address.c
 SRCS += Sources/Auxiliary_Functions/strings_functions.c
 SRCS += Sources/Auxiliary_Functions/bonus.c
@@ -21,7 +23,9 @@ SRCS += Sources/printf.c
 
 INCLUDES += Includes/Auxiliary_Functions/numbers_functions.h
 INCLUDES += Includes/Auxiliary_Functions/numbers_functions_double.h
-INCLUDES += Includes/Auxiliary_Functions/print_final_result_w_padding_and_conversion.h
+INCLUDES += Sources/Auxiliary_Functions/Print_Final_Result/annex.functions.h
+INCLUDES += Sources/Auxiliary_Functions/Print_Final_Result/compute_functions.h
+INCLUDES += Sources/Auxiliary_Functions/Print_Final_Result/print_and_compute_final_result.h
 INCLUDES += Includes/Auxiliary_Functions/print_pointer_address.h
 INCLUDES += Includes/Auxiliary_Functions/strings_functions.h
 INCLUDES += Includes/Auxiliary_Functions/bonus.h
@@ -40,7 +44,9 @@ INCLUDES += Includes/printf.h
 
 OBJS += Sources/Auxiliary_Functions/numbers_functions.o
 OBJS += Sources/Auxiliary_Functions/numbers_functions_double.o
-OBJS += Sources/Auxiliary_Functions/print_final_result_w_padding_and_conversion.o
+OBJS += Sources/Auxiliary_Functions/Print_Final_Result/annex.functions.o
+OBJS += Sources/Auxiliary_Functions/Print_Final_Result/compute_functions.o
+OBJS += Sources/Auxiliary_Functions/Print_Final_Result/print_and_compute_final_result.o
 OBJS += Sources/Auxiliary_Functions/print_pointer_address.o
 OBJS += Sources/Auxiliary_Functions/strings_functions.o
 OBJS += Sources/Auxiliary_Functions/bonus.o

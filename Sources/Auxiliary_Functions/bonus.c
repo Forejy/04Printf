@@ -1,5 +1,5 @@
 #include "../../Includes/Handlers/handlers.h"
-#include "../../Includes/Auxiliary_Functions/print_final_result_w_padding_and_conversion.h"
+#include "../../Includes/Print_Final_Result/print_and_compute_final_result.h"
 
 void		assigns_to_n(va_list *ap, int lenght_conv, t_flag flag)
 {
@@ -23,32 +23,28 @@ void		assigns_to_n(va_list *ap, int lenght_conv, t_flag flag)
 		*temp_ap = (uintmax_t) flag.lenght_print;
 }
 
-void		handle_intmax_min(char	*stock_number)
+short		handle_intmax_min(char	*stock_number, t_flag *flag)
 {
 	char		i;
 
+	stock_number[3] = '1';
 	i = 4;
-	stock_number[1] = '1';
 	while(i <= 66)
 		stock_number[i++] = '0';
+	flag->binary = 1;
+	return (2);
 }
 
-size_t		convert_dec_to_binary(intmax_t nbr, t_flag flag)
+short		annex_convert_dec_to_binary(char *stock_number,intmax_t nbr, t_flag *flag)
 {
-	char			stock_number[67];
-	intmax_t		nb;
-	int				i;
-	size_t				total_len;
+	intmax_t nb;
+	short    i;
 
 	i = 66;
-	if (nbr == 0 && flag.precision != 0)
+	if (nbr == 0 && flag->precision != 0)
 		stock_number[i--] = '0';
 	else if (nbr == -9223372036854775808)
-	{
-		flag.binary = 1;
-		handle_intmax_min(stock_number);
-		i = 4;
-	}
+		i = handle_intmax_min(stock_number, flag);
 	else
 	{
 		if (nbr < 0)
@@ -57,7 +53,7 @@ size_t		convert_dec_to_binary(intmax_t nbr, t_flag flag)
 			nb = nbr;
 		if (nb != 0)
 		{
-			flag.binary = 1;
+			flag->binary = 1;
 			while (nb > 0)
 			{
 				stock_number[i--] = (char) ((nb % 2) + '0');
@@ -65,6 +61,16 @@ size_t		convert_dec_to_binary(intmax_t nbr, t_flag flag)
 			}
 		}
 	}
+	return (i);
+}
+
+size_t		convert_dec_to_binary(intmax_t nbr, t_flag flag)
+{
+	char	stock_number[67];
+	short	i;
+	size_t	total_len;
+
+	i = annex_convert_dec_to_binary(&stock_number, nbr, &flag);
 	if (flag.hash == 2 && nbr != 0)
 	{
 		stock_number[i--] = 'b';
@@ -77,3 +83,5 @@ size_t		convert_dec_to_binary(intmax_t nbr, t_flag flag)
 	total_len = print_final_result(flag, &stock_number[i + 1], 66 - i);
 	return (total_len);
 }
+
+ 
