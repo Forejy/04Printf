@@ -29,7 +29,7 @@ int		annex_to_print_padding(t_flag f, const char **stock, int len_padding)
 	return (retenue);
 }
 
-int		a2_print_rlt_wp(t_flag f, const char *stock, int len_argument, int sign)
+int		a2_print_rlt_wp(t_flag f, const char **stock, int *len_argument, int sign)
 {
 	int		temp;
 	int		len_precision;
@@ -37,16 +37,16 @@ int		a2_print_rlt_wp(t_flag f, const char *stock, int len_argument, int sign)
 
 	len_precision = f.precision;
 	ret = 0;
-	if (len_precision > 0 && (len_precision > len_argument - f.hexa - f.binary)
+	if (len_precision > 0 && (len_precision > *len_argument - f.hexa - f.binary)
 		&& (f.pointer == 2 || ((f.hexa == 2 || f.binary) && f.hash)))
 	{
-		write(1, stock, 2);
-		stock = stock + 2;
-		len_argument -= 2;
+		write(1, *stock, 2);
+		*stock = *stock + 2;
+		*len_argument -= 2;
 		ret += 2;
 	}
-	temp = len_precision - len_argument;
-	if ((len_precision >= f.champs || len_argument >= f.champs  || f.less)
+	temp = len_precision - *len_argument;
+	if ((len_precision >= f.champs || *len_argument >= f.champs  || f.less)
 		&& f.blank && !sign && stock && *stock != '-' && *stock != '+')
 	{
 		write(1, " ", 1);

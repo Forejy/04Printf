@@ -3930,7 +3930,11 @@ ft_printf(" +d : % +d \n", 0);
 	printf("k = %d\n", k);
 
 
-
+	k =printf("%.5p\n", 0);
+	printf("k = %d\n", k);
+	k = ft_printf("%.5p\n", 0);
+	printf("k = %d\n", k);
+	
 	return (0);
 }
 //9223372036854775807

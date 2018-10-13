@@ -87,7 +87,7 @@ int		print_result_w_precision(t_flag flag, const char *stock, int len_argument)
 	}
 	if (flag.character_or_string == 0 && flag.unicode_c == 0
 		&& flag.unicode_s == 0 && !flag.conv_f)
-		ret += a2_print_rlt_wp(flag, stock, len_argument, sign);
+		ret += a2_print_rlt_wp(flag, &stock, &len_argument, sign);
 	a3_print_rlt_wp(flag, stock, len_argument, len_precision);
 	return(ret + sign);
 }
