@@ -23,7 +23,10 @@ intmax_t		my_put_wint_t(int dec, t_flag flag)
 	if (dec <= 128 && dec >= 0)
 		return (print_final_result(flag, (char *) &dec, 1));
 	else if (dec >= 129 && dec <= 255 && MB_CUR_MAX < 2 )
-		write(1,"�", 2);
+	{
+        write(1, "�", 2);
+        return (1);
+    }
 	if ((dec >= 129 && dec <= 255 && MB_CUR_MAX < 2 )
 		|| (dec > 1114111 || dec < 0) || (dec >= 55296 && dec <= 57343)
 		||(number_of_bytes = compute_minimum_number_of_bytes_in_utf8(dec)) > MB_CUR_MAX)
