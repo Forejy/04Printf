@@ -47,7 +47,7 @@ int		a2_print_rlt_wp(t_flag f, const char **stock, int *len_argument, int sign)
 	}
 	temp = len_precision - *len_argument;
 	if ((len_precision >= f.champs || *len_argument >= f.champs  || f.less)
-		&& f.blank && !sign && stock && *stock != '-' && *stock != '+')
+		&& f.blank && !sign && stock && *stock && **stock != '-' && **stock != '+')
 	{
 		write(1, " ", 1);
 		ret += 1;
