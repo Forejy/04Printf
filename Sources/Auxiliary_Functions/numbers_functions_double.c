@@ -30,7 +30,7 @@ int						pdl(unsigned long long it, unsigned long long *dt, t_flag f, double n)
 	len_dec_part = len_dec_part == -1 ? 6 : len_dec_part;
 	if (len_dec_part > 0 && dt != 0)
 	{
-		temp_dec_part = temp_dec_part / power_of_10(14 - len_dec_part);//Divise par longueur du nombre - 1
+		temp_dec_part = temp_dec_part / power_of_10(14 - len_dec_part);
 		if (temp_dec_part % 10 >= 5 && f.precision <= 15)
 			temp_dec_part = temp_dec_part / 10 + 1;
 		else if (f.precision <= 15)
@@ -58,7 +58,7 @@ size_t					anx_2_putdouble(double nbr, t_flag flag, char *stock_number, int i)
 
 size_t					pdl2(int	i, t_flag flag, unsigned long long dec_part, double nbr)
 {
-	char	stock_number[36];//20 chars pour ULLONG_MAX, 1 pour '.', et 15 pour la partie decimal
+	char	stock_number[36];
 	unsigned long long		int_part;
 
 	int_part = nbr < 0 ? - nbr : nbr;

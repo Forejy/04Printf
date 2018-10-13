@@ -56,7 +56,7 @@ int			test_champs(const char *format, t_flag *flag, va_list *ap)
 	nb = 0;
 	if (test_champs_star(format, flag, ap))
 		return (1);
-	if (format[0] == '0')//Si on a un 0 et pas de '.' derriere, on doit traiter le 0 dans la fonction test_flags
+	if (format[0] == '0')
 	{
 		while (format[i] == '0')
 			i++;

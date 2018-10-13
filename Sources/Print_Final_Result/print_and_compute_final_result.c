@@ -1,7 +1,6 @@
 #include "../../Includes/Handlers/handlers.h"
 #include "../../Includes/Print_Final_Result/compute_functions.h"
 #include "../../Includes/Print_Final_Result/annex_functions.h"
-#include <unistd.h>
 
 int		print_padding(t_flag flag, const char **stock, int len_padding)
 {

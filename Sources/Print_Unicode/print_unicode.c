@@ -84,13 +84,6 @@ int			count_char_per_wint_t(t_flag flag, wchar_t *string_wchar, int **number_of_
 	return (annex_to_count_char(flag, string_wchar, number_of_char_per_wint_t));
 }
 
-
-
-
-
-
-
-
 /*
  * Utilise la fonction my_put_wint_t pour afficher une chaine de caractere d'unicode (wchar_t)
  */
