@@ -80,7 +80,8 @@ uintmax_t		cmpt_totlen(t_flag flag, int len_padding, int len_prec, int len_arg)
 			|| len_prec > len_arg )) || (((flag.character_or_string == 2 || flag.unicode_s) && (len_prec != -1 
 			|| (flag.unicode_c && len_prec > 0))) && len_prec < len_arg)
 			|| ((!flag.hexa || !flag.binary) && !flag.unicode_s && !flag.unicode_c && !flag.character_or_string
-			&& len_prec > len_arg))
+			&& len_prec > len_arg)
+			|| flag.pointer && len_prec > len_arg - flag.pointer)
 		total_len += (size_t)len_padding + (size_t)len_prec;
 	else if (flag.character_or_string == 2 && len_prec == 0)
 		total_len += len_padding;
