@@ -6,7 +6,6 @@
 #include "../../Includes/Print_Final_Result/print_and_compute_final_result.h"
 #include "../../Includes/Print_Unicode/auxiliary_functions_for_unicode.h"
 
-
 /*
  * Stocke le charactere sous forme binaire UTF8 (dans la liste chaine chaine t_bin_list)
  * Convertit chaque octet en decimal puis les combine pour affiche le caractere unicode

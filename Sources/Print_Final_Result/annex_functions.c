@@ -37,8 +37,8 @@ int		a2_print_rlt_wp(t_flag f, const char **stock, int *len_argument, int sign)
 
 	len_precision = f.precision;
 	ret = 0;
-	if (len_precision > 0 && (len_precision > *len_argument - f.hexa - f.binary)
-		&& (f.pointer == 2 || ((f.hexa == 2 || f.binary) && f.hash)))
+	if (len_precision > 0 && (len_precision > *len_argument - f.pointer - f.hexa
+	- f.binary) && (f.pointer == 2 || ((f.hexa == 2 || f.binary) && f.hash)))
 	{
 		write(1, *stock, 2);
 		*stock = *stock + 2;

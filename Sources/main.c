@@ -3940,7 +3940,7 @@ ft_printf(" +d : % +d \n", 0);
     k = ft_printf("42%47S42", L"(null)");
     printf("k = %d\n", k);
 
-*/	setlocale(LC_ALL, "");
+*/	//setlocale(LC_ALL, "");
 
 /*    int test;
 
@@ -3952,15 +3952,23 @@ ft_printf(" +d : % +d \n", 0);
         printf("k = %d\n", k);
     }
     */
-    printf("MBCURMAX : %d\n", MB_CUR_MAX);
+    //setlocale(LC_ALL, "");
+//    printf("MBCURMAX : %d\n", MB_CUR_MAX);
+
+  //  �%
+
+  //  k = printf("%C", 254);
+  //      printf("k = %d\n", k);
+   // k = ft_printf("%C", 254);
+    // printf("k = %d\n", k);
+    int *test;
+    int b;
+
+    test = &b;
 
 
-
-    k =printf("%C", 0x4e6);
-    printf("k = %d\n", k);
-    k = ft_printf("%C", 0x4e6);
-    printf("k = %d\n", k);
-  //  k = ft_printf("%C", 128);
+    ft_printf("%.0p\n", 0);
+    printf("%.0p\n", 0);
 
 
     return (0);
