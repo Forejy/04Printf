@@ -3940,9 +3940,9 @@ ft_printf(" +d : % +d \n", 0);
     k = ft_printf("42%47S42", L"(null)");
     printf("k = %d\n", k);
 
-*/	//setlocale(LC_ALL, "");
+*/	setlocale(LC_ALL, "");
 
-    int test;
+/*    int test;
 
     test = 123;
     while (test++ <= 255)
@@ -3951,7 +3951,19 @@ ft_printf(" +d : % +d \n", 0);
         k = printf("%C", test);
         printf("k = %d\n", k);
     }
-	return (0);
+    */
+    printf("MBCURMAX : %d\n", MB_CUR_MAX);
+
+
+
+    k =printf("%C", 0x4e6);
+    printf("k = %d\n", k);
+    k = ft_printf("%C", 0x4e6);
+    printf("k = %d\n", k);
+  //  k = ft_printf("%C", 128);
+
+
+    return (0);
 }
 //9223372036854775807
 //[(null)                  ]
