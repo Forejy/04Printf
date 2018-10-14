@@ -17,6 +17,7 @@ intmax_t		my_put_wint_t(int dec, t_flag flag)
 	char       codeset[6];
 	int        number_of_bytes;
 	int        i;
+	t_bin_list *head;
 
 	flag.unicode_c = 1;
 	if (dec < 128 && dec >= 0)
@@ -37,8 +38,19 @@ intmax_t		my_put_wint_t(int dec, t_flag flag)
 	while (i < number_of_bytes)
 	{
 		codeset[i++] = temp->binary[0];
-		temp = temp->next;
+		head = temp->next;
+		free(temp);
+		temp = head;
 	}
+	/*
+	while (i < number_of_bytes)
+	{
+		codeset[i++] = head->binary[0];
+		temp = head->next;
+		free(head);
+		head = temp;
+	}
+	 */
 	return (print_final_result(flag, codeset, i));
 }
 
@@ -74,6 +86,7 @@ int			annex_to_count_char(t_flag flag, wchar_t *string_wchar, int **number_of_ch
 int			count_char_per_wint_t(t_flag flag, wchar_t *string_wchar, int **number_of_char_per_wint_t)
 {
 	int			i;
+	int         temp;
 
 	i = 0;
 	while (string_wchar[i] != '\0')
@@ -82,8 +95,8 @@ int			count_char_per_wint_t(t_flag flag, wchar_t *string_wchar, int **number_of_
 		exit_with_msg(ERROR_MALLOC_FAILED);
 	while (--i >= 0)
 		number_of_char_per_wint_t[0][i] = 1;
-	annex_to_count_char(flag, string_wchar, number_of_char_per_wint_t);
-	return (annex_to_count_char(flag, string_wchar, number_of_char_per_wint_t));
+    temp =	annex_to_count_char(flag, string_wchar, number_of_char_per_wint_t);
+	return (temp);
 }
 
 /*

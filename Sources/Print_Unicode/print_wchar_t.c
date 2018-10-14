@@ -34,11 +34,14 @@ int				adapts_precision_to_numbers_of_bytes(int presumed_precision, int *number_
 
 void		annex_to_annex_put_wchart_t(t_bin_list *temp, int k, short *j, char *string)
 {
+	t_bin_list *head;
 	while (temp)
 	{
 		string[k--] = temp->binary[0];
 		(*j)++;
-		temp = temp->next;
+		head = temp->next;
+		free(temp);
+		temp = head;
 	}
 }
 
@@ -96,5 +99,7 @@ intmax_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 	if (flag.precision > -1 && flag.precision < number_of_bytes)
 		flag.precision = adapts_precision_to_numbers_of_bytes(flag.precision, number_of_char_per_wint_t);
 	total_len = print_final_result(flag, string, number_of_bytes);
-	return (total_len);
+	free(string);
+    free(number_of_char_per_wint_t);
+    return (total_len);
 }

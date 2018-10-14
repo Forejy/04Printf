@@ -142,16 +142,23 @@ DONETODO				Tester et adapter la nouvelle fonction handle_format
     DONETODO						Finir la gestion du flag.blank + flag.less
 DONETODO			gerer le flag -
 DONETODO			Gerer le flag %
-TODO				Tester puis gerer la conversion %p avec un pointeur null
-TODO				Normer chaque fonction a 25lignes  pour 80 caracteres par ligne max
-TODO				Amelioration 1 : Se debrouiller pour initialiser les i a 0 en imprimant par la gauche dans les aux_functions
+DONETODO				Tester puis gerer la conversion %p avec un pointeur null
+DONETODO				Normer chaque fonction a 25lignes  pour 80 caracteres par ligne max
+ABORTTODO				Amelioration 1 : Se debrouiller pour initialiser les i a 0 en imprimant par la gauche dans les aux_functions
 ABORTTODO				Regarder comment obtenir le n-ieme argument sans avoir a stocker la va_list
 DONETODO				Faire la fonction de convertion d'un intmax_t en binaire avec signe -+ et 0
-TODO				refaire les tests en changeant le type de nbr de uintmax_t vers intmax_t dans my_putnbr_long_long
-TODO				Gerer le intmax_min dans la fonction my_putnbr_long_long dans numbers_functions.c
-TODO			Supprimer tous les write et commentaires qui ne sont pas dans la fonction finale
+DONETODO				refaire les tests en changeant le type de nbr de uintmax_t vers intmax_t dans my_putnbr_long_long
+NOTNECESSARYTODO				Gerer le intmax_min dans la fonction my_putnbr_long_long dans numbers_functions.c
+DONETODO			Supprimer tous les write et commentaires qui ne sont pas dans la fonction finale
 DONETODO			Grosse erreur dans %f pour couper la partie decimale avec la precision
-TODO				Refaire le refacto-norme pour les fonctions de handle_conversions.c
+DONETODO				Refaire le refacto-norme pour les fonctions de handle_conversions.c
+TODO                Git clone sur un mac a 42
+TODO                Finir le norminage
+TODO                Refaire tous les tests : 42filechecker, moulitest, curqui_test, ft_printf.com, et ft_printf_test
+TODO                NE PAS OUBLIER DE BIEN CLEAN LE DOSSIER AVANT DE PUSH
+
+
+
 Champs : Longueur total de caracteres affiches
 Precision : Longueur total de l'argument sans le signe
 
