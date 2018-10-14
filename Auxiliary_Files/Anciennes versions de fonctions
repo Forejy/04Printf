@@ -21,7 +21,7 @@ size_t			handle_format(const char *format, va_list ap)
 			if (format[i] == '.')
 			{
 				i++;
-				i = i + test_precision(&format[i], &flag);
+				i = i + test_prec(&format[i], &flag);
 			}
 			if (format[i] == '%')
 				lenght_print = lenght_print + my_putchar_printf('%', flag);
@@ -64,7 +64,7 @@ size_t		handle_format(const char *format, va_list ap)
 			if (format[i] == '.')
 			{
 				i++;
-				i = i + test_precision(&format[i], &flag);
+				i = i + test_prec(&format[i], &flag);
 			}
 			else
 			{
