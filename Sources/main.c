@@ -4153,7 +4153,14 @@ ft_printf(" +d : % +d \n", 0);
     ft_printf("|%+03*.ld|\n", 8, 84);
     ft_printf("|%+03*.ld|\n", -8, 84);
     ft_printf("|%+03*.ld|\n", -8, -84);
-    
+
+
+    int n;
+
+   // printf("LALALALALAL\n%n", &n);
+    //printf("%d\n", n);
+    ft_printf("LALALALALAL\n%n", &n);
+    ft_printf("%d\n", n);
     return (0);
 }
 //9223372036854775807

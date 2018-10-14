@@ -1,10 +1,11 @@
 #include "../../Includes/Handlers/handlers.h"
 #include "../../Includes/Print_Final_Result/print_and_compute_final_result.h"
 
-void		assigns_to_n(va_list *ap, int lenght_conv, t_flag flag)
+int		assigns_to_n(va_list *ap, int lenght_conv, t_flag flag)
 {
 	uintmax_t		*temp_ap;
 
+	write(1, flag.buffer, flag.len_buffer);
 	if (lenght_conv == H)
 		temp_ap = (unsigned short*) (va_arg(*ap, int*));
 	else if (lenght_conv == HH)
@@ -21,6 +22,7 @@ void		assigns_to_n(va_list *ap, int lenght_conv, t_flag flag)
 		temp_ap = va_arg(*ap, int*);
 	if (temp_ap)
 		*temp_ap = (uintmax_t) flag.lenght_print;
+	return (0);
 }
 
 short		handle_intmax_min(char	*stock_number, t_flag *flag)

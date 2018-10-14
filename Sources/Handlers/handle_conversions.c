@@ -85,7 +85,7 @@ int			handle_conversions_3(char conv, va_list *ap, t_flag flag,int lenght_conv)
 			total_len = my_put_unsigned_long_long(va_arg(*ap, unsigned long), flag);
 	}
 	else if (conv == 'n')
-		assigns_to_n(ap, lenght_conv, flag);
+		total_len = assigns_to_n(ap, lenght_conv, flag);
 	else
 		total_len = handle_conversions_4(conv, ap, flag, lenght_conv);
 	return (total_len);
