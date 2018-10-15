@@ -2,8 +2,6 @@
 #include "../../Includes/Handlers/handlers.h"
 #include "../../Includes/Print_Unicode/auxiliary_functions_for_unicode.h"
 
-
-
 void			convert_bin_to_dec(t_bin_list *begin_list)
 {
 	t_bin_list	*temp;

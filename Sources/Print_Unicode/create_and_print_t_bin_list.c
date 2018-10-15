@@ -38,7 +38,6 @@ t_bin_list		*create_and_initialize_t_bin_list(int	number_of_byte)
 	}
 	return (begin_list);
 }
-
 /*
  * Create the chain list to stock the conversion char to binary formatted in UTF8
  */

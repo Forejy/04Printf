@@ -1,6 +1,6 @@
 #include <wchar.h>
 
-int 	test_validity_of_characters(wchar_t *string_wchar)
+int 			test_validity_of_characters(wchar_t *string_wchar)
 {
 	int i;
 	wint_t temp;
@@ -15,7 +15,7 @@ int 	test_validity_of_characters(wchar_t *string_wchar)
 	return (1);
 }
 
-unsigned int				compute_minimum_number_of_bits(unsigned int n)
+unsigned int	compute_minimum_number_of_bits(unsigned int n)
 {
 	unsigned int		pow2;
 	unsigned int		k;

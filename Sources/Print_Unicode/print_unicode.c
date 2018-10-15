@@ -7,33 +7,14 @@
 #include "../../Includes/Print_Unicode/auxiliary_functions_for_unicode.h"
 
 /*
- * Stocke le charactere sous forme binaire UTF8 (dans la liste chaine chaine t_bin_list)
- * Convertit chaque octet en decimal puis les combine pour affiche le caractere unicode
- */
+ * Annexe a Put_wint_t pour respecter la norme de ligne de 42.
+ * */
 
-intmax_t		my_put_wint_t(int dec, t_flag flag)
-{
-	t_bin_list *temp;
-	char       codeset[6];
-	int        number_of_bytes;
-	int        i;
-	t_bin_list *head;
+intmax_t		annex_put_wint_t(t_flag flag, int number_of_bytes, char *codeset, t_bin_list *temp)
+{	
+	int			i;
+	t_bin_list	*head;
 
-	flag.unicode_c = 1;
-	if (dec < 128 && dec >= 0)
-		return (print_final_result(flag, (char *) &dec, 1));
-	else if (dec >= 128 && dec <= 255 && MB_CUR_MAX < 2 )
-	{
-        write(1, "�", 2);
-        return (1);
-    }
-	if ((dec >= 128 && dec <= 255 && MB_CUR_MAX < 2 )
-		|| (dec > 1114111 || dec < 0) || (dec >= 55296 && dec <= 57343)
-		||(number_of_bytes = compute_minimum_number_of_bytes_in_utf8(dec)) > MB_CUR_MAX)
-		return (-1);
-	else if (dec > 196608 && dec < 262143)
-		return (0);
-	temp = call_functions_to_convert_dec_to_bin_in_utf8(dec, number_of_bytes);
 	i = 0;
 	while (i < number_of_bytes)
 	{
@@ -42,16 +23,36 @@ intmax_t		my_put_wint_t(int dec, t_flag flag)
 		free(temp);
 		temp = head;
 	}
-	/*
-	while (i < number_of_bytes)
-	{
-		codeset[i++] = head->binary[0];
-		temp = head->next;
-		free(head);
-		head = temp;
-	}
-	 */
 	return (print_final_result(flag, codeset, i));
+}
+
+/*
+ * Stocke le charactere sous forme binaire UTF8 (dans la liste chaine chaine t_bin_list)
+ * Convertit chaque octet en decimal puis les combine pour affiche le caractere unicode
+ */
+
+intmax_t		my_put_wint_t(int dec, t_flag flag)
+{
+	t_bin_list	*temp;
+	char		codeset[6];
+	int			number_of_bytes;
+
+	flag.unicode_c = 1;
+	if (dec < 128 && dec >= 0)
+		return (print_final_result(flag, (char *) &dec, 1));
+	else if (dec >= 128 && dec <= 255 && MB_CUR_MAX < 2 )
+	{
+		write(1, "�", 2);
+		return (1);
+	}
+	if ((dec >= 128 && dec <= 255 && MB_CUR_MAX < 2 )
+		|| (dec > 1114111 || dec < 0) || (dec >= 55296 && dec <= 57343)
+		||(number_of_bytes = compute_minimum_number_of_bytes_in_utf8(dec)) > MB_CUR_MAX)
+		return (-1);
+	else if (dec > 196608 && dec < 262143)
+		return (0);
+	temp = call_functions_to_convert_dec_to_bin_in_utf8(dec, number_of_bytes);
+	return (annex_put_wint_t(flag, number_of_bytes, codeset, temp));
 }
 
 /*
