@@ -84,7 +84,7 @@ int			annex_to_count_char(t_flag flag, wchar_t *string_wchar, int **number_of_ch
 	return (number_of_bytes);
 }
 
-int			count_char_per_wint_t(t_flag flag, wchar_t *string_wchar, int **number_of_char_per_wint_t)
+int			ct_char_per_wint_t(t_flag flag, wchar_t *string_wchar, int **number_of_char_per_wint_t)
 {
 	int			i;
 	int         temp;
