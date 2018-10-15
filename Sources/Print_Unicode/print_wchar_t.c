@@ -89,7 +89,10 @@ intmax_t			my_put_wchar_t(wchar_t *string_wchar, t_flag flag)
 	}
 	if((test_validity_of_characters(string_wchar) == -1)
 	   ||(number_of_bytes = count_char_per_wint_t(flag, string_wchar, &number_of_char_per_wint_t)) == -1)
-		return (-1);
+	{
+        free(number_of_char_per_wint_t);
+        return (-1);
+    }
 	if (!(string = (char *)malloc(sizeof(char) * (number_of_bytes + 1))))
 		exit_with_msg(ERROR_MALLOC_FAILED);
 	string[number_of_bytes] = '\0';
