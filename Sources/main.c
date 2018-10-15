@@ -4192,6 +4192,11 @@ ft_printf(" +d : % +d \n", 0);
     ft_printf("%s%s%s\n", "test", "test", "test");
     ft_printf("%C\n", 15000);
 
+    //setlocale(LC_ALL, "");
+
+
+    k = ft_printf("%-2.2ls", L"(null)");
+    printf("%d", k);
     return (0);
 }
 //9223372036854775807
